@@ -1,0 +1,3 @@
+[submodule "nipreps-book"]
+	path = nipreps-book
+	url = git@github.com:nipreps/nipreps-book.git
