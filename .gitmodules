@@ -1,3 +1,6 @@
 [submodule "nipreps-book"]
 	path = nipreps-book
 	url = git@github.com:nipreps/nipreps-book.git
+[submodule "dipy-tutorial"]
+	path = dipy-tutorial
+	url = git@github.com:MadeInShineA/dipy-tutorial.git
