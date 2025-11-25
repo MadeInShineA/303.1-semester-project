@@ -49,6 +49,7 @@ This repo contains the content of my semester project done in the 303.1 - Semest
   - [Diffusion Weighted Imaging - Doctor Klioze](https://www.youtube.com/watch?v=J_aamnpRJE8&list=LL&index=2)
   - [Diffusion Tensor Imaging (DTI) - Doctor Klioze](https://www.youtube.com/watch?v=twsV81UFFcE)
   - [Diffusion Tensor Imaging (DTI) Explained! | Neuroscience Methods 101 - Psyched!](https://www.youtube.com/watch?v=Be51OqnBbdc)
+  - [DWI vs ADC MRI sequences: EXPLAINED - Radiology Tutorials](https://www.youtube.com/watch?v=GwCRBQt2WdM)
 
 - Other
   - [Nipreps book](https://github.com/nipreps/nipreps-book)
