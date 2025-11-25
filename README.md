@@ -14,12 +14,23 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 
 - Meeting with Prof. Esteban
 - Prepare the DIPY development environment
+  - Additional installation steps
+    - To build the project
+      - sudo dnf install python3-devel
+    - To build the documentation
+      - pip install sphinx
+      - pip install sphinx_gallery
+      - pip install numpydoc
+      - pip install sphinxcontrib-bibtex
+      - pip install sphinx-design
+      - pip install grg-sphinx-theme
 
 ## Sources
 
 - DIPY
   - [DIPY website](https://dipy.org/)
-  - [Dipy contributing guide](https://github.com/dipy/dipy/blob/master/.github/CONTRIBUTING.md)
+  - [DIPY contributing guide](https://github.com/dipy/dipy/blob/master/.github/CONTRIBUTING.md)
+  - [DIPY developer guide](https://docs.dipy.org/stable/devel/intro.html)
   - Tutorials
     - [Reconstruct with Constant Solid Angle (Q-Ball)](https://docs.dipy.org/stable/examples_built/reconstruction/reconst_csa.html)
     - [Reconstruct with Generalized Q-Sampling Imaging](https://docs.dipy.org/stable/examples_built/reconstruction/reconst_gqi.html)
