@@ -14,9 +14,12 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 
 - Meeting with Prof. Esteban
 - Prepare the DIPY development environment
-  - Additional installation steps
+  - Installation steps
+    - Create a venv and source it (or use uv venv and uv pip ...)
     - To build the project
       - sudo dnf install python3-devel
+      - pip install -r requirements/build.txt
+      - pip install --no-build-isolation -e .
     - To build the documentation
       - pip install sphinx
       - pip install sphinx_gallery
@@ -24,6 +27,10 @@ This repo contains the content of my semester project done in the 303.1 - Semest
       - pip install sphinxcontrib-bibtex
       - pip install sphinx-design
       - pip install grg-sphinx-theme
+    - To use the correct formatting
+      - pip install --no-build-isolation -e .\[style\]
+      - pip install pre-commit
+      - pre-commit install
 
 ## Sources
 
