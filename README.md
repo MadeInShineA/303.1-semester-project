@@ -43,3 +43,5 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 
 - Other
   - [Nipreps book](https://github.com/nipreps/nipreps-book)
+  - [Prof. Esteban DIPY pull request](https://github.com/dipy/dipy/pull/3553)
+  - [Prof. Esteban DIPY fork](https://github.com/oesteban/dipy/tree/enh/gqi-predict)
