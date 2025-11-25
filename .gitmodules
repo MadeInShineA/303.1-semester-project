@@ -4,3 +4,6 @@
 [submodule "dipy-tutorial"]
 	path = dipy-tutorial
 	url = git@github.com:MadeInShineA/dipy-tutorial.git
+[submodule "dipy"]
+	path = dipy
+	url = git@github.com:MadeInShineA/dipy.git
