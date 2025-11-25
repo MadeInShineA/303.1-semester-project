@@ -6,7 +6,7 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 
 ### 24.11.2025
 
-- Made a pull request to the [Nipreps book repo](https://github.com/nipreps/nipreps-book)
+- Made a [pull request](https://github.com/nipreps/nipreps-book/pull/49) to the [Nipreps book repo](https://github.com/nipreps/nipreps-book)
 - Realised the different DIPY tutorials
 - Started reading the Nipreps book
 
