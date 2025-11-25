@@ -13,7 +13,7 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 ### 25.11.2025
 
 - Meeting with Prof. Esteban
-- Prepare the DIPY development environment
+- Prepared the DIPY development environment
   - Installation steps
     - Create a venv and source it (or use uv venv and uv pip ...)
     - To build the project
@@ -31,6 +31,8 @@ This repo contains the content of my semester project done in the 303.1 - Semest
       - pip install --no-build-isolation -e .\[style\]
       - pip install pre-commit
       - pre-commit install
+- Started to look at the current gqi predict code and pull request
+- Continued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)
 
 ## Sources
 
