@@ -34,6 +34,14 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 - Started to look at the current gqi predict code and pull request
 - Continued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)
 
+### 26.11.2025
+
+- Finished reading the Nipreps book
+- Continued to look at the current gqi code and made small changes on the [enh/gqi-predict-dev](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-dev) branch
+  - Changed GeneralizedQSamplingFit odf function to take a sphere parameter
+  - Changed the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions
+- Created a small [marimo](https://marimo.io/) notebook to test and understand the prediction function on the [enh/gqi-predict-notebooks](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks) branch
+
 ## Sources
 
 - DIPY
@@ -55,3 +63,4 @@ This repo contains the content of my semester project done in the 303.1 - Semest
   - [Nipreps book](https://github.com/nipreps/nipreps-book)
   - [Prof. Esteban DIPY pull request](https://github.com/dipy/dipy/pull/3553)
   - [Prof. Esteban DIPY fork](https://github.com/oesteban/dipy/tree/enh/gqi-predict)
+  - [Marimo website](https://marimo.io/)
