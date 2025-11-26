@@ -38,9 +38,9 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 
 - Finished reading the Nipreps book
 - Continued to look at the current gqi code and made small changes on the [enh/gqi-predict-dev](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-dev) branch
-  - Changed GeneralizedQSamplingFit odf function to take a sphere parameter
-  - Changed the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions
-- Created a small [marimo](https://marimo.io/) notebook to test and understand the prediction function on the [enh/gqi-predict-notebooks](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks) branch
+  - Changed GeneralizedQSamplingFit odf function to take a sphere parameter (see [commit](https://github.com/MadeInShineA/dipy/commit/d9ab2bd51ae442b6c106244315a8090af6ce30c4))
+  - Changed the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see [commit](https://github.com/MadeInShineA/dipy/commit/2ff80c8add7eb7896eac8b948e2f052ac91e150d))
+- Created a small [marimo](https://marimo.io/) notebook to test and understand the prediction function on the [enh/gqi-predict-notebooks](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks) branch (see [commit](https://github.com/MadeInShineA/dipy/commit/b88191ede9cbf39a9bcd0e35c0440921034135b7))
 
 ## Sources
 
