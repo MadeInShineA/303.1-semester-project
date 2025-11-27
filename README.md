@@ -2,6 +2,14 @@
 
 This repo contains the content of my semester project done in the 303.1 - Semester project course
 
+## TODO
+
+- [ ] Create a barebones report with a gantt diagram
+- [ ] Start working on the presentation
+  - [ ] Impact slide
+- [ ] Do the exclusion predict test
+- [ ] Understand the predict function better and why it seems to behave strangely regarding scale
+
 ## Daily diary
 
 ### 24.11.2025
@@ -41,6 +49,16 @@ This repo contains the content of my semester project done in the 303.1 - Semest
   - Changed GeneralizedQSamplingFit odf function to take a sphere parameter (see [commit](https://github.com/MadeInShineA/dipy/commit/d9ab2bd51ae442b6c106244315a8090af6ce30c4))
   - Changed the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see [commit](https://github.com/MadeInShineA/dipy/commit/2ff80c8add7eb7896eac8b948e2f052ac91e150d))
 - Created a small [marimo](https://marimo.io/) notebook to test and understand the prediction function on the [enh/gqi-predict-notebooks](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks) branch (see [commit](https://github.com/MadeInShineA/dipy/commit/b88191ede9cbf39a9bcd0e35c0440921034135b7))
+
+### 27.11.2025
+
+- Changed the GeneralizedQSamplingFit predict function to use the model mode when calling the predict_kernel function. Also made the predict function work for multi-voxels (see [commit](https://github.com/MadeInShineA/dipy/commit/f4e7f9b35e8efef03293bb86f40649bea517fc01))
+- Started gqi predict tests with (see [commit](https://github.com/MadeInShineA/dipy/commit/f4e7f9b35e8efef03293bb86f40649bea517fc01))
+  - Single-voxel basic test
+  - Single-voxel meaningful test
+  - Multi-voxel basic test
+  - Multi-voxel meaningful test
+- Meeting with Prof. Esteban
 
 ## Sources
 
