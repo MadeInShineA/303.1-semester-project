@@ -59,7 +59,7 @@ This repo contains the content of my semester project done in the 303.1 - Semest
   - Multi-voxel basic test
   - Multi-voxel meaningful test
 - Meeting with Prof. Esteban
-- Did 2 marimo notebooks on the [enh/gqi-predict-notebooks](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks) branch(see [commit](https://github.com/MadeInShineA/dipy/commit/0ad9d65fb0a7e4a5973afa21005b2080a60055cb))
+- Did 2 marimo notebooks on the [enh/gqi-predict-notebooks](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks) branch (see [commit](https://github.com/MadeInShineA/dipy/commit/0ad9d65fb0a7e4a5973afa21005b2080a60055cb))
   - A notebook regarding the roundtrip predictions on already seen data (see [notebook](https://olivier.amacker.dev/303.1-semester-project/dipy/gqi_roundtrip_notebook.html))
   - A notebook regarding cross voxel predictions (see [notebook](https://olivier.amacker.dev/303.1-semester-project/dipy/gqi_cross_voxel_notebook.html))
 - Created the 303.1-semester-project github page (see [page](https://olivier.amacker.dev/303.1-semester-project/))
