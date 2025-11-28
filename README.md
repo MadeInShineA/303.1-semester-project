@@ -6,32 +6,35 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 
 ```mermaid
 gantt
+
     title Semester Project Gantt Diagram
     dateFormat DD.MM.YYYY
     axisFormat %d.%m
     excludes weekends
 
     section Background
-        Literature review (DWI, GQI, MRI)       :done,    research,       24.11.2025, 2d
-        Study Nipreps book (DWI preprocessing)  :done,    nipreps,        24.11.2025, 3d
+        Literature review (DWI, GQI, MRI)       :         research,       24.11.2025, 2d
+        Study Nipreps book (DWI preprocessing)  :         nipreps,        24.11.2025, 3d
 
     section Development
-        Dev environment setup                   :done,    devenv,         25.11.2025, 1d
-        Study GQI codebase                      :done,    codebase,       25.11.2025, 3d
-        Create baseline prediction tests        :done,    simple_tests,   26.11.2025, 2d
-        Develop Marimo validation notebooks     :done,    notebooks,      26.11.2025, 2d
-        Implement cross voxel prediction tests  :crit,    cross_tests,     01.12.2025, 2d
+        Dev environment setup                   :         devenv,         25.11.2025, 1d
+        Study GQI codebase                      :         codebase,       25.11.2025, 3d
+        Create baseline prediction tests        :         simple_tests,   26.11.2025, 2d
+        Develop Marimo validation notebooks     :         notebooks,      26.11.2025, 2d
+        Implement cross voxel prediction tests  :crit,    cross_tests,    01.12.2025, 2d
         
 
-    section Milestones & Deliverables
-        Prof. Esteban – Kickoff meeting         :done,    milestone,      25.11.2025, 0d
-        Prof. Esteban – Progress check-in       :done,    milestone,      27.11.2025, 0d
+    section Milestones & <br>Deliverables
+        Prof. Esteban – Kickoff meeting         :         milestone,      25.11.2025, 0d
+        Prof. Esteban – Progress check-in       :         milestone,      27.11.2025, 0d
         Create Gantt diagram                    :active,  gantt,          28.11.2025, 1d
         Design impact slide                     :active,  impact,         28.11.2025, 1d
         Draft report outline                    :         r_draft,        01.12.2025, 1d
         Draft presentation outline              :         p_draft,        01.12.2025, 1d 
         Prof. Esteban - Second progress check-in:         milestone,      03.12.2025, 0d
-  
+        Prof. Esteban - Third progress check-in :         milestone,      08.12.2025, 0d
+
+
 
 ```
 
