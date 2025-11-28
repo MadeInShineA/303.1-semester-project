@@ -2,41 +2,9 @@
 
 This repo contains the content of my semester project done in the 303.1 - Semester project course
 
-## Gantt diagram
+## Gantt diagram (see [link](https://view.monday.com/5088330065-1288816531bffa22bf4ce0c331682f87?r=euc1))
 
-```mermaid
-gantt
-
-    title Semester Project Gantt Diagram
-    dateFormat DD.MM.YYYY
-    axisFormat %d.%m
-    excludes weekends
-
-    section Background
-        Literature review (DWI, GQI, MRI)       :         research,       24.11.2025, 2d
-        Study Nipreps book (DWI preprocessing)  :         nipreps,        24.11.2025, 3d
-
-    section Development
-        Dev environment setup                   :         devenv,         25.11.2025, 1d
-        Study GQI codebase                      :         codebase,       25.11.2025, 3d
-        Create baseline prediction tests        :         simple_tests,   26.11.2025, 2d
-        Develop Marimo validation notebooks     :         notebooks,      26.11.2025, 2d
-        Implement cross voxel prediction tests  :crit,    cross_tests,    01.12.2025, 2d
-        
-
-    section Milestones & <br>Deliverables
-        Prof. Esteban – Kickoff meeting         :         milestone,      25.11.2025, 0d
-        Prof. Esteban – Progress check-in       :         milestone,      27.11.2025, 0d
-        Create Gantt diagram                    :active,  gantt,          28.11.2025, 1d
-        Design impact slide                     :active,  impact,         28.11.2025, 1d
-        Draft report outline                    :         r_draft,        01.12.2025, 1d
-        Draft presentation outline              :         p_draft,        01.12.2025, 1d 
-        Prof. Esteban - Second progress check-in:         milestone,      03.12.2025, 0d
-        Prof. Esteban - Third progress check-in :         milestone,      08.12.2025, 0d
-
-
-
-```
+<iframe src="https://view.monday.com/embed/5088330065-1288816531bffa22bf4ce0c331682f87?r=euc1" width=100% height=1000 style="border: 0; box-shadow: 5px 5px 56px 0px rgba(0,0,0,0.25);"></iframe>
 
 ## TODO
 
