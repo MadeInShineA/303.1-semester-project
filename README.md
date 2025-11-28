@@ -2,9 +2,42 @@
 
 This repo contains the content of my semester project done in the 303.1 - Semester project course
 
+## Gantt diagram
+
+```mermaid
+gantt
+    title Semester Project Gantt Diagram
+    dateFormat DD.MM.YYYY
+    axisFormat %d.%m
+    excludes weekends
+
+    section Background
+        Literature review (DWI, GQI, MRI)       :done,    research,       24.11.2025, 2d
+        Study Nipreps book (DWI preprocessing)  :done,    nipreps,        24.11.2025, 3d
+
+    section Development
+        Dev environment setup                   :done,    devenv,         25.11.2025, 1d
+        Study GQI codebase                      :done,    codebase,       25.11.2025, 3d
+        Create baseline prediction tests        :done,    simple_tests,   26.11.2025, 2d
+        Develop Marimo validation notebooks     :done,    notebooks,      26.11.2025, 2d
+        Implement cross voxel prediction tests  :crit,    cross_tests,     01.12.2025, 2d
+        
+
+    section Milestones & Deliverables
+        Prof. Esteban – Kickoff meeting         :done,    milestone,      25.11.2025, 0d
+        Prof. Esteban – Progress check-in       :done,    milestone,      27.11.2025, 0d
+        Create Gantt diagram                    :active,  gantt,          28.11.2025, 1d
+        Design impact slide                     :active,  impact,         28.11.2025, 1d
+        Draft report outline                    :         r_draft,        01.12.2025, 1d
+        Draft presentation outline              :         p_draft,        01.12.2025, 1d 
+        Prof. Esteban - Second progress check-in:         milestone,      03.12.2025, 0d
+  
+
+```
+
 ## TODO
 
-- [ ] Create a barebones report with a gantt diagram
+- [ x ] Create a barebones report with a gantt diagram
 - [ ] Start working on the presentation
   - [ ] Impact slide
 - [ ] Do the exclusion predict test
@@ -63,6 +96,10 @@ This repo contains the content of my semester project done in the 303.1 - Semest
   - A notebook regarding the roundtrip predictions on already seen data (see [notebook](https://olivier.amacker.dev/303.1-semester-project/dipy/gqi_roundtrip_notebook.html))
   - A notebook regarding cross voxel predictions (see [notebook](https://olivier.amacker.dev/303.1-semester-project/dipy/gqi_cross_voxel_notebook.html))
 - Created the 303.1-semester-project github page (see [page](https://olivier.amacker.dev/303.1-semester-project/))
+
+### 28.11.2025
+
+- Create the Gantt diagram
 
 ## Sources
 
