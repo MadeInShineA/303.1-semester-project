@@ -70,7 +70,10 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 
 ### 28.11.2025
 
-- Create the Gantt diagram
+- Created the Gantt diagram
+- Created the [presentation github repository](https://github.com/MadeInShineA/303.1-semester-project-presentation/tree/main)
+- Started the presentation
+- Published the presentation github page (see [page](https://olivier.amacker.dev/303.1-semester-project-presentation/presentation.html#/title-slide))
 
 ## Sources
 
