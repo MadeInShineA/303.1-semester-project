@@ -4,7 +4,7 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 
 ## Gantt diagram (see [link](https://view.monday.com/5088330065-1288816531bffa22bf4ce0c331682f87?r=euc1))
 
-<iframe src="https://view.monday.com/embed/5088330065-1288816531bffa22bf4ce0c331682f87?r=euc1" width=100% height=1000 style="border: 0; box-shadow: 5px 5px 56px 0px rgba(0,0,0,0.25);"></iframe>
+![Gantt diagram image](./src/gantt.png)
 
 ## TODO
 
