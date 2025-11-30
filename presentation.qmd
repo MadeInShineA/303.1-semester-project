@@ -1,0 +1,27 @@
+---
+title: "303.1 Semester Project Presentation"
+format:
+  revealjs:
+    theme: default
+    center: true
+    transition: fade
+    incremental: false
+    slide-number: true
+    preview-links: auto
+    navigation-mode: grid
+    footer: "303.1 Semester Project Presentation| © 2025"
+---
+
+# What is my project about?
+
+  - Contributing to [DIPY](https://dipy.org/)
+  - Implementing a predict function to the GQI model
+
+# Impact
+  - Head motion noise reduction
+  - Meaningful data augmentation
+  - Model cross validation
+
+
+
+

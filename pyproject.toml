@@ -1,0 +1,9 @@
+[project]
+name = "303-1-semester-project"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "quarto-cli>=1.8.26",
+]

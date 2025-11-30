@@ -1,0 +1,8 @@
+---
+title: "303.1 Semester Project"
+---
+
+# Choose Document
+
+- [View the Report](report.html)
+- [View the Presentation](presentation.html)

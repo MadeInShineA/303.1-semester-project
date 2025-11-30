@@ -1,0 +1,18 @@
+project:
+  type: website
+  output-dir: docs
+  render:
+    - index.qmd
+    - report.qmd
+    - presentation.qmd
+
+website:
+  title: "303.1 Semester Project"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: report.qmd
+        text: Report
+      - href: presentation.qmd
+        text: Presentation

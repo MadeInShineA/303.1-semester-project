@@ -7,6 +7,3 @@
 [submodule "dipy"]
 	path = dipy
 	url = git@github.com:MadeInShineA/dipy.git
-[submodule "303.1-semester-project-presentation"]
-	path = 303.1-semester-project-presentation
-	url = git@github.com:MadeInShineA/303.1-semester-project-presentation.git
