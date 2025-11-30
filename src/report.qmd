@@ -4,14 +4,14 @@ title: "303.1 Semester Project Report"
 
 # [DIPY tutorial repository](https://github.com/MadeInShineA/dipy-tutorial/tree/main){target="_blank"} notebooks
 
-- [Reconstruct with Constant Solid Angle (Q-Ball)](../assets/notebooks/dipy-tutorial/reconstruct_with_csa_q_ball.html){target="_blank"}
-- [Reconstruct with Generalized Q-Sampling Imaging](../assets/notebooks/dipy-tutorial/reconstruct_with_q_sampling_imaging_notebook.html){target="_blank"}
-- [Introduction to Basic Tracking](../assets/notebooks/dipy-tutorial/basic_tracking_notebook.html){target="_blank"}
+- [Reconstruct with Constant Solid Angle (Q-Ball)](./assets/notebooks/dipy-tutorial/reconstruct_with_csa_q_ball.html){target="_blank"}
+- [Reconstruct with Generalized Q-Sampling Imaging](./assets/notebooks/dipy-tutorial/reconstruct_with_q_sampling_imaging_notebook.html){target="_blank"}
+- [Introduction to Basic Tracking](./assets/notebooks/dipy-tutorial/basic_tracking_notebook.html){target="_blank"}
 
 # [DIPY repository](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks){target="_blank"} notebooks
 
-- [GQI Roundtrip](../assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}
-- [GQI Cross Voxel](../assets/notebooks/dipy/gqi_cross_voxel_notebook.html){target="_blank"}
+- [GQI Roundtrip](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}
+- [GQI Cross Voxel](./assets/notebooks/dipy/gqi_cross_voxel_notebook.html){target="_blank"}
 
 ---
 
