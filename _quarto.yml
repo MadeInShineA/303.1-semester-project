@@ -1,0 +1,46 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - src/index.qmd
+    - src/report.qmd
+    - src/presentation.qmd
+
+website:
+  title: "303.1 Semester Project"
+  repo-url: https://github.com/MadeInShineA/303.1-semester-project/
+  repo-actions: [edit]
+  navbar:
+    left:
+      - href: src/index.qmd
+        text: Home
+      - href: src/report.qmd
+        text: Report
+      - href: src/presentation.qmd
+        text: Presentation
+    tools:
+      - icon: github
+        href: https://github.com/MadeInShineA/303.1-semester-project
+        target: _blank
+        text: Semester project GitHub
+
+  page-footer:
+    left: |
+      Made with [Quarto](https://quarto.org/)
+    center:
+      - text: "Olivier Amacker Semester project | © 2025"
+    right:
+      - icon: github
+        href: https://github.com/MadeInShineA/303.1-semester-project
+        target: _blank
+        aria-label: Semester project GitHub
+
+format:
+  html:
+    respect-user-color-scheme: true
+    toc: true
+    theme:
+      light: [cosmo, src/theme.scss]
+      dark: [cosmo, src/theme-dark.scss]
+    code-copy: true
+    code-overflow: wrap

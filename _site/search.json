@@ -1,14 +1,14 @@
 [
   {
-    "objectID": "index.html",
-    "href": "index.html",
+    "objectID": "src/index.html",
+    "href": "src/index.html",
     "title": "303.1 Semester Project",
     "section": "",
     "text": "Choose Document\n\nView the Report\nView the Presentation"
   },
   {
-    "objectID": "report.html",
-    "href": "report.html",
+    "objectID": "src/report.html",
+    "href": "src/report.html",
     "title": "303.1 Semester Project Report",
     "section": "",
     "text": "DIPY tutorial repository notebooks\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\nDIPY repository notebooks\n\nGQI Roundtrip\nGQI Cross Voxel\n\n\nView source code on GitHub"
