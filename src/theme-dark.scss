@@ -186,3 +186,12 @@ img.footer-logo {
   color: #ffffff;
 }
 
+#gantt {
+  background-color: white;
+
+  line:not(.today) {
+    stroke: black!important
+  }
+
+}
+

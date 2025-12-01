@@ -1,0 +1,30 @@
+---
+title: "Sources"
+---
+
+## DIPY
+  - [DIPY website](https://dipy.org/){target="_blank"}
+  - [DIPY contributing guide](https://github.com/dipy/dipy/blob/master/.github/CONTRIBUTING.md){target="_blank"}
+  - [DIPY developer guide](https://docs.dipy.org/stable/devel/intro.html){target="_blank"}
+  - Tutorials
+    - [Reconstruct with Constant Solid Angle (Q-Ball)](https://docs.dipy.org/stable/examples_built/reconstruction/reconst_csa.html){target="_blank"}
+    - [Reconstruct with Generalized Q-Sampling Imaging](https://docs.dipy.org/stable/examples_built/reconstruction/reconst_gqi.html){target="_blank"}
+    - [Introduction to Basic Tracking](https://docs.dipy.org/stable/examples_built/fiber_tracking/tracking_introduction_eudx_1.html){target="_blank"}
+
+---
+
+## Youtube videos
+  - [Diffusion Weighted Imaging - Doctor Klioze](https://www.youtube.com/watch?v=J_aamnpRJE8&list=LL&index=2){target="_blank"}
+  - [Diffusion Tensor Imaging (DTI) - Doctor Klioze](https://www.youtube.com/watch?v=twsV81UFFcE){target="_blank"}
+  - [Diffusion Tensor Imaging (DTI) Explained! | Neuroscience Methods 101 - Psyched!](https://www.youtube.com/watch?v=Be51OqnBbdc){target="_blank"}
+  - [DWI vs ADC MRI sequences: EXPLAINED - Radiology Tutorials](https://www.youtube.com/watch?v=GwCRBQt2WdM){target="_blank"}
+
+---
+
+## Other
+  - [Nipreps book](https://github.com/nipreps/nipreps-book){target="_blank"}
+  - [Prof. Esteban DIPY pull request](https://github.com/dipy/dipy/pull/3553){target="_blank"}
+  - [Prof. Esteban DIPY fork](https://github.com/oesteban/dipy/tree/enh/gqi-predict){target="_blank"}
+  - [Marimo website](https://marimo.io/){target="_blank"}
+  - [Quarto website](https://quarto.org/){target="_blank"}
+

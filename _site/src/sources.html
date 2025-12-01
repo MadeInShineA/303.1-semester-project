@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Implementation Report: Predict Function – 303.1 Semester Project</title>
+<title>Sources – 303.1 Semester Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -269,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../src/report.html" aria-current="page"> 
+    <a class="nav-link" href="../src/report.html"> 
 <span class="menu-text">Report</span></a>
   </li>  
   <li class="nav-item">
@@ -281,7 +281,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Daily Diary</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../src/sources.html"> 
+    <a class="nav-link active" href="../src/sources.html" aria-current="page"> 
 <span class="menu-text">Sources</span></a>
   </li>  
 </ul>
@@ -302,24 +302,11 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of Content</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#functionality-of-the-predict-function" id="toc-functionality-of-the-predict-function" class="nav-link" data-scroll-target="#functionality-of-the-predict-function"><span class="header-section-number">2</span> Functionality of the Predict Function</a></li>
-  <li><a href="#operational-mechanics-of-the-predict-function" id="toc-operational-mechanics-of-the-predict-function" class="nav-link" data-scroll-target="#operational-mechanics-of-the-predict-function"><span class="header-section-number">3</span> Operational Mechanics of the Predict Function</a></li>
-  <li><a href="#testing-methodology" id="toc-testing-methodology" class="nav-link" data-scroll-target="#testing-methodology"><span class="header-section-number">4</span> Testing Methodology</a>
-  <ul>
-  <li><a href="#round-trip-testing" id="toc-round-trip-testing" class="nav-link" data-scroll-target="#round-trip-testing"><span class="header-section-number">4.1</span> Round trip testing</a></li>
-  <li><a href="#cross-validation-testing" id="toc-cross-validation-testing" class="nav-link" data-scroll-target="#cross-validation-testing"><span class="header-section-number">4.2</span> Cross validation testing</a></li>
-  </ul></li>
-  <li><a href="#capabilities-and-applications" id="toc-capabilities-and-applications" class="nav-link" data-scroll-target="#capabilities-and-applications"><span class="header-section-number">5</span> Capabilities and Applications</a></li>
-  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions"><span class="header-section-number">6</span> Future Directions</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">8</span> Resources</a>
-  <ul>
-  <li><a href="#dipy-tutorial-repository-notebooks" id="toc-dipy-tutorial-repository-notebooks" class="nav-link" data-scroll-target="#dipy-tutorial-repository-notebooks"><span class="header-section-number">8.1</span> DIPY tutorial repository notebooks</a></li>
-  <li><a href="#dipy-repository-notebooks" id="toc-dipy-repository-notebooks" class="nav-link" data-scroll-target="#dipy-repository-notebooks"><span class="header-section-number">8.2</span> DIPY repository notebooks</a></li>
-  </ul></li>
+  <li><a href="#dipy" id="toc-dipy" class="nav-link active" data-scroll-target="#dipy">DIPY</a></li>
+  <li><a href="#youtube-videos" id="toc-youtube-videos" class="nav-link" data-scroll-target="#youtube-videos">Youtube videos</a></li>
+  <li><a href="#other" id="toc-other" class="nav-link" data-scroll-target="#other">Other</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/report.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/sources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -327,7 +314,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Implementation Report: Predict Function</h1>
+<h1 class="title">Sources</h1>
 </div>
 
 
@@ -344,60 +331,42 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>This report provides an overview of the implemented <code>predict</code> function, covering its purpose, operational mechanics, testing methodology, capabilities, and future directions.</p>
-<p>Key topics include:</p>
+<section id="dipy" class="level2">
+<h2 class="anchored" data-anchor-id="dipy">DIPY</h2>
 <ul>
-<li>Functionality and operation of the <code>predict</code> function</li>
-<li>Testing procedures applied to the function</li>
-<li>Enabled applications and subsequent development steps</li>
+<li><a href="https://dipy.org/" target="_blank">DIPY website</a></li>
+<li><a href="https://github.com/dipy/dipy/blob/master/.github/CONTRIBUTING.md" target="_blank">DIPY contributing guide</a></li>
+<li><a href="https://docs.dipy.org/stable/devel/intro.html" target="_blank">DIPY developer guide</a></li>
+<li>Tutorials
+<ul>
+<li><a href="https://docs.dipy.org/stable/examples_built/reconstruction/reconst_csa.html" target="_blank">Reconstruct with Constant Solid Angle (Q-Ball)</a></li>
+<li><a href="https://docs.dipy.org/stable/examples_built/reconstruction/reconst_gqi.html" target="_blank">Reconstruct with Generalized Q-Sampling Imaging</a></li>
+<li><a href="https://docs.dipy.org/stable/examples_built/fiber_tracking/tracking_introduction_eudx_1.html" target="_blank">Introduction to Basic Tracking</a></li>
+</ul></li>
 </ul>
 <hr>
 </section>
-<section id="functionality-of-the-predict-function" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="functionality-of-the-predict-function"><span class="header-section-number">2</span> Functionality of the Predict Function</h2>
-</section>
-<section id="operational-mechanics-of-the-predict-function" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="operational-mechanics-of-the-predict-function"><span class="header-section-number">3</span> Operational Mechanics of the Predict Function</h2>
-</section>
-<section id="testing-methodology" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="testing-methodology"><span class="header-section-number">4</span> Testing Methodology</h2>
-<section id="round-trip-testing" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="round-trip-testing"><span class="header-section-number">4.1</span> Round trip testing</h3>
-</section>
-<section id="cross-validation-testing" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="cross-validation-testing"><span class="header-section-number">4.2</span> Cross validation testing</h3>
-</section>
-</section>
-<section id="capabilities-and-applications" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="capabilities-and-applications"><span class="header-section-number">5</span> Capabilities and Applications</h2>
-</section>
-<section id="future-directions" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="future-directions"><span class="header-section-number">6</span> Future Directions</h2>
-</section>
-<section id="conclusion" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7</span> Conclusion</h2>
-</section>
-<section id="resources" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="resources"><span class="header-section-number">8</span> Resources</h2>
-<section id="dipy-tutorial-repository-notebooks" class="level3" data-number="8.1">
-<h3 data-number="8.1" class="anchored" data-anchor-id="dipy-tutorial-repository-notebooks"><span class="header-section-number">8.1</span> <a href="https://github.com/MadeInShineA/dipy-tutorial/tree/main" target="_blank">DIPY tutorial repository</a> notebooks</h3>
+<section id="youtube-videos" class="level2">
+<h2 class="anchored" data-anchor-id="youtube-videos">Youtube videos</h2>
 <ul>
-<li><a href="./assets/notebooks/dipy-tutorial/reconstruct_with_csa_q_ball.html" target="_blank">Reconstruct with Constant Solid Angle (Q-Ball)</a></li>
-<li><a href="./assets/notebooks/dipy-tutorial/reconstruct_with_q_sampling_imaging_notebook.html" target="_blank">Reconstruct with Generalized Q-Sampling Imaging</a></li>
-<li><a href="./assets/notebooks/dipy-tutorial/basic_tracking_notebook.html" target="_blank">Introduction to Basic Tracking</a></li>
+<li><a href="https://www.youtube.com/watch?v=J_aamnpRJE8&amp;list=LL&amp;index=2" target="_blank">Diffusion Weighted Imaging - Doctor Klioze</a></li>
+<li><a href="https://www.youtube.com/watch?v=twsV81UFFcE" target="_blank">Diffusion Tensor Imaging (DTI) - Doctor Klioze</a></li>
+<li><a href="https://www.youtube.com/watch?v=Be51OqnBbdc" target="_blank">Diffusion Tensor Imaging (DTI) Explained! | Neuroscience Methods 101 - Psyched!</a></li>
+<li><a href="https://www.youtube.com/watch?v=GwCRBQt2WdM" target="_blank">DWI vs ADC MRI sequences: EXPLAINED - Radiology Tutorials</a></li>
 </ul>
+<hr>
 </section>
-<section id="dipy-repository-notebooks" class="level3" data-number="8.2">
-<h3 data-number="8.2" class="anchored" data-anchor-id="dipy-repository-notebooks"><span class="header-section-number">8.2</span> <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks" target="_blank">DIPY repository</a> notebooks</h3>
+<section id="other" class="level2">
+<h2 class="anchored" data-anchor-id="other">Other</h2>
 <ul>
-<li><a href="./assets/notebooks/dipy/gqi_roundtrip_notebook.html" target="_blank">GQI Roundtrip</a></li>
-<li><a href="./assets/notebooks/dipy/gqi_cross_voxel_notebook.html" target="_blank">GQI Cross Voxel</a></li>
+<li><a href="https://github.com/nipreps/nipreps-book" target="_blank">Nipreps book</a></li>
+<li><a href="https://github.com/dipy/dipy/pull/3553" target="_blank">Prof.&nbsp;Esteban DIPY pull request</a></li>
+<li><a href="https://github.com/oesteban/dipy/tree/enh/gqi-predict" target="_blank">Prof.&nbsp;Esteban DIPY fork</a></li>
+<li><a href="https://marimo.io/" target="_blank">Marimo website</a></li>
+<li><a href="https://quarto.org/" target="_blank">Quarto website</a></li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -826,7 +795,7 @@ ul.task-list li input[type="checkbox"] {
  Olivier Amacker Semester project | © 2025
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/report.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/sources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

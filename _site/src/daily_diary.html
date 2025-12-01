@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Implementation Report: Predict Function – 303.1 Semester Project</title>
+<title>Daily diary – 303.1 Semester Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -269,7 +269,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../src/report.html" aria-current="page"> 
+    <a class="nav-link" href="../src/report.html"> 
 <span class="menu-text">Report</span></a>
   </li>  
   <li class="nav-item">
@@ -277,7 +277,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Presentation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../src/daily_diary.html"> 
+    <a class="nav-link active" href="../src/daily_diary.html" aria-current="page"> 
 <span class="menu-text">Daily Diary</span></a>
   </li>  
   <li class="nav-item">
@@ -302,24 +302,14 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of Content</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#functionality-of-the-predict-function" id="toc-functionality-of-the-predict-function" class="nav-link" data-scroll-target="#functionality-of-the-predict-function"><span class="header-section-number">2</span> Functionality of the Predict Function</a></li>
-  <li><a href="#operational-mechanics-of-the-predict-function" id="toc-operational-mechanics-of-the-predict-function" class="nav-link" data-scroll-target="#operational-mechanics-of-the-predict-function"><span class="header-section-number">3</span> Operational Mechanics of the Predict Function</a></li>
-  <li><a href="#testing-methodology" id="toc-testing-methodology" class="nav-link" data-scroll-target="#testing-methodology"><span class="header-section-number">4</span> Testing Methodology</a>
-  <ul>
-  <li><a href="#round-trip-testing" id="toc-round-trip-testing" class="nav-link" data-scroll-target="#round-trip-testing"><span class="header-section-number">4.1</span> Round trip testing</a></li>
-  <li><a href="#cross-validation-testing" id="toc-cross-validation-testing" class="nav-link" data-scroll-target="#cross-validation-testing"><span class="header-section-number">4.2</span> Cross validation testing</a></li>
-  </ul></li>
-  <li><a href="#capabilities-and-applications" id="toc-capabilities-and-applications" class="nav-link" data-scroll-target="#capabilities-and-applications"><span class="header-section-number">5</span> Capabilities and Applications</a></li>
-  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions"><span class="header-section-number">6</span> Future Directions</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">8</span> Resources</a>
-  <ul>
-  <li><a href="#dipy-tutorial-repository-notebooks" id="toc-dipy-tutorial-repository-notebooks" class="nav-link" data-scroll-target="#dipy-tutorial-repository-notebooks"><span class="header-section-number">8.1</span> DIPY tutorial repository notebooks</a></li>
-  <li><a href="#dipy-repository-notebooks" id="toc-dipy-repository-notebooks" class="nav-link" data-scroll-target="#dipy-repository-notebooks"><span class="header-section-number">8.2</span> DIPY repository notebooks</a></li>
-  </ul></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">24.11.2025</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">25.11.2025</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">26.11.2025</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">27.11.2025</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">28.11.2025</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">01.12.2025</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/report.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/daily_diary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -327,7 +317,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Implementation Report: Predict Function</h1>
+<h1 class="title">Daily diary</h1>
 </div>
 
 
@@ -344,60 +334,104 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>This report provides an overview of the implemented <code>predict</code> function, covering its purpose, operational mechanics, testing methodology, capabilities, and future directions.</p>
-<p>Key topics include:</p>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">24.11.2025</h2>
 <ul>
-<li>Functionality and operation of the <code>predict</code> function</li>
-<li>Testing procedures applied to the function</li>
-<li>Enabled applications and subsequent development steps</li>
+<li>Made a <a href="https://github.com/nipreps/nipreps-book/pull/49">pull request</a> to the <a href="https://github.com/nipreps/nipreps-book">Nipreps book repo</a></li>
+<li>Realised the different DIPY tutorials</li>
+<li>Started reading the Nipreps book</li>
 </ul>
 <hr>
 </section>
-<section id="functionality-of-the-predict-function" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="functionality-of-the-predict-function"><span class="header-section-number">2</span> Functionality of the Predict Function</h2>
-</section>
-<section id="operational-mechanics-of-the-predict-function" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="operational-mechanics-of-the-predict-function"><span class="header-section-number">3</span> Operational Mechanics of the Predict Function</h2>
-</section>
-<section id="testing-methodology" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="testing-methodology"><span class="header-section-number">4</span> Testing Methodology</h2>
-<section id="round-trip-testing" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="round-trip-testing"><span class="header-section-number">4.1</span> Round trip testing</h3>
-</section>
-<section id="cross-validation-testing" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="cross-validation-testing"><span class="header-section-number">4.2</span> Cross validation testing</h3>
-</section>
-</section>
-<section id="capabilities-and-applications" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="capabilities-and-applications"><span class="header-section-number">5</span> Capabilities and Applications</h2>
-</section>
-<section id="future-directions" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="future-directions"><span class="header-section-number">6</span> Future Directions</h2>
-</section>
-<section id="conclusion" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7</span> Conclusion</h2>
-</section>
-<section id="resources" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="resources"><span class="header-section-number">8</span> Resources</h2>
-<section id="dipy-tutorial-repository-notebooks" class="level3" data-number="8.1">
-<h3 data-number="8.1" class="anchored" data-anchor-id="dipy-tutorial-repository-notebooks"><span class="header-section-number">8.1</span> <a href="https://github.com/MadeInShineA/dipy-tutorial/tree/main" target="_blank">DIPY tutorial repository</a> notebooks</h3>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">25.11.2025</h2>
 <ul>
-<li><a href="./assets/notebooks/dipy-tutorial/reconstruct_with_csa_q_ball.html" target="_blank">Reconstruct with Constant Solid Angle (Q-Ball)</a></li>
-<li><a href="./assets/notebooks/dipy-tutorial/reconstruct_with_q_sampling_imaging_notebook.html" target="_blank">Reconstruct with Generalized Q-Sampling Imaging</a></li>
-<li><a href="./assets/notebooks/dipy-tutorial/basic_tracking_notebook.html" target="_blank">Introduction to Basic Tracking</a></li>
+<li>Meeting with Prof.&nbsp;Esteban</li>
+<li>Prepared the DIPY development environment
+<ul>
+<li>Installation steps
+<ul>
+<li>Create a venv and source it (or use uv venv and uv pip …)</li>
+<li>To build the project
+<ul>
+<li>sudo dnf install python3-devel</li>
+<li>pip install -r requirements/build.txt</li>
+<li>pip install –no-build-isolation -e .</li>
+</ul></li>
+<li>To build the documentation
+<ul>
+<li>pip install sphinx</li>
+<li>pip install sphinx_gallery</li>
+<li>pip install numpydoc</li>
+<li>pip install sphinxcontrib-bibtex</li>
+<li>pip install sphinx-design</li>
+<li>pip install grg-sphinx-theme</li>
+</ul></li>
+<li>To use the correct formatting
+<ul>
+<li>pip install –no-build-isolation -e .[style]</li>
+<li>pip install pre-commit</li>
+<li>pre-commit install</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Started to look at the current gqi predict code and pull request</li>
+<li>Continued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)</li>
 </ul>
+<hr>
 </section>
-<section id="dipy-repository-notebooks" class="level3" data-number="8.2">
-<h3 data-number="8.2" class="anchored" data-anchor-id="dipy-repository-notebooks"><span class="header-section-number">8.2</span> <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks" target="_blank">DIPY repository</a> notebooks</h3>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">26.11.2025</h2>
 <ul>
-<li><a href="./assets/notebooks/dipy/gqi_roundtrip_notebook.html" target="_blank">GQI Roundtrip</a></li>
-<li><a href="./assets/notebooks/dipy/gqi_cross_voxel_notebook.html" target="_blank">GQI Cross Voxel</a></li>
+<li>Finished reading the Nipreps book</li>
+<li>Continued to look at the current gqi code and made small changes on the <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-dev">enh/gqi-predict-dev</a> branch
+<ul>
+<li>Changed GeneralizedQSamplingFit odf function to take a sphere parameter (see <a href="https://github.com/MadeInShineA/dipy/commit/d9ab2bd51ae442b6c106244315a8090af6ce30c4">commit</a>)</li>
+<li>Changed the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see <a href="https://github.com/MadeInShineA/dipy/commit/2ff80c8add7eb7896eac8b948e2f052ac91e150d">commit</a>)</li>
+</ul></li>
+<li>Created a small <a href="https://marimo.io/">marimo</a> notebook to test and understand the prediction function on the <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks">enh/gqi-predict-notebooks</a> branch (see <a href="https://github.com/MadeInShineA/dipy/commit/b88191ede9cbf39a9bcd0e35c0440921034135b7">commit</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">27.11.2025</h2>
+<ul>
+<li>Changed the GeneralizedQSamplingFit predict function to use the model mode when calling the predict_kernel function. Also made the predict function work for multi-voxels (see <a href="https://github.com/MadeInShineA/dipy/commit/f4e7f9b35e8efef03293bb86f40649bea517fc01">commit</a>)</li>
+<li>Started gqi predict tests with (see <a href="https://github.com/MadeInShineA/dipy/commit/f4e7f9b35e8efef03293bb86f40649bea517fc01">commit</a>)
+<ul>
+<li>Single-voxel basic test</li>
+<li>Single-voxel meaningful test</li>
+<li>Multi-voxel basic test</li>
+<li>Multi-voxel meaningful test</li>
+</ul></li>
+<li>Meeting with Prof.&nbsp;Esteban</li>
+<li>Did 2 marimo notebooks on the <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks">enh/gqi-predict-notebooks</a> branch (see <a href="https://github.com/MadeInShineA/dipy/commit/0ad9d65fb0a7e4a5973afa21005b2080a60055cb">commit</a>)
+<ul>
+<li>A notebook regarding the roundtrip predictions on already seen data (see <a href="https://olivier.amacker.dev/303.1-semester-project/dipy/gqi_roundtrip_notebook.html">notebook</a>)</li>
+<li>A notebook regarding cross voxel predictions (see <a href="https://olivier.amacker.dev/303.1-semester-project/dipy/gqi_cross_voxel_notebook.html">notebook</a>)</li>
+</ul></li>
+<li>Created the 303.1-semester-project github page (see <a href="https://olivier.amacker.dev/303.1-semester-project/">page</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">28.11.2025</h2>
+<ul>
+<li>Created the Gantt diagram</li>
+<li>Created the <a href="https://github.com/MadeInShineA/303.1-semester-project-presentation/tree/main">presentation github repository</a></li>
+<li>Started the presentation</li>
+<li>Published the presentation github page (see <a href="https://olivier.amacker.dev/303.1-semester-project-presentation/presentation.html#/title-slide">page</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">01.12.2025</h2>
+<ul>
+<li>Started working on the cross validation prediction test</li>
+<li>Worked on the project documentation</li>
 </ul>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -826,7 +860,7 @@ ul.task-list li input[type="checkbox"] {
  Olivier Amacker Semester project | © 2025
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/report.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/daily_diary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">
