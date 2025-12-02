@@ -5,19 +5,168 @@ number-sections: true
 
 ## Introduction
 
-This report provides an overview of the implemented `predict` function, covering its purpose, operational mechanics, testing methodology, capabilities, and future directions.
+This report provides an overview of the implemented prediction functions in DIPY's Generalized Q-Sampling Imaging (GQI) model, covering their purpose, operational mechanics, mathematical foundations, testing methodology, capabilities, and future directions.
 
 Key topics include:
 
-- Functionality and operation of the `predict` function
-- Testing procedures applied to the function
+- Functionality and operation of the GQI prediction functions (`gqi_kernel`, `prediction_kernel`, and `predict`)
+- Mathematical derivations and pseudo-inverse computations
+- Testing procedures applied to the functions
 - Enabled applications and subsequent development steps
 
 ---
 
-## Functionality of the Predict Function
+## The different needed helper functions
+The `predict` function implementation relies on two key helper functions:
 
-## Operational Mechanics of the Predict Function
+  - `gqi_kernel` for kernel computation
+  - `prediction_kernel` for pseudo-inverse calculation.
+
+In this section, each function is described in detail, including its purpose, parameters, and role in signal reconstruction from ODFs.
+
+### The `gqi_kernel` function
+The `gqi_kernel` function calculates the Generalized Q-Sampling Imaging (GQI) transformation kernel, which is essential for modeling diffusion signals in terms of orientation distribution functions (ODFs). This kernel transforms gradient directions and b-values into a matrix that relates diffusion signals to ODFs on a spherical grid.
+
+- **Purpose**: Computes the kernel matrix for GQI-based signal reconstruction. It handles different GQI methods (e.g., "standard" or "gqi2") and incorporates physical constants like the free water diffusion coefficient.
+- **Key Parameters**:
+  - `gtab`: GradientTable containing b-values and b-vectors.
+  - `param_lambda`: Regularization parameter for the kernel.
+  - `sphere`: Spherical grid for ODF sampling.
+  - `method`: Specifies the GQI variant ("standard" by default).
+- **Operation**: Scales b-vectors by a diffusion-related factor, computes dot products with sphere vertices, and applies sinc or squared radial functions to generate the kernel.
+
+```Python
+def gqi_kernel(gtab, param_lambda, sphere, method="standard"):
+    # 0.01506 = 6*D where D is the free water diffusion coefficient
+    # l_values sqrt(6 D tau) D free water diffusion coefficient and
+    # tau included in the b-value
+    scaling = np.sqrt(gtab.bvals * 0.01506)
+    b_vector = gtab.bvecs * scaling[:, None]
+
+    if method == "gqi2":
+        H = squared_radial_component
+        return np.real(H(np.dot(b_vector, sphere.vertices.T) * param_lambda))
+    elif method != "standard":
+        warnings.warn(
+            f'GQI model "{method}" unknown, falling back to "standard".',
+            stacklevel=1,
+        )
+    return np.real(np.sinc(np.dot(b_vector, sphere.vertices.T) * param_lambda / np.pi))
+```
+
+Mathematically, the GQI kernel $K$ is computed as:
+
+For the "standard" method:
+$$
+K_{ij} = \frac{\sin\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_j) \right)}{\lambda (\mathbf{q}_i \cdot \mathbf{v}_j)} = \operatorname{sinc}\left( \frac{\lambda (\mathbf{q}_i \cdot \mathbf{v}_j)}{\pi} \right)
+$$
+Where:
+
+  - $\mathbf{q}_i = \mathbf{g}_i \sqrt{b_i \cdot 0.01506}$ (scaled gradient)
+  - $\mathbf{v}_j$ are sphere vertices
+  - $\lambda$ is the regularization parameter
+  - $\operatorname{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$ is the NumPy's normalized `sinc` function.
+
+For the "gqi2" method:
+$$
+K_{ij} = \operatorname{Re}\left[ H\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_j) \right) \right]
+$$
+Where $H$ is the squared radial component function.
+
+### The `prediction_kernel` function
+The `prediction_kernel` function computes the Moore-Penrose pseudo-inverse of the GQI kernel, enabling signal reconstruction from orientation distribution functions (ODFs) in the DIPY convention.
+
+- **Purpose**: Generates the pseudo-inverse kernel for solving S from ODF = S @ K, using regularization for numerical stability.
+- **Key Parameters**:
+  - `gtab`: GradientTable for the prediction.
+  - `param_lambda`: Regularization parameter.
+  - `sphere`: Spherical grid.
+  - `method`: GQI method.
+- **Operation**: Computes the GQI kernel `K`, forms `K.T @ K`, adds regularization, inverts the matrix, and multiplies by `K.T` to produce the Moore-Penrose pseudo-inverse kernel.
+
+```Python
+def prediction_kernel(gtab, param_lambda, sphere, method="standard"):
+    # K.shape = (n_gradients, n_vertices)
+    INVERSE_LAMBDA = 1e-6
+    K = gqi_kernel(gtab, param_lambda, sphere, method=method)
+    GtG = K.T @ K
+    identity = np.eye(GtG.shape[0])
+    return np.linalg.inv(GtG + INVERSE_LAMBDA * identity) @ K.T
+```
+
+Mathematically, the prediction kernel $P$ (the pseudo-inverse) is computed as:
+$$
+P = (K^T K + \lambda I)^{-1} K^T
+$$
+Where:
+
+  - $K$ is the GQI kernel from `gqi_kernel`
+  - $\lambda$ is the regularization parameter (`INVERSE_LAMBDA`)
+  - $I$ is the identity matrix.
+
+
+## The `predict` function and it's implementation
+
+The target predicted signal is given by the following relationship
+   $$
+   \begin{alignat*}{2}
+             &ODF                      &&= S \cdot K \\
+  \iff\quad & ODF \cdot P   &&= S \cdot K \cdot P \\
+  \iff\quad & ODF \cdot P   &&= S \\
+  \iff\quad & S            &&= ODF \cdot P
+  \end{alignat*}
+  $$
+
+Where $P$ is the Moore-Penrose pseudo inverse of the GQI kernel $K$ provided by the `prediction_kernel` function.
+
+Note that the Moore-Penrose pseudo inverse is needed since the GQI kernel $K$'s dimensions are $(n_\mathrm{gradients}, n_\mathrm{vertices})$ and therefore is (most of the time) making it not having a true inverse.
+
+
+The `predict` function reconstructs diffusion signals from the fitted signal data by first computing the ODF internally and then applying the pseudo inverse kernel.
+
+- **Purpose**: Predicts diffusion-weighted signals from fitted data, supporting both single-voxel and multi-voxel data.
+- **Key Parameters**:
+  - `gtab`: GradientTable for which to predict signals.
+  - `S0`: Optional baseline signal (not used in this implementation).
+- **Operation**: Computes $ODF = model.kernel \cdot data$, then predicted = $ODF \cdot P$ where $P$ is provided by `prediction_kernel`. Handles data reshaping for matrix operations and ensures non-negative outputs by clamping values.
+```Python
+def predict(self, gtab, *, S0=None):
+  P = prediction_kernel(
+    gtab,
+    self.model.Lambda,
+    self.model.sphere,
+    self.model.method,
+  )
+
+  # Handle both 1D (single voxel) and multi-dimensional data
+  if self.data.ndim == 1:
+    # Single voxel case
+    ODF = self.model.kernel @ self.data
+    predicted = ODF @ P
+  else:
+    # Multi-voxel case - reshape for matrix multiplication
+    original_shape = self.data.shape
+    data_2d = self.data.reshape(-1, original_shape[-1])
+    ODF_2d = self.model.kernel @ data_2d.T  # shape (n_vertices, n_voxels)
+    predicted_2d = ODF_2d.T @ P  # shape (n_voxels, n_gradients)
+    predicted = predicted_2d.reshape(original_shape[:-1] + (P.shape[1],))
+
+  # Clamp to non-negative values
+  return np.maximum(predicted, 0)
+```
+
+
+Mathematically, the predicted signal $\mathbf{S}_\mathrm{pred}$ is computed as:
+$$
+\mathbf{S}_\mathrm{pred} = \max(0, \mathrm{ODF} \cdot P)
+$$
+Where:
+
+- $\mathrm{ODF} = K_\mathrm{model} \cdot \mathbf{S}_\mathrm{data}$ is the ODF computed from the fitted signal data
+- $P$ is the pseudo-inverse kernel from `prediction_kernel`
+
+The max operation ensures non-negative signal values.
+
 
 ## Testing Methodology
 
