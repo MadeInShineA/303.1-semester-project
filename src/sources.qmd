@@ -18,6 +18,8 @@ title: "Sources"
   - [Diffusion Tensor Imaging (DTI) - Doctor Klioze](https://www.youtube.com/watch?v=twsV81UFFcE){target="_blank"}
   - [Diffusion Tensor Imaging (DTI) Explained! | Neuroscience Methods 101 - Psyched!](https://www.youtube.com/watch?v=Be51OqnBbdc){target="_blank"}
   - [DWI vs ADC MRI sequences: EXPLAINED - Radiology Tutorials](https://www.youtube.com/watch?v=GwCRBQt2WdM){target="_blank"}
+  - [Diffusion Weighted Imaging EXPLAINED (DWI Trace, ADC, B-Values) | MRI Physics Course Lecture 14 - MRI Physics EXPLAINED](https://www.youtube.com/watch?v=tcJa9cJeoEY){target="_blank"}
+  - [How to Read MRI Diffusion Imaging (DWI) like a Real Radiologist - MRI Physics EXPLAINED](https://www.youtube.com/watch?v=AlhwIY0RuPc){target="_blank"}
 
 ---
 

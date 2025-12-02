@@ -1,87 +1,10 @@
 [
   {
-    "objectID": "src/index.html",
-    "href": "src/index.html",
-    "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
-    "section": "",
-    "text": "This project is part of the 303.1 semester project course.\nThe goal is to contribute to the DIPY framework by extending the Generalized Q-ball Imaging (GQI) model with predictive capabilities.\nThe key objectives are:\n\nImplementing a predict() function to the GeneralizedQSamplingFit class\nThoroughly documenting the new code\nProviding comprehensive and meaningful tests\nGetting the prediction pull request accepted by DIPY"
-  },
-  {
-    "objectID": "src/report.html",
-    "href": "src/report.html",
-    "title": "Implementation Report: Predict Function",
-    "section": "",
-    "text": "This report provides an overview of the implemented predict function, covering its purpose, operational mechanics, testing methodology, capabilities, and future directions.\nKey topics include:\n\nFunctionality and operation of the predict function\nTesting procedures applied to the function\nEnabled applications and subsequent development steps"
-  },
-  {
-    "objectID": "src/report.html#dipy-tutorial-repository-notebooks",
-    "href": "src/report.html#dipy-tutorial-repository-notebooks",
-    "title": "303.1 Semester Project Report",
-    "section": "DIPY tutorial repository notebooks",
-    "text": "DIPY tutorial repository notebooks\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking"
-  },
-  {
-    "objectID": "src/report.html#dipy-repository-notebooks",
-    "href": "src/report.html#dipy-repository-notebooks",
-    "title": "303.1 Semester Project Report",
-    "section": "DIPY repository notebooks",
-    "text": "DIPY repository notebooks\n\nGQI Roundtrip\nGQI Cross Voxel"
-  },
-  {
-    "objectID": "src/daily_dairy.html",
-    "href": "src/daily_dairy.html",
-    "title": "Daily diary",
-    "section": "",
-    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book\n\n\n\n\n\nMeeting with Prof. Esteban\nPrepared the DIPY development environment\n\nInstallation steps\n\nCreate a venv and source it (or use uv venv and uv pip …)\nTo build the project\n\nsudo dnf install python3-devel\npip install -r requirements/build.txt\npip install –no-build-isolation -e .\n\nTo build the documentation\n\npip install sphinx\npip install sphinx_gallery\npip install numpydoc\npip install sphinxcontrib-bibtex\npip install sphinx-design\npip install grg-sphinx-theme\n\nTo use the correct formatting\n\npip install –no-build-isolation -e .[style]\npip install pre-commit\npre-commit install\n\n\n\nStarted to look at the current gqi predict code and pull request\nContinued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)\n\n\n\n\n\n\nFinished reading the Nipreps book\nContinued to look at the current gqi code and made small changes on the enh/gqi-predict-dev branch\n\nChanged GeneralizedQSamplingFit odf function to take a sphere parameter (see commit)\nChanged the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see commit)\n\nCreated a small marimo notebook to test and understand the prediction function on the enh/gqi-predict-notebooks branch (see commit)\n\n\n\n\n\n\nChanged the GeneralizedQSamplingFit predict function to use the model mode when calling the predict_kernel function. Also made the predict function work for multi-voxels (see commit)\nStarted gqi predict tests with (see commit)\n\nSingle-voxel basic test\nSingle-voxel meaningful test\nMulti-voxel basic test\nMulti-voxel meaningful test\n\nMeeting with Prof. Esteban\nDid 2 marimo notebooks on the enh/gqi-predict-notebooks branch (see commit)\n\nA notebook regarding the roundtrip predictions on already seen data (see notebook)\nA notebook regarding cross voxel predictions (see notebook)\n\nCreated the 303.1-semester-project github page (see page)\n\n\n\n\n\n\nCreated the Gantt diagram\nCreated the presentation github repository\nStarted the presentation\nPublished the presentation github page (see page)"
-  },
-  {
-    "objectID": "src/daily_dairy.html#section",
-    "href": "src/daily_dairy.html#section",
-    "title": "Daily diary",
-    "section": "",
-    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book"
-  },
-  {
-    "objectID": "src/daily_dairy.html#section-1",
-    "href": "src/daily_dairy.html#section-1",
-    "title": "Daily diary",
-    "section": "",
-    "text": "Meeting with Prof. Esteban\nPrepared the DIPY development environment\n\nInstallation steps\n\nCreate a venv and source it (or use uv venv and uv pip …)\nTo build the project\n\nsudo dnf install python3-devel\npip install -r requirements/build.txt\npip install –no-build-isolation -e .\n\nTo build the documentation\n\npip install sphinx\npip install sphinx_gallery\npip install numpydoc\npip install sphinxcontrib-bibtex\npip install sphinx-design\npip install grg-sphinx-theme\n\nTo use the correct formatting\n\npip install –no-build-isolation -e .[style]\npip install pre-commit\npre-commit install\n\n\n\nStarted to look at the current gqi predict code and pull request\nContinued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)"
-  },
-  {
-    "objectID": "src/daily_dairy.html#section-2",
-    "href": "src/daily_dairy.html#section-2",
-    "title": "Daily diary",
-    "section": "",
-    "text": "Finished reading the Nipreps book\nContinued to look at the current gqi code and made small changes on the enh/gqi-predict-dev branch\n\nChanged GeneralizedQSamplingFit odf function to take a sphere parameter (see commit)\nChanged the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see commit)\n\nCreated a small marimo notebook to test and understand the prediction function on the enh/gqi-predict-notebooks branch (see commit)"
-  },
-  {
-    "objectID": "src/daily_dairy.html#section-3",
-    "href": "src/daily_dairy.html#section-3",
-    "title": "Daily diary",
-    "section": "",
-    "text": "Changed the GeneralizedQSamplingFit predict function to use the model mode when calling the predict_kernel function. Also made the predict function work for multi-voxels (see commit)\nStarted gqi predict tests with (see commit)\n\nSingle-voxel basic test\nSingle-voxel meaningful test\nMulti-voxel basic test\nMulti-voxel meaningful test\n\nMeeting with Prof. Esteban\nDid 2 marimo notebooks on the enh/gqi-predict-notebooks branch (see commit)\n\nA notebook regarding the roundtrip predictions on already seen data (see notebook)\nA notebook regarding cross voxel predictions (see notebook)\n\nCreated the 303.1-semester-project github page (see page)"
-  },
-  {
-    "objectID": "src/daily_dairy.html#section-4",
-    "href": "src/daily_dairy.html#section-4",
-    "title": "Daily diary",
-    "section": "",
-    "text": "Created the Gantt diagram\nCreated the presentation github repository\nStarted the presentation\nPublished the presentation github page (see page)"
-  },
-  {
     "objectID": "src/sources.html",
     "href": "src/sources.html",
     "title": "Sources",
     "section": "",
     "text": "DIPY website\nDIPY contributing guide\nDIPY developer guide\nTutorials\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking"
-  },
-  {
-    "objectID": "src/daily_diary.html",
-    "href": "src/daily_diary.html",
-    "title": "Daily diary",
-    "section": "",
-    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book"
   },
   {
     "objectID": "src/sources.html#dipy",
@@ -95,7 +18,7 @@
     "href": "src/sources.html#youtube-videos",
     "title": "Sources",
     "section": "Youtube videos",
-    "text": "Youtube videos\n\nDiffusion Weighted Imaging - Doctor Klioze\nDiffusion Tensor Imaging (DTI) - Doctor Klioze\nDiffusion Tensor Imaging (DTI) Explained! | Neuroscience Methods 101 - Psyched!\nDWI vs ADC MRI sequences: EXPLAINED - Radiology Tutorials"
+    "text": "Youtube videos\n\nDiffusion Weighted Imaging - Doctor Klioze\nDiffusion Tensor Imaging (DTI) - Doctor Klioze\nDiffusion Tensor Imaging (DTI) Explained! | Neuroscience Methods 101 - Psyched!\nDWI vs ADC MRI sequences: EXPLAINED - Radiology Tutorials\nDiffusion Weighted Imaging EXPLAINED (DWI Trace, ADC, B-Values) | MRI Physics Course Lecture 14 - MRI Physics EXPLAINED\nHow to Read MRI Diffusion Imaging (DWI) like a Real Radiologist - MRI Physics EXPLAINED"
   },
   {
     "objectID": "src/sources.html#other",
@@ -105,39 +28,11 @@
     "text": "Other\n\nNipreps book\nProf. Esteban DIPY pull request\nProf. Esteban DIPY fork\nMarimo website\nQuarto website"
   },
   {
-    "objectID": "src/daily_diary.html#section",
-    "href": "src/daily_diary.html#section",
-    "title": "Daily diary",
+    "objectID": "src/index.html",
+    "href": "src/index.html",
+    "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
     "section": "",
-    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-1",
-    "href": "src/daily_diary.html#section-1",
-    "title": "Daily diary",
-    "section": "25.11.2025",
-    "text": "25.11.2025\n\nMeeting with Prof. Esteban\nPrepared the DIPY development environment\n\nInstallation steps\n\nCreate a venv and source it (or use uv venv and uv pip …)\nTo build the project\n\nsudo dnf install python3-devel\npip install -r requirements/build.txt\npip install –no-build-isolation -e .\n\nTo build the documentation\n\npip install sphinx\npip install sphinx_gallery\npip install numpydoc\npip install sphinxcontrib-bibtex\npip install sphinx-design\npip install grg-sphinx-theme\n\nTo use the correct formatting\n\npip install –no-build-isolation -e .[style]\npip install pre-commit\npre-commit install\n\n\n\nStarted to look at the current gqi predict code and pull request\nContinued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-2",
-    "href": "src/daily_diary.html#section-2",
-    "title": "Daily diary",
-    "section": "26.11.2025",
-    "text": "26.11.2025\n\nFinished reading the Nipreps book\nContinued to look at the current gqi code and made small changes on the enh/gqi-predict-dev branch\n\nChanged GeneralizedQSamplingFit odf function to take a sphere parameter (see commit)\nChanged the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see commit)\n\nCreated a small marimo notebook to test and understand the prediction function on the enh/gqi-predict-notebooks branch (see commit)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-3",
-    "href": "src/daily_diary.html#section-3",
-    "title": "Daily diary",
-    "section": "27.11.2025",
-    "text": "27.11.2025\n\nChanged the GeneralizedQSamplingFit predict function to use the model mode when calling the predict_kernel function. Also made the predict function work for multi-voxels (see commit)\nStarted gqi predict tests with (see commit)\n\nSingle-voxel basic test\nSingle-voxel meaningful test\nMulti-voxel basic test\nMulti-voxel meaningful test\n\nMeeting with Prof. Esteban\nDid 2 marimo notebooks on the enh/gqi-predict-notebooks branch (see commit)\n\nA notebook regarding the roundtrip predictions on already seen data (see notebook)\nA notebook regarding cross voxel predictions (see notebook)\n\nCreated the 303.1-semester-project github page (see page)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-4",
-    "href": "src/daily_diary.html#section-4",
-    "title": "Daily diary",
-    "section": "28.11.2025",
-    "text": "28.11.2025\n\nCreated the Gantt diagram\nCreated the presentation github repository\nStarted the presentation\nPublished the presentation github page (see page)"
+    "text": "This project is part of the 303.1 semester project course.\nThe goal is to contribute to the DIPY framework by extending the Generalized Q-ball Imaging (GQI) model with predictive capabilities.\nThe key objectives are:\n\nImplementing a predict() function to the GeneralizedQSamplingFit class\nThoroughly documenting the new code\nProviding comprehensive and meaningful tests\nGetting the prediction pull request accepted by DIPY"
   },
   {
     "objectID": "src/index.html#project-overview",
@@ -147,6 +42,13 @@
     "text": "This project is part of the 303.1 semester project course.\nThe goal is to contribute to the DIPY framework by extending the Generalized Q-ball Imaging (GQI) model with predictive capabilities.\nThe key objectives are:\n\nImplementing a predict() function to the GeneralizedQSamplingFit class\nThoroughly documenting the new code\nProviding comprehensive and meaningful tests\nGetting the prediction pull request accepted by DIPY"
   },
   {
+    "objectID": "src/index.html#project-gantt-diagram",
+    "href": "src/index.html#project-gantt-diagram",
+    "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
+    "section": "Project Gantt Diagram",
+    "text": "Project Gantt Diagram\n\n\n\n\n\n\ngantt\n\n    title Semester Project Gantt Diagram\n    dateFormat DD.MM.YYYY\n    axisFormat %d.%m\n    excludes weekends\n\n    section Background\n        Literature review (DWI, GQI, MRI)       :done,         research,       24.11.2025, 2d\n        Study Nipreps book (DWI preprocessing)  :done,         nipreps,        24.11.2025, 3d\n\n    section Development\n        Dev environment setup                   :done,         devenv,         25.11.2025, 1d\n        Study GQI codebase                      :done,         codebase,       25.11.2025, 3d\n        Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d\n        Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d\n        Implement cross voxel prediction tests  :crit, active,    cross_tests,    01.12.2025, 2d\n        \n\n    section Milestones & &lt;br&gt;Deliverables\n        Prof. Esteban – Kickoff meeting         :done,         milestone,      25.11.2025, 0d\n        Prof. Esteban – Progress check-in       :done,         milestone,      27.11.2025, 0d\n        Create Gantt diagram                    :done,  gantt,          28.11.2025, 1d\n        Design impact slide                     :done,  impact,         28.11.2025, 1d\n        Draft report outline                    :active,         r_draft,        01.12.2025, 1d\n        Draft presentation outline              :active,         p_draft,        01.12.2025, 2d \n        Prof. Esteban - Second progress check-in:         milestone,      03.12.2025, 0d\n        Prof. Esteban - Third progress check-in :         milestone,      08.12.2025, 0d"
+  },
+  {
     "objectID": "src/index.html#documents",
     "href": "src/index.html#documents",
     "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
@@ -154,25 +56,11 @@
     "text": "Documents\n\nReport: Detailed technical documentation and results\nPresentation: Slide deck summarizing the project\nDaily Diary: Development log and progress updates\nSources: Bibliography and references"
   },
   {
-    "objectID": "src/index.html#notebooks",
-    "href": "src/index.html#notebooks",
-    "title": "303.1 Semester Project",
+    "objectID": "src/report.html",
+    "href": "src/report.html",
+    "title": "Implementation Report: Predict Function",
     "section": "",
-    "text": "DIPY Tutorials\nGQI Roundtrip Analysis\nGQI Cross-Voxel Predictions"
-  },
-  {
-    "objectID": "src/index.html#repositories",
-    "href": "src/index.html#repositories",
-    "title": "303.1 Semester Project",
-    "section": "",
-    "text": "Project Repository\nDIPY Enhancements\nPresentation Materials\n\n\nOlivier Amacker | ETH Zurich Semester Project 2025"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-5",
-    "href": "src/daily_diary.html#section-5",
-    "title": "Daily diary",
-    "section": "01.12.2025",
-    "text": "01.12.2025\n\nStarted working on the cross validation prediction test\nWorked on the project documentation"
+    "text": "This report provides an overview of the implemented predict function, covering its purpose, operational mechanics, testing methodology, capabilities, and future directions.\nKey topics include:\n\nFunctionality and operation of the predict function\nTesting procedures applied to the function\nEnabled applications and subsequent development steps"
   },
   {
     "objectID": "src/report.html#introduction",
@@ -180,90 +68,6 @@
     "title": "Implementation Report: Predict Function",
     "section": "",
     "text": "This report provides an overview of the implemented predict function, covering its purpose, operational mechanics, testing methodology, capabilities, and future directions.\nKey topics include:\n\nFunctionality and operation of the predict function\nTesting procedures applied to the function\nEnabled applications and subsequent development steps"
-  },
-  {
-    "objectID": "src/report.html#the-current-challenge",
-    "href": "src/report.html#the-current-challenge",
-    "title": "303.1 Semester Project Report",
-    "section": "The current challenge",
-    "text": "The current challenge\nLorem ipsum"
-  },
-  {
-    "objectID": "src/report.html#resources",
-    "href": "src/report.html#resources",
-    "title": "Implementation Report: Predict Function",
-    "section": "8 Resources",
-    "text": "8 Resources\n\n8.1 DIPY tutorial repository notebooks\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\n8.2 DIPY repository notebooks\n\nGQI Roundtrip\nGQI Cross Voxel"
-  },
-  {
-    "objectID": "src/report.html#what-is-this-project-about",
-    "href": "src/report.html#what-is-this-project-about",
-    "title": "Report",
-    "section": "What is this project about ?",
-    "text": "What is this project about ?\nLorem ipsum"
-  },
-  {
-    "objectID": "src/report.html#the-impact-gqimodelfit-predict",
-    "href": "src/report.html#the-impact-gqimodelfit-predict",
-    "title": "Report",
-    "section": "The impact GQIModelFit predict",
-    "text": "The impact GQIModelFit predict"
-  },
-  {
-    "objectID": "src/report.html#mathematical-fondations-of-the-predict-function",
-    "href": "src/report.html#mathematical-fondations-of-the-predict-function",
-    "title": "Report",
-    "section": "Mathematical fondations of the predict function",
-    "text": "Mathematical fondations of the predict function"
-  },
-  {
-    "objectID": "src/report.html#mathematical-foundations-of-the-predict-function",
-    "href": "src/report.html#mathematical-foundations-of-the-predict-function",
-    "title": "Report",
-    "section": "Mathematical Foundations of the Predict Function",
-    "text": "Mathematical Foundations of the Predict Function\nThe predict function in the GeneralizedQSamplingFit class implements the inverse operation of the Orientation Distribution Function (ODF) reconstruction in Generalized Q-Sampling Imaging (GQI). It predicts the diffusion-weighted signal given a fitted ODF and a gradient table.\n\nODF Reconstruction\nIn GQI, the ODF \\(\\psi(\\mathbf{u})\\) is reconstructed from the diffusion signal \\(\\mathbf{S}\\) using the kernel matrix \\(\\mathbf{K}\\):\n\\(\\psi = \\mathbf{K}^T \\mathbf{S}\\)\nwhere \\(\\mathbf{K}\\) is the GQI kernel matrix of shape \\((N_g, N_v)\\), with \\(N_g\\) gradients and \\(N_v\\) sphere vertices.\n\n\nSignal Prediction\nTo predict the signal \\(\\mathbf{S}'\\) from the ODF \\(\\psi\\) for a new gradient table, we solve the linear system:\n\\(\\mathbf{K}'^T \\mathbf{S}' = \\psi\\)\nThis is typically an overdetermined system. The solution uses regularization with Tikhonov regularization:\n\\(\\mathbf{S}' = (\\mathbf{K}' \\mathbf{K}'^T + \\lambda \\mathbf{I})^{-1} \\mathbf{K}' \\psi\\)\nwhere \\(\\lambda\\) is a small regularization parameter (INVERSE_LAMBDA = 1e-6).\nIn the code, the prediction_kernel function computes the matrix \\((\\mathbf{K}' \\mathbf{K}'^T + \\lambda \\mathbf{I})^{-1} \\mathbf{K}'\\), and the full prediction involves composing with the original kernel for the fitted data.\nThe predicted signal is clamped to non-negative values to ensure physical validity."
-  },
-  {
-    "objectID": "src/report.html#what-does-the-predict-function-do",
-    "href": "src/report.html#what-does-the-predict-function-do",
-    "title": "Report",
-    "section": "What does the predict function do?",
-    "text": "What does the predict function do?"
-  },
-  {
-    "objectID": "src/report.html#how-does-the-predict-function-work",
-    "href": "src/report.html#how-does-the-predict-function-work",
-    "title": "Report",
-    "section": "How does the predict function work?",
-    "text": "How does the predict function work?\n\nMathematical Foundations of the Predict Function\nThe predict function in the GeneralizedQSamplingFit class implements the inverse operation of the Orientation Distribution Function (ODF) reconstruction in Generalized Q-Sampling Imaging (GQI). It predicts the diffusion-weighted signal given a fitted ODF and a gradient table.\n\nODF Reconstruction\nIn GQI, the ODF \\(\\psi(\\mathbf{u})\\) is reconstructed from the diffusion signal \\(\\mathbf{S}\\) using the kernel matrix \\(\\mathbf{K}\\):\n\\(\\psi = \\mathbf{K}^T \\mathbf{S}\\)\nwhere \\(\\mathbf{K}\\) is the GQI kernel matrix of shape \\((N_g, N_v)\\), with \\(N_g\\) gradients and \\(N_v\\) sphere vertices.\n\n\nSignal Prediction\nTo predict the signal \\(\\mathbf{S}'\\) from the ODF \\(\\psi\\) for a new gradient table, we solve the linear system:\n\\(\\mathbf{K}'^T \\mathbf{S}' = \\psi\\)\nThis is typically an overdetermined system. The solution uses regularization with Tikhonov regularization:\n\\(\\mathbf{S}' = (\\mathbf{K}' \\mathbf{K}'^T + \\lambda \\mathbf{I})^{-1} \\mathbf{K}' \\psi\\)\nwhere \\(\\lambda\\) is a small regularization parameter (INVERSE_LAMBDA = 1e-6).\nIn the code, the prediction_kernel function computes the matrix \\((\\mathbf{K}' \\mathbf{K}'^T + \\lambda \\mathbf{I})^{-1} \\mathbf{K}'\\), and the full prediction involves composing with the original kernel for the fitted data.\nThe predicted signal is clamped to non-negative values to ensure physical validity."
-  },
-  {
-    "objectID": "src/report.html#how-thepredict-function-was-tested",
-    "href": "src/report.html#how-thepredict-function-was-tested",
-    "title": "Report",
-    "section": "How thepredict function was tested",
-    "text": "How thepredict function was tested"
-  },
-  {
-    "objectID": "src/report.html#how-the-predict-function-was-tested",
-    "href": "src/report.html#how-the-predict-function-was-tested",
-    "title": "Report",
-    "section": "How the predict function was tested?",
-    "text": "How the predict function was tested?"
-  },
-  {
-    "objectID": "src/report.html#what-the-predict-function-enables",
-    "href": "src/report.html#what-the-predict-function-enables",
-    "title": "Report",
-    "section": "What the predict function enables?",
-    "text": "What the predict function enables?"
-  },
-  {
-    "objectID": "src/report.html#whats-next",
-    "href": "src/report.html#whats-next",
-    "title": "Report",
-    "section": "What’s next ?",
-    "text": "What’s next ?"
   },
   {
     "objectID": "src/report.html#functionality-of-the-predict-function",
@@ -301,13 +105,6 @@
     "text": "6 Future Directions"
   },
   {
-    "objectID": "src/report.html#abstract",
-    "href": "src/report.html#abstract",
-    "title": "Implementation Report: Predict Function",
-    "section": "",
-    "text": "This report details the implementation of the predict function in the Generalized Q-Sampling Imaging (GQI) framework within DIPY. The function enables the prediction of diffusion-weighted signals from fitted Orientation Distribution Functions (ODFs), supporting advanced diffusion MRI analysis and simulation."
-  },
-  {
     "objectID": "src/report.html#conclusion",
     "href": "src/report.html#conclusion",
     "title": "Implementation Report: Predict Function",
@@ -315,10 +112,59 @@
     "text": "7 Conclusion"
   },
   {
-    "objectID": "src/index.html#project-gantt-diagram",
-    "href": "src/index.html#project-gantt-diagram",
-    "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
-    "section": "Project Gantt Diagram",
-    "text": "Project Gantt Diagram\n\n\n\n\n\n\ngantt\n\n    title Semester Project Gantt Diagram\n    dateFormat DD.MM.YYYY\n    axisFormat %d.%m\n    excludes weekends\n\n    section Background\n        Literature review (DWI, GQI, MRI)       :done,         research,       24.11.2025, 2d\n        Study Nipreps book (DWI preprocessing)  :done,         nipreps,        24.11.2025, 3d\n\n    section Development\n        Dev environment setup                   :done,         devenv,         25.11.2025, 1d\n        Study GQI codebase                      :done,         codebase,       25.11.2025, 3d\n        Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d\n        Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d\n        Implement cross voxel prediction tests  :crit, active,    cross_tests,    01.12.2025, 2d\n        \n\n    section Milestones & &lt;br&gt;Deliverables\n        Prof. Esteban – Kickoff meeting         :done,         milestone,      25.11.2025, 0d\n        Prof. Esteban – Progress check-in       :done,         milestone,      27.11.2025, 0d\n        Create Gantt diagram                    :done,  gantt,          28.11.2025, 1d\n        Design impact slide                     :done,  impact,         28.11.2025, 1d\n        Draft report outline                    :active,         r_draft,        01.12.2025, 1d\n        Draft presentation outline              :active,         p_draft,        01.12.2025, 1d \n        Prof. Esteban - Second progress check-in:         milestone,      03.12.2025, 0d\n        Prof. Esteban - Third progress check-in :         milestone,      08.12.2025, 0d"
+    "objectID": "src/report.html#resources",
+    "href": "src/report.html#resources",
+    "title": "Implementation Report: Predict Function",
+    "section": "8 Resources",
+    "text": "8 Resources\n\n8.1 DIPY tutorial repository notebooks\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\n8.2 DIPY repository notebooks\n\nGQI Roundtrip\nGQI Cross Voxel"
+  },
+  {
+    "objectID": "src/daily_diary.html",
+    "href": "src/daily_diary.html",
+    "title": "Daily diary",
+    "section": "",
+    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book"
+  },
+  {
+    "objectID": "src/daily_diary.html#section",
+    "href": "src/daily_diary.html#section",
+    "title": "Daily diary",
+    "section": "",
+    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book"
+  },
+  {
+    "objectID": "src/daily_diary.html#section-1",
+    "href": "src/daily_diary.html#section-1",
+    "title": "Daily diary",
+    "section": "25.11.2025",
+    "text": "25.11.2025\n\nMeeting with Prof. Esteban\nPrepared the DIPY development environment\n\nInstallation steps\n\nCreate a venv and source it (or use uv venv and uv pip …)\nTo build the project\n\nsudo dnf install python3-devel\npip install -r requirements/build.txt\npip install –no-build-isolation -e .\n\nTo build the documentation\n\npip install sphinx\npip install sphinx_gallery\npip install numpydoc\npip install sphinxcontrib-bibtex\npip install sphinx-design\npip install grg-sphinx-theme\n\nTo use the correct formatting\n\npip install –no-build-isolation -e .[style]\npip install pre-commit\npre-commit install\n\n\n\nStarted to look at the current gqi predict code and pull request\nContinued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)"
+  },
+  {
+    "objectID": "src/daily_diary.html#section-2",
+    "href": "src/daily_diary.html#section-2",
+    "title": "Daily diary",
+    "section": "26.11.2025",
+    "text": "26.11.2025\n\nFinished reading the Nipreps book\nContinued to look at the current gqi code and made small changes on the enh/gqi-predict-dev branch\n\nChanged GeneralizedQSamplingFit odf function to take a sphere parameter (see commit)\nChanged the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see commit)\n\nCreated a small marimo notebook to test and understand the prediction function on the enh/gqi-predict-notebooks branch (see commit)"
+  },
+  {
+    "objectID": "src/daily_diary.html#section-3",
+    "href": "src/daily_diary.html#section-3",
+    "title": "Daily diary",
+    "section": "27.11.2025",
+    "text": "27.11.2025\n\nChanged the GeneralizedQSamplingFit predict function to use the model mode when calling the predict_kernel function. Also made the predict function work for multi-voxels (see commit)\nStarted gqi predict tests with (see commit)\n\nSingle-voxel basic test\nSingle-voxel meaningful test\nMulti-voxel basic test\nMulti-voxel meaningful test\n\nMeeting with Prof. Esteban\nDid 2 marimo notebooks on the enh/gqi-predict-notebooks branch (see commit)\n\nA notebook regarding the roundtrip predictions on already seen data (see notebook)\nA notebook regarding cross voxel predictions (see notebook)\n\nCreated the 303.1-semester-project github page (see page)"
+  },
+  {
+    "objectID": "src/daily_diary.html#section-4",
+    "href": "src/daily_diary.html#section-4",
+    "title": "Daily diary",
+    "section": "28.11.2025",
+    "text": "28.11.2025\n\nCreated the Gantt diagram\nCreated the presentation github repository(now removed)\nStarted the presentation\nPublished the presentation github page (see page)"
+  },
+  {
+    "objectID": "src/daily_diary.html#section-5",
+    "href": "src/daily_diary.html#section-5",
+    "title": "Daily diary",
+    "section": "01.12.2025",
+    "text": "01.12.2025\n\nStarted working on the cross validation prediction test\nWorked on the project documentation (see documentation)\n\nAdded a quarto theme\nAdded sources + daily diary pages\nAdded mermaid Gantt diagram\nWorked on the report structure (see report)"
   }
 ]
