@@ -76,7 +76,7 @@ Where $H$ is the squared radial component function.
 ### The `prediction_kernel` function
 The `prediction_kernel` function computes the Moore-Penrose pseudo-inverse of the GQI kernel, enabling signal reconstruction from orientation distribution functions (ODFs) in the DIPY convention.
 
-- **Purpose**: Generates the pseudo-inverse kernel for solving S from ODF = S @ K, using regularization for numerical stability.
+- **Purpose**: Generates the pseudo-inverse kernel for solving S from $ODF = S \cdot K$, using regularization for numerical stability.
 - **Key Parameters**:
   - `gtab`: GradientTable for the prediction.
   - `param_lambda`: Regularization parameter.
@@ -94,9 +94,9 @@ def prediction_kernel(gtab, param_lambda, sphere, method="standard"):
     return np.linalg.inv(GtG + INVERSE_LAMBDA * identity) @ K.T
 ```
 
-Mathematically, the prediction kernel $P$ (the pseudo-inverse) is computed as:
+Mathematically, the prediction kernel $K^{+}$ (the pseudo-inverse) is computed as:
 $$
-P = (K^T K + \lambda I)^{-1} K^T
+K^{+} = (K^T K + \lambda I)^{-1} K^T
 $$
 Where:
 
@@ -111,15 +111,15 @@ The target predicted signal is given by the following relationship
    $$
    \begin{alignat*}{2}
              &ODF                      &&= S \cdot K \\
-  \iff\quad & ODF \cdot P   &&= S \cdot K \cdot P \\
-  \iff\quad & ODF \cdot P   &&= S \\
-  \iff\quad & S            &&= ODF \cdot P
+  \iff\quad & ODF \cdot K^{+}          &&\approx S \cdot K \cdot K^{+} \\
+  \iff\quad & ODF \cdot K^{+}          &&\approx S \\
+  \iff\quad & S                        &&\approx ODF \cdot K^{+}
   \end{alignat*}
   $$
 
-Where $P$ is the Moore-Penrose pseudo inverse of the GQI kernel $K$ provided by the `prediction_kernel` function.
+Where $K^{+}$ is the Moore-Penrose pseudo inverse of the GQI kernel $K$.
 
-Note that the Moore-Penrose pseudo inverse is needed since the GQI kernel $K$'s dimensions are $(n_\mathrm{gradients}, n_\mathrm{vertices})$ and therefore is (most of the time) making it not having a true inverse.
+Note that the Moore-Penrose pseudo inverse is needed since the GQI kernel $K$'s dimensions are $(n_\mathrm{gradients}, n_\mathrm{vertices})$, which means it's (most of the time) not a square matrix and therefore not having a true inverse.
 
 
 The `predict` function reconstructs diffusion signals from the fitted signal data by first computing the ODF internally and then applying the pseudo inverse kernel.
@@ -128,10 +128,10 @@ The `predict` function reconstructs diffusion signals from the fitted signal dat
 - **Key Parameters**:
   - `gtab`: GradientTable for which to predict signals.
   - `S0`: Optional baseline signal (not used in this implementation).
-- **Operation**: Computes $ODF = model.kernel \cdot data$, then predicted = $ODF \cdot P$ where $P$ is provided by `prediction_kernel`. Handles data reshaping for matrix operations and ensures non-negative outputs by clamping values.
+- **Operation**: Computes $ODF = model.kernel \cdot data$, then predicted = $ODF \cdot K^{+}$ where $K^{+}$ is provided by `prediction_kernel`. Handles data reshaping for matrix operations and ensures non-negative outputs by clamping values.
 ```Python
 def predict(self, gtab, *, S0=None):
-  P = prediction_kernel(
+  K_plus = prediction_kernel(
     gtab,
     self.model.Lambda,
     self.model.sphere,
@@ -142,14 +142,14 @@ def predict(self, gtab, *, S0=None):
   if self.data.ndim == 1:
     # Single voxel case
     ODF = self.model.kernel @ self.data
-    predicted = ODF @ P
+    predicted = ODF @ K_plus
   else:
     # Multi-voxel case - reshape for matrix multiplication
     original_shape = self.data.shape
     data_2d = self.data.reshape(-1, original_shape[-1])
     ODF_2d = self.model.kernel @ data_2d.T  # shape (n_vertices, n_voxels)
-    predicted_2d = ODF_2d.T @ P  # shape (n_voxels, n_gradients)
-    predicted = predicted_2d.reshape(original_shape[:-1] + (P.shape[1],))
+    predicted_2d = ODF_2d.T @ K_plus  # shape (n_voxels, n_gradients)
+    predicted = predicted_2d.reshape(original_shape[:-1] + (K_plus.shape[1],))
 
   # Clamp to non-negative values
   return np.maximum(predicted, 0)
@@ -158,12 +158,12 @@ def predict(self, gtab, *, S0=None):
 
 Mathematically, the predicted signal $\mathbf{S}_\mathrm{pred}$ is computed as:
 $$
-\mathbf{S}_\mathrm{pred} = \max(0, \mathrm{ODF} \cdot P)
+\mathbf{S}_\mathrm{pred} = \max(0, \mathrm{ODF} \cdot K^{+})
 $$
 Where:
 
 - $\mathrm{ODF} = K_\mathrm{model} \cdot \mathbf{S}_\mathrm{data}$ is the ODF computed from the fitted signal data
-- $P$ is the pseudo-inverse kernel from `prediction_kernel`
+- $K^{+}$ is the pseudo-inverse kernel from `prediction_kernel`
 
 The max operation ensures non-negative signal values.
 

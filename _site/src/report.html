@@ -480,7 +480,7 @@ K_{ij} = \operatorname{Re}\left[ H\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_
 <h3 data-number="2.2" class="anchored" data-anchor-id="the-prediction_kernel-function"><span class="header-section-number">2.2</span> The <code>prediction_kernel</code> function</h3>
 <p>The <code>prediction_kernel</code> function computes the Moore-Penrose pseudo-inverse of the GQI kernel, enabling signal reconstruction from orientation distribution functions (ODFs) in the DIPY convention.</p>
 <ul>
-<li><strong>Purpose</strong>: Generates the pseudo-inverse kernel for solving S from ODF = S @ K, using regularization for numerical stability.</li>
+<li><strong>Purpose</strong>: Generates the pseudo-inverse kernel for solving S from <span class="math inline">\(ODF = S \cdot K\)</span>, using regularization for numerical stability.</li>
 <li><strong>Key Parameters</strong>:
 <ul>
 <li><code>gtab</code>: GradientTable for the prediction.</li>
@@ -497,8 +497,8 @@ K_{ij} = \operatorname{Re}\left[ H\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    GtG <span class="op">=</span> K.T <span class="op">@</span> K</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    identity <span class="op">=</span> np.eye(GtG.shape[<span class="dv">0</span>])</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.linalg.inv(GtG <span class="op">+</span> INVERSE_LAMBDA <span class="op">*</span> identity) <span class="op">@</span> K.T</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Mathematically, the prediction kernel <span class="math inline">\(P\)</span> (the pseudo-inverse) is computed as: <span class="math display">\[
-P = (K^T K + \lambda I)^{-1} K^T
+<p>Mathematically, the prediction kernel <span class="math inline">\(K^{+}\)</span> (the pseudo-inverse) is computed as: <span class="math display">\[
+K^{+} = (K^T K + \lambda I)^{-1} K^T
 \]</span> Where:</p>
 <ul>
 <li><span class="math inline">\(K\)</span> is the GQI kernel from <code>gqi_kernel</code></li>
@@ -512,13 +512,13 @@ P = (K^T K + \lambda I)^{-1} K^T
 <p>The target predicted signal is given by the following relationship <span class="math display">\[
    \begin{alignat*}{2}
              &amp;ODF                      &amp;&amp;= S \cdot K \\
-  \iff\quad &amp; ODF \cdot P   &amp;&amp;= S \cdot K \cdot P \\
-  \iff\quad &amp; ODF \cdot P   &amp;&amp;= S \\
-  \iff\quad &amp; S            &amp;&amp;= ODF \cdot P
+  \iff\quad &amp; ODF \cdot K^{+}          &amp;&amp;\approx S \cdot K \cdot K^{+} \\
+  \iff\quad &amp; ODF \cdot K^{+}          &amp;&amp;\approx S \\
+  \iff\quad &amp; S                        &amp;&amp;\approx ODF \cdot K^{+}
   \end{alignat*}
   \]</span></p>
-<p>Where <span class="math inline">\(P\)</span> is the Moore-Penrose pseudo inverse of the GQI kernel <span class="math inline">\(K\)</span> provided by the <code>prediction_kernel</code> function.</p>
-<p>Note that the Moore-Penrose pseudo inverse is needed since the GQI kernel <span class="math inline">\(K\)</span>’s dimensions are <span class="math inline">\((n_\mathrm{gradients}, n_\mathrm{vertices})\)</span> and therefore is (most of the time) making it not having a true inverse.</p>
+<p>Where <span class="math inline">\(K^{+}\)</span> is the Moore-Penrose pseudo inverse of the GQI kernel <span class="math inline">\(K\)</span>.</p>
+<p>Note that the Moore-Penrose pseudo inverse is needed since the GQI kernel <span class="math inline">\(K\)</span>’s dimensions are <span class="math inline">\((n_\mathrm{gradients}, n_\mathrm{vertices})\)</span>, which means it’s (most of the time) not a square matrix and therefore not having a true inverse.</p>
 <p>The <code>predict</code> function reconstructs diffusion signals from the fitted signal data by first computing the ODF internally and then applying the pseudo inverse kernel.</p>
 <ul>
 <li><strong>Purpose</strong>: Predicts diffusion-weighted signals from fitted data, supporting both single-voxel and multi-voxel data.</li>
@@ -527,10 +527,10 @@ P = (K^T K + \lambda I)^{-1} K^T
 <li><code>gtab</code>: GradientTable for which to predict signals.</li>
 <li><code>S0</code>: Optional baseline signal (not used in this implementation).</li>
 </ul></li>
-<li><strong>Operation</strong>: Computes <span class="math inline">\(ODF = model.kernel \cdot data\)</span>, then predicted = <span class="math inline">\(ODF \cdot P\)</span> where <span class="math inline">\(P\)</span> is provided by <code>prediction_kernel</code>. Handles data reshaping for matrix operations and ensures non-negative outputs by clamping values.</li>
+<li><strong>Operation</strong>: Computes <span class="math inline">\(ODF = model.kernel \cdot data\)</span>, then predicted = <span class="math inline">\(ODF \cdot K^{+}\)</span> where <span class="math inline">\(K^{+}\)</span> is provided by <code>prediction_kernel</code>. Handles data reshaping for matrix operations and ensures non-negative outputs by clamping values.</li>
 </ul>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> predict(<span class="va">self</span>, gtab, <span class="op">*</span>, S0<span class="op">=</span><span class="va">None</span>):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  P <span class="op">=</span> prediction_kernel(</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  K_plus <span class="op">=</span> prediction_kernel(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    gtab,</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.model.Lambda,</span>
 <span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="va">self</span>.model.sphere,</span>
@@ -541,23 +541,23 @@ P = (K^T K + \lambda I)^{-1} K^T
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="va">self</span>.data.ndim <span class="op">==</span> <span class="dv">1</span>:</span>
 <span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Single voxel case</span></span>
 <span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    ODF <span class="op">=</span> <span class="va">self</span>.model.kernel <span class="op">@</span> <span class="va">self</span>.data</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    predicted <span class="op">=</span> ODF <span class="op">@</span> P</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    predicted <span class="op">=</span> ODF <span class="op">@</span> K_plus</span>
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span>:</span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Multi-voxel case - reshape for matrix multiplication</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    original_shape <span class="op">=</span> <span class="va">self</span>.data.shape</span>
 <span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    data_2d <span class="op">=</span> <span class="va">self</span>.data.reshape(<span class="op">-</span><span class="dv">1</span>, original_shape[<span class="op">-</span><span class="dv">1</span>])</span>
 <span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    ODF_2d <span class="op">=</span> <span class="va">self</span>.model.kernel <span class="op">@</span> data_2d.T  <span class="co"># shape (n_vertices, n_voxels)</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    predicted_2d <span class="op">=</span> ODF_2d.T <span class="op">@</span> P  <span class="co"># shape (n_voxels, n_gradients)</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    predicted <span class="op">=</span> predicted_2d.reshape(original_shape[:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (P.shape[<span class="dv">1</span>],))</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    predicted_2d <span class="op">=</span> ODF_2d.T <span class="op">@</span> K_plus  <span class="co"># shape (n_voxels, n_gradients)</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    predicted <span class="op">=</span> predicted_2d.reshape(original_shape[:<span class="op">-</span><span class="dv">1</span>] <span class="op">+</span> (K_plus.shape[<span class="dv">1</span>],))</span>
 <span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Clamp to non-negative values</span></span>
 <span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> np.maximum(predicted, <span class="dv">0</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Mathematically, the predicted signal <span class="math inline">\(\mathbf{S}_\mathrm{pred}\)</span> is computed as: <span class="math display">\[
-\mathbf{S}_\mathrm{pred} = \max(0, \mathrm{ODF} \cdot P)
+\mathbf{S}_\mathrm{pred} = \max(0, \mathrm{ODF} \cdot K^{+})
 \]</span> Where:</p>
 <ul>
 <li><span class="math inline">\(\mathrm{ODF} = K_\mathrm{model} \cdot \mathbf{S}_\mathrm{data}\)</span> is the ODF computed from the fitted signal data</li>
-<li><span class="math inline">\(P\)</span> is the pseudo-inverse kernel from <code>prediction_kernel</code></li>
+<li><span class="math inline">\(K^{+}\)</span> is the pseudo-inverse kernel from <code>prediction_kernel</code></li>
 </ul>
 <p>The max operation ensures non-negative signal values.</p>
 </section>
