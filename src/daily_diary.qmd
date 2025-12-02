@@ -78,3 +78,11 @@ title: Daily diary
   - Added sources + daily diary pages
   - Added mermaid Gantt diagram
   - Worked on the report structure (see [report](https://olivier.amacker.dev/303.1-semester-project/src/report.html){target="_blank"})
+
+--- 
+
+## 02.12.2025
+- Added unseen data prediction tests + Cleaned gqi predict functions and existing tests (see [commit](https://github.com/MadeInShineA/dipy/commit/061896283e12e63ed326af602255ac4d8d26b4e0){target="_blank"})
+- Refactored the gqi predict and prediction_kernel functions to work according to DIPY's ODF formula:\
+  $ODF = S \cdot K$ (see [commit](https://github.com/MadeInShineA/dipy/commit/9b98a30292ff88e3912f9b482ba663d8f62928ca){target="_blank"})
+- Wrote the The different needed helper functions and The predict function and it’s implementation sections in the [report](https://olivier.amacker.dev/303.1-semester-project/src/report.html#the-different-needed-helper-functions){target="_blank"} (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/c3fb5235103006e8f3b1a21980b49879a6a85f69){target="_blank"})

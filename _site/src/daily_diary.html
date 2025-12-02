@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -308,6 +337,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">27.11.2025</a></li>
   <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">28.11.2025</a></li>
   <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">01.12.2025</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">02.12.2025</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/daily_diary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -435,6 +465,16 @@ ul.task-list li input[type="checkbox"] {
 <li>Added mermaid Gantt diagram</li>
 <li>Worked on the report structure (see <a href="https://olivier.amacker.dev/303.1-semester-project/src/report.html" target="_blank">report</a>)</li>
 </ul></li>
+</ul>
+<hr>
+</section>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">02.12.2025</h2>
+<ul>
+<li>Added unseen data prediction tests + Cleaned gqi predict functions and existing tests (see <a href="https://github.com/MadeInShineA/dipy/commit/061896283e12e63ed326af602255ac4d8d26b4e0" target="_blank">commit</a>)</li>
+<li>Refactored the gqi predict and prediction_kernel functions to work according to DIPY’s ODF formula:<br>
+<span class="math inline">\(ODF = S \cdot K\)</span> (see <a href="https://github.com/MadeInShineA/dipy/commit/9b98a30292ff88e3912f9b482ba663d8f62928ca" target="_blank">commit</a>)</li>
+<li>Wrote the The different needed helper functions and The predict function and it’s implementation sections in the <a href="https://olivier.amacker.dev/303.1-semester-project/src/report.html#the-different-needed-helper-functions" target="_blank">report</a> (see <a href="https://github.com/MadeInShineA/303.1-semester-project/commit/c3fb5235103006e8f3b1a21980b49879a6a85f69" target="_blank">commit</a>)</li>
 </ul>
 
 
