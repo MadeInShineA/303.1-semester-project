@@ -35,7 +35,7 @@ gantt
         Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d
         Implement case 2 voxel prediction test :done,         cross_tests,    01.12.2025, 2d
         Create unseen data prediction notebook  :active,       unseen_data,    03.12.2025, 2d
-        Add the GQI predict example to dipy doc :              predict_example,04.12.2025, 08.12.2025
+        Add the GQI predict example to dipy doc :              predict_example,04.12.2025, 09.12.2025
 
       
         
@@ -47,8 +47,8 @@ gantt
         Design impact slide                     :done,         impact,         28.11.2025, 1d
         Draft report outline                    :done,         r_draft,        01.12.2025, 1d
         Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d
-        Create presentation dwi slide           :              p_draft,        06.12.2025, 08.12.2025 
-        Prof. Esteban - Third progress check-in :              milestone,      08.12.2025, 0d
+        Create presentation dwi slide           :              p_draft,        06.12.2025, 09.12.2025 
+        Prof. Esteban - Third progress check-in :              milestone,      09.12.2025, 0d
         Code and documentation handout          :              milestone,      16.12.2025, 0d
         Final presentation                      :              milestone,      18.12.2025, 0d
         

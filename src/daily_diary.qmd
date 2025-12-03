@@ -91,3 +91,4 @@ title: Daily diary
 
 ## 03.12.2025
 - Meeting with Prof. Esteban
+- Started working on the unseen data prediction notebook (not pushed yet still in POC)
