@@ -6,10 +6,12 @@ title: "Sources"
   - [DIPY website](https://dipy.org/){target="_blank"}
   - [DIPY contributing guide](https://github.com/dipy/dipy/blob/master/.github/CONTRIBUTING.md){target="_blank"}
   - [DIPY developer guide](https://docs.dipy.org/stable/devel/intro.html){target="_blank"}
+  - [DIPY coding style guideline](https://github.com/dipy/dipy/blob/master/doc/devel/coding_style_guideline.rst){target="_blank"}
   - Tutorials
     - [Reconstruct with Constant Solid Angle (Q-Ball)](https://docs.dipy.org/stable/examples_built/reconstruction/reconst_csa.html){target="_blank"}
     - [Reconstruct with Generalized Q-Sampling Imaging](https://docs.dipy.org/stable/examples_built/reconstruction/reconst_gqi.html){target="_blank"}
     - [Introduction to Basic Tracking](https://docs.dipy.org/stable/examples_built/fiber_tracking/tracking_introduction_eudx_1.html){target="_blank"}
+    - [K-fold cross-validation for model comparison](https://docs.dipy.org/stable/examples_built/reconstruction/kfold_xval.html){target="_blank"}
 
 ---
 

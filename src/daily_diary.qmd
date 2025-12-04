@@ -91,4 +91,11 @@ title: Daily diary
 
 ## 03.12.2025
 - Meeting with Prof. Esteban
-- Started working on the unseen data prediction notebook (not pushed yet still in POC)
+- Started working on the unseen data prediction notebook (see [commit](https://github.com/MadeInShineA/dipy/commit/55fe6e1b9ea86a1a509b23bba3ffdf8ab77dacf0){target="_blank"})
+
+---
+
+## 04.12.2025
+- Continued working on the unseen data prediction notebook (see [commit](https://github.com/MadeInShineA/dipy/commit/d96029289aa025db037f22727965d47d048d6a2e){target="_blank"} and [notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"})
+- Began the DIPY prediction documentation example (see [commit](https://github.com/MadeInShineA/dipy/commit/f76f786770a72a642d50c752a49348f7cc728b30){target="_blank"})
+- Revised predict function according to DIPY conventions (not pushed yet)

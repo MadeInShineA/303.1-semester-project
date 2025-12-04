@@ -193,5 +193,6 @@ The max operation ensures non-negative signal values.
 
 - [GQI Roundtrip](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}
 - [GQI Cross Voxel](./assets/notebooks/dipy/gqi_cross_voxel_notebook.html){target="_blank"}
+- [GQI Unseen Data](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"}
 
 

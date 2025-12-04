@@ -4,14 +4,14 @@
     "href": "src/sources.html",
     "title": "Sources",
     "section": "",
-    "text": "DIPY website\nDIPY contributing guide\nDIPY developer guide\nTutorials\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking"
+    "text": "DIPY website\nDIPY contributing guide\nDIPY developer guide\nDIPY coding style guideline\nTutorials\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\nK-fold cross-validation for model comparison"
   },
   {
     "objectID": "src/sources.html#dipy",
     "href": "src/sources.html#dipy",
     "title": "Sources",
     "section": "",
-    "text": "DIPY website\nDIPY contributing guide\nDIPY developer guide\nTutorials\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking"
+    "text": "DIPY website\nDIPY contributing guide\nDIPY developer guide\nDIPY coding style guideline\nTutorials\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\nK-fold cross-validation for model comparison"
   },
   {
     "objectID": "src/sources.html#youtube-videos",
@@ -46,7 +46,7 @@
     "href": "src/index.html#project-gantt-diagram",
     "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
     "section": "Project Gantt Diagram",
-    "text": "Project Gantt Diagram\n\n\n\n\n\n\ngantt\n\n    title Semester Project Gantt Diagram\n    dateFormat DD.MM.YYYY\n    axisFormat %d.%m\n\n    section Background\n        Literature review (DWI, GQI, MRI)       :done,         research,       24.11.2025, 2d\n        Study Nipreps book (DWI preprocessing)  :done,         nipreps,        24.11.2025, 3d\n\n    section Development\n        Dev environment setup                   :done,         devenv,         25.11.2025, 1d\n        Study GQI codebase                      :done,         codebase,       25.11.2025, 3d\n        Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d\n        Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d\n        Implement roundtrip voxel prediction test :done,       cross_tests,    01.12.2025, 2d\n        Create unseen data prediction notebook  :active,       unseen_data,    03.12.2025, 2d\n        Add the GQI predict example to dipy doc :active,       predict_example,04.12.2025, 09.12.2025\n        Create prediction_kernel tests          :              prediction_kernel ,07.12.2025, 2d\n\n      \n        \n\n    section Milestones & &lt;br&gt;Deliverables\n        Prof. Esteban – Kickoff meeting         :done,         milestone,      25.11.2025, 0d\n        Prof. Esteban – Progress check-in       :done,         milestone,      27.11.2025, 0d\n        Create Gantt diagram                    :done,         gantt,          28.11.2025, 1d\n        Design impact slide                     :done,         impact,         28.11.2025, 1d\n        Draft report outline                    :done,         r_draft,        01.12.2025, 1d\n        Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d\n        Create presentation dwi slide           :              p_draft,        06.12.2025, 09.12.2025 \n        Prof. Esteban - Third progress check-in :              milestone,      09.12.2025, 0d\n        Code and documentation handout          :              milestone,      16.12.2025, 0d\n        Final presentation                      :              milestone,      18.12.2025, 0d"
+    "text": "Project Gantt Diagram\n\n\n\n\n\n\ngantt\n\n    title Semester Project Gantt Diagram\n    dateFormat DD.MM.YYYY\n    axisFormat %d.%m\n\n    section Background\n        Literature review (DWI, GQI, MRI)       :done,         research,       24.11.2025, 2d\n        Study Nipreps book (DWI preprocessing)  :done,         nipreps,        24.11.2025, 3d\n\n    section Development\n        Dev environment setup                   :done,         devenv,         25.11.2025, 1d\n        Study GQI codebase                      :done,         codebase,       25.11.2025, 3d\n        Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d\n        Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d\n        Implement roundtrip voxel prediction test :done,       cross_tests,    01.12.2025, 2d\n        Create unseen data prediction notebook  :active,       unseen_data,    03.12.2025, 4d\n        Add the GQI predict example to dipy doc :active,       predict_example,04.12.2025, 09.12.2025\n        Create prediction_kernel tests          :              prediction_kernel ,07.12.2025, 2d\n\n      \n        \n\n    section Milestones & &lt;br&gt;Deliverables\n        Prof. Esteban – Kickoff meeting         :done,         milestone,      25.11.2025, 0d\n        Prof. Esteban – Progress check-in       :done,         milestone,      27.11.2025, 0d\n        Create Gantt diagram                    :done,         gantt,          28.11.2025, 1d\n        Design impact slide                     :done,         impact,         28.11.2025, 1d\n        Draft report outline                    :done,         r_draft,        01.12.2025, 1d\n        Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d\n        Create presentation dwi slide           :              p_draft,        06.12.2025, 09.12.2025 \n        Prof. Esteban - Third progress check-in :              milestone,      09.12.2025, 0d\n        Code and documentation handout          :              milestone,      16.12.2025, 0d\n        Final presentation                      :              milestone,      18.12.2025, 0d"
   },
   {
     "objectID": "src/index.html#documents",
@@ -116,7 +116,7 @@
     "href": "src/report.html#resources",
     "title": "Implementation Report: Predict Function",
     "section": "8 Resources",
-    "text": "8 Resources\n\n8.1 DIPY tutorial repository notebooks\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\n8.2 DIPY repository notebooks\n\nGQI Roundtrip\nGQI Cross Voxel"
+    "text": "8 Resources\n\n8.1 DIPY tutorial repository notebooks\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\n8.2 DIPY repository notebooks\n\nGQI Roundtrip\nGQI Cross Voxel\nGQI Unseen Data"
   },
   {
     "objectID": "src/daily_diary.html",
@@ -179,6 +179,13 @@
     "href": "src/daily_diary.html#section-7",
     "title": "Daily diary",
     "section": "03.12.2025",
-    "text": "03.12.2025\n\nMeeting with Prof. Esteban\nStarted working on the unseen data prediction notebook (not pushed yet still in POC)"
+    "text": "03.12.2025\n\nMeeting with Prof. Esteban\nStarted working on the unseen data prediction notebook (see commit)"
+  },
+  {
+    "objectID": "src/daily_diary.html#section-8",
+    "href": "src/daily_diary.html#section-8",
+    "title": "Daily diary",
+    "section": "04.12.2025",
+    "text": "04.12.2025\n\nContinued working on the unseen data prediction notebook (see commit and notebook)\nBegan the DIPY prediction documentation example (see commit)\nRevised predict function according to DIPY conventions (not pushed yet)"
   }
 ]
