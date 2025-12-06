@@ -87,10 +87,13 @@ The `prediction_kernel` function computes the Moore-Penrose pseudo-inverse of th
 ```Python
 def prediction_kernel(gtab, param_lambda, sphere, method="standard"):
     # K.shape = (n_gradients, n_vertices)
-    INVERSE_LAMBDA = 1e-6
     K = gqi_kernel(gtab, param_lambda, sphere, method=method)
+
+    # GTG.shape = (n_vertices, n_vertices)
     GtG = K.T @ K
     identity = np.eye(GtG.shape[0])
+
+    # K_plus.shape = (n_vertices, n_gradients)
     return np.linalg.inv(GtG + INVERSE_LAMBDA * identity) @ K.T
 ```
 
@@ -131,28 +134,39 @@ The `predict` function reconstructs diffusion signals from the fitted signal dat
 - **Operation**: Computes $ODF = model.kernel \cdot data$, then predicted = $ODF \cdot K^{+}$ where $K^{+}$ is provided by `prediction_kernel`. Handles data reshaping for matrix operations and ensures non-negative outputs by clamping values.
 ```Python
 def predict(self, gtab, *, S0=None):
-  K_plus = prediction_kernel(
-    gtab,
-    self.model.Lambda,
-    self.model.sphere,
-    self.model.method,
-  )
+    # K_plus.shape = (n_vertices, n_gradients)
+    K_plus = prediction_kernel(
+        gtab,
+        self.model.Lambda,
+        self.model.sphere,
+        self.model.method,
+    )
 
-  # Handle both 1D (single voxel) and multi-dimensional data
-  if self.data.ndim == 1:
-    # Single voxel case
-    ODF = self.model.kernel @ self.data
-    predicted = ODF @ K_plus
-  else:
-    # Multi-voxel case - reshape for matrix multiplication
-    original_shape = self.data.shape
-    data_2d = self.data.reshape(-1, original_shape[-1])
-    ODF_2d = self.model.kernel @ data_2d.T  # shape (n_vertices, n_voxels)
-    predicted_2d = ODF_2d.T @ K_plus  # shape (n_voxels, n_gradients)
-    predicted = predicted_2d.reshape(original_shape[:-1] + (K_plus.shape[1],))
+    # Handle both 1D (single voxel) and multi-dimensional data
+    if self.data.ndim == 1:
+        # Single voxel: data = (self.model.n_gradients,)
 
-  # Clamp to non-negative values
-  return np.maximum(predicted, 0)
+        # ODF.shape = (n_vertices, )
+        ODF = self.model.kernel @ self.data
+
+        # predicted.shape = (n_gradients, )
+        predicted = ODF @ K_plus
+    else:
+        # Multi-voxel: data = (..., self.model.n_gradients)
+        original_shape = self.data.shape
+        data_2d = self.data.reshape(-1, original_shape[-1])
+
+        # ODF_2d.shape = (n_voxels, n_vertices)
+        ODF_2d = data_2d @ self.model.kernel.T
+
+        # predicted_2d.shape = (n_voxels, n_gradients)
+        predicted_2d = ODF_2d @ K_plus
+
+        # predicted.shape = (..., n_gradients)
+        predicted = predicted_2d.reshape(original_shape[:-1] + (K_plus.shape[1],))
+
+    # Clamp to non-negative values
+    return np.maximum(predicted, 0)
 ```
 
 

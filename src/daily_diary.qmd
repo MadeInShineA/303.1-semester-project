@@ -99,3 +99,12 @@ title: Daily diary
 - Continued working on the unseen data prediction notebook (see [commit](https://github.com/MadeInShineA/dipy/commit/d96029289aa025db037f22727965d47d048d6a2e){target="_blank"} and [notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"})
 - Began the DIPY prediction documentation example (see [commit](https://github.com/MadeInShineA/dipy/commit/f76f786770a72a642d50c752a49348f7cc728b30){target="_blank"})
 - Revised predict function according to DIPY conventions (not pushed yet)
+
+---
+
+## 06.12.2025
+
+- Added brain mask + interceptor + b0 volumes separation to gqi_inseen_data_notebook (see [commit](https://github.com/MadeInShineA/dipy/commit/d39f4215e5cd6348913934a00e791d25f1424c92){target="_blank"} and [notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"})
+- Commented the shapes of the GeneralizedQSamplingFit predict and prediction_kernel functions (see [commit](https://github.com/MadeInShineA/dipy/commit/e78aca2e844177900aeada7ee3960f4a0cca51f4){target="_blank"})
+- Optimized the predict multi voxel case a bit (see [commit](https://github.com/MadeInShineA/dipy/commit/4d6cb28cfe90938f5a2a0797abd4d3b64441f845){target="_blank"})
+- Updated the [report](./report.qmd){target="_blank"}
