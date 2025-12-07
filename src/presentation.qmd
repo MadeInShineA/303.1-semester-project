@@ -19,13 +19,64 @@ Diffusion Weighted Imaging (DWI) is an MRI technique that measures the diffusion
 - **Principle**: Uses magnetic field gradients to sensitize the MRI signal to water diffusion
 - **Key parameters**: b-values and b-vectors
 
-# DWI schema
-```{mermaid}
-flowchart TD
-    A[Magnetic Field] --> B[Apply Diffusion Gradients with b-values and b-vectors]
-    B --> C[Water Molecules Move Randomly]
-    C --> D[Signal Loss Proportional to Diffusion]
-    D --> E[DWI Image Shows Tissue Microstructure]
+
+# DWI Pipeline
+```{dot}
+//| label: fig-dwi-pipeline
+//| fig-cap: "Overview of the DWI Pipeline."
+digraph DWI_Pipeline {
+  rankdir=LR;
+  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
+  edge [fontsize=10];
+
+  subgraph cluster_acq {
+      label="Acquisition";
+      style=filled;
+      color=lightblue;
+      MRI [label="MRI\nScanner"];
+      Params [label="b-values &\nb-vectors"];
+      Gradients [label="Apply\nDiffusion\nGradients"];
+      Signal [label="Signal Images"]
+      MRI -> Gradients;
+      Params -> Gradients;
+      Gradients -> Signal;
+  }
+
+  subgraph cluster_prep {
+      label="Preprocessing";
+      style=filled;
+      color=lightgreen;
+      Eddy [label="Eddy Current\nCorrection"];
+      Motion [label="Motion\nCorrection"];
+      Denoise [label="Denoised\n Signal Images"];
+      Signal -> Eddy -> Motion -> Denoise;
+  }
+
+  subgraph cluster_rec {
+      label="Reconstruction";
+      style=filled;
+      color=lightsalmon;
+      DTI [label="DTI"];
+      CSD [label="CSD"];
+      GQI [label="GQI", fillcolor=yellow, shape=box];
+      Denoise -> DTI;
+      Denoise -> CSD;
+      Denoise -> GQI;
+  }
+
+  subgraph cluster_ana {
+      label="Analysis";
+      style=filled;
+      color=lightcoral;
+      Tractography [label="Tractography"];
+      FA [label="FA\nMaps"];
+      ODF [label="ODF\nVisualization"];
+      DTI -> FA;
+      CSD -> Tractography;
+      GQI -> Tractography;
+      Tractography -> ODF;
+  }
+}
 ```
 
 # What is my project about?

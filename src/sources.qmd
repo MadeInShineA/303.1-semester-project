@@ -33,4 +33,5 @@ title: "Sources"
   - [Prof. Esteban DIPY fork](https://github.com/oesteban/dipy/tree/enh/gqi-predict){target="_blank"}
   - [Marimo website](https://marimo.io/){target="_blank"}
   - [Quarto website](https://quarto.org/){target="_blank"}
+  - [Graphviz website](https://graphviz.org/){target="_blank"}
 
