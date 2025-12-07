@@ -341,6 +341,7 @@ window.Quarto = {
   <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">03.12.2025</a></li>
   <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">04.12.2025</a></li>
   <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">06.12.2025</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">07.12.2025</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/daily_diary.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -505,6 +506,20 @@ window.Quarto = {
 <li>Commented the shapes of the GeneralizedQSamplingFit predict and prediction_kernel functions (see <a href="https://github.com/MadeInShineA/dipy/commit/e78aca2e844177900aeada7ee3960f4a0cca51f4" target="_blank">commit</a>)</li>
 <li>Optimized the predict multi voxel case a bit (see <a href="https://github.com/MadeInShineA/dipy/commit/4d6cb28cfe90938f5a2a0797abd4d3b64441f845" target="_blank">commit</a>)</li>
 <li>Updated the <a href="../src/report.html" target="_blank">report</a></li>
+</ul>
+<hr>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">07.12.2025</h2>
+<ul>
+<li>Optimized GeneralizedQSamplingFit prediction_kernel function + Added prediction_kernel test which tests: (see <a href="https://github.com/MadeInShineA/dipy/commit/c6124414897759568ceb3e936fae93e0480e9a72" target="_blank">commit</a>)
+<ul>
+<li>Correct output shape</li>
+<li>K @ K_plus @ K ≈ K</li>
+<li>K @ K_plus is symmetric</li>
+<li>K_plus @ K is symmetric</li>
+</ul></li>
+<li>Made GeneralizedQSamplingFit predict function faster by fusing kernels therefore avoiding the explicit ODF calculation (see <a href="https://github.com/MadeInShineA/dipy/commit/2ef19a5a0e138bdc210821571c98afc43977f531" target="_blank">commit</a>)</li>
 </ul>
 
 

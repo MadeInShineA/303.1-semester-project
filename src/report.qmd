@@ -74,38 +74,40 @@ $$
 Where $H$ is the squared radial component function.
 
 ### The `prediction_kernel` function
-The `prediction_kernel` function computes the Moore-Penrose pseudo-inverse of the GQI kernel, enabling signal reconstruction from orientation distribution functions (ODFs) in the DIPY convention.
+The `prediction_kernel` function computes the Tikhonov-regularized Moore-Penrose pseudo-inverse of the GQI kernel, enabling signal reconstruction from orientation distribution functions (ODFs) in the DIPY convention.
 
-- **Purpose**: Generates the pseudo-inverse kernel for solving S from $ODF = S \cdot K$, using regularization for numerical stability.
+- **Purpose**: Generates the Tikhonov-regularized pseudo-inverse kernel for solving S from $ODF = S \cdot K$, using regularization for numerical stability.
 - **Key Parameters**:
   - `gtab`: GradientTable for the prediction.
-  - `param_lambda`: Regularization parameter.
+  - `param_lambda`: `gqi_kernel` regularization parameter.
   - `sphere`: Spherical grid.
   - `method`: GQI method.
-- **Operation**: Computes the GQI kernel `K`, forms `K.T @ K`, adds regularization, inverts the matrix, and multiplies by `K.T` to produce the Moore-Penrose pseudo-inverse kernel.
+- **Operation**: Computes the GQI kernel `K`, forms `K @ K.T`, adds regularization, inverts the matrix, and multiplies by `K.T` to produce the Moore-Penrose pseudo-inverse kernel.
 
 ```Python
 def prediction_kernel(gtab, param_lambda, sphere, method="standard"):
     # K.shape = (n_gradients, n_vertices)
     K = gqi_kernel(gtab, param_lambda, sphere, method=method)
 
-    # GTG.shape = (n_vertices, n_vertices)
-    GtG = K.T @ K
+    # GTG.shape = (n_gradients, n_gradients)
+    GtG = K @ K.T
     identity = np.eye(GtG.shape[0])
 
     # K_plus.shape = (n_vertices, n_gradients)
-    return np.linalg.inv(GtG + INVERSE_LAMBDA * identity) @ K.T
+    return K.T @ np.linalg.inv(GtG + INVERSE_LAMBDA * identity)
 ```
 
 Mathematically, the prediction kernel $K^{+}$ (the pseudo-inverse) is computed as:
 $$
-K^{+} = (K^T K + \lambda I)^{-1} K^T
+K^{+} = K^T (K K^T + \lambda I)^{-1}
 $$
 Where:
 
-  - $K$ is the GQI kernel from `gqi_kernel`
-  - $\lambda$ is the regularization parameter (`INVERSE_LAMBDA`)
-  - $I$ is the identity matrix.
+   - $K$ is the GQI kernel from `gqi_kernel`
+   - $\lambda$ is the regularization parameter (`INVERSE_LAMBDA`)
+   - $I$ is the identity matrix.
+
+The Tikhonov regularization term ($\lambda I$) is added to improve numerical stability and prevent overfitting. The plain Moore-Penrose pseudo-inverse, computed as $K^T (K K^T)^{-1}$, can be unstable for ill-conditioned matrices, amplifying noise in the diffusion signals. Regularization provides a smoother, more robust solution by balancing fidelity to the data with stability.
 
 
 ## The `predict` function and it's implementation
@@ -120,18 +122,18 @@ The target predicted signal is given by the following relationship
   \end{alignat*}
   $$
 
-Where $K^{+}$ is the Moore-Penrose pseudo inverse of the GQI kernel $K$.
+Where $K^{+}$ is the Tikhonov-regularised Moore-Penrose pseudo-inverse of the GQI kernel $K$.
 
-Note that the Moore-Penrose pseudo inverse is needed since the GQI kernel $K$'s dimensions are $(n_\mathrm{gradients}, n_\mathrm{vertices})$, which means it's (most of the time) not a square matrix and therefore not having a true inverse.
+Note that the pseudo-inverse is needed since the GQI kernel $K$'s dimensions are $(n_\mathrm{gradients}, n_\mathrm{vertices})$, which means it's (most of the time) not a square matrix and therefore not having a true inverse.
 
 
-The `predict` function reconstructs diffusion signals from the fitted signal data by first computing the ODF internally and then applying the pseudo inverse kernel.
+The `predict` function reconstructs diffusion signals from the fitted signal data by first computing the ODF internally and then applying the pseudo-inverse kernel.
 
 - **Purpose**: Predicts diffusion-weighted signals from fitted data, supporting both single-voxel and multi-voxel data.
 - **Key Parameters**:
   - `gtab`: GradientTable for which to predict signals.
   - `S0`: Optional baseline signal (not used in this implementation).
-- **Operation**: Computes $ODF = model.kernel \cdot data$, then predicted = $ODF \cdot K^{+}$ where $K^{+}$ is provided by `prediction_kernel`. Handles data reshaping for matrix operations and ensures non-negative outputs by clamping values.
+- **Operation**: Fuses the model kernel and prediction kernel to avoid explicit $ODF$ computation: `combined_kernel` = $K_\mathrm{model}^T \cdot K^+$, then `predicted = data @ combined_kernel`. Handles data reshaping for matrix operations and ensures non-negative outputs by clamping values.
 ```Python
 def predict(self, gtab, *, S0=None):
     # K_plus.shape = (n_vertices, n_gradients)
@@ -142,28 +144,28 @@ def predict(self, gtab, *, S0=None):
         self.model.method,
     )
 
+    # Fuse kernel and prediction kernel to avoid explicit ODF computation:
+    # combined_kernel.shape = (n_gradients_original, n_gradients)
+    combined_kernel = self.model.kernel.T @ K_plus
+
     # Handle both 1D (single voxel) and multi-dimensional data
     if self.data.ndim == 1:
         # Single voxel: data = (self.model.n_gradients,)
 
-        # ODF.shape = (n_vertices, )
-        ODF = self.model.kernel @ self.data
-
         # predicted.shape = (n_gradients, )
-        predicted = ODF @ K_plus
+        predicted = self.data @ combined_kernel
     else:
         # Multi-voxel: data = (..., self.model.n_gradients)
         original_shape = self.data.shape
         data_2d = self.data.reshape(-1, original_shape[-1])
 
-        # ODF_2d.shape = (n_voxels, n_vertices)
-        ODF_2d = data_2d @ self.model.kernel.T
-
         # predicted_2d.shape = (n_voxels, n_gradients)
-        predicted_2d = ODF_2d @ K_plus
+        predicted_2d = data_2d @ combined_kernel
 
         # predicted.shape = (..., n_gradients)
-        predicted = predicted_2d.reshape(original_shape[:-1] + (K_plus.shape[1],))
+        predicted = predicted_2d.reshape(
+            original_shape[:-1] + (combined_kernel.shape[1],)
+        )
 
     # Clamp to non-negative values
     return np.maximum(predicted, 0)
@@ -179,14 +181,18 @@ Where:
 - $\mathrm{ODF} = K_\mathrm{model} \cdot \mathbf{S}_\mathrm{data}$ is the ODF computed from the fitted signal data
 - $K^{+}$ is the pseudo-inverse kernel from `prediction_kernel`
 
+Equivalently, this can be computed directly as $\mathbf{S}_\mathrm{pred} = \max(0, \mathbf{S}_\mathrm{data} \cdot (K_\mathrm{model}^T \cdot K^{+}))$ to avoid intermediate ODF calculation for efficiency.
+
 The max operation ensures non-negative signal values.
 
 
 ## Testing Methodology
 
-### Round trip testing
+### `prediction_kernel` function tests
 
-### Cross validation testing
+### Basic `predict` function tests
+
+### Round trip `predict` function tests
 
 
 ## Capabilities and Applications

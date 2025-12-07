@@ -108,3 +108,13 @@ title: Daily diary
 - Commented the shapes of the GeneralizedQSamplingFit predict and prediction_kernel functions (see [commit](https://github.com/MadeInShineA/dipy/commit/e78aca2e844177900aeada7ee3960f4a0cca51f4){target="_blank"})
 - Optimized the predict multi voxel case a bit (see [commit](https://github.com/MadeInShineA/dipy/commit/4d6cb28cfe90938f5a2a0797abd4d3b64441f845){target="_blank"})
 - Updated the [report](./report.qmd){target="_blank"}
+
+---
+
+## 07.12.2025
+- Optimized GeneralizedQSamplingFit prediction_kernel function + Added prediction_kernel test which tests: (see [commit](https://github.com/MadeInShineA/dipy/commit/c6124414897759568ceb3e936fae93e0480e9a72){target="_blank"})
+  - Correct output shape
+  - K @ K_plus @ K ≈ K
+  - K @ K_plus is symmetric
+  - K_plus @ K is symmetric
+- Made GeneralizedQSamplingFit predict function faster by fusing kernels therefore avoiding the explicit ODF calculation (see [commit](https://github.com/MadeInShineA/dipy/commit/2ef19a5a0e138bdc210821571c98afc43977f531){target="_blank"})

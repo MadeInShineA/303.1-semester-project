@@ -12,6 +12,22 @@ format:
     footer: '<a href="../index.html" style="color: inherit; text-decoration: none;">Home</a> | 303.1 Semester Project Presentation | © 2025'
 ---
 
+# What is DWI ?
+
+Diffusion Weighted Imaging (DWI) is an MRI technique that measures the diffusion of water molecules in biological tissues.
+
+- **Principle**: Uses magnetic field gradients to sensitize the MRI signal to water diffusion
+- **Key parameters**: b-values and b-vectors
+
+# DWI schema
+```{mermaid}
+flowchart TD
+    A[Magnetic Field] --> B[Apply Diffusion Gradients with b-values and b-vectors]
+    B --> C[Water Molecules Move Randomly]
+    C --> D[Signal Loss Proportional to Diffusion]
+    D --> E[DWI Image Shows Tissue Microstructure]
+```
+
 # What is my project about?
 
   - Contributing to [DIPY](https://dipy.org/)

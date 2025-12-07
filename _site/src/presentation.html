@@ -120,6 +120,9 @@
       margin-right: 0; 
     }
   </style>
+  <script src="../site_libs/quarto-diagram/mermaid.min.js"></script>
+  <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
+  <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -132,6 +135,35 @@
 </div>
 
 </section>
+<section id="what-is-dwi" class="title-slide slide level1 center">
+<h1>What is DWI ?</h1>
+<p>Diffusion Weighted Imaging (DWI) is an MRI technique that measures the diffusion of water molecules in biological tissues.</p>
+<ul>
+<li><strong>Principle</strong>: Uses magnetic field gradients to sensitize the MRI signal to water diffusion</li>
+<li><strong>Key parameters</strong>: b-values and b-vectors</li>
+</ul>
+</section>
+
+<section id="dwi-schema" class="title-slide slide level1 center">
+<h1>DWI schema</h1>
+<div class="cell" data-reveal="true" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class=""><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TD
+    A[Magnetic Field] --&gt; B[Apply Diffusion Gradients with b-values and b-vectors]
+    B --&gt; C[Water Molecules Move Randomly]
+    C --&gt; D[Signal Loss Proportional to Diffusion]
+    D --&gt; E[DWI Image Shows Tissue Microstructure]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
+</section>
+
 <section id="what-is-my-project-about" class="title-slide slide level1 center">
 <h1>What is my project about?</h1>
 <ul>
