@@ -118,3 +118,8 @@ title: Daily diary
   - K @ K_plus is symmetric
   - K_plus @ K is symmetric
 - Made GeneralizedQSamplingFit predict function faster by fusing kernels therefore avoiding the explicit ODF calculation (see [commit](https://github.com/MadeInShineA/dipy/commit/2ef19a5a0e138bdc210821571c98afc43977f531){target="_blank"})
+
+---
+
+## 08.12.2025
+- Continued the DIPY prediction documentation example (see [commit](https://github.com/MadeInShineA/dipy/commit/4a19e6e0a55e97cd6f6637aa7173cbccfa6f6e47){target="_blank"})
