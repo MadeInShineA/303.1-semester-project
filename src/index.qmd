@@ -34,9 +34,12 @@ gantt
         Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d
         Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d
         Implement roundtrip voxel prediction test :done,       cross_tests,    01.12.2025, 2d
-        Create unseen data prediction notebook  :done,       unseen_data,    03.12.2025, 4d
-        Add the GQI predict example to dipy doc :active,       predict_example,04.12.2025, 09.12.2025
-        Create prediction_kernel tests          :done,              prediction_kernel ,07.12.2025, 2d
+        Create unseen data prediction notebook  :done,         unseen_data,    03.12.2025, 4d
+        Add the GQI predict example to dipy doc :active,       predict_example,04.12.2025, 10.12.2025
+        Create prediction_kernel tests          :done,         prediction_kernel ,07.12.2025, 2d
+        Double check the existing tests         :active,       dc_test,        09.12.2025, 1d
+        Double check the existing notebooks     :active,       dc_notebooks,   09.12.2025, 1d
+        Coordinate with DIPY experts            :              coor,           10.12.2025, 12.12.2025
 
       
         
@@ -49,9 +52,10 @@ gantt
         Draft report outline                    :done,         r_draft,        01.12.2025, 1d
         Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d
         Create presentation dwi slide           :done,         p_draft,        06.12.2025, 09.12.2025 
-        Prof. Esteban - Third progress check-in :              milestone,      09.12.2025, 0d
-        Code and documentation handout          :              milestone,      16.12.2025, 0d
-        Final presentation                      :              milestone,      18.12.2025, 0d
+        Prof. Esteban - Third progress check-in :done,         milestone,      09.12.2025, 0d
+        PR on Prof. Esteban repository          :crit,         milestone,      10.12.2025, 0d
+        Code and documentation handout          :crit,         milestone,      16.12.2025, 0d
+        Final presentation                      :crit,         milestone,      18.12.2025, 0d
         
 ```
 </div>
