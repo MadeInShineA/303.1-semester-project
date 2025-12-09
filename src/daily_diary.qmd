@@ -123,3 +123,10 @@ title: Daily diary
 
 ## 08.12.2025
 - Continued the DIPY prediction documentation example (see [commit](https://github.com/MadeInShineA/dipy/commit/4a19e6e0a55e97cd6f6637aa7173cbccfa6f6e47){target="_blank"})
+
+---
+
+## 09.12.2025
+- Meeting with Prof. Esteban
+- Removed the gqi2 method and b0 volumes from the prediction tests (see [commit](https://github.com/MadeInShineA/dipy/commit/4ac655d547de62dadbfb4c22335788d4f3d6a216){target="_blank"})
+- Removed gqi_cross_voxel_notebook + Removed b0 values from train set in gqi_roundtrip_notebook + Cleaned gqi_unseen_data_notebook (see [commit](https://github.com/MadeInShineA/dipy/commit/73c39b49fb5154f3a5b93e21e6f20547fb81c2ae){target="_blank"})
