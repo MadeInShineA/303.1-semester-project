@@ -214,4 +214,5 @@ The max operation ensures non-negative signal values.
 - [GQI Roundtrip](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}
 - [GQI Unseen Data](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"}
 
-
+### DIPY examples
+- [Predict unseen data with Generalized Q-Sampling Imaging](./assets/examples/reconst_gqi_predict.html){target=_blank}

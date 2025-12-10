@@ -116,7 +116,7 @@
     "href": "src/report.html#resources",
     "title": "Implementation Report: Predict Function",
     "section": "8 Resources",
-    "text": "8 Resources\n\n8.1 DIPY tutorial repository notebooks\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\n8.2 DIPY repository notebooks\n\nGQI Roundtrip\nGQI Unseen Data"
+    "text": "8 Resources\n\n8.1 DIPY tutorial repository notebooks\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\n8.2 DIPY repository notebooks\n\nGQI Roundtrip\nGQI Unseen Data\n\n\n\n8.3 DIPY examples\n\nPredict unseen data with Generalized Q-Sampling Imaging"
   },
   {
     "objectID": "src/daily_diary.html",
@@ -215,5 +215,12 @@
     "title": "Daily diary",
     "section": "09.12.2025",
     "text": "09.12.2025\n\nMeeting with Prof. Esteban\nRemoved the gqi2 method and b0 volumes from the prediction tests (see commit)\nRemoved gqi_cross_voxel_notebook + Removed b0 values from train set in gqi_roundtrip_notebook + Cleaned gqi_unseen_data_notebook (see commit)"
+  },
+  {
+    "objectID": "src/daily_diary.html#section-13",
+    "href": "src/daily_diary.html#section-13",
+    "title": "Daily diary",
+    "section": "10.11.2025",
+    "text": "10.11.2025\n\nCleaned the gqi_unseen_data_notebook (see commit)\nContinued the DIPY prediction documentation example (see commit, see example)"
   }
 ]
