@@ -6,7 +6,9 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.26">
 
   <title>303.1 Semester Project – 303.1 Semester Project Presentation</title>
@@ -141,44 +143,387 @@
 </ul>
 </section>
 
-<section id="dwi-pipeline" class="title-slide slide level1 center">
-<h1>DWI Pipeline</h1>
+<section id="whats-dwi" class="title-slide slide level1 center">
+<h1>What’s DWI ?</h1>
+<video id="video_shortcode_videojs_video1" height="600" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="./assets/presentation/dMRI-signal-movie.mp4"></video>
+</section>
+
+<section id="dwi-pipeline-acquisition" class="title-slide slide level1 center">
+<h1>DWI Pipeline: Acquisition</h1>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
-<div id="fig-dwi-pipeline" class="quarto-float quarto-figure quarto-figure-center">
+<div id="fig-dwi-pipeline-acquisition" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-dwi-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div aria-describedby="fig-dwi-pipeline-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div>
-<svg width="960" height="480" viewbox="0.00 0.00 1133.45 214.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 210)">
+<svg width="960" height="480" viewbox="0.00 0.00 362.40 173.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 169)">
 <title>DWI_Pipeline</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-210 1129.45,-210 1129.45,4 -4,4"></polygon>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-169 358.4,-169 358.4,4 -4,4"></polygon>
 <g id="clust1" class="cluster">
 <title>cluster_acq</title>
-<polygon fill="lightblue" stroke="lightblue" points="8,-49 8,-198 346.4,-198 346.4,-49 8,-49"></polygon>
-<text text-anchor="middle" x="177.2" y="-181.4" font-family="Times,serif" font-size="14.00">Acquisition</text>
-</g>
-<g id="clust2" class="cluster">
-<title>cluster_prep</title>
-<polygon fill="lightgreen" stroke="lightgreen" points="366.4,-57 366.4,-143 743.39,-143 743.39,-57 366.4,-57"></polygon>
-<text text-anchor="middle" x="554.89" y="-126.4" font-family="Times,serif" font-size="14.00">Preprocessing</text>
-</g>
-<g id="clust3" class="cluster">
-<title>cluster_rec</title>
-<polygon fill="lightsalmon" stroke="lightsalmon" points="763.39,-8 763.39,-193 863.39,-193 863.39,-8 763.39,-8"></polygon>
-<text text-anchor="middle" x="813.39" y="-176.4" font-family="Times,serif" font-size="14.00">Reconstruction</text>
-</g>
-<g id="clust4" class="cluster">
-<title>cluster_ana</title>
-<polygon fill="lightcoral" stroke="lightcoral" points="883.39,-57 883.39,-197 1117.45,-197 1117.45,-57 883.39,-57"></polygon>
-<text text-anchor="middle" x="1000.42" y="-180.4" font-family="Times,serif" font-size="14.00">Analysis</text>
+<polygon fill="lightblue" stroke="lightblue" points="8,-8 8,-157 346.4,-157 346.4,-8 8,-8"></polygon>
+<text text-anchor="middle" x="177.2" y="-140.4" font-family="Times,serif" font-size="14.00">Acquisition</text>
 </g>
 <!-- MRI -->
 <g id="node1" class="node">
 <title>MRI</title>
-<ellipse fill="lightblue" stroke="black" cx="58.54" cy="-143" rx="34.18" ry="22.76"></ellipse>
-<text text-anchor="middle" x="58.54" y="-146" font-family="Times,serif" font-size="10.00">MRI</text>
-<text text-anchor="middle" x="58.54" y="-134" font-family="Times,serif" font-size="10.00">Scanner</text>
+<ellipse fill="lightblue" stroke="black" cx="58.54" cy="-102" rx="34.18" ry="22.76"></ellipse>
+<text text-anchor="middle" x="58.54" y="-105" font-family="Times,serif" font-size="10.00">MRI</text>
+<text text-anchor="middle" x="58.54" y="-93" font-family="Times,serif" font-size="10.00">Scanner</text>
+</g>
+<!-- Gradients -->
+<g id="node3" class="node">
+<title>Gradients</title>
+<ellipse fill="lightblue" stroke="black" cx="175.88" cy="-70" rx="38.61" ry="31.23"></ellipse>
+<text text-anchor="middle" x="175.88" y="-79" font-family="Times,serif" font-size="10.00">Apply</text>
+<text text-anchor="middle" x="175.88" y="-67" font-family="Times,serif" font-size="10.00">Diffusion</text>
+<text text-anchor="middle" x="175.88" y="-55" font-family="Times,serif" font-size="10.00">Gradients</text>
+</g>
+<!-- MRI&#45;&gt;Gradients -->
+<g id="edge1" class="edge">
+<title>MRI-&gt;Gradients</title>
+<path fill="none" stroke="black" d="M90.14,-93.51C102.06,-90.2 115.96,-86.35 129.02,-82.72"></path>
+<polygon fill="black" stroke="black" points="130.1,-86.06 138.8,-80.01 128.23,-79.31 130.1,-86.06"></polygon>
+</g>
+<!-- Params -->
+<g id="node2" class="node">
+<title>Params</title>
+<ellipse fill="lightblue" stroke="black" cx="58.54" cy="-39" rx="42.57" ry="22.76"></ellipse>
+<text text-anchor="middle" x="58.54" y="-42" font-family="Times,serif" font-size="10.00">b-values &amp;</text>
+<text text-anchor="middle" x="58.54" y="-30" font-family="Times,serif" font-size="10.00">b-vectors</text>
+</g>
+<!-- Params&#45;&gt;Gradients -->
+<g id="edge2" class="edge">
+<title>Params-&gt;Gradients</title>
+<path fill="none" stroke="black" d="M96.98,-49.06C107.15,-51.8 118.28,-54.79 128.86,-57.63"></path>
+<polygon fill="black" stroke="black" points="128.23,-61.09 138.79,-60.3 130.05,-54.33 128.23,-61.09"></polygon>
+</g>
+<!-- Signal -->
+<g id="node4" class="node">
+<title>Signal</title>
+<ellipse fill="lightblue" stroke="black" cx="294.54" cy="-70" rx="43.72" ry="18"></ellipse>
+<text text-anchor="middle" x="294.54" y="-67" font-family="Times,serif" font-size="10.00">Signal Images</text>
+</g>
+<!-- Gradients&#45;&gt;Signal -->
+<g id="edge3" class="edge">
+<title>Gradients-&gt;Signal</title>
+<path fill="none" stroke="black" d="M214.75,-70C222.98,-70 231.82,-70 240.51,-70"></path>
+<polygon fill="black" stroke="black" points="240.59,-73.5 250.59,-70 240.59,-66.5 240.59,-73.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Overview of the DWI Pipeline (Acquisition).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="dwi-pipeline-preprocessing" class="title-slide slide level1 center">
+<h1>DWI Pipeline: Preprocessing</h1>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-dwi-pipeline-preprocessing" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-dwi-pipeline-preprocessing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 524.71 110.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 106)">
+<title>DWI_Pipeline</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-106 520.71,-106 520.71,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_prep</title>
+<polygon fill="lightgreen" stroke="lightgreen" points="8,-8 8,-94 508.71,-94 508.71,-8 8,-8"></polygon>
+<text text-anchor="middle" x="258.36" y="-77.4" font-family="Times,serif" font-size="14.00">Preprocessing</text>
+</g>
+<!-- Signal -->
+<g id="node1" class="node">
+<title>Signal</title>
+<ellipse fill="lightblue" stroke="black" cx="59.86" cy="-39" rx="43.72" ry="18"></ellipse>
+<text text-anchor="middle" x="59.86" y="-36" font-family="Times,serif" font-size="10.00">Signal Images</text>
+</g>
+<!-- Eddy -->
+<g id="node2" class="node">
+<title>Eddy</title>
+<ellipse fill="lightblue" stroke="black" cx="189.32" cy="-39" rx="49.71" ry="22.76"></ellipse>
+<text text-anchor="middle" x="189.32" y="-42" font-family="Times,serif" font-size="10.00">Eddy Current</text>
+<text text-anchor="middle" x="189.32" y="-30" font-family="Times,serif" font-size="10.00">Correction</text>
+</g>
+<!-- Signal&#45;&gt;Eddy -->
+<g id="edge1" class="edge">
+<title>Signal-&gt;Eddy</title>
+<path fill="none" stroke="black" d="M104.01,-39C112.12,-39 120.74,-39 129.24,-39"></path>
+<polygon fill="black" stroke="black" points="129.51,-42.5 139.51,-39 129.51,-35.5 129.51,-42.5"></polygon>
+</g>
+<!-- Motion -->
+<g id="node3" class="node">
+<title>Motion</title>
+<ellipse fill="lightblue" stroke="black" cx="316.48" cy="-39" rx="41.6" ry="22.76"></ellipse>
+<text text-anchor="middle" x="316.48" y="-42" font-family="Times,serif" font-size="10.00">Motion</text>
+<text text-anchor="middle" x="316.48" y="-30" font-family="Times,serif" font-size="10.00">Correction</text>
+</g>
+<!-- Eddy&#45;&gt;Motion -->
+<g id="edge2" class="edge">
+<title>Eddy-&gt;Motion</title>
+<path fill="none" stroke="black" d="M239.07,-39C247.46,-39 256.21,-39 264.65,-39"></path>
+<polygon fill="black" stroke="black" points="264.77,-42.5 274.77,-39 264.77,-35.5 264.77,-42.5"></polygon>
+</g>
+<!-- Denoise -->
+<g id="node4" class="node">
+<title>Denoise</title>
+<ellipse fill="lightblue" stroke="black" cx="447.37" cy="-39" rx="53.18" ry="22.76"></ellipse>
+<text text-anchor="middle" x="447.37" y="-42" font-family="Times,serif" font-size="10.00">Denoised</text>
+<text text-anchor="middle" x="447.37" y="-30" font-family="Times,serif" font-size="10.00"> Signal Images</text>
+</g>
+<!-- Motion&#45;&gt;Denoise -->
+<g id="edge3" class="edge">
+<title>Motion-&gt;Denoise</title>
+<path fill="none" stroke="black" d="M358.26,-39C366.32,-39 374.95,-39 383.54,-39"></path>
+<polygon fill="black" stroke="black" points="383.58,-42.5 393.58,-39 383.58,-35.5 383.58,-42.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-preprocessing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Overview of the DWI Pipeline (Preprocessing).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="dwi-pipeline-reconstruction" class="title-slide slide level1 center">
+<h1>DWI Pipeline: Reconstruction</h1>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-dwi-pipeline-reconstruction" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-dwi-pipeline-reconstruction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 349.51 209.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 205)">
+<title>DWI_Pipeline</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-205 345.51,-205 345.51,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_rec</title>
+<polygon fill="lightsalmon" stroke="lightsalmon" points="8,-8 8,-193 333.51,-193 333.51,-8 8,-8"></polygon>
+<text text-anchor="middle" x="170.76" y="-176.4" font-family="Times,serif" font-size="14.00">Reconstruction</text>
+</g>
+<!-- Denoise -->
+<g id="node1" class="node">
+<title>Denoise</title>
+<ellipse fill="lightblue" stroke="black" cx="69.34" cy="-88" rx="53.18" ry="22.76"></ellipse>
+<text text-anchor="middle" x="69.34" y="-91" font-family="Times,serif" font-size="10.00">Denoised</text>
+<text text-anchor="middle" x="69.34" y="-79" font-family="Times,serif" font-size="10.00"> Signal Images</text>
+</g>
+<!-- DTI -->
+<g id="node2" class="node">
+<title>DTI</title>
+<ellipse fill="lightblue" stroke="black" cx="185.68" cy="-34" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="185.68" y="-31" font-family="Times,serif" font-size="10.00">DTI</text>
+</g>
+<!-- Denoise&#45;&gt;DTI -->
+<g id="edge1" class="edge">
+<title>Denoise-&gt;DTI</title>
+<path fill="none" stroke="black" d="M105.58,-71.36C120.97,-64.09 138.87,-55.64 153.74,-48.61"></path>
+<polygon fill="black" stroke="black" points="155.47,-51.67 163.02,-44.23 152.48,-45.34 155.47,-51.67"></polygon>
+</g>
+<!-- CSD -->
+<g id="node3" class="node">
+<title>CSD</title>
+<ellipse fill="lightblue" stroke="black" cx="185.68" cy="-88" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="185.68" y="-85" font-family="Times,serif" font-size="10.00">CSD</text>
+</g>
+<!-- Denoise&#45;&gt;CSD -->
+<g id="edge2" class="edge">
+<title>Denoise-&gt;CSD</title>
+<path fill="none" stroke="black" d="M122.82,-88C131.48,-88 140.28,-88 148.42,-88"></path>
+<polygon fill="black" stroke="black" points="148.68,-91.5 158.68,-88 148.68,-84.5 148.68,-91.5"></polygon>
+</g>
+<!-- GQI -->
+<g id="node4" class="node">
+<title>GQI</title>
+<polygon fill="yellow" stroke="black" points="212.68,-160 158.68,-160 158.68,-124 212.68,-124 212.68,-160"></polygon>
+<text text-anchor="middle" x="185.68" y="-139" font-family="Times,serif" font-size="10.00">GQI</text>
+</g>
+<!-- Denoise&#45;&gt;GQI -->
+<g id="edge3" class="edge">
+<title>Denoise-&gt;GQI</title>
+<path fill="none" stroke="black" d="M105.58,-104.64C119.44,-111.19 135.33,-118.69 149.21,-125.25"></path>
+<polygon fill="black" stroke="black" points="147.92,-128.51 158.45,-129.61 150.91,-122.18 147.92,-128.51"></polygon>
+</g>
+<!-- Tensors -->
+<g id="node5" class="node">
+<title>Tensors</title>
+<ellipse fill="lightblue" stroke="black" cx="287.1" cy="-39" rx="38.33" ry="22.76"></ellipse>
+<text text-anchor="middle" x="287.1" y="-42" font-family="Times,serif" font-size="10.00">Diffusion</text>
+<text text-anchor="middle" x="287.1" y="-30" font-family="Times,serif" font-size="10.00">Tensors</text>
+</g>
+<!-- DTI&#45;&gt;Tensors -->
+<g id="edge4" class="edge">
+<title>DTI-&gt;Tensors</title>
+<path fill="none" stroke="black" d="M212.8,-35.31C220.66,-35.71 229.54,-36.16 238.33,-36.6"></path>
+<polygon fill="black" stroke="black" points="238.4,-40.11 248.56,-37.11 238.75,-33.11 238.4,-40.11"></polygon>
+</g>
+<!-- ODFs -->
+<g id="node6" class="node">
+<title>ODFs</title>
+<ellipse fill="lightblue" stroke="black" cx="287.1" cy="-120" rx="27" ry="22.76"></ellipse>
+<text text-anchor="middle" x="287.1" y="-123" font-family="Times,serif" font-size="10.00">ODF</text>
+<text text-anchor="middle" x="287.1" y="-111" font-family="Times,serif" font-size="10.00">Data</text>
+</g>
+<!-- CSD&#45;&gt;ODFs -->
+<g id="edge5" class="edge">
+<title>CSD-&gt;ODFs</title>
+<path fill="none" stroke="black" d="M210.24,-95.58C222.72,-99.6 238.26,-104.6 252.03,-109.03"></path>
+<polygon fill="black" stroke="black" points="251.08,-112.4 261.67,-112.14 253.22,-105.74 251.08,-112.4"></polygon>
+</g>
+<!-- GQI&#45;&gt;ODFs -->
+<g id="edge6" class="edge">
+<title>GQI-&gt;ODFs</title>
+<path fill="none" stroke="black" d="M212.8,-136.22C224.4,-133.65 238.22,-130.59 250.72,-127.83"></path>
+<polygon fill="black" stroke="black" points="251.83,-131.17 260.84,-125.59 250.32,-124.33 251.83,-131.17"></polygon>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-reconstruction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Overview of the DWI Pipeline (Reconstruction).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="dwi-pipeline-analysis" class="title-slide slide level1 center">
+<h1>DWI Pipeline: Analysis</h1>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-dwi-pipeline-analysis" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-dwi-pipeline-analysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 370.89 173.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 169)">
+<title>DWI_Pipeline</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-169 366.89,-169 366.89,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_ana</title>
+<polygon fill="lightcoral" stroke="lightcoral" points="8,-8 8,-157 354.89,-157 354.89,-8 8,-8"></polygon>
+<text text-anchor="middle" x="181.44" y="-140.4" font-family="Times,serif" font-size="14.00">Analysis</text>
+</g>
+<!-- Tensors -->
+<g id="node1" class="node">
+<title>Tensors</title>
+<ellipse fill="lightblue" stroke="black" cx="54.42" cy="-102" rx="38.33" ry="22.76"></ellipse>
+<text text-anchor="middle" x="54.42" y="-105" font-family="Times,serif" font-size="10.00">Diffusion</text>
+<text text-anchor="middle" x="54.42" y="-93" font-family="Times,serif" font-size="10.00">Tensors</text>
+</g>
+<!-- FA -->
+<g id="node4" class="node">
+<title>FA</title>
+<ellipse fill="lightblue" stroke="black" cx="170.85" cy="-102" rx="27.05" ry="22.76"></ellipse>
+<text text-anchor="middle" x="170.85" y="-105" font-family="Times,serif" font-size="10.00">FA</text>
+<text text-anchor="middle" x="170.85" y="-93" font-family="Times,serif" font-size="10.00">Maps</text>
+</g>
+<!-- Tensors&#45;&gt;FA -->
+<g id="edge1" class="edge">
+<title>Tensors-&gt;FA</title>
+<path fill="none" stroke="black" d="M92.89,-102C105.82,-102 120.29,-102 133.16,-102"></path>
+<polygon fill="black" stroke="black" points="133.53,-105.5 143.53,-102 133.53,-98.5 133.53,-105.5"></polygon>
+</g>
+<!-- ODFs -->
+<g id="node2" class="node">
+<title>ODFs</title>
+<ellipse fill="lightblue" stroke="black" cx="54.42" cy="-39" rx="27" ry="22.76"></ellipse>
+<text text-anchor="middle" x="54.42" y="-42" font-family="Times,serif" font-size="10.00">ODF</text>
+<text text-anchor="middle" x="54.42" y="-30" font-family="Times,serif" font-size="10.00">Data</text>
+</g>
+<!-- Tractography -->
+<g id="node3" class="node">
+<title>Tractography</title>
+<ellipse fill="lightblue" stroke="black" cx="170.85" cy="-39" rx="42.02" ry="18"></ellipse>
+<text text-anchor="middle" x="170.85" y="-36" font-family="Times,serif" font-size="10.00">Tractography</text>
+</g>
+<!-- ODFs&#45;&gt;Tractography -->
+<g id="edge2" class="edge">
+<title>ODFs-&gt;Tractography</title>
+<path fill="none" stroke="black" d="M81.67,-39C92.6,-39 105.7,-39 118.4,-39"></path>
+<polygon fill="black" stroke="black" points="118.46,-42.5 128.46,-39 118.46,-35.5 118.46,-42.5"></polygon>
+</g>
+<!-- ODF -->
+<g id="node5" class="node">
+<title>ODF</title>
+<ellipse fill="lightblue" stroke="black" cx="297.87" cy="-39" rx="49.03" ry="22.76"></ellipse>
+<text text-anchor="middle" x="297.87" y="-42" font-family="Times,serif" font-size="10.00">ODF</text>
+<text text-anchor="middle" x="297.87" y="-30" font-family="Times,serif" font-size="10.00">Visualization</text>
+</g>
+<!-- Tractography&#45;&gt;ODF -->
+<g id="edge3" class="edge">
+<title>Tractography-&gt;ODF</title>
+<path fill="none" stroke="black" d="M213.13,-39C221.31,-39 230.04,-39 238.66,-39"></path>
+<polygon fill="black" stroke="black" points="238.69,-42.5 248.69,-39 238.69,-35.5 238.69,-42.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-analysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Overview of the DWI Pipeline (Analysis).
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+
+<section id="dwi-pipeline-complete-pipeline" class="title-slide slide level1 center">
+<h1>DWI Pipeline: Complete pipeline</h1>
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-dwi-pipeline-complete" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-dwi-pipeline-complete-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 1216.28 212.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 208)">
+<title>DWI_Pipeline</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-208 1212.28,-208 1212.28,4 -4,4"></polygon>
+<g id="clust3" class="cluster">
+<title>cluster_rec</title>
+<polygon fill="lightsalmon" stroke="lightsalmon" points="620.71,-8 620.71,-193 946.23,-193 946.23,-8 620.71,-8"></polygon>
+<text text-anchor="middle" x="783.47" y="-176.4" font-family="Times,serif" font-size="14.00">Reconstruction</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_prep</title>
+<polygon fill="lightgreen" stroke="lightgreen" points="242.68,-57 242.68,-143 600.71,-143 600.71,-57 242.68,-57"></polygon>
+<text text-anchor="middle" x="421.7" y="-126.4" font-family="Times,serif" font-size="14.00">Preprocessing</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_ana</title>
+<polygon fill="lightcoral" stroke="lightcoral" points="966.23,-10 966.23,-151 1200.28,-151 1200.28,-10 966.23,-10"></polygon>
+<text text-anchor="middle" x="1083.26" y="-134.4" font-family="Times,serif" font-size="14.00">Analysis</text>
+</g>
+<g id="clust1" class="cluster">
+<title>cluster_acq</title>
+<polygon fill="lightblue" stroke="lightblue" points="8,-47 8,-196 222.68,-196 222.68,-47 8,-47"></polygon>
+<text text-anchor="middle" x="115.34" y="-179.4" font-family="Times,serif" font-size="14.00">Acquisition</text>
+</g>
+<!-- MRI -->
+<g id="node1" class="node">
+<title>MRI</title>
+<ellipse fill="lightblue" stroke="black" cx="58.54" cy="-141" rx="34.18" ry="22.76"></ellipse>
+<text text-anchor="middle" x="58.54" y="-144" font-family="Times,serif" font-size="10.00">MRI</text>
+<text text-anchor="middle" x="58.54" y="-132" font-family="Times,serif" font-size="10.00">Scanner</text>
 </g>
 <!-- Gradients -->
 <g id="node3" class="node">
@@ -191,21 +536,21 @@
 <!-- MRI&#45;&gt;Gradients -->
 <g id="edge1" class="edge">
 <title>MRI-&gt;Gradients</title>
-<path fill="none" stroke="black" d="M86.58,-130.1C100.36,-123.53 117.44,-115.39 132.89,-108.02"></path>
-<polygon fill="black" stroke="black" points="134.73,-111.02 142.25,-103.56 131.72,-104.7 134.73,-111.02"></polygon>
+<path fill="none" stroke="black" d="M87.16,-128.31C100.74,-122.07 117.4,-114.41 132.54,-107.45"></path>
+<polygon fill="black" stroke="black" points="134.1,-110.59 141.73,-103.23 131.18,-104.23 134.1,-110.59"></polygon>
 </g>
 <!-- Params -->
 <g id="node2" class="node">
 <title>Params</title>
-<ellipse fill="lightblue" stroke="black" cx="58.54" cy="-80" rx="42.57" ry="22.76"></ellipse>
-<text text-anchor="middle" x="58.54" y="-83" font-family="Times,serif" font-size="10.00">b-values &amp;</text>
-<text text-anchor="middle" x="58.54" y="-71" font-family="Times,serif" font-size="10.00">b-vectors</text>
+<ellipse fill="lightblue" stroke="black" cx="58.54" cy="-78" rx="42.57" ry="22.76"></ellipse>
+<text text-anchor="middle" x="58.54" y="-81" font-family="Times,serif" font-size="10.00">b-values &amp;</text>
+<text text-anchor="middle" x="58.54" y="-69" font-family="Times,serif" font-size="10.00">b-vectors</text>
 </g>
 <!-- Params&#45;&gt;Gradients -->
 <g id="edge2" class="edge">
 <title>Params-&gt;Gradients</title>
-<path fill="none" stroke="black" d="M100.85,-82.87C109.31,-83.45 118.27,-84.07 126.94,-84.68"></path>
-<polygon fill="black" stroke="black" points="126.71,-88.17 136.92,-85.37 127.19,-81.18 126.71,-88.17"></polygon>
+<path fill="none" stroke="black" d="M100.85,-81.58C109.31,-82.32 118.27,-83.09 126.94,-83.84"></path>
+<polygon fill="black" stroke="black" points="126.66,-87.33 136.92,-84.71 127.26,-80.36 126.66,-87.33"></polygon>
 </g>
 <!-- Signal -->
 <g id="node4" class="node">
@@ -261,89 +606,115 @@
 <!-- DTI -->
 <g id="node8" class="node">
 <title>DTI</title>
-<ellipse fill="lightblue" stroke="black" cx="813.39" cy="-142" rx="27" ry="18"></ellipse>
-<text text-anchor="middle" x="813.39" y="-139" font-family="Times,serif" font-size="10.00">DTI</text>
+<ellipse fill="lightblue" stroke="black" cx="798.39" cy="-34" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="798.39" y="-31" font-family="Times,serif" font-size="10.00">DTI</text>
 </g>
 <!-- Denoise&#45;&gt;DTI -->
 <g id="edge7" class="edge">
 <title>Denoise-&gt;DTI</title>
-<path fill="none" stroke="black" d="M720.81,-103.76C739.81,-111.7 762.58,-121.2 780.67,-128.75"></path>
-<polygon fill="black" stroke="black" points="779.6,-132.1 790.18,-132.72 782.3,-125.64 779.6,-132.1"></polygon>
+<path fill="none" stroke="black" d="M718.29,-71.36C733.69,-64.09 751.58,-55.64 766.45,-48.61"></path>
+<polygon fill="black" stroke="black" points="768.19,-51.67 775.73,-44.23 765.2,-45.34 768.19,-51.67"></polygon>
 </g>
 <!-- CSD -->
 <g id="node9" class="node">
 <title>CSD</title>
-<ellipse fill="lightblue" stroke="black" cx="813.39" cy="-88" rx="27" ry="18"></ellipse>
-<text text-anchor="middle" x="813.39" y="-85" font-family="Times,serif" font-size="10.00">CSD</text>
+<ellipse fill="lightblue" stroke="black" cx="798.39" cy="-88" rx="27" ry="18"></ellipse>
+<text text-anchor="middle" x="798.39" y="-85" font-family="Times,serif" font-size="10.00">CSD</text>
 </g>
 <!-- Denoise&#45;&gt;CSD -->
 <g id="edge8" class="edge">
 <title>Denoise-&gt;CSD</title>
-<path fill="none" stroke="black" d="M735.66,-88C749.21,-88 763.5,-88 776.02,-88"></path>
-<polygon fill="black" stroke="black" points="776.06,-91.5 786.06,-88 776.06,-84.5 776.06,-91.5"></polygon>
+<path fill="none" stroke="black" d="M735.54,-88C744.19,-88 752.99,-88 761.13,-88"></path>
+<polygon fill="black" stroke="black" points="761.39,-91.5 771.39,-88 761.39,-84.5 761.39,-91.5"></polygon>
 </g>
 <!-- GQI -->
 <g id="node10" class="node">
 <title>GQI</title>
-<polygon fill="yellow" stroke="black" points="840.39,-52 786.39,-52 786.39,-16 840.39,-16 840.39,-52"></polygon>
-<text text-anchor="middle" x="813.39" y="-31" font-family="Times,serif" font-size="10.00">GQI</text>
+<polygon fill="yellow" stroke="black" points="825.39,-160 771.39,-160 771.39,-124 825.39,-124 825.39,-160"></polygon>
+<text text-anchor="middle" x="798.39" y="-139" font-family="Times,serif" font-size="10.00">GQI</text>
 </g>
 <!-- Denoise&#45;&gt;GQI -->
 <g id="edge9" class="edge">
 <title>Denoise-&gt;GQI</title>
-<path fill="none" stroke="black" d="M720.81,-72.24C738.55,-64.83 759.58,-56.05 777.01,-48.77"></path>
-<polygon fill="black" stroke="black" points="778.4,-51.98 786.28,-44.9 775.71,-45.52 778.4,-51.98"></polygon>
+<path fill="none" stroke="black" d="M718.29,-104.64C732.15,-111.19 748.04,-118.69 761.93,-125.25"></path>
+<polygon fill="black" stroke="black" points="760.63,-128.51 771.17,-129.61 763.62,-122.18 760.63,-128.51"></polygon>
+</g>
+<!-- Tensors -->
+<g id="node11" class="node">
+<title>Tensors</title>
+<ellipse fill="lightblue" stroke="black" cx="899.81" cy="-39" rx="38.33" ry="22.76"></ellipse>
+<text text-anchor="middle" x="899.81" y="-42" font-family="Times,serif" font-size="10.00">Diffusion</text>
+<text text-anchor="middle" x="899.81" y="-30" font-family="Times,serif" font-size="10.00">Tensors</text>
+</g>
+<!-- DTI&#45;&gt;Tensors -->
+<g id="edge10" class="edge">
+<title>DTI-&gt;Tensors</title>
+<path fill="none" stroke="black" d="M825.51,-35.31C833.37,-35.71 842.25,-36.16 851.05,-36.6"></path>
+<polygon fill="black" stroke="black" points="851.11,-40.11 861.27,-37.11 851.46,-33.11 851.11,-40.11"></polygon>
+</g>
+<!-- ODFs -->
+<g id="node12" class="node">
+<title>ODFs</title>
+<ellipse fill="lightblue" stroke="black" cx="899.81" cy="-102" rx="27" ry="22.76"></ellipse>
+<text text-anchor="middle" x="899.81" y="-105" font-family="Times,serif" font-size="10.00">ODF</text>
+<text text-anchor="middle" x="899.81" y="-93" font-family="Times,serif" font-size="10.00">Data</text>
+</g>
+<!-- CSD&#45;&gt;ODFs -->
+<g id="edge11" class="edge">
+<title>CSD-&gt;ODFs</title>
+<path fill="none" stroke="black" d="M825,-91.61C836.5,-93.23 850.28,-95.17 862.8,-96.93"></path>
+<polygon fill="black" stroke="black" points="862.56,-100.43 872.95,-98.36 863.54,-93.5 862.56,-100.43"></polygon>
+</g>
+<!-- GQI&#45;&gt;ODFs -->
+<g id="edge12" class="edge">
+<title>GQI-&gt;ODFs</title>
+<path fill="none" stroke="black" d="M825.51,-131.49C837.8,-126.55 852.59,-120.6 865.66,-115.34"></path>
+<polygon fill="black" stroke="black" points="867.27,-118.46 875.24,-111.48 864.66,-111.97 867.27,-118.46"></polygon>
 </g>
 <!-- FA -->
-<g id="node12" class="node">
+<g id="node14" class="node">
 <title>FA</title>
-<ellipse fill="lightblue" stroke="black" cx="933.4" cy="-142" rx="27.05" ry="22.76"></ellipse>
-<text text-anchor="middle" x="933.4" y="-145" font-family="Times,serif" font-size="10.00">FA</text>
-<text text-anchor="middle" x="933.4" y="-133" font-family="Times,serif" font-size="10.00">Maps</text>
+<ellipse fill="lightblue" stroke="black" cx="1016.24" cy="-41" rx="27.05" ry="22.76"></ellipse>
+<text text-anchor="middle" x="1016.24" y="-44" font-family="Times,serif" font-size="10.00">FA</text>
+<text text-anchor="middle" x="1016.24" y="-32" font-family="Times,serif" font-size="10.00">Maps</text>
 </g>
-<!-- DTI&#45;&gt;FA -->
-<g id="edge10" class="edge">
-<title>DTI-&gt;FA</title>
-<path fill="none" stroke="black" d="M840.58,-142C856.93,-142 878.21,-142 896.16,-142"></path>
-<polygon fill="black" stroke="black" points="896.29,-145.5 906.29,-142 896.29,-138.5 896.29,-145.5"></polygon>
+<!-- Tensors&#45;&gt;FA -->
+<g id="edge13" class="edge">
+<title>Tensors-&gt;FA</title>
+<path fill="none" stroke="black" d="M938.28,-39.65C951.21,-39.88 965.68,-40.13 978.55,-40.36"></path>
+<polygon fill="black" stroke="black" points="978.86,-43.86 988.92,-40.54 978.98,-36.87 978.86,-43.86"></polygon>
 </g>
 <!-- Tractography -->
-<g id="node11" class="node">
+<g id="node13" class="node">
 <title>Tractography</title>
-<ellipse fill="lightblue" stroke="black" cx="933.4" cy="-83" rx="42.02" ry="18"></ellipse>
-<text text-anchor="middle" x="933.4" y="-80" font-family="Times,serif" font-size="10.00">Tractography</text>
+<ellipse fill="lightblue" stroke="black" cx="1016.24" cy="-100" rx="42.02" ry="18"></ellipse>
+<text text-anchor="middle" x="1016.24" y="-97" font-family="Times,serif" font-size="10.00">Tractography</text>
 </g>
-<!-- CSD&#45;&gt;Tractography -->
-<g id="edge11" class="edge">
-<title>CSD-&gt;Tractography</title>
-<path fill="none" stroke="black" d="M840.58,-86.89C852.61,-86.38 867.29,-85.76 881.36,-85.16"></path>
-<polygon fill="black" stroke="black" points="881.61,-88.66 891.45,-84.74 881.31,-81.66 881.61,-88.66"></polygon>
-</g>
-<!-- GQI&#45;&gt;Tractography -->
-<g id="edge12" class="edge">
-<title>GQI-&gt;Tractography</title>
-<path fill="none" stroke="black" d="M840.58,-44.87C856.05,-51.3 875.94,-59.55 893.24,-66.74"></path>
-<polygon fill="black" stroke="black" points="891.97,-70 902.54,-70.6 894.65,-63.53 891.97,-70"></polygon>
+<!-- ODFs&#45;&gt;Tractography -->
+<g id="edge14" class="edge">
+<title>ODFs-&gt;Tractography</title>
+<path fill="none" stroke="black" d="M927.06,-101.54C938,-101.35 951.09,-101.12 963.8,-100.9"></path>
+<polygon fill="black" stroke="black" points="963.92,-104.4 973.86,-100.72 963.8,-97.4 963.92,-104.4"></polygon>
 </g>
 <!-- ODF -->
-<g id="node13" class="node">
+<g id="node15" class="node">
 <title>ODF</title>
-<ellipse fill="lightblue" stroke="black" cx="1060.43" cy="-88" rx="49.03" ry="22.76"></ellipse>
-<text text-anchor="middle" x="1060.43" y="-91" font-family="Times,serif" font-size="10.00">ODF</text>
-<text text-anchor="middle" x="1060.43" y="-79" font-family="Times,serif" font-size="10.00">Visualization</text>
+<ellipse fill="lightblue" stroke="black" cx="1143.27" cy="-96" rx="49.03" ry="22.76"></ellipse>
+<text text-anchor="middle" x="1143.27" y="-99" font-family="Times,serif" font-size="10.00">ODF</text>
+<text text-anchor="middle" x="1143.27" y="-87" font-family="Times,serif" font-size="10.00">Visualization</text>
 </g>
 <!-- Tractography&#45;&gt;ODF -->
-<g id="edge13" class="edge">
+<g id="edge15" class="edge">
 <title>Tractography-&gt;ODF</title>
-<path fill="none" stroke="black" d="M975.34,-84.64C983.64,-84.97 992.51,-85.32 1001.26,-85.67"></path>
-<polygon fill="black" stroke="black" points="1001.31,-89.18 1011.45,-86.08 1001.59,-82.18 1001.31,-89.18"></polygon>
+<path fill="none" stroke="black" d="M1058.18,-98.69C1066.47,-98.42 1075.34,-98.14 1084.1,-97.86"></path>
+<polygon fill="black" stroke="black" points="1084.4,-101.35 1094.28,-97.54 1084.17,-94.36 1084.4,-101.35"></polygon>
 </g>
 </g>
 </svg>
 </div>
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Overview of the DWI Pipeline.
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-complete-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Overview of the DWI complete Pipeline.
 </figcaption>
 </figure>
 </div>
@@ -752,6 +1123,7 @@ Figure&nbsp;1: Overview of the DWI Pipeline.
         }
       });
       </script>
+    <script>videojs(video_shortcode_videojs_video1);</script>
     
 
 </body></html>

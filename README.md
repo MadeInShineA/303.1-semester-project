@@ -1,14 +1,16 @@
 # 303.1-semester-project
 
+[![Website olivier.amacker.dev/303.1-semester-project](https://img.shields.io/website-up-down-green-red/http/olivier.amacker.dev/303.1-semester-project.svg)](https://olivier.amacker.dev/303.1-semester-project/src/index.html)
+
 This repo contains the content of my semester project done in the 303.1 - Semester project course
 
 ## Website
 
-The project website is available at [here](https://madeinshinea.github.io/303.1-semester-project/)
+This project website is available [here](https://madeinshinea.github.io/303.1-semester-project/)
 
 ## Local Setup
 
-To set up the project locally:
+To set up the project website locally:
 
 1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
 2. Clone the repository
@@ -17,14 +19,9 @@ To set up the project locally:
 
 The site will be in the `_site/` directory.
 
-## Gantt diagram (see [link](https://view.monday.com/5088330065-1288816531bffa22bf4ce0c331682f87?r=euc1))
+## Related External Pull Requests
 
-![Gantt diagram image](./src/assets/images/gantt.png)
-
-## TODO
-
-- [ x ] Create a barebones report with a gantt diagram
-- [ ] Start working on the presentation
-  - [ ] Impact slide
-- [ ] Do the exclusion predict test
-- [ x ] Understand the predict function better and why it seems to behave strangely regarding scale
+| PR | Status |
+|----|--------|
+| [Oesteban DIPY fork PR #1](https://github.com/oesteban/dipy/pull/1): Enhancements to GQI predict functionality | ![PR status badge](https://img.shields.io/badge/status-open-blue.svg) |
+| [DIPY PR #1](https://github.com/dipy/dipy/pull/3553): ENH: Implement a predict() function for the GeneralizedQSamplingModel | ![PR status badge](https://img.shields.io/badge/status-open-blue.svg) |

@@ -19,11 +19,117 @@ Diffusion Weighted Imaging (DWI) is an MRI technique that measures the diffusion
 - **Principle**: Uses magnetic field gradients to sensitize the MRI signal to water diffusion
 - **Key parameters**: b-values and b-vectors
 
+# What's DWI ? 
 
-# DWI Pipeline
+{{< video ./assets/presentation/dMRI-signal-movie.mp4 height="600" >}}
+
+
+# DWI Pipeline: Acquisition
+
 ```{dot}
-//| label: fig-dwi-pipeline
-//| fig-cap: "Overview of the DWI Pipeline."
+//| label: fig-dwi-pipeline-acquisition
+//| fig-cap: "Overview of the DWI Pipeline (Acquisition)."
+digraph DWI_Pipeline {
+  rankdir=LR;
+  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
+  edge [fontsize=10];
+
+  subgraph cluster_acq {
+      label="Acquisition";
+      style=filled;
+      color=lightblue;
+      MRI [label="MRI\nScanner"];
+      Params [label="b-values &\nb-vectors"];
+      Gradients [label="Apply\nDiffusion\nGradients"];
+      Signal [label="Signal Images"]
+      MRI -> Gradients;
+      Params -> Gradients;
+      Gradients -> Signal;
+  }
+}
+```
+# DWI Pipeline: Preprocessing
+
+```{dot}
+//| label: fig-dwi-pipeline-preprocessing
+//| fig-cap: "Overview of the DWI Pipeline (Preprocessing)."
+digraph DWI_Pipeline {
+  rankdir=LR;
+  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
+  edge [fontsize=10];
+
+
+  subgraph cluster_prep {
+      label="Preprocessing";
+      style=filled;
+      color=lightgreen;
+      Signal [label="Signal Images"]
+      Eddy [label="Eddy Current\nCorrection"];
+      Motion [label="Motion\nCorrection"];
+      Denoise [label="Denoised\n Signal Images"];
+      Signal -> Eddy -> Motion -> Denoise;
+  }
+}
+```
+
+# DWI Pipeline: Reconstruction
+```{dot}
+//| label: fig-dwi-pipeline-reconstruction
+//| fig-cap: "Overview of the DWI Pipeline (Reconstruction)."
+digraph DWI_Pipeline {
+  rankdir=LR;
+  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
+  edge [fontsize=10];
+
+   subgraph cluster_rec {
+       label="Reconstruction";
+       style=filled;
+       color=lightsalmon;
+       Denoise [label="Denoised\n Signal Images"];
+       DTI [label="DTI"];
+       CSD [label="CSD"];
+       GQI [label="GQI", fillcolor=yellow, shape=box];
+       Tensors [label="Diffusion\nTensors"];
+       ODFs [label="ODF\nData"];
+       Denoise -> DTI;
+       Denoise -> CSD;
+       Denoise -> GQI;
+       DTI -> Tensors;
+       CSD -> ODFs;
+       GQI -> ODFs;
+   }
+}
+```
+# DWI Pipeline: Analysis
+```{dot}
+//| label: fig-dwi-pipeline-analysis
+//| fig-cap: "Overview of the DWI Pipeline (Analysis)."
+digraph DWI_Pipeline {
+  rankdir=LR;
+  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
+  edge [fontsize=10];
+
+   subgraph cluster_ana {
+       label="Analysis";
+       style=filled;
+       color=lightcoral;
+       Tensors [label="Diffusion\nTensors"];
+       ODFs [label="ODF\nData"];
+       Tractography [label="Tractography"];
+       FA [label="FA\nMaps"];
+       ODF [label="ODF\nVisualization"];
+       Tensors -> FA;
+       ODFs -> Tractography;
+       Tractography -> ODF;
+   }
+}
+```
+
+
+# DWI Pipeline: Complete pipeline
+```{dot}
+//| label: fig-dwi-pipeline-complete
+//| fig-cap: "Overview of the DWI complete Pipeline."
 digraph DWI_Pipeline {
   rankdir=LR;
   node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
@@ -52,30 +158,36 @@ digraph DWI_Pipeline {
       Signal -> Eddy -> Motion -> Denoise;
   }
 
-  subgraph cluster_rec {
-      label="Reconstruction";
-      style=filled;
-      color=lightsalmon;
-      DTI [label="DTI"];
-      CSD [label="CSD"];
-      GQI [label="GQI", fillcolor=yellow, shape=box];
-      Denoise -> DTI;
-      Denoise -> CSD;
-      Denoise -> GQI;
-  }
+   subgraph cluster_rec {
+       label="Reconstruction";
+       style=filled;
+       color=lightsalmon;
+       DTI [label="DTI"];
+       CSD [label="CSD"];
+       GQI [label="GQI", fillcolor=yellow, shape=box];
+       Tensors [label="Diffusion\nTensors"];
+       ODFs [label="ODF\nData"];
+       Denoise -> DTI;
+       Denoise -> CSD;
+       Denoise -> GQI;
+       DTI -> Tensors;
+       CSD -> ODFs;
+       GQI -> ODFs;
+   }
 
-  subgraph cluster_ana {
-      label="Analysis";
-      style=filled;
-      color=lightcoral;
-      Tractography [label="Tractography"];
-      FA [label="FA\nMaps"];
-      ODF [label="ODF\nVisualization"];
-      DTI -> FA;
-      CSD -> Tractography;
-      GQI -> Tractography;
-      Tractography -> ODF;
-  }
+   subgraph cluster_ana {
+       label="Analysis";
+       style=filled;
+       color=lightcoral;
+       Tensors [label="Diffusion\nTensors"];
+       ODFs [label="ODF\nData"];
+       Tractography [label="Tractography"];
+       FA [label="FA\nMaps"];
+       ODF [label="ODF\nVisualization"];
+       Tensors -> FA;
+       ODFs -> Tractography;
+       Tractography -> ODF;
+   }
 }
 ```
 
