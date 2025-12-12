@@ -229,5 +229,12 @@
     "title": "Daily diary",
     "section": "11.12.2025",
     "text": "11.12.2025\n\nUpdated README + Worked on the presentation (see commit)"
+  },
+  {
+    "objectID": "src/daily_diary.html#section-15",
+    "href": "src/daily_diary.html#section-15",
+    "title": "Daily diary",
+    "section": "12.12.2025",
+    "text": "12.12.2025\n\nApplied the changes requested by the DIPY team on the Prof. Esteban repository PR (see related gqi and test_gqi commit, related gqi_predict example commit and example)"
   }
 ]

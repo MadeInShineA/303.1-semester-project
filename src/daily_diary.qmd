@@ -141,3 +141,6 @@ title: Daily diary
 
 ## 11.12.2025
 - Updated README + Worked on the presentation (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/8ac7bddc1be724c37caa5249bcd05a1b37825224){target="_blank"})
+
+## 12.12.2025
+- Applied the changes requested by the DIPY team on the [Prof. Esteban repository PR](https://github.com/oesteban/dipy/pull/1){target="_blank"} (see [related gqi and test_gqi commit](https://github.com/MadeInShineA/dipy/commit/0f9872ff676d85d5e89a2f2e51f672d03e5f603c){target="_blank"}, [related gqi_predict example commit](https://github.com/MadeInShineA/dipy/commit/3f6e05196749595c665275095997b9e05cc9b45e){target="_blank"} and [example](https://olivier.amacker.dev/303.1-semester-project/src/assets/examples/reconst_gqi_predict.html){target="_blank"})
