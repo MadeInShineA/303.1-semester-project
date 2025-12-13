@@ -8,6 +8,13 @@ This repo contains the content of my semester project done in the 303.1 - Semest
 
 This project website is available [here](https://madeinshinea.github.io/303.1-semester-project/)
 
+The website contains the following sections:
+
+- [**Report**](https://madeinshinea.github.io/303.1-semester-project/src/report.html): Detailed documentation of the semester project
+- [**Presentation**](https://madeinshinea.github.io/303.1-semester-project/src/presentation.html): Slides for the project presentation
+- [**Daily Diary**](https://madeinshinea.github.io/303.1-semester-project/src/daily_diary.html): Chronological log of project progress and activities
+- [**Sources**](https://madeinshinea.github.io/303.1-semester-project/src/sources.html): References and source materials used in the project
+
 ## Local Setup
 
 To set up the project website locally:

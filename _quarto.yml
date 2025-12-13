@@ -5,7 +5,7 @@ project:
     - src/index.qmd
     - src/report.qmd
     - src/presentation.qmd
-    - src/daily_diary.qmd
+    - src/daily_journal.qmd
     - src/sources.qmd
 
 website:
@@ -20,8 +20,8 @@ website:
         text: Report
       - href: src/presentation.qmd
         text: Presentation
-      - href: src/daily_diary.qmd
-        text: Daily Diary
+      - href: src/daily_journal.qmd
+        text: Daily Journal
       - href: src/sources.qmd
         text: Sources
     tools:

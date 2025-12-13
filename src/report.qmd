@@ -188,11 +188,45 @@ The max operation ensures non-negative signal values.
 
 ## Testing Methodology
 
+The testing methodology for the GQI prediction functions encompasses unit tests for individual components and integration tests for end-to-end prediction workflows.
+
+This tests validate:
+
+ - mathematical correctness
+ - numerical stability
+ - practical usability across single and multi-voxel scenarios.
+
+All tests utilize DIPY's test data (`dsi_voxels`) and synthetic phantoms to ensure robustness.
+
 ### `prediction_kernel` function tests
+
+The `prediction_kernel` function is tested for its role as a Tikhonov-regularized Moore-Penrose pseudo-inverse of the GQI kernel. Key validations include:
+
+- **Shape and finiteness**: Ensures the kernel has correct dimensions $(n_\mathrm{vertices}, n_\mathrm{gradients})$ and contains only finite, non-zero values.
+- **Pseudo-inverse properties**: Verifies that $K K^+ K \approx K$ (regularized reconstruction), and that $K K^+$ and $K^+ K$ are symmetric matrices.
+- **Method compatibility**: Tests both `standard` and `gqi2` GQI methods using the `symmetric724` sphere and DSI gradient table.
+
+These tests confirm the kernel's mathematical integrity and numerical stability for signal reconstruction.
 
 ### Basic `predict` function tests
 
+Basic prediction tests validate the `predict` function's API and output characteristics for both single-voxel and multi-voxel data:
+
+- **Single-voxel tests**: Fit the model to individual voxels from DSI data, predict signals, and check that outputs are non-negative arrays matching the gradient table length. Tests include predictions on subsets of gradients.
+- **Multi-voxel tests**: Fit the model to entire 3D volumes, predict signals, and verify shape preservation and non-negativity. Subset gradient predictions are also tested.
+- **Method coverage**: Both `standard` and `gqi2` methods are tested to ensure consistent behavior.
+
+These tests ensure the prediction function handles various data shapes and gradient configurations correctly.
+
 ### Round trip `predict` function tests
+
+Round-trip tests assess the fidelity of signal reconstruction by fitting the model to training data (excluding b0 volumes) and predicting back to the same gradient table. These tests are performed exclusively on the `standard` GQI model. Correlation between original and predicted signals serves as a quality metric.
+
+- **Single-voxel round-trip**: For selected voxels, compute Pearson correlation between original and predicted signals. Assert correlations exceed $r > 0.8$ and signal magnitudes remain in the same order of magnitude.
+- **Multi-voxel round-trip**: Compute average correlation across all voxels in the volume, requiring $\bar{r} > 0.8$. Identify and reject any voxels with $r \leq 0.8$.
+- **Subset predictions**: Test predictions on reduced gradient sets to validate robustness.
+
+These tests quantify reconstruction accuracy and detect overfitting or numerical instabilities.
 
 
 ## Capabilities and Applications

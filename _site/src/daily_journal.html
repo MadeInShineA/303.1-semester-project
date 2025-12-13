@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Sources – 303.1 Semester Project</title>
+<title>Daily Journal – 303.1 Semester Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -277,11 +306,11 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Presentation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../src/daily_journal.html"> 
+    <a class="nav-link active" href="../src/daily_journal.html" aria-current="page"> 
 <span class="menu-text">Daily Journal</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../src/sources.html" aria-current="page"> 
+    <a class="nav-link" href="../src/sources.html"> 
 <span class="menu-text">Sources</span></a>
   </li>  
 </ul>
@@ -302,12 +331,24 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of Content</h2>
    
   <ul>
-  <li><a href="#dipy" id="toc-dipy" class="nav-link active" data-scroll-target="#dipy">DIPY</a></li>
-  <li><a href="#youtube-videos" id="toc-youtube-videos" class="nav-link" data-scroll-target="#youtube-videos">Youtube videos</a></li>
-  <li><a href="#assistants" id="toc-assistants" class="nav-link" data-scroll-target="#assistants">Assistants</a></li>
-  <li><a href="#other" id="toc-other" class="nav-link" data-scroll-target="#other">Other</a></li>
+  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">24.11.2025</a></li>
+  <li><a href="#section-1" id="toc-section-1" class="nav-link" data-scroll-target="#section-1">25.11.2025</a></li>
+  <li><a href="#section-2" id="toc-section-2" class="nav-link" data-scroll-target="#section-2">26.11.2025</a></li>
+  <li><a href="#section-3" id="toc-section-3" class="nav-link" data-scroll-target="#section-3">27.11.2025</a></li>
+  <li><a href="#section-4" id="toc-section-4" class="nav-link" data-scroll-target="#section-4">28.11.2025</a></li>
+  <li><a href="#section-5" id="toc-section-5" class="nav-link" data-scroll-target="#section-5">01.12.2025</a></li>
+  <li><a href="#section-6" id="toc-section-6" class="nav-link" data-scroll-target="#section-6">02.12.2025</a></li>
+  <li><a href="#section-7" id="toc-section-7" class="nav-link" data-scroll-target="#section-7">03.12.2025</a></li>
+  <li><a href="#section-8" id="toc-section-8" class="nav-link" data-scroll-target="#section-8">04.12.2025</a></li>
+  <li><a href="#section-9" id="toc-section-9" class="nav-link" data-scroll-target="#section-9">06.12.2025</a></li>
+  <li><a href="#section-10" id="toc-section-10" class="nav-link" data-scroll-target="#section-10">07.12.2025</a></li>
+  <li><a href="#section-11" id="toc-section-11" class="nav-link" data-scroll-target="#section-11">08.12.2025</a></li>
+  <li><a href="#section-12" id="toc-section-12" class="nav-link" data-scroll-target="#section-12">09.12.2025</a></li>
+  <li><a href="#section-13" id="toc-section-13" class="nav-link" data-scroll-target="#section-13">10.12.2025</a></li>
+  <li><a href="#section-14" id="toc-section-14" class="nav-link" data-scroll-target="#section-14">11.12.2025</a></li>
+  <li><a href="#section-15" id="toc-section-15" class="nav-link" data-scroll-target="#section-15">12.12.2025</a></li>
   </ul>
-<div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/sources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
+<div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/daily_journal.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -315,7 +356,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Sources</h1>
+<h1 class="title">Daily Journal</h1>
 </div>
 
 
@@ -332,53 +373,195 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="dipy" class="level2">
-<h2 class="anchored" data-anchor-id="dipy">DIPY</h2>
+<section id="section" class="level2">
+<h2 class="anchored" data-anchor-id="section">24.11.2025</h2>
 <ul>
-<li><a href="https://dipy.org/" target="_blank">DIPY website</a></li>
-<li><a href="https://github.com/dipy/dipy/blob/master/.github/CONTRIBUTING.md" target="_blank">DIPY contributing guide</a></li>
-<li><a href="https://docs.dipy.org/stable/devel/intro.html" target="_blank">DIPY developer guide</a></li>
-<li><a href="https://github.com/dipy/dipy/blob/master/doc/devel/coding_style_guideline.rst" target="_blank">DIPY coding style guideline</a></li>
-<li>Tutorials
+<li>Made a <a href="https://github.com/nipreps/nipreps-book/pull/49">pull request</a> to the <a href="https://github.com/nipreps/nipreps-book">Nipreps book repo</a></li>
+<li>Realised the different DIPY tutorials</li>
+<li>Started reading the Nipreps book</li>
+</ul>
+<hr>
+</section>
+<section id="section-1" class="level2">
+<h2 class="anchored" data-anchor-id="section-1">25.11.2025</h2>
 <ul>
-<li><a href="https://docs.dipy.org/stable/examples_built/reconstruction/reconst_csa.html" target="_blank">Reconstruct with Constant Solid Angle (Q-Ball)</a></li>
-<li><a href="https://docs.dipy.org/stable/examples_built/reconstruction/reconst_gqi.html" target="_blank">Reconstruct with Generalized Q-Sampling Imaging</a></li>
-<li><a href="https://docs.dipy.org/stable/examples_built/fiber_tracking/tracking_introduction_eudx_1.html" target="_blank">Introduction to Basic Tracking</a></li>
-<li><a href="https://docs.dipy.org/stable/examples_built/reconstruction/kfold_xval.html" target="_blank">K-fold cross-validation for model comparison</a></li>
+<li>Meeting with Prof.&nbsp;Esteban</li>
+<li>Prepared the DIPY development environment
+<ul>
+<li>Installation steps
+<ul>
+<li>Create a venv and source it (or use uv venv and uv pip …)</li>
+<li>To build the project
+<ul>
+<li>sudo dnf install python3-devel</li>
+<li>pip install -r requirements/build.txt</li>
+<li>pip install –no-build-isolation -e .</li>
+</ul></li>
+<li>To build the documentation
+<ul>
+<li>pip install sphinx</li>
+<li>pip install sphinx_gallery</li>
+<li>pip install numpydoc</li>
+<li>pip install sphinxcontrib-bibtex</li>
+<li>pip install sphinx-design</li>
+<li>pip install grg-sphinx-theme</li>
+</ul></li>
+<li>To use the correct formatting
+<ul>
+<li>pip install –no-build-isolation -e .[style]</li>
+<li>pip install pre-commit</li>
+<li>pre-commit install</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>Started to look at the current gqi predict code and pull request</li>
+<li>Continued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)</li>
+</ul>
+<hr>
+</section>
+<section id="section-2" class="level2">
+<h2 class="anchored" data-anchor-id="section-2">26.11.2025</h2>
+<ul>
+<li>Finished reading the Nipreps book</li>
+<li>Continued to look at the current gqi code and made small changes on the <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-dev">enh/gqi-predict-dev</a> branch
+<ul>
+<li>Changed GeneralizedQSamplingFit odf function to take a sphere parameter (see <a href="https://github.com/MadeInShineA/dipy/commit/d9ab2bd51ae442b6c106244315a8090af6ce30c4">commit</a>)</li>
+<li>Changed the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see <a href="https://github.com/MadeInShineA/dipy/commit/2ff80c8add7eb7896eac8b948e2f052ac91e150d">commit</a>)</li>
+</ul></li>
+<li>Created a small <a href="https://marimo.io/">marimo</a> notebook to test and understand the prediction function on the <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks">enh/gqi-predict-notebooks</a> branch (see <a href="https://github.com/MadeInShineA/dipy/commit/b88191ede9cbf39a9bcd0e35c0440921034135b7">commit</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-3" class="level2">
+<h2 class="anchored" data-anchor-id="section-3">27.11.2025</h2>
+<ul>
+<li>Changed the GeneralizedQSamplingFit predict function to use the model mode when calling the predict_kernel function. Also made the predict function work for multi-voxels (see <a href="https://github.com/MadeInShineA/dipy/commit/f4e7f9b35e8efef03293bb86f40649bea517fc01">commit</a>)</li>
+<li>Started gqi predict tests with (see <a href="https://github.com/MadeInShineA/dipy/commit/f4e7f9b35e8efef03293bb86f40649bea517fc01" target="_blank">commit</a>)
+<ul>
+<li>Single-voxel basic test</li>
+<li>Single-voxel meaningful test</li>
+<li>Multi-voxel basic test</li>
+<li>Multi-voxel meaningful test</li>
+</ul></li>
+<li>Meeting with Prof.&nbsp;Esteban</li>
+<li>Did 2 marimo notebooks on the <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks">enh/gqi-predict-notebooks</a> branch (see <a href="https://github.com/MadeInShineA/dipy/commit/0ad9d65fb0a7e4a5973afa21005b2080a60055cb" target="_blank">commit</a>)
+<ul>
+<li>A notebook regarding the roundtrip predictions on already seen data (see <a href="https://olivier.amacker.dev/303.1-semester-project/src/assets/notebooks/dipy/gqi_roundtrip_notebook.html" target="_blank">notebook</a>)</li>
+<li>A notebook regarding cross voxel predictions (see <a href="https://olivier.amacker.dev/303.1-semester-project/src/assets/notebooks/dipy/gqi_cross_voxel_notebook.html" target="_blank">notebook</a>)</li>
+</ul></li>
+<li>Created the 303.1-semester-project github page (see <a href="https://olivier.amacker.dev/303.1-semester-project/index.html" target="_blank">page</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-4" class="level2">
+<h2 class="anchored" data-anchor-id="section-4">28.11.2025</h2>
+<ul>
+<li>Created the Gantt diagram</li>
+<li>Created the <a href="https://github.com/MadeInShineA/303.1-semester-project-presentation/tree/main" target="_blank">presentation github repository</a>(now removed)</li>
+<li>Started the presentation</li>
+<li>Published the presentation github page (see <a href="https://olivier.amacker.dev/303.1-semester-project-presentation/src/presentation.html#/title-slide" target="_blank">page</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-5" class="level2">
+<h2 class="anchored" data-anchor-id="section-5">01.12.2025</h2>
+<ul>
+<li>Started working on the cross validation prediction test</li>
+<li>Worked on the project documentation (see <a href="https://olivier.amacker.dev/303.1-semester-project/index.html" target="_blank">documentation</a>)
+<ul>
+<li>Added a quarto theme</li>
+<li>Added sources + daily diary pages</li>
+<li>Added mermaid Gantt diagram</li>
+<li>Worked on the report structure (see <a href="https://olivier.amacker.dev/303.1-semester-project/src/report.html" target="_blank">report</a>)</li>
 </ul></li>
 </ul>
 <hr>
 </section>
-<section id="youtube-videos" class="level2">
-<h2 class="anchored" data-anchor-id="youtube-videos">Youtube videos</h2>
+<section id="section-6" class="level2">
+<h2 class="anchored" data-anchor-id="section-6">02.12.2025</h2>
 <ul>
-<li><a href="https://www.youtube.com/watch?v=J_aamnpRJE8&amp;list=LL&amp;index=2" target="_blank">Diffusion Weighted Imaging - Doctor Klioze</a></li>
-<li><a href="https://www.youtube.com/watch?v=twsV81UFFcE" target="_blank">Diffusion Tensor Imaging (DTI) - Doctor Klioze</a></li>
-<li><a href="https://www.youtube.com/watch?v=Be51OqnBbdc" target="_blank">Diffusion Tensor Imaging (DTI) Explained! | Neuroscience Methods 101 - Psyched!</a></li>
-<li><a href="https://www.youtube.com/watch?v=GwCRBQt2WdM" target="_blank">DWI vs ADC MRI sequences: EXPLAINED - Radiology Tutorials</a></li>
-<li><a href="https://www.youtube.com/watch?v=tcJa9cJeoEY" target="_blank">Diffusion Weighted Imaging EXPLAINED (DWI Trace, ADC, B-Values) | MRI Physics Course Lecture 14 - MRI Physics EXPLAINED</a></li>
-<li><a href="https://www.youtube.com/watch?v=AlhwIY0RuPc" target="_blank">How to Read MRI Diffusion Imaging (DWI) like a Real Radiologist - MRI Physics EXPLAINED</a></li>
-<li><a href="https://www.youtube.com/watch?v=sTWFcfKvuIU" target="_blank">A tour of spherical harmonics-based local reconstruction techniques in DIPY - Part1 - Diffusion Imaging in Python - DIPY</a></li>
-<li><a href="https://www.youtube.com/watch?v=SxXlckpebWQ" target="_blank">A tour of spherical harmonics-based local reconstruction techniques in DIPY - Part2 - Diffusion Imaging in Python - DIPY</a></li>
+<li>Added unseen data prediction tests + Cleaned gqi predict functions and existing tests (see <a href="https://github.com/MadeInShineA/dipy/commit/061896283e12e63ed326af602255ac4d8d26b4e0" target="_blank">commit</a>)</li>
+<li>Refactored the gqi predict and prediction_kernel functions to work according to DIPY’s ODF formula:<br>
+<span class="math inline">\(ODF = S \cdot K\)</span> (see <a href="https://github.com/MadeInShineA/dipy/commit/9b98a30292ff88e3912f9b482ba663d8f62928ca" target="_blank">commit</a>)</li>
+<li>Wrote the The different needed helper functions and The predict function and it’s implementation sections in the <a href="https://olivier.amacker.dev/303.1-semester-project/src/report.html#the-different-needed-helper-functions" target="_blank">report</a> (see <a href="https://github.com/MadeInShineA/303.1-semester-project/commit/c3fb5235103006e8f3b1a21980b49879a6a85f69" target="_blank">commit</a>)</li>
 </ul>
 <hr>
 </section>
-<section id="assistants" class="level2">
-<h2 class="anchored" data-anchor-id="assistants">Assistants</h2>
+<section id="section-7" class="level2">
+<h2 class="anchored" data-anchor-id="section-7">03.12.2025</h2>
 <ul>
-<li><a href="https://qwen.ai/home" target="_blank">Qwen3 Max</a></li>
-<li><a href="https://x.ai/" target="_blank">Grok Code Fast 1</a></li>
+<li>Meeting with Prof.&nbsp;Esteban</li>
+<li>Started working on the unseen data prediction notebook (see <a href="https://github.com/MadeInShineA/dipy/commit/55fe6e1b9ea86a1a509b23bba3ffdf8ab77dacf0" target="_blank">commit</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-8" class="level2">
+<h2 class="anchored" data-anchor-id="section-8">04.12.2025</h2>
+<ul>
+<li>Continued working on the unseen data prediction notebook (see <a href="https://github.com/MadeInShineA/dipy/commit/d96029289aa025db037f22727965d47d048d6a2e" target="_blank">commit</a> and <a href="./assets/notebooks/dipy/gqi_unseen_data_notebook.html" target="_blank">notebook</a>)</li>
+<li>Began the DIPY prediction documentation example (see <a href="https://github.com/MadeInShineA/dipy/commit/f76f786770a72a642d50c752a49348f7cc728b30" target="_blank">commit</a>)</li>
+<li>Revised predict function according to DIPY conventions (not pushed yet)</li>
+</ul>
+<hr>
+</section>
+<section id="section-9" class="level2">
+<h2 class="anchored" data-anchor-id="section-9">06.12.2025</h2>
+<ul>
+<li>Added brain mask + interceptor + b0 volumes separation to gqi_inseen_data_notebook (see <a href="https://github.com/MadeInShineA/dipy/commit/d39f4215e5cd6348913934a00e791d25f1424c92" target="_blank">commit</a> and <a href="./assets/notebooks/dipy/gqi_unseen_data_notebook.html" target="_blank">notebook</a>)</li>
+<li>Commented the shapes of the GeneralizedQSamplingFit predict and prediction_kernel functions (see <a href="https://github.com/MadeInShineA/dipy/commit/e78aca2e844177900aeada7ee3960f4a0cca51f4" target="_blank">commit</a>)</li>
+<li>Optimized the predict multi voxel case a bit (see <a href="https://github.com/MadeInShineA/dipy/commit/4d6cb28cfe90938f5a2a0797abd4d3b64441f845" target="_blank">commit</a>)</li>
+<li>Updated the <a href="../src/report.html" target="_blank">report</a></li>
+</ul>
+<hr>
+</section>
+<section id="section-10" class="level2">
+<h2 class="anchored" data-anchor-id="section-10">07.12.2025</h2>
+<ul>
+<li>Optimized GeneralizedQSamplingFit prediction_kernel function + Added prediction_kernel test which tests: (see <a href="https://github.com/MadeInShineA/dipy/commit/c6124414897759568ceb3e936fae93e0480e9a72" target="_blank">commit</a>)
+<ul>
+<li>Correct output shape</li>
+<li>K @ K_plus @ K ≈ K</li>
+<li>K @ K_plus is symmetric</li>
+<li>K_plus @ K is symmetric</li>
+</ul></li>
+<li>Made GeneralizedQSamplingFit predict function faster by fusing kernels therefore avoiding the explicit ODF calculation (see <a href="https://github.com/MadeInShineA/dipy/commit/2ef19a5a0e138bdc210821571c98afc43977f531" target="_blank">commit</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-11" class="level2">
+<h2 class="anchored" data-anchor-id="section-11">08.12.2025</h2>
+<ul>
+<li>Continued the DIPY prediction documentation example (see <a href="https://github.com/MadeInShineA/dipy/commit/4a19e6e0a55e97cd6f6637aa7173cbccfa6f6e47" target="_blank">commit</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-12" class="level2">
+<h2 class="anchored" data-anchor-id="section-12">09.12.2025</h2>
+<ul>
+<li>Meeting with Prof.&nbsp;Esteban</li>
+<li>Removed the gqi2 method and b0 volumes from the prediction tests (see <a href="https://github.com/MadeInShineA/dipy/commit/4ac655d547de62dadbfb4c22335788d4f3d6a216" target="_blank">commit</a>)</li>
+<li>Removed gqi_cross_voxel_notebook + Removed b0 values from train set in gqi_roundtrip_notebook + Cleaned gqi_unseen_data_notebook (see <a href="https://github.com/MadeInShineA/dipy/commit/73c39b49fb5154f3a5b93e21e6f20547fb81c2ae" target="_blank">commit</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-13" class="level2">
+<h2 class="anchored" data-anchor-id="section-13">10.12.2025</h2>
+<ul>
+<li>Cleaned the gqi_unseen_data_notebook (see <a href="https://github.com/MadeInShineA/dipy/commit/1ad6ce78e9d84a8363a809c5bc068885805568b3" target="_blank">commit</a>)</li>
+<li>Continued the DIPY prediction documentation example (see <a href="https://github.com/MadeInShineA/dipy/commit/ca5e9bce3b002ba30445305341e87164760d17c0" target="_blank">commit</a>, see <a href="./assets/examples/reconst_gqi_predict.html" target="_blank">example</a>)</li>
+</ul>
+<hr>
+</section>
+<section id="section-14" class="level2">
+<h2 class="anchored" data-anchor-id="section-14">11.12.2025</h2>
+<ul>
+<li>Updated README + Worked on the presentation (see <a href="https://github.com/MadeInShineA/303.1-semester-project/commit/8ac7bddc1be724c37caa5249bcd05a1b37825224" target="_blank">commit</a>)</li>
 </ul>
 </section>
-<section id="other" class="level2">
-<h2 class="anchored" data-anchor-id="other">Other</h2>
+<section id="section-15" class="level2">
+<h2 class="anchored" data-anchor-id="section-15">12.12.2025</h2>
 <ul>
-<li><a href="https://github.com/nipreps/nipreps-book" target="_blank">Nipreps book</a></li>
-<li><a href="https://github.com/dipy/dipy/pull/3553" target="_blank">Prof.&nbsp;Esteban DIPY pull request</a></li>
-<li><a href="https://github.com/oesteban/dipy/tree/enh/gqi-predict" target="_blank">Prof.&nbsp;Esteban DIPY fork</a></li>
-<li><a href="https://marimo.io/" target="_blank">Marimo website</a></li>
-<li><a href="https://quarto.org/" target="_blank">Quarto website</a></li>
-<li><a href="https://graphviz.org/" target="_blank">Graphviz website</a></li>
+<li>Applied the changes requested by the DIPY team on the <a href="https://github.com/oesteban/dipy/pull/1" target="_blank">Prof.&nbsp;Esteban repository PR</a> (see <a href="https://github.com/MadeInShineA/dipy/commit/0f9872ff676d85d5e89a2f2e51f672d03e5f603c" target="_blank">related gqi and test_gqi commit</a>, <a href="https://github.com/MadeInShineA/dipy/commit/3f6e05196749595c665275095997b9e05cc9b45e" target="_blank">related gqi_predict example commit</a> and <a href="https://olivier.amacker.dev/303.1-semester-project/src/assets/examples/reconst_gqi_predict.html" target="_blank">example</a>)</li>
 </ul>
 
 
@@ -810,7 +993,7 @@ ul.task-list li input[type="checkbox"] {
  Olivier Amacker Semester project | © 2025
   </li>  
 </ul>
-    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/sources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/daily_journal.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></div>
     <div class="nav-footer-right">
       <ul class="footer-items list-unstyled">
     <li class="nav-item compact">

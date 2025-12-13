@@ -27,6 +27,10 @@ title: "Sources"
 
 ---
 
+## Assistants
+  - [Qwen3 Max](https://qwen.ai/home){target="_blank"}
+  - [Grok Code Fast 1](https://x.ai/){target="_blank"}
+
 ## Other
   - [Nipreps book](https://github.com/nipreps/nipreps-book){target="_blank"}
   - [Prof. Esteban DIPY pull request](https://github.com/dipy/dipy/pull/3553){target="_blank"}

@@ -46,7 +46,7 @@
     "href": "src/index.html#project-gantt-diagram",
     "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
     "section": "Project Gantt Diagram",
-    "text": "Project Gantt Diagram\n\n\n\n\n\n\ngantt\n\n    title Semester Project Gantt Diagram\n    dateFormat DD.MM.YYYY\n    axisFormat %d.%m\n\n    section Background\n        Literature review (DWI, GQI, MRI)       :done,         research,       24.11.2025, 2d\n        Study Nipreps book (DWI preprocessing)  :done,         nipreps,        24.11.2025, 3d\n\n    section Development\n        Dev environment setup                   :done,         devenv,         25.11.2025, 1d\n        Study GQI codebase                      :done,         codebase,       25.11.2025, 3d\n        Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d\n        Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d\n        Implement roundtrip voxel prediction test :done,       cross_tests,    01.12.2025, 2d\n        Create unseen data prediction notebook  :done,         unseen_data,    03.12.2025, 4d\n        Add the GQI predict example to dipy doc :done,         predict_example,04.12.2025, 11.12.2025\n        Create prediction_kernel tests          :done,         prediction_kernel ,07.12.2025, 2d\n        Double check the existing tests         :done,         dc_test,          09.12.2025, 1d\n        Double check the existing notebooks     :done,         dc_notebooks,   09.12.2025, 1d\n        Coordinate with DIPY experts            :done,              coor,           10.12.2025, 12.12.2025\n        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 1d\n        \n\n      \n        \n\n    section Milestones & &lt;br&gt;Deliverables\n        Prof. Esteban – Kickoff meeting         :done,         milestone,      25.11.2025, 0d\n        Prof. Esteban – Progress check-in       :done,         milestone,      27.11.2025, 0d\n        Create Gantt diagram                    :done,         gantt,          28.11.2025, 1d\n        Design impact slide                     :done,         impact,         28.11.2025, 1d\n        Draft report outline                    :done,         r_draft,        01.12.2025, 1d\n        Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d\n        Create presentation dwi slide           :done,         p_draft,        06.12.2025, 09.12.2025 \n        Prof. Esteban - Third progress check-in :done,         milestone,      09.12.2025, 0d\n        PR on Prof. Esteban repository          :crit,active,         milestone,      10.12.2025, 0d\n        PR on DIPY repository                   :crit,active,         milestone,      11.12.2025, 0d\n        Finish report                           :active,              f_rep,          11.12.2025, 16.12.2025\n        Finish presentation                     :active,              f_pres,         11.12.2025, 16.12.2025\n        Code and documentation handout          :crit,         milestone,      16.12.2025, 0d\n        Final presentation                      :crit,         milestone,      18.12.2025, 0d"
+    "text": "Project Gantt Diagram\n\n\n\n\n\n\ngantt\n\n    title Semester Project Gantt Diagram\n    dateFormat DD.MM.YYYY\n    axisFormat %d.%m\n\n    section Background\n        Literature review (DWI, GQI, MRI)       :done,         research,       24.11.2025, 2d\n        Study Nipreps book (DWI preprocessing)  :done,         nipreps,        24.11.2025, 3d\n\n    section Development\n        Dev environment setup                   :done,         devenv,         25.11.2025, 1d\n        Study GQI codebase                      :done,         codebase,       25.11.2025, 3d\n        Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d\n        Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d\n        Implement roundtrip voxel prediction test :done,       cross_tests,    01.12.2025, 2d\n        Create unseen data prediction notebook  :done,         unseen_data,    03.12.2025, 4d\n        Add the GQI predict example to dipy doc :done,         predict_example,04.12.2025, 11.12.2025\n        Create prediction_kernel tests          :done,         prediction_kernel ,07.12.2025, 2d\n        Double check the existing tests         :done,         dc_test,          09.12.2025, 1d\n        Double check the existing notebooks     :done,         dc_notebooks,   09.12.2025, 1d\n        Coordinate with DIPY experts            :done,              coor,           10.12.2025, 12.12.2025\n        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 16.12.2025\n        \n\n      \n        \n\n    section Milestones & &lt;br&gt;Deliverables\n        Prof. Esteban – Kickoff meeting         :done,         milestone,      25.11.2025, 0d\n        Prof. Esteban – Progress check-in       :done,         milestone,      27.11.2025, 0d\n        Create Gantt diagram                    :done,         gantt,          28.11.2025, 1d\n        Design impact slide                     :done,         impact,         28.11.2025, 1d\n        Draft report outline                    :done,         r_draft,        01.12.2025, 1d\n        Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d\n        Create presentation dwi slide           :done,         p_draft,        06.12.2025, 09.12.2025 \n        Prof. Esteban - Third progress check-in :done,         milestone,      09.12.2025, 0d\n        PR on Prof. Esteban repository          :done,         milestone,      10.12.2025, 0d\n        PR on DIPY repository                   :done,         milestone,      11.12.2025, 0d\n        Finish report                           :active,              f_rep,          11.12.2025, 16.12.2025\n        Finish presentation                     :active,              f_pres,         11.12.2025, 18.12.2025\n        Code and documentation handout          :crit,         milestone,      16.12.2025, 0d\n        Final presentation                      :crit,         milestone,      18.12.2025, 0d"
   },
   {
     "objectID": "src/index.html#documents",
@@ -88,7 +88,7 @@
     "href": "src/report.html#testing-methodology",
     "title": "Implementation Report: Predict Function",
     "section": "4 Testing Methodology",
-    "text": "4 Testing Methodology\n\n4.1 prediction_kernel function tests\n\n\n4.2 Basic predict function tests\n\n\n4.3 Round trip predict function tests"
+    "text": "4 Testing Methodology\nThe testing methodology for the GQI prediction functions encompasses unit tests for individual components and integration tests for end-to-end prediction workflows.\nThis tests validate:\n\nmathematical correctness\nnumerical stability\npractical usability across single and multi-voxel scenarios.\n\nAll tests utilize DIPY’s test data (dsi_voxels) and synthetic phantoms to ensure robustness.\n\n4.1 prediction_kernel function tests\nThe prediction_kernel function is tested for its role as a Tikhonov-regularized Moore-Penrose pseudo-inverse of the GQI kernel. Key validations include:\n\nShape and finiteness: Ensures the kernel has correct dimensions \\((n_\\mathrm{vertices}, n_\\mathrm{gradients})\\) and contains only finite, non-zero values.\nPseudo-inverse properties: Verifies that \\(K K^+ K \\approx K\\) (regularized reconstruction), and that \\(K K^+\\) and \\(K^+ K\\) are symmetric matrices.\nMethod compatibility: Tests both standard and gqi2 GQI methods using the symmetric724 sphere and DSI gradient table.\n\nThese tests confirm the kernel’s mathematical integrity and numerical stability for signal reconstruction.\n\n\n4.2 Basic predict function tests\nBasic prediction tests validate the predict function’s API and output characteristics for both single-voxel and multi-voxel data:\n\nSingle-voxel tests: Fit the model to individual voxels from DSI data, predict signals, and check that outputs are non-negative arrays matching the gradient table length. Tests include predictions on subsets of gradients.\nMulti-voxel tests: Fit the model to entire 3D volumes, predict signals, and verify shape preservation and non-negativity. Subset gradient predictions are also tested.\nMethod coverage: Both standard and gqi2 methods are tested to ensure consistent behavior.\n\nThese tests ensure the prediction function handles various data shapes and gradient configurations correctly.\n\n\n4.3 Round trip predict function tests\nRound-trip tests assess the fidelity of signal reconstruction by fitting the model to training data (excluding b0 volumes) and predicting back to the same gradient table. These tests are performed exclusively on the standard GQI model. Correlation between original and predicted signals serves as a quality metric.\n\nSingle-voxel round-trip: For selected voxels, compute Pearson correlation between original and predicted signals. Assert correlations exceed \\(r &gt; 0.8\\) and signal magnitudes remain in the same order of magnitude.\nMulti-voxel round-trip: Compute average correlation across all voxels in the volume, requiring \\(\\bar{r} &gt; 0.8\\). Identify and reject any voxels with \\(r \\leq 0.8\\).\nSubset predictions: Test predictions on reduced gradient sets to validate robustness.\n\nThese tests quantify reconstruction accuracy and detect overfitting or numerical instabilities."
   },
   {
     "objectID": "src/report.html#capabilities-and-applications",
@@ -234,6 +234,132 @@
     "objectID": "src/daily_diary.html#section-15",
     "href": "src/daily_diary.html#section-15",
     "title": "Daily diary",
+    "section": "12.12.2025",
+    "text": "12.12.2025\n\nApplied the changes requested by the DIPY team on the Prof. Esteban repository PR (see related gqi and test_gqi commit, related gqi_predict example commit and example)"
+  },
+  {
+    "objectID": "src/sources.html#assistants",
+    "href": "src/sources.html#assistants",
+    "title": "Sources",
+    "section": "Assistants",
+    "text": "Assistants\n\nQwen3 Max\nGrok Code Fast 1"
+  },
+  {
+    "objectID": "src/daily_journal.html",
+    "href": "src/daily_journal.html",
+    "title": "Daily Journal",
+    "section": "",
+    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book"
+  },
+  {
+    "objectID": "src/daily_journal.html#section",
+    "href": "src/daily_journal.html#section",
+    "title": "Daily Journal",
+    "section": "",
+    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-1",
+    "href": "src/daily_journal.html#section-1",
+    "title": "Daily Journal",
+    "section": "25.11.2025",
+    "text": "25.11.2025\n\nMeeting with Prof. Esteban\nPrepared the DIPY development environment\n\nInstallation steps\n\nCreate a venv and source it (or use uv venv and uv pip …)\nTo build the project\n\nsudo dnf install python3-devel\npip install -r requirements/build.txt\npip install –no-build-isolation -e .\n\nTo build the documentation\n\npip install sphinx\npip install sphinx_gallery\npip install numpydoc\npip install sphinxcontrib-bibtex\npip install sphinx-design\npip install grg-sphinx-theme\n\nTo use the correct formatting\n\npip install –no-build-isolation -e .[style]\npip install pre-commit\npre-commit install\n\n\n\nStarted to look at the current gqi predict code and pull request\nContinued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-2",
+    "href": "src/daily_journal.html#section-2",
+    "title": "Daily Journal",
+    "section": "26.11.2025",
+    "text": "26.11.2025\n\nFinished reading the Nipreps book\nContinued to look at the current gqi code and made small changes on the enh/gqi-predict-dev branch\n\nChanged GeneralizedQSamplingFit odf function to take a sphere parameter (see commit)\nChanged the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see commit)\n\nCreated a small marimo notebook to test and understand the prediction function on the enh/gqi-predict-notebooks branch (see commit)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-3",
+    "href": "src/daily_journal.html#section-3",
+    "title": "Daily Journal",
+    "section": "27.11.2025",
+    "text": "27.11.2025\n\nChanged the GeneralizedQSamplingFit predict function to use the model mode when calling the predict_kernel function. Also made the predict function work for multi-voxels (see commit)\nStarted gqi predict tests with (see commit)\n\nSingle-voxel basic test\nSingle-voxel meaningful test\nMulti-voxel basic test\nMulti-voxel meaningful test\n\nMeeting with Prof. Esteban\nDid 2 marimo notebooks on the enh/gqi-predict-notebooks branch (see commit)\n\nA notebook regarding the roundtrip predictions on already seen data (see notebook)\nA notebook regarding cross voxel predictions (see notebook)\n\nCreated the 303.1-semester-project github page (see page)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-4",
+    "href": "src/daily_journal.html#section-4",
+    "title": "Daily Journal",
+    "section": "28.11.2025",
+    "text": "28.11.2025\n\nCreated the Gantt diagram\nCreated the presentation github repository(now removed)\nStarted the presentation\nPublished the presentation github page (see page)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-5",
+    "href": "src/daily_journal.html#section-5",
+    "title": "Daily Journal",
+    "section": "01.12.2025",
+    "text": "01.12.2025\n\nStarted working on the cross validation prediction test\nWorked on the project documentation (see documentation)\n\nAdded a quarto theme\nAdded sources + daily diary pages\nAdded mermaid Gantt diagram\nWorked on the report structure (see report)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-6",
+    "href": "src/daily_journal.html#section-6",
+    "title": "Daily Journal",
+    "section": "02.12.2025",
+    "text": "02.12.2025\n\nAdded unseen data prediction tests + Cleaned gqi predict functions and existing tests (see commit)\nRefactored the gqi predict and prediction_kernel functions to work according to DIPY’s ODF formula:\n\\(ODF = S \\cdot K\\) (see commit)\nWrote the The different needed helper functions and The predict function and it’s implementation sections in the report (see commit)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-7",
+    "href": "src/daily_journal.html#section-7",
+    "title": "Daily Journal",
+    "section": "03.12.2025",
+    "text": "03.12.2025\n\nMeeting with Prof. Esteban\nStarted working on the unseen data prediction notebook (see commit)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-8",
+    "href": "src/daily_journal.html#section-8",
+    "title": "Daily Journal",
+    "section": "04.12.2025",
+    "text": "04.12.2025\n\nContinued working on the unseen data prediction notebook (see commit and notebook)\nBegan the DIPY prediction documentation example (see commit)\nRevised predict function according to DIPY conventions (not pushed yet)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-9",
+    "href": "src/daily_journal.html#section-9",
+    "title": "Daily Journal",
+    "section": "06.12.2025",
+    "text": "06.12.2025\n\nAdded brain mask + interceptor + b0 volumes separation to gqi_inseen_data_notebook (see commit and notebook)\nCommented the shapes of the GeneralizedQSamplingFit predict and prediction_kernel functions (see commit)\nOptimized the predict multi voxel case a bit (see commit)\nUpdated the report"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-10",
+    "href": "src/daily_journal.html#section-10",
+    "title": "Daily Journal",
+    "section": "07.12.2025",
+    "text": "07.12.2025\n\nOptimized GeneralizedQSamplingFit prediction_kernel function + Added prediction_kernel test which tests: (see commit)\n\nCorrect output shape\nK @ K_plus @ K ≈ K\nK @ K_plus is symmetric\nK_plus @ K is symmetric\n\nMade GeneralizedQSamplingFit predict function faster by fusing kernels therefore avoiding the explicit ODF calculation (see commit)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-11",
+    "href": "src/daily_journal.html#section-11",
+    "title": "Daily Journal",
+    "section": "08.12.2025",
+    "text": "08.12.2025\n\nContinued the DIPY prediction documentation example (see commit)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-12",
+    "href": "src/daily_journal.html#section-12",
+    "title": "Daily Journal",
+    "section": "09.12.2025",
+    "text": "09.12.2025\n\nMeeting with Prof. Esteban\nRemoved the gqi2 method and b0 volumes from the prediction tests (see commit)\nRemoved gqi_cross_voxel_notebook + Removed b0 values from train set in gqi_roundtrip_notebook + Cleaned gqi_unseen_data_notebook (see commit)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-13",
+    "href": "src/daily_journal.html#section-13",
+    "title": "Daily Journal",
+    "section": "10.12.2025",
+    "text": "10.12.2025\n\nCleaned the gqi_unseen_data_notebook (see commit)\nContinued the DIPY prediction documentation example (see commit, see example)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-14",
+    "href": "src/daily_journal.html#section-14",
+    "title": "Daily Journal",
+    "section": "11.12.2025",
+    "text": "11.12.2025\n\nUpdated README + Worked on the presentation (see commit)"
+  },
+  {
+    "objectID": "src/daily_journal.html#section-15",
+    "href": "src/daily_journal.html#section-15",
+    "title": "Daily Journal",
     "section": "12.12.2025",
     "text": "12.12.2025\n\nApplied the changes requested by the DIPY team on the Prof. Esteban repository PR (see related gqi and test_gqi commit, related gqi_predict example commit and example)"
   }

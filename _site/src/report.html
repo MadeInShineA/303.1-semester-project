@@ -341,8 +341,8 @@ window.Quarto = {
 <span class="menu-text">Presentation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../src/daily_diary.html"> 
-<span class="menu-text">Daily Diary</span></a>
+    <a class="nav-link" href="../src/daily_journal.html"> 
+<span class="menu-text">Daily Journal</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../src/sources.html"> 
@@ -581,14 +581,43 @@ K^{+} = K^T (K K^T + \lambda I)^{-1}
 </section>
 <section id="testing-methodology" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="testing-methodology"><span class="header-section-number">4</span> Testing Methodology</h2>
+<p>The testing methodology for the GQI prediction functions encompasses unit tests for individual components and integration tests for end-to-end prediction workflows.</p>
+<p>This tests validate:</p>
+<ul>
+<li>mathematical correctness</li>
+<li>numerical stability</li>
+<li>practical usability across single and multi-voxel scenarios.</li>
+</ul>
+<p>All tests utilize DIPY’s test data (<code>dsi_voxels</code>) and synthetic phantoms to ensure robustness.</p>
 <section id="prediction_kernel-function-tests" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="prediction_kernel-function-tests"><span class="header-section-number">4.1</span> <code>prediction_kernel</code> function tests</h3>
+<p>The <code>prediction_kernel</code> function is tested for its role as a Tikhonov-regularized Moore-Penrose pseudo-inverse of the GQI kernel. Key validations include:</p>
+<ul>
+<li><strong>Shape and finiteness</strong>: Ensures the kernel has correct dimensions <span class="math inline">\((n_\mathrm{vertices}, n_\mathrm{gradients})\)</span> and contains only finite, non-zero values.</li>
+<li><strong>Pseudo-inverse properties</strong>: Verifies that <span class="math inline">\(K K^+ K \approx K\)</span> (regularized reconstruction), and that <span class="math inline">\(K K^+\)</span> and <span class="math inline">\(K^+ K\)</span> are symmetric matrices.</li>
+<li><strong>Method compatibility</strong>: Tests both <code>standard</code> and <code>gqi2</code> GQI methods using the <code>symmetric724</code> sphere and DSI gradient table.</li>
+</ul>
+<p>These tests confirm the kernel’s mathematical integrity and numerical stability for signal reconstruction.</p>
 </section>
 <section id="basic-predict-function-tests" class="level3" data-number="4.2">
 <h3 data-number="4.2" class="anchored" data-anchor-id="basic-predict-function-tests"><span class="header-section-number">4.2</span> Basic <code>predict</code> function tests</h3>
+<p>Basic prediction tests validate the <code>predict</code> function’s API and output characteristics for both single-voxel and multi-voxel data:</p>
+<ul>
+<li><strong>Single-voxel tests</strong>: Fit the model to individual voxels from DSI data, predict signals, and check that outputs are non-negative arrays matching the gradient table length. Tests include predictions on subsets of gradients.</li>
+<li><strong>Multi-voxel tests</strong>: Fit the model to entire 3D volumes, predict signals, and verify shape preservation and non-negativity. Subset gradient predictions are also tested.</li>
+<li><strong>Method coverage</strong>: Both <code>standard</code> and <code>gqi2</code> methods are tested to ensure consistent behavior.</li>
+</ul>
+<p>These tests ensure the prediction function handles various data shapes and gradient configurations correctly.</p>
 </section>
 <section id="round-trip-predict-function-tests" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="round-trip-predict-function-tests"><span class="header-section-number">4.3</span> Round trip <code>predict</code> function tests</h3>
+<p>Round-trip tests assess the fidelity of signal reconstruction by fitting the model to training data (excluding b0 volumes) and predicting back to the same gradient table. These tests are performed exclusively on the <code>standard</code> GQI model. Correlation between original and predicted signals serves as a quality metric.</p>
+<ul>
+<li><strong>Single-voxel round-trip</strong>: For selected voxels, compute Pearson correlation between original and predicted signals. Assert correlations exceed <span class="math inline">\(r &gt; 0.8\)</span> and signal magnitudes remain in the same order of magnitude.</li>
+<li><strong>Multi-voxel round-trip</strong>: Compute average correlation across all voxels in the volume, requiring <span class="math inline">\(\bar{r} &gt; 0.8\)</span>. Identify and reject any voxels with <span class="math inline">\(r \leq 0.8\)</span>.</li>
+<li><strong>Subset predictions</strong>: Test predictions on reduced gradient sets to validate robustness.</li>
+</ul>
+<p>These tests quantify reconstruction accuracy and detect overfitting or numerical instabilities.</p>
 </section>
 </section>
 <section id="capabilities-and-applications" class="level2" data-number="5">
