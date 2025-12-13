@@ -5,22 +5,17 @@ number-sections: true
 
 ## Introduction
 
-This report provides an overview of the implemented prediction functions in DIPY's Generalized Q-Sampling Imaging (GQI) model, covering their purpose, operational mechanics, mathematical foundations, testing methodology, capabilities, and future directions.
-
-Key topics include:
-
-- Functionality and operation of the GQI prediction functions (`gqi_kernel`, `prediction_kernel`, and `predict`)
-- Mathematical derivations and pseudo-inverse computations
-- Testing procedures applied to the functions
-- Enabled applications and subsequent development steps
+This report provides an overview of the proposed `predict` function's implementation in DIPY's Generalized Q-Sampling Imaging (GQI) model,
+including the newly implemented `prediction_kernel` helper function and the pre-existing `gqi_kernel` function.
+It covers their purpose, operational mechanics, mathematical foundations, testing methodology, and obtained results.
 
 ---
 
 ## The different needed helper functions
 The `predict` function implementation relies on two key helper functions:
 
-  - `gqi_kernel` for kernel computation
-  - `prediction_kernel` for pseudo-inverse calculation.
+  - `gqi_kernel` (pre-existing) for kernel computation
+  - `prediction_kernel` (newly implemented) for pseudo-inverse calculation.
 
 In this section, each function is described in detail, including its purpose, parameters, and role in signal reconstruction from ODFs.
 
@@ -208,30 +203,68 @@ The `prediction_kernel` function is tested for its role as a Tikhonov-regularize
 
 These tests confirm the kernel's mathematical integrity and numerical stability for signal reconstruction.
 
-### Basic `predict` function tests
+### Basic API `predict` function tests
 
 Basic prediction tests validate the `predict` function's API and output characteristics for both single-voxel and multi-voxel data:
 
-- **Single-voxel tests**: Fit the model to individual voxels from DSI data, predict signals, and check that outputs are non-negative arrays matching the gradient table length. Tests include predictions on subsets of gradients.
-- **Multi-voxel tests**: Fit the model to entire 3D volumes, predict signals, and verify shape preservation and non-negativity. Subset gradient predictions are also tested.
+- **Single-voxel test**: Fit the model to individual voxels from DSI data, predict signals, and check that outputs are non-negative arrays matching the gradient table length. It also includes predictions on subsets of gradients.
+- **Multi-voxel test**: Fit the model to entire 3D volumes, predict signals, and verify shape preservation and non-negativity. Subset gradient predictions are also tested.
 - **Method coverage**: Both `standard` and `gqi2` methods are tested to ensure consistent behavior.
 
 These tests ensure the prediction function handles various data shapes and gradient configurations correctly.
 
 ### Round trip `predict` function tests
 
-Round-trip tests assess the fidelity of signal reconstruction by fitting the model to training data (excluding b0 volumes) and predicting back to the same gradient table. These tests are performed exclusively on the `standard` GQI model. Correlation between original and predicted signals serves as a quality metric.
+Round-trip tests assess the fidelity of signal reconstruction by fitting the model to training data (excluding b0 volumes) and predicting back to the same gradient table.
+
+These tests are performed exclusively on the `standard` GQI model. Correlation between original and predicted signals serves as a quality metric.
 
 - **Single-voxel round-trip**: For selected voxels, compute Pearson correlation between original and predicted signals. Assert correlations exceed $r > 0.8$ and signal magnitudes remain in the same order of magnitude.
 - **Multi-voxel round-trip**: Compute average correlation across all voxels in the volume, requiring $\bar{r} > 0.8$. Identify and reject any voxels with $r \leq 0.8$.
-- **Subset predictions**: Test predictions on reduced gradient sets to validate robustness.
 
 These tests quantify reconstruction accuracy and detect overfitting or numerical instabilities.
 
 
-## Capabilities and Applications
+## Obtained Results
 
-## Future Directions
+The implementation was validated through comprehensive testing using real DSI data from the DIPY library.
+The results demonstrate high accuracy in signal reconstruction for the "standard" GQI method,
+as quantified by voxel-wise correlation metrics and visual comparisons against ground truth data.
+Key findings are detailed below, referencing the provided visualizations.
+
+### Single-Voxel Reconstruction Results
+
+![Voxel (0, 0, 0) Signal Reconstruction: Original vs. Predicted](./assets/images/single_voxel_roundtrip_plot.png){#fig-single-voxel-roundtrip}
+
+The plots in @fig-single-voxel-roundtrip provide a detailed analysis for a single representative voxel.
+
+- **Strong Linear Relationship**: The scatter plot on the left shows a strong positive linear relationship between the original and predicted signals,
+with a Pearson correlation coefficient of **r = 0.9744**. The fitted line (y = 0.87x + 13.65) closely tracks the identity line (dashed black), indicating minimal bias in the prediction.
+- **Signal Profile Fidelity**: The line plot on the right compares the signal intensity profiles across all gradient directions.
+The predicted signal (blue dots) closely follows the original signal (black line), particularly for lower gradient indices.
+The residual plot (gray dots) shows small deviations, with an MAE of **12.7544**, which is acceptable given the signal range (~0-300).
+
+### Multi-Voxel Reconstruction Results
+
+![Voxel-wise Signal Reconstruction Accuracy](./assets/images/multi_voxel_roundtrip_plot.png){#fig-multi-voxel-roundtrip}
+
+The histogram presented in @fig-multi-voxel-roundtrip shows the distribution of Pearson correlation coefficients between original and predicted signals across all voxels for the "Standard GQI" model.
+
+- **High Overall Fidelity**: The distribution is sharply peaked near perfect correlation (r=1.0), indicating the model successfully reconstructs the training data.
+- **Quantitative Metrics**: The mean voxel-wise correlation is **0.9800**, and the overall correlation across the entire volume is **0.9749**, both significantly exceeding the target threshold of r > 0.8. The Mean Absolute Error (MAE) of **7.1714** further confirms low prediction error relative to the signal intensity scale.
+- **Spatial Consistency**: The accompanying correlation map (right panel) shows a uniformly high correlation (yellow/green tones) across the slice, confirming that the model's performance is spatially consistent and not localized to specific regions. This validates the numerical stability and robustness of the `predict` function for multi-voxel data.
+
+### Prediction on Unseen Data
+
+![Real vs Predicted Signal and Local Correlation: Test Volume 0, Z Slice 30](./assets/images/unseen_data_plot.png){#fig-unseen-data-plot}
+
+The visualization in @fig-unseen-data-plot evaluates the model's ability to generalize to unseen gradient configurations.
+
+- **Visual Agreement**: A side-by-side comparison of the **Real data** and **STANDARD prediction** for a specific b-value and b-vector shows a strong qualitative match. The predicted image successfully captures the anatomical structure and intensity variations present in the real data, including bright white matter tracts.
+- **Local Correlation Validation**: The **Local Pearson Correlation** map, computed over a 9x9 window, quantifies this agreement. The map displays predominantly red and orange regions (correlation > 0.5), indicating good local correspondence between the real and predicted signals. While some areas show lower correlation (blue/purple), these are likely associated with complex fiber crossings or noise, which is expected in diffusion MRI. This demonstrates the model's capability to predict signals for new, unseen gradients beyond the training set.
+
+These results collectively confirm that the implemented `predict` function is mathematically sound, numerically stable, and practically effective for both reconstructing training data and generalizing to new gradient directions. The high correlation values and visual fidelity validate the correctness of the Tikhonov-regularized pseudo-inverse approach used in the `prediction_kernel` function.
+
 
 ## Conclusion
 

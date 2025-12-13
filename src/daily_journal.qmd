@@ -104,7 +104,7 @@ title: Daily Journal
 
 ## 06.12.2025
 
-- Added brain mask + interceptor + b0 volumes separation to gqi_inseen_data_notebook (see [commit](https://github.com/MadeInShineA/dipy/commit/d39f4215e5cd6348913934a00e791d25f1424c92){target="_blank"} and [notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"})
+- Added brain mask + interceptor + b0 volumes separation to gqi_unseen_data_notebook (see [commit](https://github.com/MadeInShineA/dipy/commit/d39f4215e5cd6348913934a00e791d25f1424c92){target="_blank"} and [notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"})
 - Commented the shapes of the GeneralizedQSamplingFit predict and prediction_kernel functions (see [commit](https://github.com/MadeInShineA/dipy/commit/e78aca2e844177900aeada7ee3960f4a0cca51f4){target="_blank"})
 - Optimized the predict multi voxel case a bit (see [commit](https://github.com/MadeInShineA/dipy/commit/4d6cb28cfe90938f5a2a0797abd4d3b64441f845){target="_blank"})
 - Updated the [report](./report.qmd){target="_blank"}
@@ -142,5 +142,14 @@ title: Daily Journal
 ## 11.12.2025
 - Updated README + Worked on the presentation (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/8ac7bddc1be724c37caa5249bcd05a1b37825224){target="_blank"})
 
+---
+
 ## 12.12.2025
 - Applied the changes requested by the DIPY team on the [Prof. Esteban repository PR](https://github.com/oesteban/dipy/pull/1){target="_blank"} (see [related gqi and test_gqi commit](https://github.com/MadeInShineA/dipy/commit/0f9872ff676d85d5e89a2f2e51f672d03e5f603c){target="_blank"}, [related gqi_predict example commit](https://github.com/MadeInShineA/dipy/commit/3f6e05196749595c665275095997b9e05cc9b45e){target="_blank"} and [example](https://olivier.amacker.dev/303.1-semester-project/src/assets/examples/reconst_gqi_predict.html){target="_blank"})
+
+--- 
+
+## 13.12.2025
+- Cleaned the GeneralizedQSamplingFit predict roundtrip tests (see [commit](https://github.com/oesteban/dipy/pull/1/commits/75cfb695ec2b5fa08f33abf963b953e7abe010af){target="_blank"})
+- Began the Testing Methodology and Obtained Results sections of the report (see [report](report.qmd){target="_blank"})
+- Improved marimo notebooks plot titles (see [gqi roundtrip notebook](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}, [gqi unseen data notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"} and [commit](https://github.com/MadeInShineA/dipy/commit/59162841d30944fea97b5779351ef2dc6a1b3d0c){target="_blank"})

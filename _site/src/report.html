@@ -376,17 +376,21 @@ window.Quarto = {
   <li><a href="#testing-methodology" id="toc-testing-methodology" class="nav-link" data-scroll-target="#testing-methodology"><span class="header-section-number">4</span> Testing Methodology</a>
   <ul>
   <li><a href="#prediction_kernel-function-tests" id="toc-prediction_kernel-function-tests" class="nav-link" data-scroll-target="#prediction_kernel-function-tests"><span class="header-section-number">4.1</span> <code>prediction_kernel</code> function tests</a></li>
-  <li><a href="#basic-predict-function-tests" id="toc-basic-predict-function-tests" class="nav-link" data-scroll-target="#basic-predict-function-tests"><span class="header-section-number">4.2</span> Basic <code>predict</code> function tests</a></li>
+  <li><a href="#basic-api-predict-function-tests" id="toc-basic-api-predict-function-tests" class="nav-link" data-scroll-target="#basic-api-predict-function-tests"><span class="header-section-number">4.2</span> Basic API <code>predict</code> function tests</a></li>
   <li><a href="#round-trip-predict-function-tests" id="toc-round-trip-predict-function-tests" class="nav-link" data-scroll-target="#round-trip-predict-function-tests"><span class="header-section-number">4.3</span> Round trip <code>predict</code> function tests</a></li>
   </ul></li>
-  <li><a href="#capabilities-and-applications" id="toc-capabilities-and-applications" class="nav-link" data-scroll-target="#capabilities-and-applications"><span class="header-section-number">5</span> Capabilities and Applications</a></li>
-  <li><a href="#future-directions" id="toc-future-directions" class="nav-link" data-scroll-target="#future-directions"><span class="header-section-number">6</span> Future Directions</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">8</span> Resources</a>
+  <li><a href="#obtained-results" id="toc-obtained-results" class="nav-link" data-scroll-target="#obtained-results"><span class="header-section-number">5</span> Obtained Results</a>
   <ul>
-  <li><a href="#dipy-tutorial-repository-notebooks" id="toc-dipy-tutorial-repository-notebooks" class="nav-link" data-scroll-target="#dipy-tutorial-repository-notebooks"><span class="header-section-number">8.1</span> DIPY tutorial repository notebooks</a></li>
-  <li><a href="#dipy-repository-notebooks" id="toc-dipy-repository-notebooks" class="nav-link" data-scroll-target="#dipy-repository-notebooks"><span class="header-section-number">8.2</span> DIPY repository notebooks</a></li>
-  <li><a href="#dipy-examples" id="toc-dipy-examples" class="nav-link" data-scroll-target="#dipy-examples"><span class="header-section-number">8.3</span> DIPY examples</a></li>
+  <li><a href="#single-voxel-reconstruction-results" id="toc-single-voxel-reconstruction-results" class="nav-link" data-scroll-target="#single-voxel-reconstruction-results"><span class="header-section-number">5.1</span> Single-Voxel Reconstruction Results</a></li>
+  <li><a href="#multi-voxel-reconstruction-results" id="toc-multi-voxel-reconstruction-results" class="nav-link" data-scroll-target="#multi-voxel-reconstruction-results"><span class="header-section-number">5.2</span> Multi-Voxel Reconstruction Results</a></li>
+  <li><a href="#prediction-on-unseen-data" id="toc-prediction-on-unseen-data" class="nav-link" data-scroll-target="#prediction-on-unseen-data"><span class="header-section-number">5.3</span> Prediction on Unseen Data</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6</span> Conclusion</a></li>
+  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">7</span> Resources</a>
+  <ul>
+  <li><a href="#dipy-tutorial-repository-notebooks" id="toc-dipy-tutorial-repository-notebooks" class="nav-link" data-scroll-target="#dipy-tutorial-repository-notebooks"><span class="header-section-number">7.1</span> DIPY tutorial repository notebooks</a></li>
+  <li><a href="#dipy-repository-notebooks" id="toc-dipy-repository-notebooks" class="nav-link" data-scroll-target="#dipy-repository-notebooks"><span class="header-section-number">7.2</span> DIPY repository notebooks</a></li>
+  <li><a href="#dipy-examples" id="toc-dipy-examples" class="nav-link" data-scroll-target="#dipy-examples"><span class="header-section-number">7.3</span> DIPY examples</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/report.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
@@ -416,22 +420,15 @@ window.Quarto = {
 
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>This report provides an overview of the implemented prediction functions in DIPY’s Generalized Q-Sampling Imaging (GQI) model, covering their purpose, operational mechanics, mathematical foundations, testing methodology, capabilities, and future directions.</p>
-<p>Key topics include:</p>
-<ul>
-<li>Functionality and operation of the GQI prediction functions (<code>gqi_kernel</code>, <code>prediction_kernel</code>, and <code>predict</code>)</li>
-<li>Mathematical derivations and pseudo-inverse computations</li>
-<li>Testing procedures applied to the functions</li>
-<li>Enabled applications and subsequent development steps</li>
-</ul>
+<p>This report provides an overview of the proposed <code>predict</code> function’s implementation in DIPY’s Generalized Q-Sampling Imaging (GQI) model, including the newly implemented <code>prediction_kernel</code> helper function and the pre-existing <code>gqi_kernel</code> function. It covers their purpose, operational mechanics, mathematical foundations, testing methodology, and obtained results.</p>
 <hr>
 </section>
 <section id="the-different-needed-helper-functions" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="the-different-needed-helper-functions"><span class="header-section-number">2</span> The different needed helper functions</h2>
 <p>The <code>predict</code> function implementation relies on two key helper functions:</p>
 <ul>
-<li><code>gqi_kernel</code> for kernel computation</li>
-<li><code>prediction_kernel</code> for pseudo-inverse calculation.</li>
+<li><code>gqi_kernel</code> (pre-existing) for kernel computation</li>
+<li><code>prediction_kernel</code> (newly implemented) for pseudo-inverse calculation.</li>
 </ul>
 <p>In this section, each function is described in detail, including its purpose, parameters, and role in signal reconstruction from ODFs.</p>
 <section id="the-gqi_kernel-function" class="level3" data-number="2.1">
@@ -599,55 +596,109 @@ K^{+} = K^T (K K^T + \lambda I)^{-1}
 </ul>
 <p>These tests confirm the kernel’s mathematical integrity and numerical stability for signal reconstruction.</p>
 </section>
-<section id="basic-predict-function-tests" class="level3" data-number="4.2">
-<h3 data-number="4.2" class="anchored" data-anchor-id="basic-predict-function-tests"><span class="header-section-number">4.2</span> Basic <code>predict</code> function tests</h3>
+<section id="basic-api-predict-function-tests" class="level3" data-number="4.2">
+<h3 data-number="4.2" class="anchored" data-anchor-id="basic-api-predict-function-tests"><span class="header-section-number">4.2</span> Basic API <code>predict</code> function tests</h3>
 <p>Basic prediction tests validate the <code>predict</code> function’s API and output characteristics for both single-voxel and multi-voxel data:</p>
 <ul>
-<li><strong>Single-voxel tests</strong>: Fit the model to individual voxels from DSI data, predict signals, and check that outputs are non-negative arrays matching the gradient table length. Tests include predictions on subsets of gradients.</li>
-<li><strong>Multi-voxel tests</strong>: Fit the model to entire 3D volumes, predict signals, and verify shape preservation and non-negativity. Subset gradient predictions are also tested.</li>
+<li><strong>Single-voxel test</strong>: Fit the model to individual voxels from DSI data, predict signals, and check that outputs are non-negative arrays matching the gradient table length. It also includes predictions on subsets of gradients.</li>
+<li><strong>Multi-voxel test</strong>: Fit the model to entire 3D volumes, predict signals, and verify shape preservation and non-negativity. Subset gradient predictions are also tested.</li>
 <li><strong>Method coverage</strong>: Both <code>standard</code> and <code>gqi2</code> methods are tested to ensure consistent behavior.</li>
 </ul>
 <p>These tests ensure the prediction function handles various data shapes and gradient configurations correctly.</p>
 </section>
 <section id="round-trip-predict-function-tests" class="level3" data-number="4.3">
 <h3 data-number="4.3" class="anchored" data-anchor-id="round-trip-predict-function-tests"><span class="header-section-number">4.3</span> Round trip <code>predict</code> function tests</h3>
-<p>Round-trip tests assess the fidelity of signal reconstruction by fitting the model to training data (excluding b0 volumes) and predicting back to the same gradient table. These tests are performed exclusively on the <code>standard</code> GQI model. Correlation between original and predicted signals serves as a quality metric.</p>
+<p>Round-trip tests assess the fidelity of signal reconstruction by fitting the model to training data (excluding b0 volumes) and predicting back to the same gradient table.</p>
+<p>These tests are performed exclusively on the <code>standard</code> GQI model. Correlation between original and predicted signals serves as a quality metric.</p>
 <ul>
 <li><strong>Single-voxel round-trip</strong>: For selected voxels, compute Pearson correlation between original and predicted signals. Assert correlations exceed <span class="math inline">\(r &gt; 0.8\)</span> and signal magnitudes remain in the same order of magnitude.</li>
 <li><strong>Multi-voxel round-trip</strong>: Compute average correlation across all voxels in the volume, requiring <span class="math inline">\(\bar{r} &gt; 0.8\)</span>. Identify and reject any voxels with <span class="math inline">\(r \leq 0.8\)</span>.</li>
-<li><strong>Subset predictions</strong>: Test predictions on reduced gradient sets to validate robustness.</li>
 </ul>
 <p>These tests quantify reconstruction accuracy and detect overfitting or numerical instabilities.</p>
 </section>
 </section>
-<section id="capabilities-and-applications" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="capabilities-and-applications"><span class="header-section-number">5</span> Capabilities and Applications</h2>
+<section id="obtained-results" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="obtained-results"><span class="header-section-number">5</span> Obtained Results</h2>
+<p>The implementation was validated through comprehensive testing using real DSI data from the DIPY library. The results demonstrate high accuracy in signal reconstruction for the “standard” GQI method, as quantified by voxel-wise correlation metrics and visual comparisons against ground truth data. Key findings are detailed below, referencing the provided visualizations.</p>
+<section id="single-voxel-reconstruction-results" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="single-voxel-reconstruction-results"><span class="header-section-number">5.1</span> Single-Voxel Reconstruction Results</h3>
+<div id="fig-single-voxel-roundtrip" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-single-voxel-roundtrip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./assets/images/single_voxel_roundtrip_plot.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-single-voxel-roundtrip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Voxel (0, 0, 0) Signal Reconstruction: Original vs.&nbsp;Predicted
+</figcaption>
+</figure>
+</div>
+<p>The plots in <a href="#fig-single-voxel-roundtrip" class="quarto-xref">Figure&nbsp;1</a> provide a detailed analysis for a single representative voxel.</p>
+<ul>
+<li><strong>Strong Linear Relationship</strong>: The scatter plot on the left shows a strong positive linear relationship between the original and predicted signals, with a Pearson correlation coefficient of <strong>r = 0.9744</strong>. The fitted line (y = 0.87x + 13.65) closely tracks the identity line (dashed black), indicating minimal bias in the prediction.</li>
+<li><strong>Signal Profile Fidelity</strong>: The line plot on the right compares the signal intensity profiles across all gradient directions. The predicted signal (blue dots) closely follows the original signal (black line), particularly for lower gradient indices. The residual plot (gray dots) shows small deviations, with an MAE of <strong>12.7544</strong>, which is acceptable given the signal range (~0-300).</li>
+</ul>
 </section>
-<section id="future-directions" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="future-directions"><span class="header-section-number">6</span> Future Directions</h2>
+<section id="multi-voxel-reconstruction-results" class="level3" data-number="5.2">
+<h3 data-number="5.2" class="anchored" data-anchor-id="multi-voxel-reconstruction-results"><span class="header-section-number">5.2</span> Multi-Voxel Reconstruction Results</h3>
+<div id="fig-multi-voxel-roundtrip" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-multi-voxel-roundtrip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./assets/images/multi_voxel_roundtrip_plot.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-multi-voxel-roundtrip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Voxel-wise Signal Reconstruction Accuracy
+</figcaption>
+</figure>
+</div>
+<p>The histogram presented in <a href="#fig-multi-voxel-roundtrip" class="quarto-xref">Figure&nbsp;2</a> shows the distribution of Pearson correlation coefficients between original and predicted signals across all voxels for the “Standard GQI” model.</p>
+<ul>
+<li><strong>High Overall Fidelity</strong>: The distribution is sharply peaked near perfect correlation (r=1.0), indicating the model successfully reconstructs the training data.</li>
+<li><strong>Quantitative Metrics</strong>: The mean voxel-wise correlation is <strong>0.9800</strong>, and the overall correlation across the entire volume is <strong>0.9749</strong>, both significantly exceeding the target threshold of r &gt; 0.8. The Mean Absolute Error (MAE) of <strong>7.1714</strong> further confirms low prediction error relative to the signal intensity scale.</li>
+<li><strong>Spatial Consistency</strong>: The accompanying correlation map (right panel) shows a uniformly high correlation (yellow/green tones) across the slice, confirming that the model’s performance is spatially consistent and not localized to specific regions. This validates the numerical stability and robustness of the <code>predict</code> function for multi-voxel data.</li>
+</ul>
 </section>
-<section id="conclusion" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">7</span> Conclusion</h2>
+<section id="prediction-on-unseen-data" class="level3" data-number="5.3">
+<h3 data-number="5.3" class="anchored" data-anchor-id="prediction-on-unseen-data"><span class="header-section-number">5.3</span> Prediction on Unseen Data</h3>
+<div id="fig-unseen-data-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-unseen-data-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="./assets/images/unseen_data_plot.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unseen-data-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Real vs Predicted Signal and Local Correlation: Test Volume 0, Z Slice 30
+</figcaption>
+</figure>
+</div>
+<p>The visualization in <a href="#fig-unseen-data-plot" class="quarto-xref">Figure&nbsp;3</a> evaluates the model’s ability to generalize to unseen gradient configurations.</p>
+<ul>
+<li><strong>Visual Agreement</strong>: A side-by-side comparison of the <strong>Real data</strong> and <strong>STANDARD prediction</strong> for a specific b-value and b-vector shows a strong qualitative match. The predicted image successfully captures the anatomical structure and intensity variations present in the real data, including bright white matter tracts.</li>
+<li><strong>Local Correlation Validation</strong>: The <strong>Local Pearson Correlation</strong> map, computed over a 9x9 window, quantifies this agreement. The map displays predominantly red and orange regions (correlation &gt; 0.5), indicating good local correspondence between the real and predicted signals. While some areas show lower correlation (blue/purple), these are likely associated with complex fiber crossings or noise, which is expected in diffusion MRI. This demonstrates the model’s capability to predict signals for new, unseen gradients beyond the training set.</li>
+</ul>
+<p>These results collectively confirm that the implemented <code>predict</code> function is mathematically sound, numerically stable, and practically effective for both reconstructing training data and generalizing to new gradient directions. The high correlation values and visual fidelity validate the correctness of the Tikhonov-regularized pseudo-inverse approach used in the <code>prediction_kernel</code> function.</p>
 </section>
-<section id="resources" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="resources"><span class="header-section-number">8</span> Resources</h2>
-<section id="dipy-tutorial-repository-notebooks" class="level3" data-number="8.1">
-<h3 data-number="8.1" class="anchored" data-anchor-id="dipy-tutorial-repository-notebooks"><span class="header-section-number">8.1</span> <a href="https://github.com/MadeInShineA/dipy-tutorial/tree/main" target="_blank">DIPY tutorial repository</a> notebooks</h3>
+</section>
+<section id="conclusion" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6</span> Conclusion</h2>
+</section>
+<section id="resources" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="resources"><span class="header-section-number">7</span> Resources</h2>
+<section id="dipy-tutorial-repository-notebooks" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="dipy-tutorial-repository-notebooks"><span class="header-section-number">7.1</span> <a href="https://github.com/MadeInShineA/dipy-tutorial/tree/main" target="_blank">DIPY tutorial repository</a> notebooks</h3>
 <ul>
 <li><a href="./assets/notebooks/dipy-tutorial/reconstruct_with_csa_q_ball.html" target="_blank">Reconstruct with Constant Solid Angle (Q-Ball)</a></li>
 <li><a href="./assets/notebooks/dipy-tutorial/reconstruct_with_q_sampling_imaging_notebook.html" target="_blank">Reconstruct with Generalized Q-Sampling Imaging</a></li>
 <li><a href="./assets/notebooks/dipy-tutorial/basic_tracking_notebook.html" target="_blank">Introduction to Basic Tracking</a></li>
 </ul>
 </section>
-<section id="dipy-repository-notebooks" class="level3" data-number="8.2">
-<h3 data-number="8.2" class="anchored" data-anchor-id="dipy-repository-notebooks"><span class="header-section-number">8.2</span> <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks" target="_blank">DIPY repository</a> notebooks</h3>
+<section id="dipy-repository-notebooks" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="dipy-repository-notebooks"><span class="header-section-number">7.2</span> <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks" target="_blank">DIPY repository</a> notebooks</h3>
 <ul>
 <li><a href="./assets/notebooks/dipy/gqi_roundtrip_notebook.html" target="_blank">GQI Roundtrip</a></li>
 <li><a href="./assets/notebooks/dipy/gqi_unseen_data_notebook.html" target="_blank">GQI Unseen Data</a></li>
 </ul>
 </section>
-<section id="dipy-examples" class="level3" data-number="8.3">
-<h3 data-number="8.3" class="anchored" data-anchor-id="dipy-examples"><span class="header-section-number">8.3</span> DIPY examples</h3>
+<section id="dipy-examples" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="dipy-examples"><span class="header-section-number">7.3</span> DIPY examples</h3>
 <ul>
 <li><a href="./assets/examples/reconst_gqi_predict.html" target="_blank">Predict unseen data with Generalized Q-Sampling Imaging</a></li>
 </ul>
