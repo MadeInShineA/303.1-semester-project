@@ -12,7 +12,7 @@ The website contains the following sections:
 
 - [**Report**](https://madeinshinea.github.io/303.1-semester-project/src/report.html): Detailed documentation of the semester project
 - [**Presentation**](https://madeinshinea.github.io/303.1-semester-project/src/presentation.html): Slides for the project presentation
-- [**Daily Diary**](https://madeinshinea.github.io/303.1-semester-project/src/daily_diary.html): Chronological log of project progress and activities
+- [**Daily Journal**](https://madeinshinea.github.io/303.1-semester-project/src/daily_diary.html): Chronological log of project progress and activities
 - [**Sources**](https://madeinshinea.github.io/303.1-semester-project/src/sources.html): References and source materials used in the project
 
 ## Local Setup

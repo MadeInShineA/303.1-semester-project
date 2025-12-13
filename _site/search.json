@@ -21,6 +21,13 @@
     "text": "Youtube videos\n\nDiffusion Weighted Imaging - Doctor Klioze\nDiffusion Tensor Imaging (DTI) - Doctor Klioze\nDiffusion Tensor Imaging (DTI) Explained! | Neuroscience Methods 101 - Psyched!\nDWI vs ADC MRI sequences: EXPLAINED - Radiology Tutorials\nDiffusion Weighted Imaging EXPLAINED (DWI Trace, ADC, B-Values) | MRI Physics Course Lecture 14 - MRI Physics EXPLAINED\nHow to Read MRI Diffusion Imaging (DWI) like a Real Radiologist - MRI Physics EXPLAINED\nA tour of spherical harmonics-based local reconstruction techniques in DIPY - Part1 - Diffusion Imaging in Python - DIPY\nA tour of spherical harmonics-based local reconstruction techniques in DIPY - Part2 - Diffusion Imaging in Python - DIPY"
   },
   {
+    "objectID": "src/sources.html#assistants",
+    "href": "src/sources.html#assistants",
+    "title": "Sources",
+    "section": "Assistants",
+    "text": "Assistants\n\nQwen3 Max\nGrok Code Fast 1"
+  },
+  {
     "objectID": "src/sources.html#other",
     "href": "src/sources.html#other",
     "title": "Sources",
@@ -53,7 +60,7 @@
     "href": "src/index.html#documents",
     "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
     "section": "Documents",
-    "text": "Documents\n\nReport: Detailed technical documentation and results\nPresentation: Slide deck summarizing the project\nDaily Diary: Development log and progress updates\nSources: Bibliography and references"
+    "text": "Documents\n\nReport: Detailed technical documentation and results\nPresentation: Slide deck summarizing the project\nDaily Journal: Development log and progress updates\nSources: Bibliography and references"
   },
   {
     "objectID": "src/report.html",
@@ -117,132 +124,6 @@
     "title": "Implementation Report: Predict Function",
     "section": "8 Resources",
     "text": "8 Resources\n\n8.1 DIPY tutorial repository notebooks\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\n8.2 DIPY repository notebooks\n\nGQI Roundtrip\nGQI Unseen Data\n\n\n\n8.3 DIPY examples\n\nPredict unseen data with Generalized Q-Sampling Imaging"
-  },
-  {
-    "objectID": "src/daily_diary.html",
-    "href": "src/daily_diary.html",
-    "title": "Daily diary",
-    "section": "",
-    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book"
-  },
-  {
-    "objectID": "src/daily_diary.html#section",
-    "href": "src/daily_diary.html#section",
-    "title": "Daily diary",
-    "section": "",
-    "text": "Made a pull request to the Nipreps book repo\nRealised the different DIPY tutorials\nStarted reading the Nipreps book"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-1",
-    "href": "src/daily_diary.html#section-1",
-    "title": "Daily diary",
-    "section": "25.11.2025",
-    "text": "25.11.2025\n\nMeeting with Prof. Esteban\nPrepared the DIPY development environment\n\nInstallation steps\n\nCreate a venv and source it (or use uv venv and uv pip …)\nTo build the project\n\nsudo dnf install python3-devel\npip install -r requirements/build.txt\npip install –no-build-isolation -e .\n\nTo build the documentation\n\npip install sphinx\npip install sphinx_gallery\npip install numpydoc\npip install sphinxcontrib-bibtex\npip install sphinx-design\npip install grg-sphinx-theme\n\nTo use the correct formatting\n\npip install –no-build-isolation -e .[style]\npip install pre-commit\npre-commit install\n\n\n\nStarted to look at the current gqi predict code and pull request\nContinued reading the Nipreps book (tried to fix a latex rendering error unsuccessfully)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-2",
-    "href": "src/daily_diary.html#section-2",
-    "title": "Daily diary",
-    "section": "26.11.2025",
-    "text": "26.11.2025\n\nFinished reading the Nipreps book\nContinued to look at the current gqi code and made small changes on the enh/gqi-predict-dev branch\n\nChanged GeneralizedQSamplingFit odf function to take a sphere parameter (see commit)\nChanged the GeneralizedQSamplingFit predict function to use clamping to remove negative value predictions (see commit)\n\nCreated a small marimo notebook to test and understand the prediction function on the enh/gqi-predict-notebooks branch (see commit)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-3",
-    "href": "src/daily_diary.html#section-3",
-    "title": "Daily diary",
-    "section": "27.11.2025",
-    "text": "27.11.2025\n\nChanged the GeneralizedQSamplingFit predict function to use the model mode when calling the predict_kernel function. Also made the predict function work for multi-voxels (see commit)\nStarted gqi predict tests with (see commit)\n\nSingle-voxel basic test\nSingle-voxel meaningful test\nMulti-voxel basic test\nMulti-voxel meaningful test\n\nMeeting with Prof. Esteban\nDid 2 marimo notebooks on the enh/gqi-predict-notebooks branch (see commit)\n\nA notebook regarding the roundtrip predictions on already seen data (see notebook)\nA notebook regarding cross voxel predictions (see notebook)\n\nCreated the 303.1-semester-project github page (see page)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-4",
-    "href": "src/daily_diary.html#section-4",
-    "title": "Daily diary",
-    "section": "28.11.2025",
-    "text": "28.11.2025\n\nCreated the Gantt diagram\nCreated the presentation github repository(now removed)\nStarted the presentation\nPublished the presentation github page (see page)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-5",
-    "href": "src/daily_diary.html#section-5",
-    "title": "Daily diary",
-    "section": "01.12.2025",
-    "text": "01.12.2025\n\nStarted working on the cross validation prediction test\nWorked on the project documentation (see documentation)\n\nAdded a quarto theme\nAdded sources + daily diary pages\nAdded mermaid Gantt diagram\nWorked on the report structure (see report)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-6",
-    "href": "src/daily_diary.html#section-6",
-    "title": "Daily diary",
-    "section": "02.12.2025",
-    "text": "02.12.2025\n\nAdded unseen data prediction tests + Cleaned gqi predict functions and existing tests (see commit)\nRefactored the gqi predict and prediction_kernel functions to work according to DIPY’s ODF formula:\n\\(ODF = S \\cdot K\\) (see commit)\nWrote the The different needed helper functions and The predict function and it’s implementation sections in the report (see commit)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-7",
-    "href": "src/daily_diary.html#section-7",
-    "title": "Daily diary",
-    "section": "03.12.2025",
-    "text": "03.12.2025\n\nMeeting with Prof. Esteban\nStarted working on the unseen data prediction notebook (see commit)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-8",
-    "href": "src/daily_diary.html#section-8",
-    "title": "Daily diary",
-    "section": "04.12.2025",
-    "text": "04.12.2025\n\nContinued working on the unseen data prediction notebook (see commit and notebook)\nBegan the DIPY prediction documentation example (see commit)\nRevised predict function according to DIPY conventions (not pushed yet)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-9",
-    "href": "src/daily_diary.html#section-9",
-    "title": "Daily diary",
-    "section": "06.12.2025",
-    "text": "06.12.2025\n\nAdded brain mask + interceptor + b0 volumes separation to gqi_inseen_data_notebook (see commit and notebook)\nCommented the shapes of the GeneralizedQSamplingFit predict and prediction_kernel functions (see commit)\nOptimized the predict multi voxel case a bit (see commit)\nUpdated the report"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-10",
-    "href": "src/daily_diary.html#section-10",
-    "title": "Daily diary",
-    "section": "07.12.2025",
-    "text": "07.12.2025\n\nOptimized GeneralizedQSamplingFit prediction_kernel function + Added prediction_kernel test which tests: (see commit)\n\nCorrect output shape\nK @ K_plus @ K ≈ K\nK @ K_plus is symmetric\nK_plus @ K is symmetric\n\nMade GeneralizedQSamplingFit predict function faster by fusing kernels therefore avoiding the explicit ODF calculation (see commit)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-11",
-    "href": "src/daily_diary.html#section-11",
-    "title": "Daily diary",
-    "section": "08.12.2025",
-    "text": "08.12.2025\n\nContinued the DIPY prediction documentation example (see commit)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-12",
-    "href": "src/daily_diary.html#section-12",
-    "title": "Daily diary",
-    "section": "09.12.2025",
-    "text": "09.12.2025\n\nMeeting with Prof. Esteban\nRemoved the gqi2 method and b0 volumes from the prediction tests (see commit)\nRemoved gqi_cross_voxel_notebook + Removed b0 values from train set in gqi_roundtrip_notebook + Cleaned gqi_unseen_data_notebook (see commit)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-13",
-    "href": "src/daily_diary.html#section-13",
-    "title": "Daily diary",
-    "section": "10.12.2025",
-    "text": "10.12.2025\n\nCleaned the gqi_unseen_data_notebook (see commit)\nContinued the DIPY prediction documentation example (see commit, see example)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-14",
-    "href": "src/daily_diary.html#section-14",
-    "title": "Daily diary",
-    "section": "11.12.2025",
-    "text": "11.12.2025\n\nUpdated README + Worked on the presentation (see commit)"
-  },
-  {
-    "objectID": "src/daily_diary.html#section-15",
-    "href": "src/daily_diary.html#section-15",
-    "title": "Daily diary",
-    "section": "12.12.2025",
-    "text": "12.12.2025\n\nApplied the changes requested by the DIPY team on the Prof. Esteban repository PR (see related gqi and test_gqi commit, related gqi_predict example commit and example)"
-  },
-  {
-    "objectID": "src/sources.html#assistants",
-    "href": "src/sources.html#assistants",
-    "title": "Sources",
-    "section": "Assistants",
-    "text": "Assistants\n\nQwen3 Max\nGrok Code Fast 1"
   },
   {
     "objectID": "src/daily_journal.html",

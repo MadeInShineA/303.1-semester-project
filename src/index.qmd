@@ -69,5 +69,5 @@ gantt
 
 - **[Report](report.qmd)**: Detailed technical documentation and results
 - **[Presentation](presentation.qmd)**: Slide deck summarizing the project
-- **[Daily Diary](daily_journal.qmd)**: Development log and progress updates
+- **[Daily Journal](daily_journal.qmd)**: Development log and progress updates
 - **[Sources](sources.qmd)**: Bibliography and references
