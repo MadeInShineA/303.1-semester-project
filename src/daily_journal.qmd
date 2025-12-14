@@ -135,7 +135,7 @@ title: Daily Journal
 
 ## 10.12.2025
 - Cleaned the gqi_unseen_data_notebook (see [commit](https://github.com/MadeInShineA/dipy/commit/1ad6ce78e9d84a8363a809c5bc068885805568b3){target="_blank"})
-- Continued the DIPY prediction documentation example (see [commit](https://github.com/MadeInShineA/dipy/commit/ca5e9bce3b002ba30445305341e87164760d17c0){target="_blank"}, see [example](./assets/examples/reconst_gqi_predict.html){target="_blank"})
+- Continued the DIPY prediction documentation example (see [commit](https://github.com/MadeInShineA/dipy/commit/ca5e9bce3b002ba30445305341e87164760d17c0){target="_blank"} and [example](./assets/examples/reconst_gqi_predict.html){target="_blank"})
 
 ---
 
@@ -153,3 +153,8 @@ title: Daily Journal
 - Cleaned the GeneralizedQSamplingFit predict roundtrip tests (see [commit](https://github.com/oesteban/dipy/pull/1/commits/75cfb695ec2b5fa08f33abf963b953e7abe010af){target="_blank"})
 - Began the Testing Methodology and Obtained Results sections of the report (see [report](report.qmd){target="_blank"})
 - Improved marimo notebooks plot titles (see [gqi roundtrip notebook](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}, [gqi unseen data notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"} and [commit](https://github.com/MadeInShineA/dipy/commit/59162841d30944fea97b5779351ef2dc6a1b3d0c){target="_blank"})
+
+---
+
+## 14.12.2025
+- Continued the report, improved the index page and added references (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/d65df92d6120d1d6d4f7d5c76999e83ddb7865bf){target="_blank"} and [project website](./index.qmd){target="_blank"})

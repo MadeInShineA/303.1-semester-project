@@ -21,6 +21,13 @@
     "text": "Youtube videos\n\nDiffusion Weighted Imaging - Doctor Klioze\nDiffusion Tensor Imaging (DTI) - Doctor Klioze\nDiffusion Tensor Imaging (DTI) Explained! | Neuroscience Methods 101 - Psyched!\nDWI vs ADC MRI sequences: EXPLAINED - Radiology Tutorials\nDiffusion Weighted Imaging EXPLAINED (DWI Trace, ADC, B-Values) | MRI Physics Course Lecture 14 - MRI Physics EXPLAINED\nHow to Read MRI Diffusion Imaging (DWI) like a Real Radiologist - MRI Physics EXPLAINED\nA tour of spherical harmonics-based local reconstruction techniques in DIPY - Part1 - Diffusion Imaging in Python - DIPY\nA tour of spherical harmonics-based local reconstruction techniques in DIPY - Part2 - Diffusion Imaging in Python - DIPY"
   },
   {
+    "objectID": "src/sources.html#scientific-papers",
+    "href": "src/sources.html#scientific-papers",
+    "title": "Sources",
+    "section": "Scientific Papers",
+    "text": "Scientific Papers\n\nYeh, Wedeen, and Tseng (2010)\nBen-Amitay, Jones, and Assaf (2012)"
+  },
+  {
     "objectID": "src/sources.html#assistants",
     "href": "src/sources.html#assistants",
     "title": "Sources",
@@ -33,6 +40,13 @@
     "title": "Sources",
     "section": "Other",
     "text": "Other\n\nNipreps book\nProf. Esteban DIPY pull request\nProf. Esteban DIPY fork\nMarimo website\nQuarto website\nGraphviz website"
+  },
+  {
+    "objectID": "src/sources.html#references",
+    "href": "src/sources.html#references",
+    "title": "Sources",
+    "section": "References",
+    "text": "References\n\n\nBen-Amitay, Shani, Derek K. Jones, and Yaniv Assaf. 2012. “Motion Correction and Registration of High b-Value Diffusion Weighted Images.” Magnetic Resonance in Medicine 67 (6): 1694–1702. https://doi.org/https://doi.org/10.1002/mrm.23186.\n\n\nYeh, Fang-Cheng, Van Jay Wedeen, and Wen-Yih Isaac Tseng. 2010. “Generalized \\({q}\\)-Sampling Imaging.” IEEE Transactions on Medical Imaging 29 (9): 1626–35. https://doi.org/10.1109/TMI.2010.2045126."
   },
   {
     "objectID": "src/index.html",
@@ -49,18 +63,25 @@
     "text": "Project Overview\nThis project is part of the 303.1 semester project course.\nThe goal is to contribute to the DIPY framework by extending the Generalized Q-ball Imaging (GQI) model with predictive capabilities.\nThe key objectives are:\n\nImplementing a predict() function to the GeneralizedQSamplingFit class\nThoroughly documenting the new code\nProviding comprehensive and meaningful tests\nGetting the prediction pull request accepted by DIPY\n\nThe project has progressed to the point where a pull request has been submitted to the DIPY repository for integrating the new predict function. This pull request is currently under review by the DIPY development team, and feedback is being incorporated to ensure it meets the library’s standards and requirements. You can track the progress at DIPY Pull Request #1."
   },
   {
-    "objectID": "src/index.html#project-gantt-diagram",
-    "href": "src/index.html#project-gantt-diagram",
+    "objectID": "src/index.html#project-timeline",
+    "href": "src/index.html#project-timeline",
     "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
-    "section": "Project Gantt Diagram",
-    "text": "Project Gantt Diagram\n\n\n\n\n\n\ngantt\n\n    title Semester Project Gantt Diagram\n    dateFormat DD.MM.YYYY\n    axisFormat %d.%m\n\n    section Background\n        Literature review (DWI, GQI, MRI)       :done,         research,       24.11.2025, 2d\n        Study Nipreps book (DWI preprocessing)  :done,         nipreps,        24.11.2025, 3d\n\n    section Development\n        Dev environment setup                   :done,         devenv,         25.11.2025, 1d\n        Study GQI codebase                      :done,         codebase,       25.11.2025, 3d\n        Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d\n        Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d\n        Implement roundtrip voxel prediction test :done,       cross_tests,    01.12.2025, 2d\n        Create unseen data prediction notebook  :done,         unseen_data,    03.12.2025, 4d\n        Add the GQI predict example to dipy doc :done,         predict_example,04.12.2025, 11.12.2025\n        Create prediction_kernel tests          :done,         prediction_kernel ,07.12.2025, 2d\n        Double check the existing tests         :done,         dc_test,          09.12.2025, 1d\n        Double check the existing notebooks     :done,         dc_notebooks,   09.12.2025, 1d\n        Coordinate with DIPY experts            :done,         coor,           10.12.2025, 12.12.2025\n        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 16.12.2025\n        \n\n      \n        \n\n    section Milestones & &lt;br&gt;Deliverables\n        Prof. Esteban – Kickoff meeting         :done,         milestone,      25.11.2025, 0d\n        Prof. Esteban – Progress check-in       :done,         milestone,      27.11.2025, 0d\n        Create Gantt diagram                    :done,         gantt,          28.11.2025, 1d\n        Design impact slide                     :done,         impact,         28.11.2025, 1d\n        Draft report outline                    :done,         r_draft,        01.12.2025, 1d\n        Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d\n        Create presentation dwi slide           :done,         p_draft,        06.12.2025, 09.12.2025 \n        Prof. Esteban - Third progress check-in :done,         milestone,      09.12.2025, 0d\n        PR on Prof. Esteban repository          :done,         milestone,      10.12.2025, 0d\n        PR on DIPY repository                   :done,         milestone,      11.12.2025, 0d\n        Finish report                           :active,       f_rep,          11.12.2025, 16.12.2025\n        Finish presentation                     :active,       f_pres,         11.12.2025, 18.12.2025\n        Code and documentation handout          :crit,         milestone,      16.12.2025, 0d\n        Final presentation                      :crit,         milestone,      18.12.2025, 0d"
+    "section": "Project Timeline",
+    "text": "Project Timeline\nThe following Gantt diagram provides a visual overview of the project schedule, highlighting completed tasks, active work, and upcoming milestones. It tracks progress from initial research and development through testing, documentation, and final submissions.\n\n\n\n\n\n\ngantt\n\n    title Semester Project Gantt Diagram\n    dateFormat DD.MM.YYYY\n    axisFormat %d.%m\n\n    section Background\n        Literature review (DWI, GQI, MRI)       :done,         research,       24.11.2025, 2d\n        Study Nipreps book (DWI preprocessing)  :done,         nipreps,        24.11.2025, 3d\n\n    section Development\n        Dev environment setup                   :done,         devenv,         25.11.2025, 1d\n        Study GQI codebase                      :done,         codebase,       25.11.2025, 3d\n        Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d\n        Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d\n        Implement roundtrip voxel prediction test :done,       cross_tests,    01.12.2025, 2d\n        Create unseen data prediction notebook  :done,         unseen_data,    03.12.2025, 4d\n        Add the GQI predict example to dipy doc :done,         predict_example,04.12.2025, 11.12.2025\n        Create prediction_kernel tests          :done,         prediction_kernel ,07.12.2025, 2d\n        Double check the existing tests         :done,         dc_test,          09.12.2025, 1d\n        Double check the existing notebooks     :done,         dc_notebooks,   09.12.2025, 1d\n        Coordinate with DIPY experts            :done,         coor,           10.12.2025, 12.12.2025\n        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 16.12.2025\n        \n\n      \n        \n\n    section Milestones & &lt;br&gt;Deliverables\n        Prof. Esteban – Kickoff meeting         :done,         milestone,      25.11.2025, 0d\n        Prof. Esteban – Progress check-in       :done,         milestone,      27.11.2025, 0d\n        Create Gantt diagram                    :done,         gantt,          28.11.2025, 1d\n        Design impact slide                     :done,         impact,         28.11.2025, 1d\n        Draft report outline                    :done,         r_draft,        01.12.2025, 1d\n        Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d\n        Create presentation dwi slide           :done,         p_draft,        06.12.2025, 09.12.2025 \n        Prof. Esteban - Third progress check-in :done,         milestone,      09.12.2025, 0d\n        PR on Prof. Esteban repository          :done,         milestone,      10.12.2025, 0d\n        PR on DIPY repository                   :done,         milestone,      11.12.2025, 0d\n        Finish report                           :active,       f_rep,          11.12.2025, 16.12.2025\n        Finish presentation                     :active,       f_pres,         11.12.2025, 18.12.2025\n        Code and documentation handout          :crit,         milestone,      16.12.2025, 0d\n        Final presentation                      :crit,         milestone,      18.12.2025, 0d\n\n\n\n\n\n\n```"
   },
   {
-    "objectID": "src/index.html#documents",
-    "href": "src/index.html#documents",
+    "objectID": "src/index.html#key-achievements",
+    "href": "src/index.html#key-achievements",
     "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
-    "section": "Documents",
-    "text": "Documents\n\nReport: Detailed technical documentation and results\nPresentation: Slide deck summarizing the project\nDaily Journal: Development log and progress updates\nSources: Bibliography and references"
+    "section": "Key Achievements",
+    "text": "Key Achievements\nThe project has made significant progress towards its objectives:\n\nImplementation Complete: Successfully implemented the predict function for the GeneralizedQSamplingFit class, along with the supporting prediction_kernel helper function.\nComprehensive Testing: Developed thorough unit tests and integration tests, including roundtrip validation and generalization to unseen data, ensuring numerical stability and accuracy.\nDocumentation and Examples: Created detailed notebooks demonstrating the functionality, including tutorials and validation scripts, with results showing high correlation coefficients (r &gt; 0.97) in signal reconstruction.\nCommunity Contribution: Submitted a pull request to the DIPY repository, which is currently under review. Coordinated with DIPY experts to align with library standards.\nDeliverables in Progress: Finalizing the technical report, presentation, and documentation handouts for the semester project submission."
+  },
+  {
+    "objectID": "src/index.html#project-documents-and-resources",
+    "href": "src/index.html#project-documents-and-resources",
+    "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
+    "section": "Project Documents and Resources",
+    "text": "Project Documents and Resources\nAccess the key deliverables and supplementary materials for this project:\n\nImplementation Report: Comprehensive technical documentation covering the predict function implementation, mathematical foundations, testing methodology, results analysis, and extra resources for further exploration.\nPresentation Slides: Slide deck summarizing the project objectives, methodology, achievements, and future implications.\nDaily Journal: Chronological log of development activities, challenges encountered, and progress updates throughout the semester.\nSources and References: Bibliography, citations, and additional reading materials related to diffusion MRI, GQI, and DIPY.\n\nFor results examples and code demonstrations, refer to the notebooks and examples linked in the Implementation Report."
   },
   {
     "objectID": "src/report.html",
@@ -116,7 +137,7 @@
     "href": "src/report.html#extra-resources",
     "title": "Implementation Report: Predict Function",
     "section": "7 Extra Resources",
-    "text": "7 Extra Resources\nThis section contains extra resources to go deeper into the topics covered in this report.\n\n7.1 DIPY Tutorial Notebooks\nThese notebooks were created based off the DIPY documentation examples for this project.\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\n7.2 Project-Specific Notebooks from DIPY Repository\nThese notebooks were developed specifically for this project to demonstrate the predict function implementation, validation, and application.\n\nGQI Roundtrip Notebook\nGQI Predict Unseen Data Notebook"
+    "text": "7 Extra Resources\nThis section contains extra resources to go deeper into the topics covered in this report.\n\n7.1 DIPY Tutorial Notebooks\nThese notebooks were created based off the DIPY documentation examples for this project.\n\nReconstruct with Constant Solid Angle (Q-Ball)\nReconstruct with Generalized Q-Sampling Imaging\nIntroduction to Basic Tracking\n\n\n\n7.2 Project-Specific Notebooks\nThese notebooks were developed specifically for this project to demonstrate the predict function implementation, validation, and application.\n\nGQI Roundtrip Notebook\nGQI Predict Unseen Data Notebook"
   },
   {
     "objectID": "src/report.html#references",
@@ -235,7 +256,7 @@
     "href": "src/daily_journal.html#section-13",
     "title": "Daily Journal",
     "section": "10.12.2025",
-    "text": "10.12.2025\n\nCleaned the gqi_unseen_data_notebook (see commit)\nContinued the DIPY prediction documentation example (see commit, see example)"
+    "text": "10.12.2025\n\nCleaned the gqi_unseen_data_notebook (see commit)\nContinued the DIPY prediction documentation example (see commit and example)"
   },
   {
     "objectID": "src/daily_journal.html#section-14",
@@ -259,38 +280,10 @@
     "text": "13.12.2025\n\nCleaned the GeneralizedQSamplingFit predict roundtrip tests (see commit)\nBegan the Testing Methodology and Obtained Results sections of the report (see report)\nImproved marimo notebooks plot titles (see gqi roundtrip notebook, gqi unseen data notebook and commit)"
   },
   {
-    "objectID": "src/index.html#project-timeline",
-    "href": "src/index.html#project-timeline",
-    "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
-    "section": "Project Timeline",
-    "text": "Project Timeline\nThe following Gantt diagram provides a visual overview of the project schedule, highlighting completed tasks, active work, and upcoming milestones. It tracks progress from initial research and development through testing, documentation, and final submissions.\n\n\n\n\n\n\ngantt\n\n    title Semester Project Gantt Diagram\n    dateFormat DD.MM.YYYY\n    axisFormat %d.%m\n\n    section Background\n        Literature review (DWI, GQI, MRI)       :done,         research,       24.11.2025, 2d\n        Study Nipreps book (DWI preprocessing)  :done,         nipreps,        24.11.2025, 3d\n\n    section Development\n        Dev environment setup                   :done,         devenv,         25.11.2025, 1d\n        Study GQI codebase                      :done,         codebase,       25.11.2025, 3d\n        Create baseline prediction tests        :done,         simple_tests,   26.11.2025, 2d\n        Develop Marimo validation notebooks     :done,         notebooks,      26.11.2025, 2d\n        Implement roundtrip voxel prediction test :done,       cross_tests,    01.12.2025, 2d\n        Create unseen data prediction notebook  :done,         unseen_data,    03.12.2025, 4d\n        Add the GQI predict example to dipy doc :done,         predict_example,04.12.2025, 11.12.2025\n        Create prediction_kernel tests          :done,         prediction_kernel ,07.12.2025, 2d\n        Double check the existing tests         :done,         dc_test,          09.12.2025, 1d\n        Double check the existing notebooks     :done,         dc_notebooks,   09.12.2025, 1d\n        Coordinate with DIPY experts            :done,         coor,           10.12.2025, 12.12.2025\n        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 16.12.2025\n        \n\n      \n        \n\n    section Milestones & &lt;br&gt;Deliverables\n        Prof. Esteban – Kickoff meeting         :done,         milestone,      25.11.2025, 0d\n        Prof. Esteban – Progress check-in       :done,         milestone,      27.11.2025, 0d\n        Create Gantt diagram                    :done,         gantt,          28.11.2025, 1d\n        Design impact slide                     :done,         impact,         28.11.2025, 1d\n        Draft report outline                    :done,         r_draft,        01.12.2025, 1d\n        Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d\n        Create presentation dwi slide           :done,         p_draft,        06.12.2025, 09.12.2025 \n        Prof. Esteban - Third progress check-in :done,         milestone,      09.12.2025, 0d\n        PR on Prof. Esteban repository          :done,         milestone,      10.12.2025, 0d\n        PR on DIPY repository                   :done,         milestone,      11.12.2025, 0d\n        Finish report                           :active,       f_rep,          11.12.2025, 16.12.2025\n        Finish presentation                     :active,       f_pres,         11.12.2025, 18.12.2025\n        Code and documentation handout          :crit,         milestone,      16.12.2025, 0d\n        Final presentation                      :crit,         milestone,      18.12.2025, 0d\n\n\n\n\n\n\n```"
-  },
-  {
-    "objectID": "src/index.html#key-achievements",
-    "href": "src/index.html#key-achievements",
-    "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
-    "section": "Key Achievements",
-    "text": "Key Achievements\nThe project has made significant progress towards its objectives:\n\nImplementation Complete: Successfully implemented the predict function for the GeneralizedQSamplingFit class, along with the supporting prediction_kernel helper function.\nComprehensive Testing: Developed thorough unit tests and integration tests, including roundtrip validation and generalization to unseen data, ensuring numerical stability and accuracy.\nDocumentation and Examples: Created detailed notebooks demonstrating the functionality, including tutorials and validation scripts, with results showing high correlation coefficients (r &gt; 0.97) in signal reconstruction.\nCommunity Contribution: Submitted a pull request to the DIPY repository, which is currently under review. Coordinated with DIPY experts to align with library standards.\nDeliverables in Progress: Finalizing the technical report, presentation, and documentation handouts for the semester project submission."
-  },
-  {
-    "objectID": "src/index.html#project-documents-and-resources",
-    "href": "src/index.html#project-documents-and-resources",
-    "title": "303.1 Semester Project:Extending DIPY’s Generalized Q-ball Imaging model to make predictions",
-    "section": "Project Documents and Resources",
-    "text": "Project Documents and Resources\nAccess the key deliverables and supplementary materials for this project:\n\nImplementation Report: Comprehensive technical documentation covering the predict function implementation, mathematical foundations, testing methodology, results analysis, and extra resources for further exploration.\nPresentation Slides: Slide deck summarizing the project objectives, methodology, achievements, and future implications.\nDaily Journal: Chronological log of development activities, challenges encountered, and progress updates throughout the semester.\nSources and References: Bibliography, citations, and additional reading materials related to diffusion MRI, GQI, and DIPY.\n\nFor results examples and code demonstrations, refer to the notebooks and examples linked in the Implementation Report."
-  },
-  {
-    "objectID": "src/sources.html#scientific-papers",
-    "href": "src/sources.html#scientific-papers",
-    "title": "Sources",
-    "section": "Scientific Papers",
-    "text": "Scientific Papers\n\nYeh, Wedeen, and Tseng (2010)\nBen-Amitay, Jones, and Assaf (2012)"
-  },
-  {
-    "objectID": "src/sources.html#references",
-    "href": "src/sources.html#references",
-    "title": "Sources",
-    "section": "References",
-    "text": "References\n\n\nBen-Amitay, Shani, Derek K. Jones, and Yaniv Assaf. 2012. “Motion Correction and Registration of High b-Value Diffusion Weighted Images.” Magnetic Resonance in Medicine 67 (6): 1694–1702. https://doi.org/https://doi.org/10.1002/mrm.23186.\n\n\nYeh, Fang-Cheng, Van Jay Wedeen, and Wen-Yih Isaac Tseng. 2010. “Generalized \\({q}\\)-Sampling Imaging.” IEEE Transactions on Medical Imaging 29 (9): 1626–35. https://doi.org/10.1109/TMI.2010.2045126."
+    "objectID": "src/daily_journal.html#section-17",
+    "href": "src/daily_journal.html#section-17",
+    "title": "Daily Journal",
+    "section": "14.12.2025",
+    "text": "14.12.2025\n\nContinued the report, improved the index page and added references (see commit and project website)"
   }
 ]
