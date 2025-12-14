@@ -158,3 +158,6 @@ title: Daily Journal
 
 ## 14.12.2025
 - Continued the report, improved the index page and added references (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/d65df92d6120d1d6d4f7d5c76999e83ddb7865bf){target="_blank"} and [project website](./index.qmd){target="_blank"})
+- Continued working on the presentation (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/cf61234c6548e2ff0deb2f4105e3cfbf0e613d4d){target="_blank"} and [presentation](./presentation.qmd){target="_blank"})
+
+
