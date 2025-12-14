@@ -9,8 +9,10 @@ format:
     slide-number: true
     preview-links: auto
     navigation-mode: grid
-    footer: '<a href="../index.html" style="color: inherit; text-decoration: none;">Home</a> | 303.1 Semester Project Presentation | © 2025'
+    auto-play-media: true
+    footer: '<a href="./index.qmd" style="color: inherit; text-decoration: none;">Home</a> | <a href="./sources.qmd" style="color: inherit; text-decoration: none;">Sources</a> | 303.1 Semester Project Presentation © 2025'
 ---
+
 
 # What is DWI ?
 
@@ -21,9 +23,14 @@ Diffusion Weighted Imaging (DWI) is an MRI technique that measures the diffusion
 
 # What's DWI ? 
 
-{{< video ./assets/presentation/dMRI-signal-movie.mp4 height="600" >}}
 
+::: {#fig-cern}
 
+{{<video ./assets/presentation/dMRI-signal-movie.mp4 height="500">}}
+
+Visual example of DWI, sourced from Dr. A. Rokem, DIPY Workshop 2021
+
+:::
 # DWI Pipeline: Acquisition
 
 ```{dot}
@@ -191,16 +198,27 @@ digraph DWI_Pipeline {
 }
 ```
 
-# What is my project about?
+# Project Goals
 
   - Contributing to [DIPY](https://dipy.org/)
   - Implementing a predict function to the GQI model
 
 # Impact
+
   - Head motion noise reduction
   - Meaningful data augmentation
   - Model cross validation
 
+# What was implemented
 
+# How things were tested
 
+# Obtained Results
 
+# Conclusion
+
+# Additional Resources
+
+If you want more information please visit this project [website](./index.qmd){target="_blank"}
+
+![Project website QR code](./assets/presentation/qrcode.png){#fig-qr}

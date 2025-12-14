@@ -145,7 +145,16 @@
 
 <section id="whats-dwi" class="title-slide slide level1 center">
 <h1>What’s DWI ?</h1>
-<video id="video_shortcode_videojs_video1" height="600" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="./assets/presentation/dMRI-signal-movie.mp4"></video>
+<div id="fig-cern" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-cern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<video id="video_shortcode_videojs_video1" height="500" class="video-js vjs-default-skin " controls="" preload="auto" data-setup="{}" title=""><source src="./assets/presentation/dMRI-signal-movie.mp4"></video>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Visual example of DWI, sourced from Dr.&nbsp;A. Rokem, DIPY Workshop 2021
+</figcaption>
+</figure>
+</div>
 </section>
 
 <section id="dwi-pipeline-acquisition" class="title-slide slide level1 center">
@@ -216,7 +225,7 @@
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-acquisition-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Overview of the DWI Pipeline (Acquisition).
+Figure&nbsp;2: Overview of the DWI Pipeline (Acquisition).
 </figcaption>
 </figure>
 </div>
@@ -291,7 +300,7 @@ Figure&nbsp;1: Overview of the DWI Pipeline (Acquisition).
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-preprocessing-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Overview of the DWI Pipeline (Preprocessing).
+Figure&nbsp;3: Overview of the DWI Pipeline (Preprocessing).
 </figcaption>
 </figure>
 </div>
@@ -396,7 +405,7 @@ Figure&nbsp;2: Overview of the DWI Pipeline (Preprocessing).
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-reconstruction-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Overview of the DWI Pipeline (Reconstruction).
+Figure&nbsp;4: Overview of the DWI Pipeline (Reconstruction).
 </figcaption>
 </figure>
 </div>
@@ -478,7 +487,7 @@ Figure&nbsp;3: Overview of the DWI Pipeline (Reconstruction).
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-analysis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: Overview of the DWI Pipeline (Analysis).
+Figure&nbsp;5: Overview of the DWI Pipeline (Analysis).
 </figcaption>
 </figure>
 </div>
@@ -714,7 +723,7 @@ Figure&nbsp;4: Overview of the DWI Pipeline (Analysis).
 </div>
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dwi-pipeline-complete-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Overview of the DWI complete Pipeline.
+Figure&nbsp;6: Overview of the DWI complete Pipeline.
 </figcaption>
 </figure>
 </div>
@@ -722,8 +731,8 @@ Figure&nbsp;5: Overview of the DWI complete Pipeline.
 </div>
 </section>
 
-<section id="what-is-my-project-about" class="title-slide slide level1 center">
-<h1>What is my project about?</h1>
+<section id="project-goals" class="title-slide slide level1 center">
+<h1>Project Goals</h1>
 <ul>
 <li>Contributing to <a href="https://dipy.org/">DIPY</a></li>
 <li>Implementing a predict function to the GQI model</li>
@@ -737,13 +746,41 @@ Figure&nbsp;5: Overview of the DWI complete Pipeline.
 <li>Meaningful data augmentation</li>
 <li>Model cross validation</li>
 </ul>
+</section>
 
+<section id="what-was-implemented" class="title-slide slide level1 center">
+<h1>What was implemented</h1>
 
 </section>
+
+<section id="how-things-were-tested" class="title-slide slide level1 center">
+<h1>How things were tested</h1>
+
+</section>
+
+<section id="obtained-results" class="title-slide slide level1 center">
+<h1>Obtained Results</h1>
+
+</section>
+
+<section id="conclusion" class="title-slide slide level1 center">
+<h1>Conclusion</h1>
+
+</section>
+
+<section id="additional-resources" class="title-slide slide level1 center">
+<h1>Additional Resources</h1>
+<p>If you want more information please visit this project <a href="../src/index.html" target="_blank">website</a></p>
+
+
+
+<img data-src="./assets/presentation/qrcode.png" class="r-stretch quarto-figure-center" id="fig-qr"><p class="caption">
+Figure&nbsp;7: Project website QR code
+</p></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p><a href="../index.html" style="color: inherit; text-decoration: none;">Home</a> | 303.1 Semester Project Presentation | © 2025</p>
+<p><a href="../src/index.html" style="color: inherit; text-decoration: none;">Home</a> | <a href="../src/sources.html" style="color: inherit; text-decoration: none;">Sources</a> | 303.1 Semester Project Presentation © 2025</p>
 </div>
 </div></div>
 
@@ -864,7 +901,7 @@ Figure&nbsp;5: Overview of the DWI complete Pipeline.
         showNotes: false,
 
         // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
+        autoPlayMedia: true,
 
         // Global override for preloading lazy-loaded iframes (null/true/false)
         preloadIframes: null,
