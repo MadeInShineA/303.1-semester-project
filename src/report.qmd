@@ -1,12 +1,14 @@
 ---
 title: "Implementation Report: Predict Function"
 number-sections: true
+bibliography: references.bib
 ---
 
 ## Introduction
 
 This report provides an overview of the proposed `predict` function's implementation in DIPY's Generalized Q-Sampling Imaging (GQI) model,
-including the newly implemented `prediction_kernel` helper function and the pre-existing `gqi_kernel` function.
+including the newly implemented `prediction_kernel` and the pre-existing `gqi_kernel` helper functions.
+
 It covers their purpose, operational mechanics, mathematical foundations, testing methodology, and obtained results.
 
 ---
@@ -22,12 +24,12 @@ In this section, each function is described in detail, including its purpose, pa
 ### The `gqi_kernel` function
 The `gqi_kernel` function calculates the Generalized Q-Sampling Imaging (GQI) transformation kernel, which is essential for modeling diffusion signals in terms of orientation distribution functions (ODFs). This kernel transforms gradient directions and b-values into a matrix that relates diffusion signals to ODFs on a spherical grid.
 
-- **Purpose**: Computes the kernel matrix for GQI-based signal reconstruction. It handles different GQI methods (e.g., "standard" or "gqi2") and incorporates physical constants like the free water diffusion coefficient.
+- **Purpose**: Computes the kernel matrix for GQI-based signal reconstruction. It handles different GQI methods (`standard` or `gqi2`) and incorporates physical constants like the free water diffusion coefficient.
 - **Key Parameters**:
   - `gtab`: GradientTable containing b-values and b-vectors.
   - `param_lambda`: Regularization parameter for the kernel.
   - `sphere`: Spherical grid for ODF sampling.
-  - `method`: Specifies the GQI variant ("standard" by default).
+  - `method`: Specifies the GQI variant (`standard` by default).
 - **Operation**: Scales b-vectors by a diffusion-related factor, computes dot products with sphere vertices, and applies sinc or squared radial functions to generate the kernel.
 
 ```Python
@@ -51,7 +53,7 @@ def gqi_kernel(gtab, param_lambda, sphere, method="standard"):
 
 Mathematically, the GQI kernel $K$ is computed as:
 
-For the "standard" method:
+For the `standard` method:
 $$
 K_{ij} = \frac{\sin\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_j) \right)}{\lambda (\mathbf{q}_i \cdot \mathbf{v}_j)} = \operatorname{sinc}\left( \frac{\lambda (\mathbf{q}_i \cdot \mathbf{v}_j)}{\pi} \right)
 $$
@@ -62,14 +64,15 @@ Where:
   - $\lambda$ is the regularization parameter
   - $\operatorname{sinc}(x) = \frac{\sin(\pi x)}{\pi x}$ is the NumPy's normalized `sinc` function.
 
-For the "gqi2" method:
+For the `gqi2` method:
 $$
 K_{ij} = \operatorname{Re}\left[ H\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_j) \right) \right]
 $$
-Where $H$ is the squared radial component function.
+Where $H$ is the squared radial component function [see eq.8 in the referenced paper @Yeh2010]
 
 ### The `prediction_kernel` function
-The `prediction_kernel` function computes the Tikhonov-regularized Moore-Penrose pseudo-inverse of the GQI kernel, enabling signal reconstruction from orientation distribution functions (ODFs) in the DIPY convention.
+The `prediction_kernel` function computes the Tikhonov-regularized Moore-Penrose pseudo-inverse of the GQI kernel,
+enabling signal reconstruction from orientation distribution functions (ODFs) in the DIPY convention.
 
 - **Purpose**: Generates the Tikhonov-regularized pseudo-inverse kernel for solving S from $ODF = S \cdot K$, using regularization for numerical stability.
 - **Key Parameters**:
@@ -77,9 +80,12 @@ The `prediction_kernel` function computes the Tikhonov-regularized Moore-Penrose
   - `param_lambda`: `gqi_kernel` regularization parameter.
   - `sphere`: Spherical grid.
   - `method`: GQI method.
-- **Operation**: Computes the GQI kernel `K`, forms `K @ K.T`, adds regularization, inverts the matrix, and multiplies by `K.T` to produce the Moore-Penrose pseudo-inverse kernel.
+- **Operation**: Computes the GQI kernel $K$, forms $K \cdot K^{T}$, adds regularization, inverts the matrix, and multiplies by $K^{T}$
+to produce the Tikhonov-regularized  Moore-Penrose pseudo-inverse kernel.
 
 ```Python
+INVERSE_LAMBDA = 1e-6
+
 def prediction_kernel(gtab, param_lambda, sphere, method="standard"):
     # K.shape = (n_gradients, n_vertices)
     K = gqi_kernel(gtab, param_lambda, sphere, method=method)
@@ -92,7 +98,7 @@ def prediction_kernel(gtab, param_lambda, sphere, method="standard"):
     return K.T @ np.linalg.inv(GtG + INVERSE_LAMBDA * identity)
 ```
 
-Mathematically, the prediction kernel $K^{+}$ (the pseudo-inverse) is computed as:
+Mathematically, the prediction kernel $K^{+}$ is computed as:
 $$
 K^{+} = K^T (K K^T + \lambda I)^{-1}
 $$
@@ -102,7 +108,9 @@ Where:
    - $\lambda$ is the regularization parameter (`INVERSE_LAMBDA`)
    - $I$ is the identity matrix.
 
-The Tikhonov regularization term ($\lambda I$) is added to improve numerical stability and prevent overfitting. The plain Moore-Penrose pseudo-inverse, computed as $K^T (K K^T)^{-1}$, can be unstable for ill-conditioned matrices, amplifying noise in the diffusion signals. Regularization provides a smoother, more robust solution by balancing fidelity to the data with stability.
+The Tikhonov regularization term ($\lambda I$) is added to improve numerical stability and prevent overfitting.
+The plain Moore-Penrose pseudo-inverse, computed as $K^T (K K^T)^{-1}$, can be unstable for ill-conditioned matrices,
+amplifying noise in the diffusion signals. Regularization provides a smoother, more robust solution by balancing fidelity to the data with stability.
 
 
 ## The `predict` function and it's implementation
@@ -122,7 +130,8 @@ Where $K^{+}$ is the Tikhonov-regularised Moore-Penrose pseudo-inverse of the GQ
 Note that the pseudo-inverse is needed since the GQI kernel $K$'s dimensions are $(n_\mathrm{gradients}, n_\mathrm{vertices})$, which means it's (most of the time) not a square matrix and therefore not having a true inverse.
 
 
-The `predict` function reconstructs diffusion signals from the fitted signal data by first computing the ODF internally and then applying the pseudo-inverse kernel.
+The `predict` function reconstructs diffusion signals from the fitted signal data 
+by fusing the model kernel and the pseudo-inverse kernel to avoid explicit ODF computation.
 
 - **Purpose**: Predicts diffusion-weighted signals from fitted data, supporting both single-voxel and multi-voxel data.
 - **Key Parameters**:
@@ -178,7 +187,7 @@ Where:
 
 Equivalently, this can be computed directly as $\mathbf{S}_\mathrm{pred} = \max(0, \mathbf{S}_\mathrm{data} \cdot (K_\mathrm{model}^T \cdot K^{+}))$ to avoid intermediate ODF calculation for efficiency.
 
-The max operation ensures non-negative signal values.
+The $\max$ operation ensures non-negative signal values.
 
 
 ## Testing Methodology
@@ -191,13 +200,13 @@ This tests validate:
  - numerical stability
  - practical usability across single and multi-voxel scenarios.
 
-All tests utilize DIPY's test data (`dsi_voxels`) and synthetic phantoms to ensure robustness.
+All tests utilize DIPY's test data `small_101D`[^1] and simulated diffusion MRI datasets with known properties to ensure robustness.
 
 ### `prediction_kernel` function tests
 
 The `prediction_kernel` function is tested for its role as a Tikhonov-regularized Moore-Penrose pseudo-inverse of the GQI kernel. Key validations include:
 
-- **Shape and finiteness**: Ensures the kernel has correct dimensions $(n_\mathrm{vertices}, n_\mathrm{gradients})$ and contains only finite, non-zero values.
+- **Shape and finiteness**: Ensures the kernel has correct dimensions $(n_\mathrm{vertices}, n_\mathrm{gradients})$ and contains only finite values, with at least one non-zero value.
 - **Pseudo-inverse properties**: Verifies that $K K^+ K \approx K$ (regularized reconstruction), and that $K K^+$ and $K^+ K$ are symmetric matrices.
 - **Method compatibility**: Tests both `standard` and `gqi2` GQI methods using the `symmetric724` sphere and DSI gradient table.
 
@@ -207,7 +216,8 @@ These tests confirm the kernel's mathematical integrity and numerical stability 
 
 Basic prediction tests validate the `predict` function's API and output characteristics for both single-voxel and multi-voxel data:
 
-- **Single-voxel test**: Fit the model to individual voxels from DSI data, predict signals, and check that outputs are non-negative arrays matching the gradient table length. It also includes predictions on subsets of gradients.
+- **Single-voxel test**: Fit the model to individual voxels from DSI data, predict signals, and check that outputs are non-negative arrays matching the gradient table length.
+It also includes predictions on subsets of gradients.
 - **Multi-voxel test**: Fit the model to entire 3D volumes, predict signals, and verify shape preservation and non-negativity. Subset gradient predictions are also tested.
 - **Method coverage**: Both `standard` and `gqi2` methods are tested to ensure consistent behavior.
 
@@ -222,64 +232,110 @@ These tests are performed exclusively on the `standard` GQI model. Correlation b
 - **Single-voxel round-trip**: For selected voxels, compute Pearson correlation between original and predicted signals. Assert correlations exceed $r > 0.8$ and signal magnitudes remain in the same order of magnitude.
 - **Multi-voxel round-trip**: Compute average correlation across all voxels in the volume, requiring $\bar{r} > 0.8$. Identify and reject any voxels with $r \leq 0.8$.
 
-These tests quantify reconstruction accuracy and detect overfitting or numerical instabilities.
+These tests quantify reconstruction accuracy and detect underfitting or numerical instabilities.
 
 
 ## Obtained Results
 
-The implementation was validated through comprehensive testing using real DSI data from the DIPY library.
-The results demonstrate high accuracy in signal reconstruction for the "standard" GQI method,
-as quantified by voxel-wise correlation metrics and visual comparisons against ground truth data.
-Key findings are detailed below, referencing the provided visualizations.
+Building on the testing methodology outlined above, the obtained results validate the implementation using real DSI data from the DIPY library.
+They demonstrate high accuracy in signal reconstruction and generalization,
+quantified by voxel-wise correlation metrics and visual comparisons against ground truth data.
+
+In the following subsections, we present the results for single-voxel and multi-voxel roundtrip predictions, followed by generalization to unseen data.
 
 ### Single-Voxel Reconstruction Results
+
+Results from the single-voxel roundtrip test on the `small_101D` dataset are presented here, focusing on signal reconstruction for a representative voxel.
 
 ![Voxel (0, 0, 0) Signal Reconstruction: Original vs. Predicted](./assets/images/single_voxel_roundtrip_plot.png){#fig-single-voxel-roundtrip}
 
 The plots in @fig-single-voxel-roundtrip provide a detailed analysis for a single representative voxel.
 
 - **Strong Linear Relationship**: The scatter plot on the left shows a strong positive linear relationship between the original and predicted signals,
-with a Pearson correlation coefficient of **r = 0.9744**. The fitted line (y = 0.87x + 13.65) closely tracks the identity line (dashed black), indicating minimal bias in the prediction.
+with a Pearson correlation coefficient of $r = 0.9744$. The fitted line $y = 0.87x + 13.65$ closely tracks the identity line (dashed black), indicating minimal bias in the prediction.
 - **Signal Profile Fidelity**: The line plot on the right compares the signal intensity profiles across all gradient directions.
-The predicted signal (blue dots) closely follows the original signal (black line), particularly for lower gradient indices.
-The residual plot (gray dots) shows small deviations, with an MAE of **12.7544**, which is acceptable given the signal range (~0-300).
+The predicted signal (in blue) closely follows the original signal (in black).
+The residual plot (in gray) shows small deviations, with an $MAE$ of $12.7544$, which is acceptable given the signal range (~0-300).
+
+These results demonstrate the effectiveness of the `predict` function for single-voxel predictions.
+
+For the complete single-voxel roundtrip analysis, refer to the [GQI Roundtrip notebook](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}.
 
 ### Multi-Voxel Reconstruction Results
+
+The multi-voxel roundtrip test on the `small_101D` dataset evaluates reconstruction accuracy across the entire volume, with results shown below.
 
 ![Voxel-wise Signal Reconstruction Accuracy](./assets/images/multi_voxel_roundtrip_plot.png){#fig-multi-voxel-roundtrip}
 
 The histogram presented in @fig-multi-voxel-roundtrip shows the distribution of Pearson correlation coefficients between original and predicted signals across all voxels for the "Standard GQI" model.
 
-- **High Overall Fidelity**: The distribution is sharply peaked near perfect correlation (r=1.0), indicating the model successfully reconstructs the training data.
-- **Quantitative Metrics**: The mean voxel-wise correlation is **0.9800**, and the overall correlation across the entire volume is **0.9749**, both significantly exceeding the target threshold of r > 0.8. The Mean Absolute Error (MAE) of **7.1714** further confirms low prediction error relative to the signal intensity scale.
-- **Spatial Consistency**: The accompanying correlation map (right panel) shows a uniformly high correlation (yellow/green tones) across the slice, confirming that the model's performance is spatially consistent and not localized to specific regions. This validates the numerical stability and robustness of the `predict` function for multi-voxel data.
+- **High Overall Fidelity**: The distribution is sharply peaked near perfect correlation ($r=1.0$), indicating the model successfully reconstructs the training data.
+- **Quantitative Metrics**: The mean voxel-wise correlation is $0.9800$, and the overall correlation across the entire volumes is $0.9749$,
+both significantly exceeding the target thresholds of $r > 0.8$. and $\bar{r}>0.8$. The $MAE$ of $7.1714$ further confirms low prediction error relative to the signal intensity scale.
+- **Spatial Consistency**: The accompanying correlation map (right panel) shows a uniformly high correlation (yellow tones) across the middle slice,
+confirming that the model's performance is spatially consistent and not localized to specific regions.
+
+This validates the numerical stability and robustness of the `predict` function for multi-voxel data.
+
+See the [GQI Roundtrip notebook](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"} for detailed multi-voxel implementation.
 
 ### Prediction on Unseen Data
+
+To illustrate generalization, this section shows predictions for unseen gradient configurations using the `taiwan_ntu_dsi`[^2] dataset
 
 ![Real vs Predicted Signal and Local Correlation: Test Volume 0, Z Slice 30](./assets/images/unseen_data_plot.png){#fig-unseen-data-plot}
 
 The visualization in @fig-unseen-data-plot evaluates the model's ability to generalize to unseen gradient configurations.
 
-- **Visual Agreement**: A side-by-side comparison of the **Real data** and **STANDARD prediction** for a specific b-value and b-vector shows a strong qualitative match. The predicted image successfully captures the anatomical structure and intensity variations present in the real data, including bright white matter tracts.
-- **Local Correlation Validation**: The **Local Pearson Correlation** map, computed over a 9x9 window, quantifies this agreement. The map displays predominantly red and orange regions (correlation > 0.5), indicating good local correspondence between the real and predicted signals. While some areas show lower correlation (blue/purple), these are likely associated with complex fiber crossings or noise, which is expected in diffusion MRI. This demonstrates the model's capability to predict signals for new, unseen gradients beyond the training set.
+- **Visual Agreement**: A side-by-side comparison of the `Real data` and `standard prediction` for a specific `b value` and `b vector` shows a strong qualitative match.
+The predicted image successfully captures the anatomical structure and intensity variations present in the real data,
+including bright white matter tracts.
+- **Local Correlation Validation**: The Local Pearson Correlation map, computed over a 9x9 window, quantifies this agreement.
+The map displays predominantly red and orange regions (correlation > 0.5), indicating good local correspondence between the real and predicted signals.
+While some areas show lower correlation (blue/purple), these are likely associated with complex fiber crossings or noise,
+which is expected in diffusion MRI.
 
-These results collectively confirm that the implemented `predict` function is mathematically sound, numerically stable, and practically effective for both reconstructing training data and generalizing to new gradient directions. The high correlation values and visual fidelity validate the correctness of the Tikhonov-regularized pseudo-inverse approach used in the `prediction_kernel` function.
+This demonstrates the model's capability to predict signals for new, unseen gradients beyond the training set.
 
+The full unseen prediction workflow is available in the [GQI Unseen Data notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"}.
+
+These results collectively confirm that the implemented `predict` function is mathematically sound, numerically stable,
+and practically effective for both reconstructing training data and generalizing to new gradient directions.
+The high correlation values and visual fidelity validate the correctness of the Tikhonov-regularized pseudo-inverse approach used in the `prediction_kernel` function.
 
 ## Conclusion
 
-## Resources
+In summary, the implementation of the `predict` function for DIPY's GQI model has been successfully validated through comprehensive testing on real DSI datasets.
+The function accurately reconstructs diffusion signals for both single-voxel and multi-voxel scenarios,
+as evidenced by high correlation coefficients and low mean absolute errors in roundtrip tests.
 
-### [DIPY tutorial repository](https://github.com/MadeInShineA/dipy-tutorial/tree/main){target="_blank"} notebooks
+Furthermore, it demonstrates strong generalization capabilities to unseen gradient configurations, confirming its practical utility in diffusion MRI analysis.
+The Tikhonov-regularized pseudo-inverse approach ensures numerical stability and robustness, providing a reliable tool for signal prediction in advanced neuroimaging workflows.
+
+## Extra Resources
+
+This section contains extra resources to go deeper into the topics covered in this report.
+
+### DIPY Tutorial Notebooks
+
+These notebooks were created based off the [DIPY documentation examples](https://docs.dipy.org/stable/examples_built/index){target="_blank"} for this project.
 
 - [Reconstruct with Constant Solid Angle (Q-Ball)](./assets/notebooks/dipy-tutorial/reconstruct_with_csa_q_ball.html){target="_blank"}
 - [Reconstruct with Generalized Q-Sampling Imaging](./assets/notebooks/dipy-tutorial/reconstruct_with_q_sampling_imaging_notebook.html){target="_blank"}
 - [Introduction to Basic Tracking](./assets/notebooks/dipy-tutorial/basic_tracking_notebook.html){target="_blank"}
 
-### [DIPY repository](https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks){target="_blank"} notebooks
+### Project-Specific Notebooks
 
-- [GQI Roundtrip](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}
-- [GQI Unseen Data](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"}
+These notebooks were developed specifically for this project to demonstrate the `predict` function implementation, validation, and application.
 
-### DIPY examples
-- [Predict unseen data with Generalized Q-Sampling Imaging](./assets/examples/reconst_gqi_predict.html){target=_blank}
+- [GQI Roundtrip Notebook](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}
+- [GQI Predict Unseen Data Notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"}
+
+## References
+
+::: {#refs}
+:::
+
+[^1]: The `small_101D` dataset is a small subset of diffusion spectrum imaging (DSI) data from DIPY, containing 101 diffusion-weighted volumes.
+
+[^2]: The `taiwan_ntu_dsi` dataset is a full DSI acquisition from the National Taiwan University, consisting of 515 diffusion-weighted volumes.

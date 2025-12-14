@@ -55,7 +55,27 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -386,12 +406,12 @@ window.Quarto = {
   <li><a href="#prediction-on-unseen-data" id="toc-prediction-on-unseen-data" class="nav-link" data-scroll-target="#prediction-on-unseen-data"><span class="header-section-number">5.3</span> Prediction on Unseen Data</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6</span> Conclusion</a></li>
-  <li><a href="#resources" id="toc-resources" class="nav-link" data-scroll-target="#resources"><span class="header-section-number">7</span> Resources</a>
+  <li><a href="#extra-resources" id="toc-extra-resources" class="nav-link" data-scroll-target="#extra-resources"><span class="header-section-number">7</span> Extra Resources</a>
   <ul>
-  <li><a href="#dipy-tutorial-repository-notebooks" id="toc-dipy-tutorial-repository-notebooks" class="nav-link" data-scroll-target="#dipy-tutorial-repository-notebooks"><span class="header-section-number">7.1</span> DIPY tutorial repository notebooks</a></li>
-  <li><a href="#dipy-repository-notebooks" id="toc-dipy-repository-notebooks" class="nav-link" data-scroll-target="#dipy-repository-notebooks"><span class="header-section-number">7.2</span> DIPY repository notebooks</a></li>
-  <li><a href="#dipy-examples" id="toc-dipy-examples" class="nav-link" data-scroll-target="#dipy-examples"><span class="header-section-number">7.3</span> DIPY examples</a></li>
+  <li><a href="#dipy-tutorial-notebooks" id="toc-dipy-tutorial-notebooks" class="nav-link" data-scroll-target="#dipy-tutorial-notebooks"><span class="header-section-number">7.1</span> DIPY Tutorial Notebooks</a></li>
+  <li><a href="#project-specific-notebooks-from-dipy-repository" id="toc-project-specific-notebooks-from-dipy-repository" class="nav-link" data-scroll-target="#project-specific-notebooks-from-dipy-repository"><span class="header-section-number">7.2</span> Project-Specific Notebooks from DIPY Repository</a></li>
   </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/report.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -420,7 +440,8 @@ window.Quarto = {
 
 <section id="introduction" class="level2" data-number="1">
 <h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>This report provides an overview of the proposed <code>predict</code> function’s implementation in DIPY’s Generalized Q-Sampling Imaging (GQI) model, including the newly implemented <code>prediction_kernel</code> helper function and the pre-existing <code>gqi_kernel</code> function. It covers their purpose, operational mechanics, mathematical foundations, testing methodology, and obtained results.</p>
+<p>This report provides an overview of the proposed <code>predict</code> function’s implementation in DIPY’s Generalized Q-Sampling Imaging (GQI) model, including the newly implemented <code>prediction_kernel</code> and the pre-existing <code>gqi_kernel</code> helper functions.</p>
+<p>It covers their purpose, operational mechanics, mathematical foundations, testing methodology, and obtained results.</p>
 <hr>
 </section>
 <section id="the-different-needed-helper-functions" class="level2" data-number="2">
@@ -435,13 +456,13 @@ window.Quarto = {
 <h3 data-number="2.1" class="anchored" data-anchor-id="the-gqi_kernel-function"><span class="header-section-number">2.1</span> The <code>gqi_kernel</code> function</h3>
 <p>The <code>gqi_kernel</code> function calculates the Generalized Q-Sampling Imaging (GQI) transformation kernel, which is essential for modeling diffusion signals in terms of orientation distribution functions (ODFs). This kernel transforms gradient directions and b-values into a matrix that relates diffusion signals to ODFs on a spherical grid.</p>
 <ul>
-<li><strong>Purpose</strong>: Computes the kernel matrix for GQI-based signal reconstruction. It handles different GQI methods (e.g., “standard” or “gqi2”) and incorporates physical constants like the free water diffusion coefficient.</li>
+<li><strong>Purpose</strong>: Computes the kernel matrix for GQI-based signal reconstruction. It handles different GQI methods (<code>standard</code> or <code>gqi2</code>) and incorporates physical constants like the free water diffusion coefficient.</li>
 <li><strong>Key Parameters</strong>:
 <ul>
 <li><code>gtab</code>: GradientTable containing b-values and b-vectors.</li>
 <li><code>param_lambda</code>: Regularization parameter for the kernel.</li>
 <li><code>sphere</code>: Spherical grid for ODF sampling.</li>
-<li><code>method</code>: Specifies the GQI variant (“standard” by default).</li>
+<li><code>method</code>: Specifies the GQI variant (<code>standard</code> by default).</li>
 </ul></li>
 <li><strong>Operation</strong>: Scales b-vectors by a diffusion-related factor, computes dot products with sphere vertices, and applies sinc or squared radial functions to generate the kernel.</li>
 </ul>
@@ -462,7 +483,7 @@ window.Quarto = {
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        )</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> np.real(np.sinc(np.dot(b_vector, sphere.vertices.T) <span class="op">*</span> param_lambda <span class="op">/</span> np.pi))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Mathematically, the GQI kernel <span class="math inline">\(K\)</span> is computed as:</p>
-<p>For the “standard” method: <span class="math display">\[
+<p>For the <code>standard</code> method: <span class="math display">\[
 K_{ij} = \frac{\sin\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_j) \right)}{\lambda (\mathbf{q}_i \cdot \mathbf{v}_j)} = \operatorname{sinc}\left( \frac{\lambda (\mathbf{q}_i \cdot \mathbf{v}_j)}{\pi} \right)
 \]</span> Where:</p>
 <ul>
@@ -471,9 +492,9 @@ K_{ij} = \frac{\sin\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_j) \right)}{\la
 <li><span class="math inline">\(\lambda\)</span> is the regularization parameter</li>
 <li><span class="math inline">\(\operatorname{sinc}(x) = \frac{\sin(\pi x)}{\pi x}\)</span> is the NumPy’s normalized <code>sinc</code> function.</li>
 </ul>
-<p>For the “gqi2” method: <span class="math display">\[
+<p>For the <code>gqi2</code> method: <span class="math display">\[
 K_{ij} = \operatorname{Re}\left[ H\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_j) \right) \right]
-\]</span> Where <span class="math inline">\(H\)</span> is the squared radial component function.</p>
+\]</span> Where <span class="math inline">\(H\)</span> is the squared radial component function <span class="citation" data-cites="Yeh2010">(see eq.8 in the referenced paper <a href="#ref-Yeh2010" role="doc-biblioref">Yeh, Wedeen, and Tseng 2010</a>)</span></p>
 </section>
 <section id="the-prediction_kernel-function" class="level3" data-number="2.2">
 <h3 data-number="2.2" class="anchored" data-anchor-id="the-prediction_kernel-function"><span class="header-section-number">2.2</span> The <code>prediction_kernel</code> function</h3>
@@ -487,19 +508,21 @@ K_{ij} = \operatorname{Re}\left[ H\left( \lambda (\mathbf{q}_i \cdot \mathbf{v}_
 <li><code>sphere</code>: Spherical grid.</li>
 <li><code>method</code>: GQI method.</li>
 </ul></li>
-<li><strong>Operation</strong>: Computes the GQI kernel <code>K</code>, forms <code>K @ K.T</code>, adds regularization, inverts the matrix, and multiplies by <code>K.T</code> to produce the Moore-Penrose pseudo-inverse kernel.</li>
+<li><strong>Operation</strong>: Computes the GQI kernel <span class="math inline">\(K\)</span>, forms <span class="math inline">\(K \cdot K^{T}\)</span>, adds regularization, inverts the matrix, and multiplies by <span class="math inline">\(K^{T}\)</span> to produce the Tikhonov-regularized Moore-Penrose pseudo-inverse kernel.</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prediction_kernel(gtab, param_lambda, sphere, method<span class="op">=</span><span class="st">"standard"</span>):</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># K.shape = (n_gradients, n_vertices)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    K <span class="op">=</span> gqi_kernel(gtab, param_lambda, sphere, method<span class="op">=</span>method)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GTG.shape = (n_gradients, n_gradients)</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    GtG <span class="op">=</span> K <span class="op">@</span> K.T</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    identity <span class="op">=</span> np.eye(GtG.shape[<span class="dv">0</span>])</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="co"># K_plus.shape = (n_vertices, n_gradients)</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> K.T <span class="op">@</span> np.linalg.inv(GtG <span class="op">+</span> INVERSE_LAMBDA <span class="op">*</span> identity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Mathematically, the prediction kernel <span class="math inline">\(K^{+}\)</span> (the pseudo-inverse) is computed as: <span class="math display">\[
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>INVERSE_LAMBDA <span class="op">=</span> <span class="fl">1e-6</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> prediction_kernel(gtab, param_lambda, sphere, method<span class="op">=</span><span class="st">"standard"</span>):</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># K.shape = (n_gradients, n_vertices)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    K <span class="op">=</span> gqi_kernel(gtab, param_lambda, sphere, method<span class="op">=</span>method)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="co"># GTG.shape = (n_gradients, n_gradients)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    GtG <span class="op">=</span> K <span class="op">@</span> K.T</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    identity <span class="op">=</span> np.eye(GtG.shape[<span class="dv">0</span>])</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># K_plus.shape = (n_vertices, n_gradients)</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> K.T <span class="op">@</span> np.linalg.inv(GtG <span class="op">+</span> INVERSE_LAMBDA <span class="op">*</span> identity)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Mathematically, the prediction kernel <span class="math inline">\(K^{+}\)</span> is computed as: <span class="math display">\[
 K^{+} = K^T (K K^T + \lambda I)^{-1}
 \]</span> Where:</p>
 <ul>
@@ -522,7 +545,7 @@ K^{+} = K^T (K K^T + \lambda I)^{-1}
   \]</span></p>
 <p>Where <span class="math inline">\(K^{+}\)</span> is the Tikhonov-regularised Moore-Penrose pseudo-inverse of the GQI kernel <span class="math inline">\(K\)</span>.</p>
 <p>Note that the pseudo-inverse is needed since the GQI kernel <span class="math inline">\(K\)</span>’s dimensions are <span class="math inline">\((n_\mathrm{gradients}, n_\mathrm{vertices})\)</span>, which means it’s (most of the time) not a square matrix and therefore not having a true inverse.</p>
-<p>The <code>predict</code> function reconstructs diffusion signals from the fitted signal data by first computing the ODF internally and then applying the pseudo-inverse kernel.</p>
+<p>The <code>predict</code> function reconstructs diffusion signals from the fitted signal data by fusing the model kernel and the pseudo-inverse kernel to avoid explicit ODF computation.</p>
 <ul>
 <li><strong>Purpose</strong>: Predicts diffusion-weighted signals from fitted data, supporting both single-voxel and multi-voxel data.</li>
 <li><strong>Key Parameters</strong>:
@@ -574,7 +597,7 @@ K^{+} = K^T (K K^T + \lambda I)^{-1}
 <li><span class="math inline">\(K^{+}\)</span> is the pseudo-inverse kernel from <code>prediction_kernel</code></li>
 </ul>
 <p>Equivalently, this can be computed directly as <span class="math inline">\(\mathbf{S}_\mathrm{pred} = \max(0, \mathbf{S}_\mathrm{data} \cdot (K_\mathrm{model}^T \cdot K^{+}))\)</span> to avoid intermediate ODF calculation for efficiency.</p>
-<p>The max operation ensures non-negative signal values.</p>
+<p>The <span class="math inline">\(\max\)</span> operation ensures non-negative signal values.</p>
 </section>
 <section id="testing-methodology" class="level2" data-number="4">
 <h2 data-number="4" class="anchored" data-anchor-id="testing-methodology"><span class="header-section-number">4</span> Testing Methodology</h2>
@@ -585,12 +608,12 @@ K^{+} = K^T (K K^T + \lambda I)^{-1}
 <li>numerical stability</li>
 <li>practical usability across single and multi-voxel scenarios.</li>
 </ul>
-<p>All tests utilize DIPY’s test data (<code>dsi_voxels</code>) and synthetic phantoms to ensure robustness.</p>
+<p>All tests utilize DIPY’s test data <code>small_101D</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> and simulated diffusion MRI datasets with known properties to ensure robustness.</p>
 <section id="prediction_kernel-function-tests" class="level3" data-number="4.1">
 <h3 data-number="4.1" class="anchored" data-anchor-id="prediction_kernel-function-tests"><span class="header-section-number">4.1</span> <code>prediction_kernel</code> function tests</h3>
 <p>The <code>prediction_kernel</code> function is tested for its role as a Tikhonov-regularized Moore-Penrose pseudo-inverse of the GQI kernel. Key validations include:</p>
 <ul>
-<li><strong>Shape and finiteness</strong>: Ensures the kernel has correct dimensions <span class="math inline">\((n_\mathrm{vertices}, n_\mathrm{gradients})\)</span> and contains only finite, non-zero values.</li>
+<li><strong>Shape and finiteness</strong>: Ensures the kernel has correct dimensions <span class="math inline">\((n_\mathrm{vertices}, n_\mathrm{gradients})\)</span> and contains only finite values, with at least one non-zero value.</li>
 <li><strong>Pseudo-inverse properties</strong>: Verifies that <span class="math inline">\(K K^+ K \approx K\)</span> (regularized reconstruction), and that <span class="math inline">\(K K^+\)</span> and <span class="math inline">\(K^+ K\)</span> are symmetric matrices.</li>
 <li><strong>Method compatibility</strong>: Tests both <code>standard</code> and <code>gqi2</code> GQI methods using the <code>symmetric724</code> sphere and DSI gradient table.</li>
 </ul>
@@ -614,14 +637,16 @@ K^{+} = K^T (K K^T + \lambda I)^{-1}
 <li><strong>Single-voxel round-trip</strong>: For selected voxels, compute Pearson correlation between original and predicted signals. Assert correlations exceed <span class="math inline">\(r &gt; 0.8\)</span> and signal magnitudes remain in the same order of magnitude.</li>
 <li><strong>Multi-voxel round-trip</strong>: Compute average correlation across all voxels in the volume, requiring <span class="math inline">\(\bar{r} &gt; 0.8\)</span>. Identify and reject any voxels with <span class="math inline">\(r \leq 0.8\)</span>.</li>
 </ul>
-<p>These tests quantify reconstruction accuracy and detect overfitting or numerical instabilities.</p>
+<p>These tests quantify reconstruction accuracy and detect underfitting or numerical instabilities.</p>
 </section>
 </section>
 <section id="obtained-results" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="obtained-results"><span class="header-section-number">5</span> Obtained Results</h2>
-<p>The implementation was validated through comprehensive testing using real DSI data from the DIPY library. The results demonstrate high accuracy in signal reconstruction for the “standard” GQI method, as quantified by voxel-wise correlation metrics and visual comparisons against ground truth data. Key findings are detailed below, referencing the provided visualizations.</p>
+<p>Building on the testing methodology outlined above, the obtained results validate the implementation using real DSI data from the DIPY library. They demonstrate high accuracy in signal reconstruction and generalization, quantified by voxel-wise correlation metrics and visual comparisons against ground truth data.</p>
+<p>In the following subsections, we present the results for single-voxel and multi-voxel roundtrip predictions, followed by generalization to unseen data.</p>
 <section id="single-voxel-reconstruction-results" class="level3" data-number="5.1">
 <h3 data-number="5.1" class="anchored" data-anchor-id="single-voxel-reconstruction-results"><span class="header-section-number">5.1</span> Single-Voxel Reconstruction Results</h3>
+<p>Results from the single-voxel roundtrip test on the <code>small_101D</code> dataset are presented here, focusing on signal reconstruction for a representative voxel.</p>
 <div id="fig-single-voxel-roundtrip" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-single-voxel-roundtrip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -634,12 +659,15 @@ Figure&nbsp;1: Voxel (0, 0, 0) Signal Reconstruction: Original vs.&nbsp;Predicte
 </div>
 <p>The plots in <a href="#fig-single-voxel-roundtrip" class="quarto-xref">Figure&nbsp;1</a> provide a detailed analysis for a single representative voxel.</p>
 <ul>
-<li><strong>Strong Linear Relationship</strong>: The scatter plot on the left shows a strong positive linear relationship between the original and predicted signals, with a Pearson correlation coefficient of <strong>r = 0.9744</strong>. The fitted line (y = 0.87x + 13.65) closely tracks the identity line (dashed black), indicating minimal bias in the prediction.</li>
-<li><strong>Signal Profile Fidelity</strong>: The line plot on the right compares the signal intensity profiles across all gradient directions. The predicted signal (blue dots) closely follows the original signal (black line), particularly for lower gradient indices. The residual plot (gray dots) shows small deviations, with an MAE of <strong>12.7544</strong>, which is acceptable given the signal range (~0-300).</li>
+<li><strong>Strong Linear Relationship</strong>: The scatter plot on the left shows a strong positive linear relationship between the original and predicted signals, with a Pearson correlation coefficient of <span class="math inline">\(r = 0.9744\)</span>. The fitted line <span class="math inline">\(y = 0.87x + 13.65\)</span> closely tracks the identity line (dashed black), indicating minimal bias in the prediction.</li>
+<li><strong>Signal Profile Fidelity</strong>: The line plot on the right compares the signal intensity profiles across all gradient directions. The predicted signal (in blue) closely follows the original signal (in black). The residual plot (in gray) shows small deviations, with an <span class="math inline">\(MAE\)</span> of <span class="math inline">\(12.7544\)</span>, which is acceptable given the signal range (~0-300).</li>
 </ul>
+<p>These results demonstrate the effectiveness of the <code>predict</code> function for single-voxel predictions.</p>
+<p>For the complete single-voxel roundtrip analysis, refer to the <a href="./assets/notebooks/dipy/gqi_roundtrip_notebook.html" target="_blank">GQI Roundtrip notebook</a>.</p>
 </section>
 <section id="multi-voxel-reconstruction-results" class="level3" data-number="5.2">
 <h3 data-number="5.2" class="anchored" data-anchor-id="multi-voxel-reconstruction-results"><span class="header-section-number">5.2</span> Multi-Voxel Reconstruction Results</h3>
+<p>The multi-voxel roundtrip test on the <code>small_101D</code> dataset evaluates reconstruction accuracy across the entire volume, with results shown below.</p>
 <div id="fig-multi-voxel-roundtrip" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-multi-voxel-roundtrip-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -652,13 +680,16 @@ Figure&nbsp;2: Voxel-wise Signal Reconstruction Accuracy
 </div>
 <p>The histogram presented in <a href="#fig-multi-voxel-roundtrip" class="quarto-xref">Figure&nbsp;2</a> shows the distribution of Pearson correlation coefficients between original and predicted signals across all voxels for the “Standard GQI” model.</p>
 <ul>
-<li><strong>High Overall Fidelity</strong>: The distribution is sharply peaked near perfect correlation (r=1.0), indicating the model successfully reconstructs the training data.</li>
-<li><strong>Quantitative Metrics</strong>: The mean voxel-wise correlation is <strong>0.9800</strong>, and the overall correlation across the entire volume is <strong>0.9749</strong>, both significantly exceeding the target threshold of r &gt; 0.8. The Mean Absolute Error (MAE) of <strong>7.1714</strong> further confirms low prediction error relative to the signal intensity scale.</li>
-<li><strong>Spatial Consistency</strong>: The accompanying correlation map (right panel) shows a uniformly high correlation (yellow/green tones) across the slice, confirming that the model’s performance is spatially consistent and not localized to specific regions. This validates the numerical stability and robustness of the <code>predict</code> function for multi-voxel data.</li>
+<li><strong>High Overall Fidelity</strong>: The distribution is sharply peaked near perfect correlation (<span class="math inline">\(r=1.0\)</span>), indicating the model successfully reconstructs the training data.</li>
+<li><strong>Quantitative Metrics</strong>: The mean voxel-wise correlation is <span class="math inline">\(0.9800\)</span>, and the overall correlation across the entire volumes is <span class="math inline">\(0.9749\)</span>, both significantly exceeding the target thresholds of <span class="math inline">\(r &gt; 0.8\)</span>. and <span class="math inline">\(\bar{r}&gt;0.8\)</span>. The <span class="math inline">\(MAE\)</span> of <span class="math inline">\(7.1714\)</span> further confirms low prediction error relative to the signal intensity scale.</li>
+<li><strong>Spatial Consistency</strong>: The accompanying correlation map (right panel) shows a uniformly high correlation (yellow tones) across the middle slice, confirming that the model’s performance is spatially consistent and not localized to specific regions.</li>
 </ul>
+<p>This validates the numerical stability and robustness of the <code>predict</code> function for multi-voxel data.</p>
+<p>See the <a href="./assets/notebooks/dipy/gqi_roundtrip_notebook.html" target="_blank">GQI Roundtrip notebook</a> for detailed multi-voxel implementation.</p>
 </section>
 <section id="prediction-on-unseen-data" class="level3" data-number="5.3">
 <h3 data-number="5.3" class="anchored" data-anchor-id="prediction-on-unseen-data"><span class="header-section-number">5.3</span> Prediction on Unseen Data</h3>
+<p>To illustrate generalization, this section shows predictions for unseen gradient configurations using the <code>taiwan_ntu_dsi</code><a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> dataset</p>
 <div id="fig-unseen-data-plot" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-unseen-data-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -671,43 +702,59 @@ Figure&nbsp;3: Real vs Predicted Signal and Local Correlation: Test Volume 0, Z 
 </div>
 <p>The visualization in <a href="#fig-unseen-data-plot" class="quarto-xref">Figure&nbsp;3</a> evaluates the model’s ability to generalize to unseen gradient configurations.</p>
 <ul>
-<li><strong>Visual Agreement</strong>: A side-by-side comparison of the <strong>Real data</strong> and <strong>STANDARD prediction</strong> for a specific b-value and b-vector shows a strong qualitative match. The predicted image successfully captures the anatomical structure and intensity variations present in the real data, including bright white matter tracts.</li>
-<li><strong>Local Correlation Validation</strong>: The <strong>Local Pearson Correlation</strong> map, computed over a 9x9 window, quantifies this agreement. The map displays predominantly red and orange regions (correlation &gt; 0.5), indicating good local correspondence between the real and predicted signals. While some areas show lower correlation (blue/purple), these are likely associated with complex fiber crossings or noise, which is expected in diffusion MRI. This demonstrates the model’s capability to predict signals for new, unseen gradients beyond the training set.</li>
+<li><strong>Visual Agreement</strong>: A side-by-side comparison of the <code>Real data</code> and <code>standard prediction</code> for a specific <code>b value</code> and <code>b vector</code> shows a strong qualitative match. The predicted image successfully captures the anatomical structure and intensity variations present in the real data, including bright white matter tracts.</li>
+<li><strong>Local Correlation Validation</strong>: The Local Pearson Correlation map, computed over a 9x9 window, quantifies this agreement. The map displays predominantly red and orange regions (correlation &gt; 0.5), indicating good local correspondence between the real and predicted signals. While some areas show lower correlation (blue/purple), these are likely associated with complex fiber crossings or noise, which is expected in diffusion MRI.</li>
 </ul>
+<p>This demonstrates the model’s capability to predict signals for new, unseen gradients beyond the training set.</p>
+<p>The full unseen prediction workflow is available in the <a href="./assets/notebooks/dipy/gqi_unseen_data_notebook.html" target="_blank">GQI Unseen Data notebook</a>.</p>
 <p>These results collectively confirm that the implemented <code>predict</code> function is mathematically sound, numerically stable, and practically effective for both reconstructing training data and generalizing to new gradient directions. The high correlation values and visual fidelity validate the correctness of the Tikhonov-regularized pseudo-inverse approach used in the <code>prediction_kernel</code> function.</p>
 </section>
 </section>
 <section id="conclusion" class="level2" data-number="6">
 <h2 data-number="6" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">6</span> Conclusion</h2>
+<p>In summary, the implementation of the <code>predict</code> function for DIPY’s GQI model has been successfully validated through comprehensive testing on real DSI datasets. The function accurately reconstructs diffusion signals for both single-voxel and multi-voxel scenarios, as evidenced by high correlation coefficients and low mean absolute errors in roundtrip tests.</p>
+<p>Furthermore, it demonstrates strong generalization capabilities to unseen gradient configurations, confirming its practical utility in diffusion MRI analysis. The Tikhonov-regularized pseudo-inverse approach ensures numerical stability and robustness, providing a reliable tool for signal prediction in advanced neuroimaging workflows.</p>
 </section>
-<section id="resources" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="resources"><span class="header-section-number">7</span> Resources</h2>
-<section id="dipy-tutorial-repository-notebooks" class="level3" data-number="7.1">
-<h3 data-number="7.1" class="anchored" data-anchor-id="dipy-tutorial-repository-notebooks"><span class="header-section-number">7.1</span> <a href="https://github.com/MadeInShineA/dipy-tutorial/tree/main" target="_blank">DIPY tutorial repository</a> notebooks</h3>
+<section id="extra-resources" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="extra-resources"><span class="header-section-number">7</span> Extra Resources</h2>
+<p>This section contains extra resources to go deeper into the topics covered in this report.</p>
+<section id="dipy-tutorial-notebooks" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="dipy-tutorial-notebooks"><span class="header-section-number">7.1</span> DIPY Tutorial Notebooks</h3>
+<p>These notebooks were created based off the <a href="https://docs.dipy.org/stable/examples_built/index" target="_blank">DIPY documentation examples</a> for this project.</p>
 <ul>
 <li><a href="./assets/notebooks/dipy-tutorial/reconstruct_with_csa_q_ball.html" target="_blank">Reconstruct with Constant Solid Angle (Q-Ball)</a></li>
 <li><a href="./assets/notebooks/dipy-tutorial/reconstruct_with_q_sampling_imaging_notebook.html" target="_blank">Reconstruct with Generalized Q-Sampling Imaging</a></li>
 <li><a href="./assets/notebooks/dipy-tutorial/basic_tracking_notebook.html" target="_blank">Introduction to Basic Tracking</a></li>
 </ul>
 </section>
-<section id="dipy-repository-notebooks" class="level3" data-number="7.2">
-<h3 data-number="7.2" class="anchored" data-anchor-id="dipy-repository-notebooks"><span class="header-section-number">7.2</span> <a href="https://github.com/MadeInShineA/dipy/tree/enh/gqi-predict-notebooks" target="_blank">DIPY repository</a> notebooks</h3>
+<section id="project-specific-notebooks-from-dipy-repository" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="project-specific-notebooks-from-dipy-repository"><span class="header-section-number">7.2</span> Project-Specific Notebooks from DIPY Repository</h3>
+<p>These notebooks were developed specifically for this project to demonstrate the <code>predict</code> function implementation, validation, and application.</p>
 <ul>
-<li><a href="./assets/notebooks/dipy/gqi_roundtrip_notebook.html" target="_blank">GQI Roundtrip</a></li>
-<li><a href="./assets/notebooks/dipy/gqi_unseen_data_notebook.html" target="_blank">GQI Unseen Data</a></li>
+<li><a href="./assets/notebooks/dipy/gqi_roundtrip_notebook.html" target="_blank">GQI Roundtrip Notebook</a></li>
+<li><a href="./assets/notebooks/dipy/gqi_unseen_data_notebook.html" target="_blank">GQI Predict Unseen Data Notebook</a></li>
 </ul>
 </section>
-<section id="dipy-examples" class="level3" data-number="7.3">
-<h3 data-number="7.3" class="anchored" data-anchor-id="dipy-examples"><span class="header-section-number">7.3</span> DIPY examples</h3>
-<ul>
-<li><a href="./assets/examples/reconst_gqi_predict.html" target="_blank">Predict unseen data with Generalized Q-Sampling Imaging</a></li>
-</ul>
+</section>
+<section id="references" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="references"><span class="header-section-number">8</span> References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Yeh2010" class="csl-entry" role="listitem">
+Yeh, Fang-Cheng, Van Jay Wedeen, and Wen-Yih Isaac Tseng. 2010. <span>“<span>Generalized <span class="math inline">\({q}\)</span>-Sampling Imaging</span>.”</span> <em>IEEE Transactions on Medical Imaging</em> 29 (9): 1626–35. <a href="https://doi.org/10.1109/TMI.2010.2045126">https://doi.org/10.1109/TMI.2010.2045126</a>.
+</div>
+</div>
 
 
 </section>
-</section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The <code>small_101D</code> dataset is a small subset of diffusion spectrum imaging (DSI) data from DIPY, containing 101 diffusion-weighted volumes.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The <code>taiwan_ntu_dsi</code> dataset is a full DSI acquisition from the National Taiwan University, consisting of 515 diffusion-weighted volumes.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

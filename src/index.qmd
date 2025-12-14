@@ -2,6 +2,8 @@
 title: "303.1 Semester Project:<br>Extending DIPY's Generalized Q-ball Imaging model to make predictions"
 ---
 
+This semester project focuses on advancing diffusion MRI analysis by contributing to the DIPY library. Specifically, it extends the Generalized Q-Sampling Imaging (GQI) model with a new `predict` function that enables signal reconstruction and prediction for unseen gradient configurations. Through rigorous implementation, testing, and documentation, the project aims to enhance DIPY's capabilities in neuroimaging research.
+
 ## Project Overview
 
 This project is part of the [303.1 semester project course](https://isc.hevs.ch/learn/enrol/index.php?id=123){target="_blank"}.
@@ -14,7 +16,13 @@ The key objectives are:
 - Providing comprehensive and meaningful tests
 - Getting the prediction pull request accepted by DIPY
 
-## Project Gantt Diagram
+The project has progressed to the point where a pull request has been submitted to the DIPY repository for integrating the new `predict` function.
+This pull request is currently under review by the DIPY development team, and feedback is being incorporated to ensure it meets the library's standards and requirements.
+You can track the progress at [DIPY Pull Request #1](https://github.com/oesteban/dipy/pull/1){target="_blank"}.
+
+## Project Timeline
+
+The following Gantt diagram provides a visual overview of the project schedule, highlighting completed tasks, active work, and upcoming milestones. It tracks progress from initial research and development through testing, documentation, and final submissions.
 
 <div id="gantt">
 ```{mermaid}
@@ -61,13 +69,27 @@ gantt
         Finish presentation                     :active,       f_pres,         11.12.2025, 18.12.2025
         Code and documentation handout          :crit,         milestone,      16.12.2025, 0d
         Final presentation                      :crit,         milestone,      18.12.2025, 0d
-        
+```
 ```
 </div>
 
-## Documents
+## Key Achievements
 
-- **[Report](report.qmd)**: Detailed technical documentation and results
-- **[Presentation](presentation.qmd)**: Slide deck summarizing the project
-- **[Daily Journal](daily_journal.qmd)**: Development log and progress updates
-- **[Sources](sources.qmd)**: Bibliography and references
+The project has made significant progress towards its objectives:
+
+- **Implementation Complete**: Successfully implemented the `predict` function for the `GeneralizedQSamplingFit` class, along with the supporting `prediction_kernel` helper function.
+- **Comprehensive Testing**: Developed thorough unit tests and integration tests, including roundtrip validation and generalization to unseen data, ensuring numerical stability and accuracy.
+- **Documentation and Examples**: Created detailed notebooks demonstrating the functionality, including tutorials and validation scripts, with results showing high correlation coefficients (r > 0.97) in signal reconstruction.
+- **Community Contribution**: Submitted a pull request to the DIPY repository, which is currently under review. Coordinated with DIPY experts to align with library standards.
+- **Deliverables in Progress**: Finalizing the technical report, presentation, and documentation handouts for the semester project submission.
+
+## Project Documents and Resources
+
+Access the key deliverables and supplementary materials for this project:
+
+- **[Implementation Report](report.qmd)**: Comprehensive technical documentation covering the `predict` function implementation, mathematical foundations, testing methodology, results analysis, and extra resources for further exploration.
+- **[Presentation Slides](presentation.qmd)**: Slide deck summarizing the project objectives, methodology, achievements, and future implications.
+- **[Daily Journal](daily_journal.qmd)**: Chronological log of development activities, challenges encountered, and progress updates throughout the semester.
+- **[Sources and References](sources.qmd)**: Bibliography, citations, and additional reading materials related to diffusion MRI, GQI, and DIPY.
+
+For results examples and code demonstrations, refer to the notebooks and examples linked in the [Implementation Report](report.qmd#extra-resources).

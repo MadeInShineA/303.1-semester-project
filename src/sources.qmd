@@ -1,9 +1,11 @@
 ---
 title: "Sources"
+bibliography: references.bib
 ---
 
 ## DIPY
   - [DIPY website](https://dipy.org/){target="_blank"}
+  - [DIPY github repository](https://github.com/dipy/dipy){target="_blank"}
   - [DIPY contributing guide](https://github.com/dipy/dipy/blob/master/.github/CONTRIBUTING.md){target="_blank"}
   - [DIPY developer guide](https://docs.dipy.org/stable/devel/intro.html){target="_blank"}
   - [DIPY coding style guideline](https://github.com/dipy/dipy/blob/master/doc/devel/coding_style_guideline.rst){target="_blank"}
@@ -27,6 +29,13 @@ title: "Sources"
 
 ---
 
+## Scientific Papers
+
+ - @Yeh2010 
+ - @Amitay2012
+
+---
+
 ## Assistants
   - [Qwen3 Max](https://qwen.ai/home){target="_blank"}
   - [Grok Code Fast 1](https://x.ai/){target="_blank"}
@@ -38,4 +47,9 @@ title: "Sources"
   - [Marimo website](https://marimo.io/){target="_blank"}
   - [Quarto website](https://quarto.org/){target="_blank"}
   - [Graphviz website](https://graphviz.org/){target="_blank"}
+
+## References
+
+::: {#refs}
+:::
 

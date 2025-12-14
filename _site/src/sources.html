@@ -20,7 +20,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
@@ -73,6 +93,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -304,8 +353,10 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#dipy" id="toc-dipy" class="nav-link active" data-scroll-target="#dipy">DIPY</a></li>
   <li><a href="#youtube-videos" id="toc-youtube-videos" class="nav-link" data-scroll-target="#youtube-videos">Youtube videos</a></li>
+  <li><a href="#scientific-papers" id="toc-scientific-papers" class="nav-link" data-scroll-target="#scientific-papers">Scientific Papers</a></li>
   <li><a href="#assistants" id="toc-assistants" class="nav-link" data-scroll-target="#assistants">Assistants</a></li>
   <li><a href="#other" id="toc-other" class="nav-link" data-scroll-target="#other">Other</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/sources.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -336,6 +387,7 @@ ul.task-list li input[type="checkbox"] {
 <h2 class="anchored" data-anchor-id="dipy">DIPY</h2>
 <ul>
 <li><a href="https://dipy.org/" target="_blank">DIPY website</a></li>
+<li><a href="https://github.com/dipy/dipy" target="_blank">DIPY github repository</a></li>
 <li><a href="https://github.com/dipy/dipy/blob/master/.github/CONTRIBUTING.md" target="_blank">DIPY contributing guide</a></li>
 <li><a href="https://docs.dipy.org/stable/devel/intro.html" target="_blank">DIPY developer guide</a></li>
 <li><a href="https://github.com/dipy/dipy/blob/master/doc/devel/coding_style_guideline.rst" target="_blank">DIPY coding style guideline</a></li>
@@ -363,6 +415,14 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <hr>
 </section>
+<section id="scientific-papers" class="level2">
+<h2 class="anchored" data-anchor-id="scientific-papers">Scientific Papers</h2>
+<ul>
+<li><span class="citation" data-cites="Yeh2010">Yeh, Wedeen, and Tseng (<a href="#ref-Yeh2010" role="doc-biblioref">2010</a>)</span></li>
+<li><span class="citation" data-cites="Amitay2012">Ben-Amitay, Jones, and Assaf (<a href="#ref-Amitay2012" role="doc-biblioref">2012</a>)</span></li>
+</ul>
+<hr>
+</section>
 <section id="assistants" class="level2">
 <h2 class="anchored" data-anchor-id="assistants">Assistants</h2>
 <ul>
@@ -380,6 +440,17 @@ ul.task-list li input[type="checkbox"] {
 <li><a href="https://quarto.org/" target="_blank">Quarto website</a></li>
 <li><a href="https://graphviz.org/" target="_blank">Graphviz website</a></li>
 </ul>
+</section>
+<section id="references" class="level2">
+<h2 class="anchored" data-anchor-id="references">References</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Amitay2012" class="csl-entry" role="listitem">
+Ben-Amitay, Shani, Derek K. Jones, and Yaniv Assaf. 2012. <span>“Motion Correction and Registration of High b-Value Diffusion Weighted Images.”</span> <em>Magnetic Resonance in Medicine</em> 67 (6): 1694–1702. https://doi.org/<a href="https://doi.org/10.1002/mrm.23186">https://doi.org/10.1002/mrm.23186</a>.
+</div>
+<div id="ref-Yeh2010" class="csl-entry" role="listitem">
+Yeh, Fang-Cheng, Van Jay Wedeen, and Wen-Yih Isaac Tseng. 2010. <span>“<span>Generalized <span class="math inline">\({q}\)</span>-Sampling Imaging</span>.”</span> <em>IEEE Transactions on Medical Imaging</em> 29 (9): 1626–35. <a href="https://doi.org/10.1109/TMI.2010.2045126">https://doi.org/10.1109/TMI.2010.2045126</a>.
+</div>
+</div>
 
 
 </section>

@@ -306,8 +306,9 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
-  <li><a href="#project-gantt-diagram" id="toc-project-gantt-diagram" class="nav-link" data-scroll-target="#project-gantt-diagram">Project Gantt Diagram</a></li>
-  <li><a href="#documents" id="toc-documents" class="nav-link" data-scroll-target="#documents">Documents</a></li>
+  <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link" data-scroll-target="#project-timeline">Project Timeline</a></li>
+  <li><a href="#key-achievements" id="toc-key-achievements" class="nav-link" data-scroll-target="#key-achievements">Key Achievements</a></li>
+  <li><a href="#project-documents-and-resources" id="toc-project-documents-and-resources" class="nav-link" data-scroll-target="#project-documents-and-resources">Project Documents and Resources</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -334,6 +335,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p>This semester project focuses on advancing diffusion MRI analysis by contributing to the DIPY library. Specifically, it extends the Generalized Q-Sampling Imaging (GQI) model with a new <code>predict</code> function that enables signal reconstruction and prediction for unseen gradient configurations. Through rigorous implementation, testing, and documentation, the project aims to enhance DIPY’s capabilities in neuroimaging research.</p>
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
 <p>This project is part of the <a href="https://isc.hevs.ch/learn/enrol/index.php?id=123" target="_blank">303.1 semester project course</a>.</p>
@@ -345,9 +347,11 @@ The key objectives are:</p>
 <li>Providing comprehensive and meaningful tests</li>
 <li>Getting the prediction pull request accepted by DIPY</li>
 </ul>
+<p>The project has progressed to the point where a pull request has been submitted to the DIPY repository for integrating the new <code>predict</code> function. This pull request is currently under review by the DIPY development team, and feedback is being incorporated to ensure it meets the library’s standards and requirements. You can track the progress at <a href="https://github.com/oesteban/dipy/pull/1" target="_blank">DIPY Pull Request #1</a>.</p>
 </section>
-<section id="project-gantt-diagram" class="level2">
-<h2 class="anchored" data-anchor-id="project-gantt-diagram">Project Gantt Diagram</h2>
+<section id="project-timeline" class="level2">
+<h2 class="anchored" data-anchor-id="project-timeline">Project Timeline</h2>
+<p>The following Gantt diagram provides a visual overview of the project schedule, highlighting completed tasks, active work, and upcoming milestones. It tracks progress from initial research and development through testing, documentation, and final submissions.</p>
 <div id="gantt">
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
@@ -397,23 +401,36 @@ The key objectives are:</p>
         Finish presentation                     :active,       f_pres,         11.12.2025, 18.12.2025
         Code and documentation handout          :crit,         milestone,      16.12.2025, 0d
         Final presentation                      :crit,         milestone,      18.12.2025, 0d
-        
 </pre>
 </div>
 <p></p></figure><p></p>
 </div>
 </div>
 </div>
+<p>```</p>
 </div>
 </section>
-<section id="documents" class="level2">
-<h2 class="anchored" data-anchor-id="documents">Documents</h2>
+<section id="key-achievements" class="level2">
+<h2 class="anchored" data-anchor-id="key-achievements">Key Achievements</h2>
+<p>The project has made significant progress towards its objectives:</p>
 <ul>
-<li><strong><a href="../src/report.html">Report</a></strong>: Detailed technical documentation and results</li>
-<li><strong><a href="../src/presentation.html">Presentation</a></strong>: Slide deck summarizing the project</li>
-<li><strong><a href="../src/daily_journal.html">Daily Journal</a></strong>: Development log and progress updates</li>
-<li><strong><a href="../src/sources.html">Sources</a></strong>: Bibliography and references</li>
+<li><strong>Implementation Complete</strong>: Successfully implemented the <code>predict</code> function for the <code>GeneralizedQSamplingFit</code> class, along with the supporting <code>prediction_kernel</code> helper function.</li>
+<li><strong>Comprehensive Testing</strong>: Developed thorough unit tests and integration tests, including roundtrip validation and generalization to unseen data, ensuring numerical stability and accuracy.</li>
+<li><strong>Documentation and Examples</strong>: Created detailed notebooks demonstrating the functionality, including tutorials and validation scripts, with results showing high correlation coefficients (r &gt; 0.97) in signal reconstruction.</li>
+<li><strong>Community Contribution</strong>: Submitted a pull request to the DIPY repository, which is currently under review. Coordinated with DIPY experts to align with library standards.</li>
+<li><strong>Deliverables in Progress</strong>: Finalizing the technical report, presentation, and documentation handouts for the semester project submission.</li>
 </ul>
+</section>
+<section id="project-documents-and-resources" class="level2">
+<h2 class="anchored" data-anchor-id="project-documents-and-resources">Project Documents and Resources</h2>
+<p>Access the key deliverables and supplementary materials for this project:</p>
+<ul>
+<li><strong><a href="../src/report.html">Implementation Report</a></strong>: Comprehensive technical documentation covering the <code>predict</code> function implementation, mathematical foundations, testing methodology, results analysis, and extra resources for further exploration.</li>
+<li><strong><a href="../src/presentation.html">Presentation Slides</a></strong>: Slide deck summarizing the project objectives, methodology, achievements, and future implications.</li>
+<li><strong><a href="../src/daily_journal.html">Daily Journal</a></strong>: Chronological log of development activities, challenges encountered, and progress updates throughout the semester.</li>
+<li><strong><a href="../src/sources.html">Sources and References</a></strong>: Bibliography, citations, and additional reading materials related to diffusion MRI, GQI, and DIPY.</li>
+</ul>
+<p>For results examples and code demonstrations, refer to the notebooks and examples linked in the <a href="../src/report.html#extra-resources">Implementation Report</a>.</p>
 
 
 </section>
