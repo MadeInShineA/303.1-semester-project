@@ -164,3 +164,4 @@ title: Daily Journal
 
 ## 15.12.2025
 - Meeting with Prof. Esteban
+- Continued the presentation (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/2ca37f17319c35c65404fc1d62be8bf291054a32){target="_blank"} and [presentation](./presentation.qmd){target="_blank"})
