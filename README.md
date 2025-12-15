@@ -1,6 +1,6 @@
 # 303.1-semester-project
 
-[![Website olivier.amacker.dev/303.1-semester-project](https://img.shields.io/website-up-down-green-red/http/olivier.amacker.dev/303.1-semester-project.svg)](https://olivier.amacker.dev/303.1-semester-project/src/index.html)
+[![Website olivier.amacker.dev/303.1-semester-project/index.html](https://img.shields.io/website-up-down-green-red/http/olivier.amacker.dev/303.1-semester-project/index.html.svg)](https://olivier.amacker.dev/303.1-semester-project/index.html)
 
 This repo contains the content of my semester project done in the 303.1 - Semester project course
 
