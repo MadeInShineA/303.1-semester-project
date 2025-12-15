@@ -1,8 +1,10 @@
 ---
 title: "303.1 Semester Project Presentation"
+resources:
+  - "./assets/presentation/dMRI-signal-movie.mp4"
 format:
   revealjs:
-    theme: default
+    theme: [default, ./presentation.scss]
     center: true
     transition: fade
     incremental: false
@@ -15,205 +17,77 @@ format:
 
 
 # What is DWI ?
+:::: {.columns}
 
-Diffusion Weighted Imaging (DWI) is an MRI technique that measures the diffusion of water molecules in biological tissues.
+::: {.column width="60%"}
+MRI technique that measures the diffusion of water molecules in biological tissues.
 
 - **Principle**: Uses magnetic field gradients to sensitize the MRI signal to water diffusion
-- **Key parameters**: b-values and b-vectors
+- **Key parameters**: 
+  - b-values
+  - b-vectors
+:::
 
-# What's DWI ? 
+::: {.column width="40%"}
 
 
 ::: {#fig-cern}
 
-{{<video ./assets/presentation/dMRI-signal-movie.mp4 height="500">}}
+<video 
+  src="./assets/presentation/dMRI-signal-movie.mp4" 
+  loop muted playsinline height="300"
+/>
 
 Visual example of DWI, sourced from Dr. A. Rokem, DIPY Workshop 2021
 
 :::
-# DWI Pipeline: Acquisition
 
-```{dot}
-//| label: fig-dwi-pipeline-acquisition
-//| fig-cap: "Overview of the DWI Pipeline (Acquisition)."
-digraph DWI_Pipeline {
-  rankdir=LR;
-  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
-  edge [fontsize=10];
+:::
 
-  subgraph cluster_acq {
-      label="Acquisition";
-      style=filled;
-      color=lightblue;
-      MRI [label="MRI\nScanner"];
-      Params [label="b-values &\nb-vectors"];
-      Gradients [label="Apply\nDiffusion\nGradients"];
-      Signal [label="Signal Images"]
-      MRI -> Gradients;
-      Params -> Gradients;
-      Gradients -> Signal;
-  }
-}
-```
-# DWI Pipeline: Preprocessing
+::::
 
-```{dot}
-//| label: fig-dwi-pipeline-preprocessing
-//| fig-cap: "Overview of the DWI Pipeline (Preprocessing)."
-digraph DWI_Pipeline {
-  rankdir=LR;
-  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
-  edge [fontsize=10];
-
-
-  subgraph cluster_prep {
-      label="Preprocessing";
-      style=filled;
-      color=lightgreen;
-      Signal [label="Signal Images"]
-      Eddy [label="Eddy Current\nCorrection"];
-      Motion [label="Motion\nCorrection"];
-      Denoise [label="Denoised\n Signal Images"];
-      Signal -> Eddy -> Motion -> Denoise;
-  }
-}
-```
-
-# DWI Pipeline: Reconstruction
-```{dot}
-//| label: fig-dwi-pipeline-reconstruction
-//| fig-cap: "Overview of the DWI Pipeline (Reconstruction)."
-digraph DWI_Pipeline {
-  rankdir=LR;
-  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
-  edge [fontsize=10];
-
-   subgraph cluster_rec {
-       label="Reconstruction";
-       style=filled;
-       color=lightsalmon;
-       Denoise [label="Denoised\n Signal Images"];
-       DTI [label="DTI"];
-       CSD [label="CSD"];
-       GQI [label="GQI", fillcolor=yellow, shape=box];
-       Tensors [label="Diffusion\nTensors"];
-       ODFs [label="ODF\nData"];
-       Denoise -> DTI;
-       Denoise -> CSD;
-       Denoise -> GQI;
-       DTI -> Tensors;
-       CSD -> ODFs;
-       GQI -> ODFs;
-   }
-}
-```
-# DWI Pipeline: Analysis
-```{dot}
-//| label: fig-dwi-pipeline-analysis
-//| fig-cap: "Overview of the DWI Pipeline (Analysis)."
-digraph DWI_Pipeline {
-  rankdir=LR;
-  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
-  edge [fontsize=10];
-
-   subgraph cluster_ana {
-       label="Analysis";
-       style=filled;
-       color=lightcoral;
-       Tensors [label="Diffusion\nTensors"];
-       ODFs [label="ODF\nData"];
-       Tractography [label="Tractography"];
-       FA [label="FA\nMaps"];
-       ODF [label="ODF\nVisualization"];
-       Tensors -> FA;
-       ODFs -> Tractography;
-       Tractography -> ODF;
-   }
-}
-```
-
-
-# DWI Pipeline: Complete pipeline
-```{dot}
-//| label: fig-dwi-pipeline-complete
-//| fig-cap: "Overview of the DWI complete Pipeline."
-digraph DWI_Pipeline {
-  rankdir=LR;
-  node [style=filled, fillcolor=lightblue, fontcolor=black, fontsize=10];
-  edge [fontsize=10];
-
-  subgraph cluster_acq {
-      label="Acquisition";
-      style=filled;
-      color=lightblue;
-      MRI [label="MRI\nScanner"];
-      Params [label="b-values &\nb-vectors"];
-      Gradients [label="Apply\nDiffusion\nGradients"];
-      Signal [label="Signal Images"]
-      MRI -> Gradients;
-      Params -> Gradients;
-      Gradients -> Signal;
-  }
-
-  subgraph cluster_prep {
-      label="Preprocessing";
-      style=filled;
-      color=lightgreen;
-      Eddy [label="Eddy Current\nCorrection"];
-      Motion [label="Motion\nCorrection"];
-      Denoise [label="Denoised\n Signal Images"];
-      Signal -> Eddy -> Motion -> Denoise;
-  }
-
-   subgraph cluster_rec {
-       label="Reconstruction";
-       style=filled;
-       color=lightsalmon;
-       DTI [label="DTI"];
-       CSD [label="CSD"];
-       GQI [label="GQI", fillcolor=yellow, shape=box];
-       Tensors [label="Diffusion\nTensors"];
-       ODFs [label="ODF\nData"];
-       Denoise -> DTI;
-       Denoise -> CSD;
-       Denoise -> GQI;
-       DTI -> Tensors;
-       CSD -> ODFs;
-       GQI -> ODFs;
-   }
-
-   subgraph cluster_ana {
-       label="Analysis";
-       style=filled;
-       color=lightcoral;
-       Tensors [label="Diffusion\nTensors"];
-       ODFs [label="ODF\nData"];
-       Tractography [label="Tractography"];
-       FA [label="FA\nMaps"];
-       ODF [label="ODF\nVisualization"];
-       Tensors -> FA;
-       ODFs -> Tractography;
-       Tractography -> ODF;
-   }
-}
-```
+# Why DWI ?
+![[NDMG detailed pipeline](https://ndmg.neurodata.io/pipeline/diffusion){target="_blank"}](./assets/presentation/ndmg-d-detailed-pipeline.jpg){#fig-ndmg-pipeline}
 
 # Project Goals
 
-  - Contributing to [DIPY](https://dipy.org/)
-  - Implementing a predict function to the GQI model
+  - Contribute to [DIPY](https://dipy.org/){target="_blank"}
+  - Add prediction capabilities to the existing `GeneralizedQSamplingModel` class
+
+# What has been done
+  - Enable prediction for the `GeneralizedQSamplingModel`
+  - Rigorous Testing
+    - Unit tests (100% coverage)
+    - Integration tests via different [Marimo](htts://marimo.io){target=_blank} notebooks
+  - Automated code documentation via [Sphinx](https://www.sphinx-doc.org/en/master/){target="_blank"}
+  - Created a [DIPY tutorial document](./assets/examples/reconst_gqi_predict.html) on the prediction pipeline
+  - Project documentation (see [homepage](./index.qmd){target="_blank"})
+  - Ongoing [pull request](https://github.com/oesteban/dipy/pull/1){target="_blank"} on Prof.Estban DIPY [fork](https://github.com/oesteban/dipy){target="_blank"}
+    - Currently being reviewed by the DIPY's team
+
+# Testing methodology
+
+![Reconstruction pipeline schema, made with excalidraw](./assets/presentation/reconstructing_test_schema.svg){#fig-reconstruct-pipeline}
+
+# Testing methodology
+
+![Unseen data prediction pipeline, made with excalidraw](./assets/presentation/predict_pipeline_schemas.svg){#fig-unseen-pipeline}
+
+# Single-Voxel Reconstruction Results
+![Voxel (0, 0, 0) Signal Reconstruction: Original vs Predicted](./assets/images/single_voxel_roundtrip_plot.png){#fig-single-voxel-results}
+
+# Multi-Voxel Reconstruction Results
+![Voxel-wise Reconstruction Accuracy](./assets/images/multi_voxel_roundtrip_plot.png){#fig-multi-voxel-results}
+
+# Unseen prediction results
+![Unseen data prediction results](./assets/images/unseen_data_plot.png){#fig-unseen-results}
+
 
 # Impact
 
   - Head motion noise reduction
   - Meaningful data augmentation
   - Model cross validation
-
-# What was implemented
-
-# How things were tested
-
-# Obtained Results
 
 # Conclusion
 

@@ -48,6 +48,8 @@ bibliography: references.bib
   - [Marimo website](https://marimo.io/){target="_blank"}
   - [Quarto website](https://quarto.org/){target="_blank"}
   - [Graphviz website](https://graphviz.org/){target="_blank"}
+  - [Excalidraw website](https://excalidraw.com/){target="_blank"}
+  - [NDMG website](https://ndmg.neurodata.io/pipeline/diffusion){target="_blank"}
 
 ## References
 
