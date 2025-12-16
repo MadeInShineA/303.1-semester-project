@@ -76,6 +76,35 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-diagram/mermaid-init.js"></script>
 <link href="../site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -308,7 +337,7 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#project-overview" id="toc-project-overview" class="nav-link active" data-scroll-target="#project-overview">Project Overview</a></li>
   <li><a href="#project-timeline" id="toc-project-timeline" class="nav-link" data-scroll-target="#project-timeline">Project Timeline</a></li>
   <li><a href="#key-achievements" id="toc-key-achievements" class="nav-link" data-scroll-target="#key-achievements">Key Achievements</a></li>
-  <li><a href="#project-documents-and-resources" id="toc-project-documents-and-resources" class="nav-link" data-scroll-target="#project-documents-and-resources">Project Documents and Resources</a></li>
+  <li><a href="#project-documents-and-resources" id="toc-project-documents-and-resources" class="nav-link" data-scroll-target="#project-documents-and-resources">Project Documents And Resources</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/MadeInShineA/303.1-semester-project/edit/main/src/index.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li></ul></div></nav>
     </div>
@@ -335,19 +364,17 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This semester project focuses on advancing diffusion MRI analysis by contributing to the <a href="https://dipy.org" target="_blank">DIPY</a> library. Specifically, it extends the Generalized Q-Sampling Imaging (GQI) model with a new <code>predict</code> function that enables signal reconstruction and prediction for unseen gradient configurations. Through rigorous implementation, testing, and documentation, the project aims to enhance DIPY’s capabilities in neuroimaging research.</p>
 <section id="project-overview" class="level2">
 <h2 class="anchored" data-anchor-id="project-overview">Project Overview</h2>
 <p>This project is part of the <a href="https://isc.hevs.ch/learn/enrol/index.php?id=123" target="_blank">303.1 semester project course</a>.</p>
-<p>The goal is to contribute to the <a href="https://dipy.org" target="_blank">DIPY</a> framework by extending the Generalized Q-ball Imaging (GQI) model with predictive capabilities.<br>
-The key objectives are:</p>
+<p>The goal is to contribute to the <a href="https://dipy.org" target="_blank">DIPY</a> framework by extending the Generalized Q-ball Imaging (GQI) model with predictive capabilities. The key objectives are:</p>
 <ul>
 <li>Implementing a <code>predict()</code> function to the <code>GeneralizedQSamplingFit</code> class</li>
 <li>Thoroughly documenting the new code</li>
 <li>Providing comprehensive and meaningful tests</li>
 <li>Getting the prediction pull request accepted by DIPY</li>
 </ul>
-<p>The project has progressed to the point where a pull request has been submitted to the DIPY repository for integrating the new <code>predict</code> function. This pull request is currently under review by the DIPY development team, and feedback is being incorporated to ensure it meets the library’s standards and requirements. You can track the progress at <a href="https://github.com/oesteban/dipy/pull/1" target="_blank">DIPY Pull Request #1</a>.</p>
+<p>The project has progressed to the point where a <a href="https://github.com/oesteban/dipy/pull/1" target="_blank">pull request</a> has been submitted to the <a href="https://github.com/dipy/dipy" target="_blank">DIPY repository</a> for integrating the new <code>predict()</code> function. This pull request is currently under review by the DIPY development team, and feedback is being incorporated to ensure it meets the library’s standards and requirements.</p>
 </section>
 <section id="project-timeline" class="level2">
 <h2 class="anchored" data-anchor-id="project-timeline">Project Timeline</h2>
@@ -380,7 +407,7 @@ The key objectives are:</p>
         Double check the existing tests         :done,         dc_test,          09.12.2025, 1d
         Double check the existing notebooks     :done,         dc_notebooks,   09.12.2025, 1d
         Coordinate with DIPY experts            :done,         coor,           10.12.2025, 12.12.2025
-        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 16.12.2025
+        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 17.12.2025
         
 
       
@@ -393,7 +420,7 @@ The key objectives are:</p>
         Design impact slide                     :done,         impact,         28.11.2025, 1d
         Draft report outline                    :done,         r_draft,        01.12.2025, 1d
         Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d
-        Create presentation dwi slide           :done,         p_draft,        06.12.2025, 09.12.2025 
+        Create presentation DWI slide           :done,         p_draft,        06.12.2025, 09.12.2025 
         Prof. Esteban - Third progress check-in :done,         milestone,      09.12.2025, 0d
         PR on Prof. Esteban repository          :done,         milestone,      10.12.2025, 0d
         PR on DIPY repository                   :done,         milestone,      11.12.2025, 0d
@@ -413,30 +440,43 @@ The key objectives are:</p>
 </section>
 <section id="key-achievements" class="level2">
 <h2 class="anchored" data-anchor-id="key-achievements">Key Achievements</h2>
-<p>The project has made significant progress towards its objectives:</p>
+<p>The project has successfully delivered a complete, production-ready implementation with validated performance:</p>
 <ul>
-<li><strong>Implementation Complete</strong>: Successfully implemented the <code>predict</code> function for the <code>GeneralizedQSamplingFit</code> class, along with the supporting <code>prediction_kernel</code> helper function.</li>
-<li><strong>Comprehensive Testing</strong>: Developed thorough unit tests and integration tests, including roundtrip validation and generalization to unseen data, ensuring numerical stability and accuracy.</li>
-<li><strong>Documentation and Examples</strong>: Created detailed notebooks demonstrating the functionality, including tutorials and validation scripts, with results showing high correlation coefficients (r &gt; 0.97) in signal reconstruction.</li>
-<li><strong>Community Contribution</strong>: Submitted a pull request to the DIPY repository, which is currently under review. Coordinated with DIPY experts to align with library standards.</li>
-<li><strong>Deliverables in Progress</strong>: Finalizing the technical report, presentation, and documentation handouts for the semester project submission.</li>
+<li><p><strong>Mathematical Implementation</strong>: Successfully implemented the <code>predict()</code> function for the <code>GeneralizedQSamplingFit</code> class using a Tikhonov-regularized Moore-Penrose pseudo-inverse approach, along with the essential <code>prediction_kernel()</code> helper function that ensures numerical stability through regularization.</p></li>
+<li><p><strong>Comprehensive Testing Suite</strong>: Developed rigorous tests covering:</p>
+<ul>
+<li>Unit tests (kernel properties, pseudo-inverse validation),</li>
+<li>API tests (single/multi-voxel support)</li>
+<li>Integration tests (roundtrip accuracy).</li>
+</ul></li>
+<li><p><strong>Validated Roundtrip Tests Performance</strong>: Achieved high roundtrip accuracy with <span class="math inline">\(r = 0.9744\)</span> single-voxel correlation and <span class="math inline">\(r = 0.9800\)</span> mean multi-voxel correlation on the <code>small_101D</code> dataset<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p></li>
+<li><p><strong>Robust Generalization</strong>: Demonstrated strong generalization to unseen gradient configurations using the <code>taiwan_ntu_dsi</code> dataset<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>, with local correlation maps showing promising performance across anatomical regions and successful capture of white matter tract structures.</p></li>
+<li><p><strong>Educational Resources</strong>: Created complete documentation pipeline including a <a href="./assets/examples/reconst_gqi_predict.html" target="_blank">DIPY tutorial notebook</a> and <a href="../src/report.html#project-specific-notebooks" target="_blank">project-specific validation notebooks</a> demonstrating the different obtained results.</p></li>
+<li><p><strong>Community Integration</strong>: Submitted a <a href="https://github.com/oesteban/dipy/pull/1" target="_blank">pull request</a> to the <a href="https://github.com/dipy/dipy" target="_blank">DIPY repository</a> following established contribution standards with active coordination with DIPY maintainers for review and integration.</p></li>
 </ul>
 </section>
 <section id="project-documents-and-resources" class="level2">
-<h2 class="anchored" data-anchor-id="project-documents-and-resources">Project Documents and Resources</h2>
+<h2 class="anchored" data-anchor-id="project-documents-and-resources">Project Documents And Resources</h2>
 <p>Access the key deliverables and supplementary materials for this project:</p>
 <ul>
-<li><strong><a href="../src/report.html">Implementation Report</a></strong>: Comprehensive technical documentation covering the <code>predict</code> function implementation, mathematical foundations, testing methodology, results analysis, and extra resources for further exploration.</li>
-<li><strong><a href="../src/presentation.html">Presentation Slides</a></strong>: Slide deck summarizing the project objectives, methodology, achievements, and future implications.</li>
-<li><strong><a href="../src/daily_journal.html">Daily Journal</a></strong>: Chronological log of development activities, challenges encountered, and progress updates throughout the semester.</li>
-<li><strong><a href="../src/sources.html">Sources and References</a></strong>: Bibliography, citations, and additional reading materials related to diffusion MRI, GQI, and DIPY.</li>
+<li><strong><a href="../src/report.html">Implementation Report</a></strong>: Comprehensive technical documentation covering the <code>predict()</code> function implementation, mathematical foundations, testing methodology, results analysis, and extra resources for further exploration.</li>
+<li><strong><a href="../src/presentation.html">Presentation Slides</a></strong>: Slide deck summarizing the project objectives, methodology, achievements, and more.</li>
+<li><strong><a href="../src/daily_journal.html">Daily Journal</a></strong>: Chronological log of development activities, challenges encountered, and progress updates throughout the project timeline.</li>
+<li><strong><a href="../src/sources.html">Sources and References</a></strong>: Bibliography, citations, and additional reading materials used in this project.</li>
 </ul>
 <p>For results examples and code demonstrations, refer to the notebooks and examples linked in the <a href="../src/report.html#extra-resources">Implementation Report</a>.</p>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>The <code>small_101D</code> dataset is a small subset of diffusion spectrum imaging (DSI) data from DIPY, containing 101 diffusion-weighted volumes.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>The <code>taiwan_ntu_dsi</code> dataset is a full DSI acquisition from the National Taiwan University, consisting of 515 diffusion-weighted volumes.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

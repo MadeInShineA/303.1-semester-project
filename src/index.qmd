@@ -2,13 +2,11 @@
 title: "303.1 Semester Project:<br>Extending DIPY's Generalized Q-ball Imaging model to make predictions"
 ---
 
-This semester project focuses on advancing diffusion MRI analysis by contributing to the [DIPY](https://dipy.org){target="_blank"} library. Specifically, it extends the Generalized Q-Sampling Imaging (GQI) model with a new `predict` function that enables signal reconstruction and prediction for unseen gradient configurations. Through rigorous implementation, testing, and documentation, the project aims to enhance DIPY's capabilities in neuroimaging research.
-
 ## Project Overview
 
 This project is part of the [303.1 semester project course](https://isc.hevs.ch/learn/enrol/index.php?id=123){target="_blank"}.
 
-The goal is to contribute to the [DIPY](https://dipy.org){target="_blank"} framework by extending the Generalized Q-ball Imaging (GQI) model with predictive capabilities.\
+The goal is to contribute to the [DIPY](https://dipy.org){target="_blank"} framework by extending the Generalized Q-ball Imaging (GQI) model with predictive capabilities.
 The key objectives are:
 
 - Implementing a `predict()` function to the `GeneralizedQSamplingFit` class
@@ -16,9 +14,8 @@ The key objectives are:
 - Providing comprehensive and meaningful tests
 - Getting the prediction pull request accepted by DIPY
 
-The project has progressed to the point where a pull request has been submitted to the DIPY repository for integrating the new `predict` function.
+The project has progressed to the point where a [pull request](https://github.com/oesteban/dipy/pull/1){target="_blank"} has been submitted to the [DIPY repository](https://github.com/dipy/dipy){target="_blank"} for integrating the new `predict()` function.
 This pull request is currently under review by the DIPY development team, and feedback is being incorporated to ensure it meets the library's standards and requirements.
-You can track the progress at [DIPY Pull Request #1](https://github.com/oesteban/dipy/pull/1){target="_blank"}.
 
 ## Project Timeline
 
@@ -48,7 +45,7 @@ gantt
         Double check the existing tests         :done,         dc_test,          09.12.2025, 1d
         Double check the existing notebooks     :done,         dc_notebooks,   09.12.2025, 1d
         Coordinate with DIPY experts            :done,         coor,           10.12.2025, 12.12.2025
-        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 16.12.2025
+        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 17.12.2025
         
 
       
@@ -61,7 +58,7 @@ gantt
         Design impact slide                     :done,         impact,         28.11.2025, 1d
         Draft report outline                    :done,         r_draft,        01.12.2025, 1d
         Prof. Esteban - Second progress check-in:done,         milestone,      03.12.2025, 0d
-        Create presentation dwi slide           :done,         p_draft,        06.12.2025, 09.12.2025 
+        Create presentation DWI slide           :done,         p_draft,        06.12.2025, 09.12.2025 
         Prof. Esteban - Third progress check-in :done,         milestone,      09.12.2025, 0d
         PR on Prof. Esteban repository          :done,         milestone,      10.12.2025, 0d
         PR on DIPY repository                   :done,         milestone,      11.12.2025, 0d
@@ -76,21 +73,38 @@ gantt
 
 ## Key Achievements
 
-The project has made significant progress towards its objectives:
+The project has successfully delivered a complete, production-ready implementation with validated performance:
 
-- **Implementation Complete**: Successfully implemented the `predict` function for the `GeneralizedQSamplingFit` class, along with the supporting `prediction_kernel` helper function.
-- **Comprehensive Testing**: Developed thorough unit tests and integration tests, including roundtrip validation and generalization to unseen data, ensuring numerical stability and accuracy.
-- **Documentation and Examples**: Created detailed notebooks demonstrating the functionality, including tutorials and validation scripts, with results showing high correlation coefficients (r > 0.97) in signal reconstruction.
-- **Community Contribution**: Submitted a pull request to the DIPY repository, which is currently under review. Coordinated with DIPY experts to align with library standards.
-- **Deliverables in Progress**: Finalizing the technical report, presentation, and documentation handouts for the semester project submission.
+- **Mathematical Implementation**: Successfully implemented the `predict()` function for the `GeneralizedQSamplingFit` class
+using a Tikhonov-regularized Moore-Penrose pseudo-inverse approach, 
+along with the essential `prediction_kernel()` helper function that ensures numerical stability through regularization.
 
-## Project Documents and Resources
+- **Comprehensive Testing Suite**: Developed rigorous tests covering:
+  - Unit tests (kernel properties, pseudo-inverse validation),
+  - API tests (single/multi-voxel support)
+  - Integration tests (roundtrip accuracy).
+
+- **Validated Roundtrip Tests Performance**: Achieved high roundtrip accuracy with $r = 0.9744$ single-voxel correlation and $r = 0.9800$ mean multi-voxel correlation on the `small_101D` dataset[^1].
+
+- **Robust Generalization**: Demonstrated strong generalization to unseen gradient configurations using the `taiwan_ntu_dsi` dataset[^2],
+with local correlation maps showing promising performance across anatomical regions and successful capture of white matter tract structures.
+
+- **Educational Resources**: Created complete documentation pipeline including a [DIPY tutorial notebook](./assets/examples/reconst_gqi_predict.html){target="_blank"} and [project-specific validation notebooks](./report.qmd#project-specific-notebooks){target="_blank"} demonstrating the different obtained results.
+
+- **Community Integration**: Submitted a [pull request](https://github.com/oesteban/dipy/pull/1){target="_blank"} to the [DIPY repository](https://github.com/dipy/dipy){target="_blank"} following established contribution standards
+with active coordination with DIPY maintainers for review and integration.
+
+## Project Documents And Resources
 
 Access the key deliverables and supplementary materials for this project:
 
-- **[Implementation Report](report.qmd)**: Comprehensive technical documentation covering the `predict` function implementation, mathematical foundations, testing methodology, results analysis, and extra resources for further exploration.
-- **[Presentation Slides](presentation.qmd)**: Slide deck summarizing the project objectives, methodology, achievements, and future implications.
-- **[Daily Journal](daily_journal.qmd)**: Chronological log of development activities, challenges encountered, and progress updates throughout the semester.
-- **[Sources and References](sources.qmd)**: Bibliography, citations, and additional reading materials related to diffusion MRI, GQI, and DIPY.
+- **[Implementation Report](report.qmd)**: Comprehensive technical documentation covering the `predict()` function implementation, mathematical foundations, testing methodology, results analysis, and extra resources for further exploration.
+- **[Presentation Slides](presentation.qmd)**: Slide deck summarizing the project objectives, methodology, achievements, and more.
+- **[Daily Journal](daily_journal.qmd)**: Chronological log of development activities, challenges encountered, and progress updates throughout the project timeline.
+- **[Sources and References](sources.qmd)**: Bibliography, citations, and additional reading materials used in this project.
 
 For results examples and code demonstrations, refer to the notebooks and examples linked in the [Implementation Report](report.qmd#extra-resources).
+
+[^1]: The `small_101D` dataset is a small subset of diffusion spectrum imaging (DSI) data from DIPY, containing 101 diffusion-weighted volumes.
+
+[^2]: The `taiwan_ntu_dsi` dataset is a full DSI acquisition from the National Taiwan University, consisting of 515 diffusion-weighted volumes.
