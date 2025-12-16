@@ -543,7 +543,11 @@ K^{+} = K^T (K K^T + \lambda I)^{-1}
   \iff\quad &amp; S                        &amp;&amp;\approx ODF \cdot K^{+}
   \end{alignat*}
   \]</span></p>
-<p>Where <span class="math inline">\(K^{+}\)</span> is the Tikhonov-regularised Moore-Penrose pseudo-inverse of the GQI kernel <span class="math inline">\(K\)</span>.</p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(S\)</span> is the GQI model fitted signal</li>
+<li><span class="math inline">\(K^{+}\)</span> is the Tikhonov-regularised Moore-Penrose pseudo-inverse of the GQI kernel <span class="math inline">\(K\)</span>.</li>
+</ul>
 <p>Note that the pseudo-inverse is needed since the GQI kernel <span class="math inline">\(K\)</span>’s dimensions are <span class="math inline">\((n_\mathrm{gradients}, n_\mathrm{vertices})\)</span>, which means it’s (most of the time) not a square matrix and therefore does not have a true inverse.</p>
 <p>The <code>predict()</code> function reconstructs diffusion signals from the fitted signal data by fusing the model kernel and the pseudo-inverse kernel to avoid explicit ODF computation.</p>
 <ul>
@@ -734,6 +738,7 @@ Figure&nbsp;3: Real vs Predicted Signal and Local Correlation: Test Volume 0, Z 
 <ul>
 <li><a href="./assets/notebooks/dipy/gqi_roundtrip_notebook.html" target="_blank">GQI Roundtrip Notebook</a></li>
 <li><a href="./assets/notebooks/dipy/gqi_unseen_data_notebook.html" target="_blank">GQI Predict Unseen Data Notebook</a></li>
+<li><a href="./assets/examples/reconst_gqi_predict.html" target="_blank">GQI Predict DIPY Tutorial</a></li>
 </ul>
 </section>
 </section>

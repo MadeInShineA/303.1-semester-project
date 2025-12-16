@@ -13,6 +13,7 @@ format:
     navigation-mode: grid
     auto-play-media: true
     footer: '<a href="./index.qmd" style="color: inherit; text-decoration: none;">Home</a> | <a href="./sources.qmd" style="color: inherit; text-decoration: none;">Sources</a> | 303.1 Semester Project Presentation © 2025'
+bibliography: ./references.bib
 ---
 
 
@@ -38,7 +39,7 @@ MRI technique that measures the diffusion of water molecules in biological tissu
   loop muted playsinline height="300"
 />
 
-Visual example of DWI, sourced from Dr. A. Rokem, DIPY Workshop 2021
+Visual example of DWI, sourced from Dr. A. Rokem, DIPY workshop 2021
 
 :::
 
@@ -52,7 +53,8 @@ Visual example of DWI, sourced from Dr. A. Rokem, DIPY Workshop 2021
 # Project Goals
 
   - Contribute to [DIPY](https://dipy.org/){target="_blank"}
-  - Add prediction capabilities to the existing `GeneralizedQSamplingModel` class
+  - Add prediction capabilities to\
+  the existing `GeneralizedQSamplingModel` class
 
 # What has been done
   - Enable prediction for the `GeneralizedQSamplingModel`
@@ -64,6 +66,69 @@ Visual example of DWI, sourced from Dr. A. Rokem, DIPY Workshop 2021
   - Project documentation (see [homepage](./index.qmd){target="_blank"})
   - Ongoing [pull request](https://github.com/oesteban/dipy/pull/1){target="_blank"} on Prof.Estban DIPY [fork](https://github.com/oesteban/dipy){target="_blank"}
     - Currently being reviewed by the DIPY's team
+
+# DIPY GQI Model Pipeline
+
+
+```{dot}
+//| label: fig-gqi-model-pipeline
+//| fig-cap: "DIPY GQI model simplified pipeline, made with GraphViz"
+//| fig-height: 200px
+digraph GQI {
+    rankdir=LR;
+    node [shape=box, style=rounded, fontsize=10];
+    
+    DWI [label="DWI"];
+    Model [label="model = GQIModel(bvals, bvecs, ...)"];
+    Fit [label="model.fit(data)"];
+    ODF [label="ODF"];
+    
+    DWI -> Model -> Fit -> ODF;
+}
+```
+
+:::: {.columns}
+
+::: {.column width="45%"}
+
+![GQI model input image example,<br>from the stanford_hardi dataset](./assets/presentation/reconst-data.png){#fig-test1 height=300px}
+
+:::
+::: {.column width="10%"}
+
+<div style="display: flex; align-items: center; justify-content: center; height: 300px;">→</div>
+
+:::
+
+::: {.column width="45%"}
+
+![GQI model output example (ODF),<br>from the stanford_hardi dataset](./assets/presentation/reconst-odf.png){#fig-test2 height=300px}
+
+:::
+
+::::
+
+# What's the ODF ?
+
+LOREM IPSUM
+
+# How Is The Signal Predicted ?
+
+$$
+\begin{alignat*}{2}
+          &ODF                      &&= S \cdot K \\
+\iff\quad & ODF \cdot K^{+}          &&\approx S \cdot K \cdot K^{+} \\
+\iff\quad & ODF \cdot K^{+}          &&\approx S \\
+\iff\quad & S                        &&\approx ODF \cdot K^{+}
+\end{alignat*}
+$$
+
+
+Where:
+
+ - $S$ is the GQI model fitted signal
+ - $K^{+}$ is a regularized pseudo-inverse of the GQI kernel $K$.
+
 
 # Testing methodology
 
@@ -87,7 +152,11 @@ Visual example of DWI, sourced from Dr. A. Rokem, DIPY Workshop 2021
 
   - Head motion noise reduction
   - Meaningful data augmentation
-  - Model cross validation
+  - Model cross validation [see @Amitay2012[^1]]
+
+[^1]: 
+::: {#refs}
+:::
 
 # Conclusion
 
@@ -96,3 +165,4 @@ Visual example of DWI, sourced from Dr. A. Rokem, DIPY Workshop 2021
 If you want more information please visit this project [website](./index.qmd){target="_blank"}
 
 ![Project website QR code](./assets/presentation/qrcode.png){#fig-qr}
+

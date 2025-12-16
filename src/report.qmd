@@ -1,7 +1,7 @@
 ---
 title: "Implementation Report: Predict Function"
 number-sections: true
-bibliography: references.bib
+bibliography: ./references.bib
 ---
 
 ## Introduction
@@ -125,7 +125,10 @@ The target predicted signal is given by the following relationship
   \end{alignat*}
   $$
 
-Where $K^{+}$ is the Tikhonov-regularised Moore-Penrose pseudo-inverse of the GQI kernel $K$.
+Where:
+
+ - $S$ is the GQI model fitted signal
+ - $K^{+}$ is the Tikhonov-regularised Moore-Penrose pseudo-inverse of the GQI kernel $K$.
 
 Note that the pseudo-inverse is needed since the GQI kernel $K$'s dimensions are $(n_\mathrm{gradients}, n_\mathrm{vertices})$, which means it's (most of the time) not a square matrix and therefore does not have a true inverse.
 
@@ -332,6 +335,7 @@ These notebooks were developed specifically for this project to demonstrate the 
 
 - [GQI Roundtrip Notebook](./assets/notebooks/dipy/gqi_roundtrip_notebook.html){target="_blank"}
 - [GQI Predict Unseen Data Notebook](./assets/notebooks/dipy/gqi_unseen_data_notebook.html){target="_blank"}
+- [GQI Predict DIPY Tutorial](./assets/examples/reconst_gqi_predict.html){target="_blank"}
 
 ## References
 

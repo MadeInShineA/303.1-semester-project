@@ -165,3 +165,9 @@ title: Daily Journal
 ## 15.12.2025
 - Meeting with Prof. Esteban
 - Continued the presentation (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/2ca37f17319c35c65404fc1d62be8bf291054a32){target="_blank"} and [presentation](./presentation.qmd){target="_blank"})
+
+--- 
+
+## 16.12.2025
+- Cleaned project landing page (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/cc0c69b5bc782dde00d5e6f9993eeb11306b1ac8){target="_blank"} and [langing page](./index.qmd){target="_blank"})
+- Fininshed the report and continued the presentation (see [report](./report.qmd){target="_blank"} and [presentation](./presentation.qmd){target="_blank"})

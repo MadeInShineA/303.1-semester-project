@@ -27,8 +27,28 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-043c477e5be27674e50b5adeb7e87822.css">
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-88d78127f79e0d1aaf2ee7633b3821c4.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -152,7 +172,7 @@
 <video src="./assets/presentation/dMRI-signal-movie.mp4" loop="" muted="" playsinline="" height="300">
 </video></div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Visual example of DWI, sourced from Dr.&nbsp;A. Rokem, DIPY Workshop 2021
+Figure&nbsp;1: Visual example of DWI, sourced from Dr.&nbsp;A. Rokem, DIPY workshop 2021
 </figcaption>
 </figure>
 </div>
@@ -170,7 +190,8 @@ Figure&nbsp;2: <a href="https://ndmg.neurodata.io/pipeline/diffusion" target="_b
 <h1>Project Goals</h1>
 <ul>
 <li>Contribute to <a href="https://dipy.org/" target="_blank">DIPY</a></li>
-<li>Add prediction capabilities to the existing <code>GeneralizedQSamplingModel</code> class</li>
+<li>Add prediction capabilities to<br>
+the existing <code>GeneralizedQSamplingModel</code> class</li>
 </ul>
 </section>
 
@@ -193,49 +214,171 @@ Figure&nbsp;2: <a href="https://ndmg.neurodata.io/pipeline/diffusion" target="_b
 </ul>
 </section>
 
+<section id="dipy-gqi-model-pipeline" class="title-slide slide level1 center">
+<h1>DIPY GQI Model Pipeline</h1>
+<div class="cell" data-fig-height="200px" data-layout-align="default">
+<div class="cell-output-display">
+<div id="fig-gqi-model-pipeline" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-gqi-model-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div>
+<svg width="960" height="200" viewbox="0.00 0.00 463.25 44.00" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 40)">
+<title>GQI</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-40 459.25,-40 459.25,4 -4,4"></polygon>
+<!-- DWI -->
+<g id="node1" class="node">
+<title>DWI</title>
+<path fill="none" stroke="black" d="M42,-36C42,-36 12,-36 12,-36 6,-36 0,-30 0,-24 0,-24 0,-12 0,-12 0,-6 6,0 12,0 12,0 42,0 42,0 48,0 54,-6 54,-12 54,-12 54,-24 54,-24 54,-30 48,-36 42,-36"></path>
+<text text-anchor="middle" x="27" y="-15" font-family="Times,serif" font-size="10.00">DWI</text>
+</g>
+<!-- Model -->
+<g id="node2" class="node">
+<title>Model</title>
+<path fill="none" stroke="black" d="M241.33,-36C241.33,-36 102.22,-36 102.22,-36 96.22,-36 90.22,-30 90.22,-24 90.22,-24 90.22,-12 90.22,-12 90.22,-6 96.22,0 102.22,0 102.22,0 241.33,0 241.33,0 247.33,0 253.33,-6 253.33,-12 253.33,-12 253.33,-24 253.33,-24 253.33,-30 247.33,-36 241.33,-36"></path>
+<text text-anchor="middle" x="171.78" y="-15" font-family="Times,serif" font-size="10.00">model = GQIModel(bvals, bvecs, ...)</text>
+</g>
+<!-- DWI&#45;&gt;Model -->
+<g id="edge1" class="edge">
+<title>DWI-&gt;Model</title>
+<path fill="none" stroke="black" d="M54.19,-18C61.81,-18 70.61,-18 79.88,-18"></path>
+<polygon fill="black" stroke="black" points="80.1,-21.5 90.1,-18 80.1,-14.5 80.1,-21.5"></polygon>
+</g>
+<!-- Fit -->
+<g id="node3" class="node">
+<title>Fit</title>
+<path fill="none" stroke="black" d="M353.1,-36C353.1,-36 301.7,-36 301.7,-36 295.7,-36 289.7,-30 289.7,-24 289.7,-24 289.7,-12 289.7,-12 289.7,-6 295.7,0 301.7,0 301.7,0 353.1,0 353.1,0 359.1,0 365.1,-6 365.1,-12 365.1,-12 365.1,-24 365.1,-24 365.1,-30 359.1,-36 353.1,-36"></path>
+<text text-anchor="middle" x="327.4" y="-15" font-family="Times,serif" font-size="10.00">model.fit(data)</text>
+</g>
+<!-- Model&#45;&gt;Fit -->
+<g id="edge2" class="edge">
+<title>Model-&gt;Fit</title>
+<path fill="none" stroke="black" d="M253.64,-18C262.48,-18 271.25,-18 279.48,-18"></path>
+<polygon fill="black" stroke="black" points="279.58,-21.5 289.58,-18 279.58,-14.5 279.58,-21.5"></polygon>
+</g>
+<!-- ODF -->
+<g id="node4" class="node">
+<title>ODF</title>
+<path fill="none" stroke="black" d="M443.25,-36C443.25,-36 413.25,-36 413.25,-36 407.25,-36 401.25,-30 401.25,-24 401.25,-24 401.25,-12 401.25,-12 401.25,-6 407.25,0 413.25,0 413.25,0 443.25,0 443.25,0 449.25,0 455.25,-6 455.25,-12 455.25,-12 455.25,-24 455.25,-24 455.25,-30 449.25,-36 443.25,-36"></path>
+<text text-anchor="middle" x="428.25" y="-15" font-family="Times,serif" font-size="10.00">ODF</text>
+</g>
+<!-- Fit&#45;&gt;ODF -->
+<g id="edge3" class="edge">
+<title>Fit-&gt;ODF</title>
+<path fill="none" stroke="black" d="M365.21,-18C373.62,-18 382.56,-18 390.95,-18"></path>
+<polygon fill="black" stroke="black" points="391.21,-21.5 401.21,-18 391.21,-14.5 391.21,-21.5"></polygon>
+</g>
+</g>
+</svg>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-gqi-model-pipeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: DIPY GQI model simplified pipeline, made with GraphViz
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="columns">
+<div class="column" style="width:45%;">
+<div id="fig-test1" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-test1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="./assets/presentation/reconst-data.png" height="300">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-test1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: GQI model input image example,<br>from the stanford_hardi dataset
+</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:10%;">
+<div style="display: flex; align-items: center; justify-content: center; height: 300px;">
+→
+</div>
+</div><div class="column" style="width:45%;">
+<div id="fig-test2" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-test2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="./assets/presentation/reconst-odf.png" height="300">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-test2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: GQI model output example (ODF),<br>from the stanford_hardi dataset
+</figcaption>
+</figure>
+</div>
+</div></div>
+</section>
+
+<section id="whats-the-odf" class="title-slide slide level1 center">
+<h1>What’s the ODF ?</h1>
+<p>LOREM IPSUM</p>
+</section>
+
+<section id="how-is-the-signal-predicted" class="title-slide slide level1 center">
+<h1>How Is The Signal Predicted ?</h1>
+<p><span class="math display">\[
+\begin{alignat*}{2}
+          &amp;ODF                      &amp;&amp;= S \cdot K \\
+\iff\quad &amp; ODF \cdot K^{+}          &amp;&amp;\approx S \cdot K \cdot K^{+} \\
+\iff\quad &amp; ODF \cdot K^{+}          &amp;&amp;\approx S \\
+\iff\quad &amp; S                        &amp;&amp;\approx ODF \cdot K^{+}
+\end{alignat*}
+\]</span></p>
+<p>Where:</p>
+<ul>
+<li><span class="math inline">\(S\)</span> is the GQI model fitted signal</li>
+<li><span class="math inline">\(K^{+}\)</span> is a regularized pseudo-inverse of the GQI kernel <span class="math inline">\(K\)</span>.</li>
+</ul>
+</section>
+
 <section id="testing-methodology" class="title-slide slide level1 center">
 <h1>Testing methodology</h1>
 
 <img data-src="./assets/presentation/reconstructing_test_schema.svg" class="r-stretch quarto-figure-center" id="fig-reconstruct-pipeline"><p class="caption">
-Figure&nbsp;3: Reconstruction pipeline schema, made with excalidraw
+Figure&nbsp;6: Reconstruction pipeline schema, made with excalidraw
 </p></section>
 
 <section id="testing-methodology-1" class="title-slide slide level1 center">
 <h1>Testing methodology</h1>
 
 <img data-src="./assets/presentation/predict_pipeline_schemas.svg" class="r-stretch quarto-figure-center" id="fig-unseen-pipeline"><p class="caption">
-Figure&nbsp;4: Unseen data prediction pipeline, made with excalidraw
+Figure&nbsp;7: Unseen data prediction pipeline, made with excalidraw
 </p></section>
 
 <section id="single-voxel-reconstruction-results" class="title-slide slide level1 center">
 <h1>Single-Voxel Reconstruction Results</h1>
 
 <img data-src="./assets/images/single_voxel_roundtrip_plot.png" class="r-stretch quarto-figure-center" id="fig-single-voxel-results"><p class="caption">
-Figure&nbsp;5: Voxel (0, 0, 0) Signal Reconstruction: Original vs Predicted
+Figure&nbsp;8: Voxel (0, 0, 0) Signal Reconstruction: Original vs Predicted
 </p></section>
 
 <section id="multi-voxel-reconstruction-results" class="title-slide slide level1 center">
 <h1>Multi-Voxel Reconstruction Results</h1>
 
 <img data-src="./assets/images/multi_voxel_roundtrip_plot.png" class="r-stretch quarto-figure-center" id="fig-multi-voxel-results"><p class="caption">
-Figure&nbsp;6: Voxel-wise Reconstruction Accuracy
+Figure&nbsp;9: Voxel-wise Reconstruction Accuracy
 </p></section>
 
 <section id="unseen-prediction-results" class="title-slide slide level1 center">
 <h1>Unseen prediction results</h1>
 
 <img data-src="./assets/images/unseen_data_plot.png" class="r-stretch quarto-figure-center" id="fig-unseen-results"><p class="caption">
-Figure&nbsp;7: Unseen data prediction results
+Figure&nbsp;10: Unseen data prediction results
 </p></section>
 
-<section id="impact" class="title-slide slide level1 center">
+<section id="impact" class="title-slide slide level1 smaller scrollable">
 <h1>Impact</h1>
 <ul>
 <li>Head motion noise reduction</li>
 <li>Meaningful data augmentation</li>
-<li>Model cross validation</li>
+<li>Model cross validation <span class="citation" data-cites="Amitay2012">(see <a href="#/impact" role="doc-biblioref" onclick="">Ben-Amitay, Jones, and Assaf 2012</a>, <sup>1</sup>)</span></li>
 </ul>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn1"><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Amitay2012" class="csl-entry" role="listitem">
+Ben-Amitay, Shani, Derek K. Jones, and Yaniv Assaf. 2012. <span>“Motion Correction and Registration of High b-Value Diffusion Weighted Images.”</span> <em>Magnetic Resonance in Medicine</em> 67 (6): 1694–1702. <a href="https://doi.org/10.1002/mrm.23186">https://doi.org/10.1002/mrm.23186</a>.
+</div>
+</div>
+</li></ol></aside></section>
 
 <section id="conclusion" class="title-slide slide level1 center">
 <h1>Conclusion</h1>
@@ -249,8 +392,10 @@ Figure&nbsp;7: Unseen data prediction results
 
 
 <img data-src="./assets/presentation/qrcode.png" class="r-stretch quarto-figure-center" id="fig-qr"><p class="caption">
-Figure&nbsp;8: Project website QR code
+Figure&nbsp;11: Project website QR code
 </p></section>
+
+
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
