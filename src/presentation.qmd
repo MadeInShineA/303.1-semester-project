@@ -150,9 +150,9 @@ Where:
 
 # Impact
 
-  - Head motion noise reduction
+  - Head motion noise reduction [see @Amitay2012[^1]]
   - Meaningful data augmentation
-  - Model cross validation [see @Amitay2012[^1]]
+  - Model cross validation 
 
 [^1]: 
 ::: {#refs}

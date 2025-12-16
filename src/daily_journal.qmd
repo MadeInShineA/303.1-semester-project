@@ -171,3 +171,4 @@ title: Daily Journal
 ## 16.12.2025
 - Cleaned project landing page (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/cc0c69b5bc782dde00d5e6f9993eeb11306b1ac8){target="_blank"} and [langing page](./index.qmd){target="_blank"})
 - Fininshed the report and continued the presentation (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/e0ae4d662ed2df1595c46d6aecf0cf65ae0e04f6){target="_blank"}, [report](./report.qmd){target="_blank"} and [presentation](./presentation.qmd){target="_blank"})
+- Added submodules section to README.md (see [commit](https://github.com/MadeInShineA/303.1-semester-project/commit/5c8ce3109ba2b9e3780619a6e337dfc03ac749d7){target="_blank"})
