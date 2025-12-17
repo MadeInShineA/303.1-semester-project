@@ -11,13 +11,13 @@ format:
     slide-number: true
     preview-links: auto
     navigation-mode: grid
-    auto-play-media: true
+    # auto-play-media: true
     footer: '<a href="./index.qmd" style="color: inherit; text-decoration: none;">Home</a> | <a href="./sources.qmd" style="color: inherit; text-decoration: none;">Sources</a> | 303.1 Semester Project Presentation © 2025'
 bibliography: ./references.bib
 ---
 
 
-# What is DWI ?
+# What Is DWI ?
 :::: {.columns}
 
 ::: {.column width="60%"}
@@ -34,10 +34,7 @@ MRI technique that measures the diffusion of water molecules in biological tissu
 
 ::: {#fig-cern}
 
-<video 
-  src="./assets/presentation/dMRI-signal-movie.mp4" 
-  loop muted playsinline height="300"
-/>
+{{< video ./assets/presentation/dMRI-signal-movie.mp4 >}}
 
 Visual example of DWI, sourced from Dr. A. Rokem, DIPY workshop 2021
 
@@ -56,7 +53,7 @@ Visual example of DWI, sourced from Dr. A. Rokem, DIPY workshop 2021
   - Add prediction capabilities to\
   the existing `GeneralizedQSamplingModel` class
 
-# What has been done
+# What Has Been Done
   - Enable prediction for the `GeneralizedQSamplingModel`
   - Rigorous Testing
     - Unit tests (100% coverage)
@@ -91,26 +88,25 @@ digraph GQI {
 
 ::: {.column width="45%"}
 
-![GQI model input image example,<br>from the stanford_hardi dataset](./assets/presentation/reconst-data.png){#fig-test1 height=300px}
+![GQI model input image example,<br>from the `stanford_hardi` dataset[^1]](./assets/presentation/reconst-data.png){#fig-test1 height=200px}
 
 :::
 ::: {.column width="10%"}
 
-<div style="display: flex; align-items: center; justify-content: center; height: 300px;">→</div>
+<div style="display: flex; align-items: center; justify-content: center; height: 200px;">→</div>
 
 :::
 
 ::: {.column width="45%"}
 
-![GQI model output example (ODF),<br>from the stanford_hardi dataset](./assets/presentation/reconst-odf.png){#fig-test2 height=300px}
+![GQI model output example (ODF),<br>from the stanford_hardi dataset¹](./assets/presentation/reconst-odf.png){#fig-test2 height=200px}
 
 :::
 
 ::::
 
-# What's the ODF ?
-
-LOREM IPSUM
+[^1]: The `stanford_hardi` dataset is a high angular resolution diffusion imaging (HARDI) dataset from Stanford University,
+consisting of 150 diffusion-weighted volumes.
 
 # How Is The Signal Predicted ?
 
@@ -123,46 +119,61 @@ $$
 \end{alignat*}
 $$
 
-
 Where:
 
- - $S$ is the GQI model fitted signal
+ - $S$ is the GQI model fitted signal (or data)
  - $K^{+}$ is a regularized pseudo-inverse of the GQI kernel $K$.
 
+# Testing Methodology
 
-# Testing methodology
+- Signal reconstruction based on seen data
+- Signal prediction based on unseen data
+
+
+# Testing Methodology: Reconstruction Tests
 
 ![Reconstruction pipeline schema, made with excalidraw](./assets/presentation/reconstructing_test_schema.svg){#fig-reconstruct-pipeline}
 
-# Testing methodology
+# Single-Voxel Reconstruction Results
+
+![Voxel (0, 0, 0) Signal Reconstruction: Original vs Predicted based on the `small_101D` dataset[^2]](./assets/images/single_voxel_roundtrip_plot.png){#fig-single-voxel-results}
+
+[^2]: The `small_101D` dataset is a small subset of diffusion spectrum imaging (DSI) data from DIPY, containing 101 diffusion-weighted volumes.
+
+# Multi-Voxel Reconstruction Results
+
+![Voxel-wise Reconstruction Accuracy based on the `small101D` dataset](./assets/images/multi_voxel_roundtrip_plot.png){#fig-multi-voxel-results}
+
+# Testing Methodology: Unseen Prediction Test
 
 ![Unseen data prediction pipeline, made with excalidraw](./assets/presentation/predict_pipeline_schemas.svg){#fig-unseen-pipeline}
 
-# Single-Voxel Reconstruction Results
-![Voxel (0, 0, 0) Signal Reconstruction: Original vs Predicted](./assets/images/single_voxel_roundtrip_plot.png){#fig-single-voxel-results}
+# Unseen Prediction Results
 
-# Multi-Voxel Reconstruction Results
-![Voxel-wise Reconstruction Accuracy](./assets/images/multi_voxel_roundtrip_plot.png){#fig-multi-voxel-results}
+![Unseen data prediction results based on the `taiwan_ntu_dsi` dataset[^3]](./assets/images/unseen_data_plot.png){#fig-unseen-results}
 
-# Unseen prediction results
-![Unseen data prediction results](./assets/images/unseen_data_plot.png){#fig-unseen-results}
-
+[^3]: The `taiwan_ntu_dsi` dataset is a full DSI acquisition from the National Taiwan University, consisting of 515 diffusion-weighted volumes.
 
 # Impact
 
-  - Head motion noise reduction [see @Amitay2012[^1]]
+  - Head motion noise reduction (see @Amitay2012)
   - Meaningful data augmentation
   - Model cross validation 
 
-[^1]: 
-::: {#refs}
-:::
 
 # Conclusion
+  - Great introduction to medical data science
+  - Interesting to work on an established open source project
+  - Useful bachelor thesis warm up
 
 # Additional Resources
 
-If you want more information please visit this project [website](./index.qmd){target="_blank"}
+If you want more information about the project please visit this project [website](./index.qmd){target="_blank"}
 
 ![Project website QR code](./assets/presentation/qrcode.png){#fig-qr}
+
+# References
+
+::: {#refs}
+:::
 

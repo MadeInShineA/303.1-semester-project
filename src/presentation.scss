@@ -9,6 +9,14 @@ figcaption, .caption {
   text-align: center;
 }
 
-aside {
-  position: inherit !important;
+section.smaller {
+  font-size: inherit !important
+}
+
+.smaller h1 {
+  font-size: 1.6em !important;
+}
+
+.aside-footnotes {
+  font-size: 0.7em !important;
 }

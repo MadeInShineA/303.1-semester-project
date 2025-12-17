@@ -6,7 +6,9 @@
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="../site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
+<link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.8.26">
 
   <title>303.1 Semester Project – 303.1 Semester Project Presentation</title>
@@ -48,7 +50,7 @@
     div.csl-indent {
       margin-left: 2em;
     }  </style>
-  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-88d78127f79e0d1aaf2ee7633b3821c4.css">
+  <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto-2efc80b3d9317543faf542c5cdbdad44.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -153,7 +155,7 @@
 
 </section>
 <section id="what-is-dwi" class="title-slide slide level1 center">
-<h1>What is DWI ?</h1>
+<h1>What Is DWI ?</h1>
 <div class="columns">
 <div class="column" style="width:60%;">
 <p>MRI technique that measures the diffusion of water molecules in biological tissues.</p>
@@ -169,8 +171,8 @@
 <div id="fig-cern" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-cern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<video src="./assets/presentation/dMRI-signal-movie.mp4" loop="" muted="" playsinline="" height="300">
-</video></div>
+<video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="./assets/presentation/dMRI-signal-movie.mp4"></video>
+</div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-cern-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Visual example of DWI, sourced from Dr.&nbsp;A. Rokem, DIPY workshop 2021
 </figcaption>
@@ -196,7 +198,7 @@ the existing <code>GeneralizedQSamplingModel</code> class</li>
 </section>
 
 <section id="what-has-been-done" class="title-slide slide level1 center">
-<h1>What has been done</h1>
+<h1>What Has Been Done</h1>
 <ul>
 <li>Enable prediction for the <code>GeneralizedQSamplingModel</code></li>
 <li>Rigorous Testing
@@ -284,35 +286,30 @@ Figure&nbsp;3: DIPY GQI model simplified pipeline, made with GraphViz
 <div id="fig-test1" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-test1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="./assets/presentation/reconst-data.png" height="300">
+<img data-src="./assets/presentation/reconst-data.png" height="200">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-test1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: GQI model input image example,<br>from the stanford_hardi dataset
+Figure&nbsp;4: GQI model input image example,<br>from the <code>stanford_hardi</code> dataset<sup>1</sup>
 </figcaption>
 </figure>
 </div>
 </div><div class="column" style="width:10%;">
-<div style="display: flex; align-items: center; justify-content: center; height: 300px;">
+<div style="display: flex; align-items: center; justify-content: center; height: 200px;">
 →
 </div>
 </div><div class="column" style="width:45%;">
 <div id="fig-test2" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-fig">
 <div aria-describedby="fig-test2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="./assets/presentation/reconst-odf.png" height="300">
+<img data-src="./assets/presentation/reconst-odf.png" height="200">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-test2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: GQI model output example (ODF),<br>from the stanford_hardi dataset
+Figure&nbsp;5: GQI model output example (ODF),<br>from the stanford_hardi dataset¹
 </figcaption>
 </figure>
 </div>
 </div></div>
-</section>
-
-<section id="whats-the-odf" class="title-slide slide level1 center">
-<h1>What’s the ODF ?</h1>
-<p>LOREM IPSUM</p>
-</section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>The <code>stanford_hardi</code> dataset is a high angular resolution diffusion imaging (HARDI) dataset from Stanford University, consisting of 150 diffusion-weighted volumes.</p></li></ol></aside></section>
 
 <section id="how-is-the-signal-predicted" class="title-slide slide level1 center">
 <h1>How Is The Signal Predicted ?</h1>
@@ -326,74 +323,104 @@ Figure&nbsp;5: GQI model output example (ODF),<br>from the stanford_hardi datase
 \]</span></p>
 <p>Where:</p>
 <ul>
-<li><span class="math inline">\(S\)</span> is the GQI model fitted signal</li>
+<li><span class="math inline">\(S\)</span> is the GQI model fitted signal (or data)</li>
 <li><span class="math inline">\(K^{+}\)</span> is a regularized pseudo-inverse of the GQI kernel <span class="math inline">\(K\)</span>.</li>
 </ul>
 </section>
 
 <section id="testing-methodology" class="title-slide slide level1 center">
-<h1>Testing methodology</h1>
+<h1>Testing Methodology</h1>
+<ul>
+<li>Signal reconstruction based on seen data</li>
+<li>Signal prediction based on unseen data</li>
+</ul>
+</section>
+
+<section id="testing-methodology-reconstruction-tests" class="title-slide slide level1 center">
+<h1>Testing Methodology: Reconstruction Tests</h1>
 
 <img data-src="./assets/presentation/reconstructing_test_schema.svg" class="r-stretch quarto-figure-center" id="fig-reconstruct-pipeline"><p class="caption">
 Figure&nbsp;6: Reconstruction pipeline schema, made with excalidraw
 </p></section>
 
-<section id="testing-methodology-1" class="title-slide slide level1 center">
-<h1>Testing methodology</h1>
-
-<img data-src="./assets/presentation/predict_pipeline_schemas.svg" class="r-stretch quarto-figure-center" id="fig-unseen-pipeline"><p class="caption">
-Figure&nbsp;7: Unseen data prediction pipeline, made with excalidraw
-</p></section>
-
 <section id="single-voxel-reconstruction-results" class="title-slide slide level1 center">
 <h1>Single-Voxel Reconstruction Results</h1>
-
-<img data-src="./assets/images/single_voxel_roundtrip_plot.png" class="r-stretch quarto-figure-center" id="fig-single-voxel-results"><p class="caption">
-Figure&nbsp;8: Voxel (0, 0, 0) Signal Reconstruction: Original vs Predicted
-</p></section>
+<div id="fig-single-voxel-results" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-single-voxel-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="./assets/images/single_voxel_roundtrip_plot.png">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-single-voxel-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Voxel (0, 0, 0) Signal Reconstruction: Original vs Predicted based on the <code>small_101D</code> dataset<sup>1</sup>
+</figcaption>
+</figure>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn2"><p>The <code>small_101D</code> dataset is a small subset of diffusion spectrum imaging (DSI) data from DIPY, containing 101 diffusion-weighted volumes.</p></li></ol></aside></section>
 
 <section id="multi-voxel-reconstruction-results" class="title-slide slide level1 center">
 <h1>Multi-Voxel Reconstruction Results</h1>
 
 <img data-src="./assets/images/multi_voxel_roundtrip_plot.png" class="r-stretch quarto-figure-center" id="fig-multi-voxel-results"><p class="caption">
-Figure&nbsp;9: Voxel-wise Reconstruction Accuracy
+Figure&nbsp;8: Voxel-wise Reconstruction Accuracy based on the <code>small101D</code> dataset
+</p></section>
+
+<section id="testing-methodology-unseen-prediction-test" class="title-slide slide level1 center">
+<h1>Testing Methodology: Unseen Prediction Test</h1>
+
+<img data-src="./assets/presentation/predict_pipeline_schemas.svg" class="r-stretch quarto-figure-center" id="fig-unseen-pipeline"><p class="caption">
+Figure&nbsp;9: Unseen data prediction pipeline, made with excalidraw
 </p></section>
 
 <section id="unseen-prediction-results" class="title-slide slide level1 center">
-<h1>Unseen prediction results</h1>
+<h1>Unseen Prediction Results</h1>
+<div id="fig-unseen-results" class="quarto-float quarto-figure quarto-figure-center">
+<figure class="quarto-float quarto-float-fig">
+<div aria-describedby="fig-unseen-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img data-src="./assets/images/unseen_data_plot.png">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-unseen-results-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Unseen data prediction results based on the <code>taiwan_ntu_dsi</code> dataset<sup>1</sup>
+</figcaption>
+</figure>
+</div>
+<aside><ol class="aside-footnotes"><li id="fn3"><p>The <code>taiwan_ntu_dsi</code> dataset is a full DSI acquisition from the National Taiwan University, consisting of 515 diffusion-weighted volumes.</p></li></ol></aside></section>
 
-<img data-src="./assets/images/unseen_data_plot.png" class="r-stretch quarto-figure-center" id="fig-unseen-results"><p class="caption">
-Figure&nbsp;10: Unseen data prediction results
-</p></section>
-
-<section id="impact" class="title-slide slide level1 smaller scrollable">
+<section id="impact" class="title-slide slide level1 center">
 <h1>Impact</h1>
 <ul>
-<li>Head motion noise reduction <span class="citation" data-cites="Amitay2012">(see <a href="#/impact" role="doc-biblioref" onclick="">Ben-Amitay, Jones, and Assaf 2012</a>, <sup>1</sup>)</span></li>
+<li>Head motion noise reduction (see <span class="citation" data-cites="Amitay2012">Ben-Amitay, Jones, and Assaf (<a href="#/references" role="doc-biblioref" onclick="">2012</a>)</span>)</li>
 <li>Meaningful data augmentation</li>
 <li>Model cross validation</li>
 </ul>
-<aside><ol class="aside-footnotes"><li id="fn1"><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-Amitay2012" class="csl-entry" role="listitem">
-Ben-Amitay, Shani, Derek K. Jones, and Yaniv Assaf. 2012. <span>“Motion Correction and Registration of High b-Value Diffusion Weighted Images.”</span> <em>Magnetic Resonance in Medicine</em> 67 (6): 1694–1702. <a href="https://doi.org/10.1002/mrm.23186">https://doi.org/10.1002/mrm.23186</a>.
-</div>
-</div>
-</li></ol></aside></section>
+</section>
 
 <section id="conclusion" class="title-slide slide level1 center">
 <h1>Conclusion</h1>
-
+<ul>
+<li>Great introduction to medical data science</li>
+<li>Interesting to work on an established open source project</li>
+<li>Useful bachelor thesis warm up</li>
+</ul>
 </section>
 
 <section id="additional-resources" class="title-slide slide level1 center">
 <h1>Additional Resources</h1>
-<p>If you want more information please visit this project <a href="../src/index.html" target="_blank">website</a></p>
-
-
+<p>If you want more information about the project please visit this project <a href="../src/index.html" target="_blank">website</a></p>
 
 <img data-src="./assets/presentation/qrcode.png" class="r-stretch quarto-figure-center" id="fig-qr"><p class="caption">
 Figure&nbsp;11: Project website QR code
 </p></section>
+
+<section id="references" class="title-slide slide level1 smaller scrollable">
+<h1>References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-Amitay2012" class="csl-entry" role="listitem">
+Ben-Amitay, Shani, Derek K. Jones, and Yaniv Assaf. 2012. <span>“Motion Correction and Registration of High b-Value Diffusion Weighted Images.”</span> <em>Magnetic Resonance in Medicine</em> 67 (6): 1694–1702. <a href="https://doi.org/10.1002/mrm.23186">https://doi.org/10.1002/mrm.23186</a>.
+</div>
+</div>
+
+
+</section>
 
 
     </div>
@@ -520,7 +547,7 @@ Figure&nbsp;11: Project website QR code
         showNotes: false,
 
         // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: true,
+        autoPlayMedia: null,
 
         // Global override for preloading lazy-loaded iframes (null/true/false)
         preloadIframes: null,
@@ -779,6 +806,7 @@ Figure&nbsp;11: Project website QR code
         }
       });
       </script>
+    <script>videojs(video_shortcode_videojs_video1);</script>
     
 
 </body></html>
