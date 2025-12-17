@@ -331,8 +331,14 @@ Figure&nbsp;5: GQI model output example (ODF),<br>from the stanford_hardi datase
 <section id="testing-methodology" class="title-slide slide level1 center">
 <h1>Testing Methodology</h1>
 <ul>
-<li>Signal reconstruction based on seen data</li>
-<li>Signal prediction based on unseen data</li>
+<li>Signal reconstruction based on seen data
+<ul>
+<li>To make sure that the <code>predict</code> function implementation works properly</li>
+</ul></li>
+<li>Signal prediction based on unseen data
+<ul>
+<li>To test the generalization of the <code>predict</code> function</li>
+</ul></li>
 </ul>
 </section>
 
@@ -385,6 +391,13 @@ Figure&nbsp;10: Unseen data prediction results based on the <code>taiwan_ntu_dsi
 </div>
 <aside><ol class="aside-footnotes"><li id="fn3"><p>The <code>taiwan_ntu_dsi</code> dataset is a full DSI acquisition from the National Taiwan University, consisting of 515 diffusion-weighted volumes.</p></li></ol></aside></section>
 
+<section id="comparison-of-reconstruction-vs-unseen-predictions" class="title-slide slide level1 center">
+<h1>Comparison Of<br>Reconstruction Vs Unseen Predictions</h1>
+
+<img data-src="./assets/images/reconst_vs_unseen.png" class="r-stretch quarto-figure-center" id="fig-reconstruction-vs-unseen"><p class="caption">
+Figure&nbsp;11: Comparison of reconstruction vs unseen predictions based on the <code>taiwan_ntu_dsi</code> dataset
+</p></section>
+
 <section id="impact" class="title-slide slide level1 center">
 <h1>Impact</h1>
 <ul>
@@ -405,10 +418,10 @@ Figure&nbsp;10: Unseen data prediction results based on the <code>taiwan_ntu_dsi
 
 <section id="additional-resources" class="title-slide slide level1 center">
 <h1>Additional Resources</h1>
-<p>If you want more information about the project please visit this project <a href="../src/index.html" target="_blank">website</a></p>
+<p>If you want more information about the project please visit this project website<br><a href="../src/index.html" target="_blank">https://olivier.amacker.dev/303.1-semester-project/</a></p>
 
 <img data-src="./assets/presentation/qrcode.png" class="r-stretch quarto-figure-center" id="fig-qr"><p class="caption">
-Figure&nbsp;11: Project website QR code
+Figure&nbsp;12: Project website QR code
 </p></section>
 
 <section id="references" class="title-slide slide level1 smaller scrollable">

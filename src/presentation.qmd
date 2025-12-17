@@ -127,7 +127,9 @@ Where:
 # Testing Methodology
 
 - Signal reconstruction based on seen data
+  - To make sure that the `predict` function implementation works properly
 - Signal prediction based on unseen data
+  - To test the generalization of the `predict` function
 
 
 # Testing Methodology: Reconstruction Tests
@@ -154,6 +156,10 @@ Where:
 
 [^3]: The `taiwan_ntu_dsi` dataset is a full DSI acquisition from the National Taiwan University, consisting of 515 diffusion-weighted volumes.
 
+# Comparison Of<br>Reconstruction Vs Unseen Predictions
+
+![Comparison of reconstruction vs unseen predictions based on the `taiwan_ntu_dsi` dataset](./assets/images/reconst_vs_unseen.png){#fig-reconstruction-vs-unseen}
+
 # Impact
 
   - Head motion noise reduction (see @Amitay2012)
@@ -168,7 +174,7 @@ Where:
 
 # Additional Resources
 
-If you want more information about the project please visit this project [website](./index.qmd){target="_blank"}
+If you want more information about the project please visit this project website<br>[https://olivier.amacker.dev/303.1-semester-project/](./index.qmd){target="_blank"}
 
 ![Project website QR code](./assets/presentation/qrcode.png){#fig-qr}
 
