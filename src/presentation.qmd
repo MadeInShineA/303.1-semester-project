@@ -54,7 +54,7 @@ Visual example of DWI, sourced from Dr. A. Rokem, DIPY workshop 2021
   the existing `GeneralizedQSamplingModel` class
 
 # What Has Been Done
-  - Enable prediction for the `GeneralizedQSamplingModel`
+  - Enabled prediction for the `GeneralizedQSamplingModel`
   - Rigorous Testing
     - Unit tests (100% coverage)
     - Integration tests via different [Marimo](htts://marimo.io){target=_blank} notebooks

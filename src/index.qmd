@@ -45,7 +45,7 @@ gantt
         Double check the existing tests         :done,         dc_test,          09.12.2025, 1d
         Double check the existing notebooks     :done,         dc_notebooks,   09.12.2025, 1d
         Coordinate with DIPY experts            :done,         coor,           10.12.2025, 12.12.2025
-        Fine tune the code for the DIPY PR based on feedback      :active,        prpr,           12.12.2025, 17.12.2025
+        Fine tune the code for the DIPY PR based on feedback      :done,        prpr,           12.12.2025, 17.12.2025
         
 
       
@@ -63,9 +63,9 @@ gantt
         PR on Prof. Esteban repository          :done,         milestone,      10.12.2025, 0d
         PR on DIPY repository                   :done,         milestone,      11.12.2025, 0d
         Finish report                           :done,         f_rep,          11.12.2025, 16.12.2025
-        Finish presentation                     :active,       f_pres,         11.12.2025, 18.12.2025
+        Finish presentation                     :done,       f_pres,         11.12.2025, 18.12.2025
         Prof. Esteban - Final progress check-in :done,         milestone,      15.12.2025, 0d
-        Code and documentation handout          :crit,         milestone,      16.12.2025, 0d
+        Code and documentation handout          :done,crit,    milestone,      16.12.2025, 0d
         Final presentation                      :crit,         milestone,      18.12.2025, 0d
 ```
 ```
