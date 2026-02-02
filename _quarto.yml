@@ -7,6 +7,7 @@ project:
     - src/presentation.qmd
     - src/daily_journal.qmd
     - src/sources.qmd
+    - src/about_me.qmd
 
 website:
   title: "303.1 Semester Project"
@@ -20,6 +21,8 @@ website:
         text: Report
       - href: src/presentation.qmd
         text: Presentation
+      - href: src/about_me.qmd
+        text: About me
       - href: src/daily_journal.qmd
         text: Daily Journal
       - href: src/sources.qmd

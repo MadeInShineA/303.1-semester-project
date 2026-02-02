@@ -12,7 +12,7 @@ format:
     preview-links: auto
     navigation-mode: grid
     # auto-play-media: true
-    footer: '<a href="./index.qmd" style="color: inherit; text-decoration: none;">Home</a> | <a href="./sources.qmd" style="color: inherit; text-decoration: none;">Sources</a> | 303.1 Semester Project Presentation © 2025'
+    footer: '<a href="./index.qmd" style="color: inherit; text-decoration: none;">Home</a> | <a href="./sources.qmd" style="color: inherit; text-decoration: none;">Sources</a> | 303.1 Semester Project Presentation © 2026'
 bibliography: ./references.bib
 ---
 

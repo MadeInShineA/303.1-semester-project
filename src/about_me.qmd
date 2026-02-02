@@ -1,0 +1,99 @@
+
+---
+title: About me
+
+format:
+  revealjs:
+    theme: [default, ./presentation.scss]
+    center: true
+    transition: fade
+    incremental: false
+    slide-number: true
+    preview-links: auto
+    navigation-mode: grid
+    footer: '<a href="./index.qmd" style="color: inherit; text-decoration: none;">Home</a> | Personal Presentation © 2026'
+---
+
+# Who am I?
+
+
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- Amacker Olivier
+- Student at HES-SO Valais
+- Pursuing a data engineering bachelor degree
+:::
+
+::: {.column width="40%"}
+
+
+::: {#fig-me}
+
+![](./assets/images/me.webp)
+
+Me
+
+:::
+
+:::
+
+::::
+
+# What's my curriculum background?
+
+- 1 year as a junior web developer
+- 1 semester at EPFL in computer and communication sciences
+- 1 year at UNIL (Université de Lausanne) in criminal science
+- Swiss matura in Economics and Law
+
+# My center of interest
+
+- Computer science
+- Machine learning
+- (Medical) Data science
+- Cyber security
+- Esport (Super Smash Bros Melee)
+- Game of Go
+
+# How will I prepare for my thesis in ATR
+
+:::: {.columns}
+
+::: {.column width="60%"}
+- 7 weeks medical data science course under Prof. Esteban supervision
+- Intensive japanese language course
+- Look out for housing (possibly in Nara?)
+:::
+
+::: {.column width="40%"}
+
+
+::: {#fig-me}
+
+![](./assets/images/map.png)
+
+A google map view of the ATR
+
+:::
+
+:::
+
+::::
+
+
+# What I would like to do after my bachelor
+
+- Part time artificial intelligence master + Part time medical data scientist
+- Data science master
+- (Medical?) Data scientist
+
+
+# Additional Resources
+
+If you want more information about me please visit my resume website<br>[https://olivier.amacker.dev/](https://olivier.amacker.dev){target="_blank"}
+<br>or feel free to contact me at olivier.amacker@hes-so.ch
+
+![Resume website QR code](./assets/images/resume-qr-code.png){#fig-qr}
+

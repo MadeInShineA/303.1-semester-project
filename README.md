@@ -12,7 +12,8 @@ The website contains the following sections:
 
 - [**Report**](https://madeinshinea.github.io/303.1-semester-project/src/report.html): Detailed documentation of the semester project
 - [**Presentation**](https://madeinshinea.github.io/303.1-semester-project/src/presentation.html): Slides for the project presentation
-- [**Daily Journal**](https://madeinshinea.github.io/303.1-semester-project/src/daily_diary.html): Chronological log of project progress and activities
+- [**About me**](https://madeinshinea.github.io/303.1-semester-project/src/about_me): Slides presenting myself
+- [**Daily Journal**](https://madeinshinea.github.io/303.1-semester-project/src/daily_journal.html): Chronological log of project progress and activities
 - [**Sources**](https://madeinshinea.github.io/303.1-semester-project/src/sources.html): References and source materials used in the project
 
 ## Local Setup
@@ -22,7 +23,7 @@ To set up the project website locally:
 1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
 2. Clone the repository
 3. Run `uv sync` to install dependencies
-4. Run `uv quarto render` to build the site
+4. Run `uv run quarto render` to build the site
 
 The site will be in the `_site/` directory.
 
