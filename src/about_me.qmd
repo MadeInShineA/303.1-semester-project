@@ -56,14 +56,15 @@ Me
 - Cyber security
 - Esport (Super Smash Bros Melee)
 - Game of Go
+- Music
 
-# How will I prepare for my thesis in ATR
+# How will I prepare for my thesis in ATR?
 
 :::: {.columns}
 
 ::: {.column width="60%"}
 - 7 weeks medical data science course under Prof. Esteban supervision
-- Intensive japanese language course
+- Intensive japanese language course <br>(aiming for a1/a2)
 - Look out for housing (possibly in Nara?)
 :::
 
@@ -83,7 +84,7 @@ A google map view of the ATR
 ::::
 
 
-# What I would like to do after my bachelor
+# What would I like to do after my bachelor?
 
 - Part time artificial intelligence master + Part time medical data scientist
 - Data science master
