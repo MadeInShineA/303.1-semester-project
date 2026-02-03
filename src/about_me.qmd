@@ -57,9 +57,9 @@ Me
 - Machine learning
 - (Medical) Data science
 - Cyber security
-- Esport (Super Smash Bros Melee)
-- Game of Go
+- Tennis
 - Music
+- Esport (Super Smash Bros Melee)
 :::
 
 ::: {.column width="40%"}
@@ -69,7 +69,7 @@ Me
 
 ![](./assets/images/hobby.png)
 
-Me playing video games in the USA
+Me competing in the USA
 :::
 
 :::
