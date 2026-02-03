@@ -50,6 +50,9 @@ Me
 
 # My center of interest
 
+:::: {.columns}
+
+::: {.column width="60%"}
 - Computer science
 - Machine learning
 - (Medical) Data science
@@ -57,6 +60,21 @@ Me
 - Esport (Super Smash Bros Melee)
 - Game of Go
 - Music
+:::
+
+::: {.column width="40%"}
+
+
+::: {#fig-me-in-us}
+
+![](./assets/images/hobby.png)
+
+Me playing video games in the USA
+:::
+
+:::
+
+::::
 
 # How will I prepare for my thesis in ATR?
 
@@ -64,14 +82,17 @@ Me
 
 ::: {.column width="60%"}
 - 7 weeks medical data science course under Prof. Esteban supervision
-- Intensive japanese language course <br>(aiming for a1/a2)
+- Intensive japanese language course <br>
+  (aiming for a1/a2)
+- Apply for a "Cultural activities" visa <br>
+  as soon as possible
 - Look out for housing (possibly in Nara?)
 :::
 
 ::: {.column width="40%"}
 
 
-::: {#fig-me}
+::: {#fig-atr}
 
 ![](./assets/images/map.png)
 
